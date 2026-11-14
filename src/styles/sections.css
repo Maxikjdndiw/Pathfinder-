@@ -398,6 +398,35 @@
 }
 .fields .note { margin-top: var(--s-3); max-width: 56ch; }
 
+/* ---------- Pathfinder Run teaser ---------- */
+.test__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--s-5);
+  align-items: center;
+}
+.test__actions { margin-top: var(--s-4); }
+.test__card { margin: 0; display: flex; flex-direction: column; align-items: center; gap: var(--s-2); }
+.test__card figcaption { text-align: center; }
+.glow--test { width: 60vw; height: 60vw; right: -16vw; top: 0; animation-delay: -9s; }
+@media (max-width: 860px) {
+  .test__inner { grid-template-columns: 1fr; gap: var(--s-4); }
+}
+
+.step__link {
+  margin-top: var(--s-1);
+  align-self: flex-start;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--oxblood);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding: 6px 0 2px;
+}
+.step__link:hover { color: var(--oxblood-dark); }
+
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; pointer-events: auto; }
+
 /* ---------- How it works ---------- */
 .how .display-2 { max-width: 20ch; }
 .steps {

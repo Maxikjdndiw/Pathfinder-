@@ -1,0 +1,95 @@
+/* TiltedCard (see tilted-card.ts) */
+.tc {
+  --tc-w: 340px;
+  --tc-h: 480px;
+  --tc-radius: 24px;
+  --tc-glare-color: #f4f2ee;
+  position: relative;
+  width: var(--tc-w);
+  height: var(--tc-h);
+  perspective: 1100px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.tc:focus-visible .tc__card {
+  outline: 3px solid var(--ocean);
+  outline-offset: 6px;
+  border-radius: var(--tc-radius);
+}
+
+.tc__shadow {
+  position: absolute;
+  inset: 8% 6% -2%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(20, 21, 23, 0.55), rgba(20, 21, 23, 0));
+  filter: blur(18px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.tc__float {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.tc__card {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tc__face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--tc-radius);
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  isolation: isolate;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 0 0 1px rgba(20, 21, 23, 0.08);
+}
+.tc__face--back { transform: rotateY(180deg); }
+
+/* glare that follows the pointer */
+.tc__glare {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: soft-light;
+  background: radial-gradient(70% 55% at var(--gx, 50%) var(--gy, 30%), var(--tc-glare-color), transparent 70%);
+}
+
+/* thin light on the edge, brightest near the pointer */
+.tc__edge {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  border-radius: inherit;
+  pointer-events: none;
+  padding: 1.5px;
+  background: radial-gradient(120% 80% at var(--gx, 50%) var(--gy, 0%), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.05));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0.25;
+}
+
+[data-depth] { will-change: transform; }
+
+/* intro: fades in while the springs bring the card into place */
+.tc .tc__float { transition: opacity 0.7s ease; }
+.tc--intro .tc__float { opacity: 0; transition: none; }
+
+/* reduced motion: flip is a quick crossfade instead of a turn */
+.tc--reduced .tc__card { transition: none; }
+.tc--reduced.tc--fading .tc__float { animation: tc-fade 0.18s ease; }
+@keyframes tc-fade { from { opacity: 0.2; } to { opacity: 1; } }

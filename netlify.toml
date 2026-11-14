@@ -4,3 +4,14 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Pathfinder Run lives at /quiz (the file is quiz.html)
+[[redirects]]
+  from = "/quiz"
+  to = "/quiz.html"
+  status = 200
+
+[[redirects]]
+  from = "/quiz/"
+  to = "/quiz.html"
+  status = 200

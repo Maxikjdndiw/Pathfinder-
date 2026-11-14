@@ -183,7 +183,6 @@ h1, h2, h3, .display, .display-2 {
 
 /* Reveal on scroll (only when JS + motion are available) */
 .js-reveal [data-reveal] {
-  /* never start pale: text is readable from the first frame */
-  opacity: 0.7;
+  /* only a short slide-up: text is fully readable at every point of the animation */
   transform: translateY(16px);
 }

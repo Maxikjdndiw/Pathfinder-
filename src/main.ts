@@ -1,11 +1,13 @@
 import './styles/index.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SIGNUP_URL } from './config';
+import { initNavWave, initShine, initSignupLinks } from './common';
 import { CARDS, spreadPhotoCards } from './content/cards';
 import type { SceneState } from './scene';
 import { initSvgLiquidGlass } from './liquidGlass';
 import { initBorderGlow } from './borderGlow';
+import { mountResultCard } from './quiz/card';
+import { ARCHETYPES } from './quiz/content';
 import type { WarpTextHandle } from './warpText';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,11 +16,7 @@ const root = document.documentElement;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* 1. Every "Kostenlos mitmachen" button uses the one link from src/config.ts */
-document.querySelectorAll<HTMLAnchorElement>('[data-signup]').forEach((a) => {
-  a.href = SIGNUP_URL;
-  a.target = '_blank';
-  a.rel = 'noopener';
-});
+initSignupLinks();
 
 /* 2. Static card grid (used when there is no 3D) */
 function renderCardGrid(): void {
@@ -54,29 +52,11 @@ function fallbackTo2D(): void {
 
 if (root.classList.contains('no-3d')) renderCardGrid();
 
-/* Nav links: split into letters for the hover/focus wave. Screen readers get the
-   full word through aria-label; the letter spans are hidden from them. */
-document.querySelectorAll<HTMLAnchorElement>('.nav__links a').forEach((link) => {
-  const text = link.textContent?.trim() ?? '';
-  if (!text || link.querySelector('.wave')) return;
-  link.setAttribute('aria-label', text);
-  const chars = [...text];
-  const step = Math.min(14, 170 / chars.length); // whole wave stays around 300-400 ms
-  link.innerHTML = `<span class="wave" aria-hidden="true">${chars
-    .map((c, i) => `<span style="--d:${(i * step).toFixed(0)}ms">${c === ' ' ? '&nbsp;' : c}</span>`)
-    .join('')}</span>`;
-});
+/* Nav links: letter wave on hover/focus (src/common.ts) */
+initNavWave();
 
 /* 3. Light that follows the pointer on glass elements */
-if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
-  document.querySelectorAll<HTMLElement>('[data-shine]').forEach((el) => {
-    el.addEventListener('pointermove', (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      el.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
-  });
-}
+initShine();
 
 /* 4. Scroll animations */
 if (!reduceMotion) {
@@ -84,9 +64,9 @@ if (!reduceMotion) {
   ScrollTrigger.batch('[data-reveal]', {
     start: 'top bottom-=24px', // animate as soon as it enters, so nothing sits half-faded on screen
     once: true,
-    // starts at 0.6 opacity (see base.css), so text is readable during the whole animation
+    // slide-up only (see base.css), text stays fully opaque
     onEnter: (els) =>
-      gsap.to(els, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', stagger: 0.05, overwrite: true }),
+      gsap.to(els, { y: 0, duration: 0.45, ease: 'power2.out', stagger: 0.05, overwrite: true }),
   });
 }
 
@@ -312,4 +292,27 @@ if (insiderStack) {
     document.querySelector('[data-swap-prev]')?.addEventListener('click', () => swap.prev());
     document.querySelector('[data-swap-next]')?.addEventListener('click', () => swap.next());
   });
+}
+
+/* 10. Pathfinder Run teaser: example result card (Dealmaker), same component as the quiz */
+const exampleHost = document.getElementById('example-card');
+if (exampleHost) {
+  const dealmaker = ARCHETYPES.find((a) => a.id === 'dealmaker')!;
+  mountResultCard(
+    exampleHost,
+    {
+      archetype: dealmaker,
+      blend: [
+        { name: 'Dealmaker', percent: 80 },
+        { name: 'Mastermind', percent: 15 },
+        { name: 'Creator', percent: 5 },
+      ],
+      top: [
+        { name: 'Finance & Investment', percent: 92 },
+        { name: 'Consulting & Strategie', percent: 86 },
+      ],
+      wildcard: { name: 'Gründen & Startups', percent: 81 },
+    },
+    { intro: false },
+  );
 }

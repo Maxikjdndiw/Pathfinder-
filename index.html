@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Pathfinder</title>
-  <meta name="description" content="Pathfinder zeigt dir Berufe, Unis, Stipendien und Praktika, von denen dir keiner erzählt – und hilft dir, dort hinzukommen. Für Schülerinnen und Schüler an öffentlichen Schulen." />
+  <meta name="description" content="Pathfinder zeigt dir Berufe, Unis, Stipendien und Praktika, von denen dir keiner erzählt, und hilft dir, dort hinzukommen. Für Schülerinnen und Schüler an öffentlichen Schulen." />
   <meta name="theme-color" content="#E8E7E3" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="de_DE" />
@@ -41,6 +41,7 @@
         <li><a href="#ablauf">Wie es funktioniert</a></li>
         <li><a href="#fuer-wen">Für wen</a></li>
         <li><a href="#tipps">Tipps</a></li>
+        <li><a href="/quiz">Test</a></li>
       </ul>
       <a class="btn btn--primary btn--small" data-signup href="%SIGNUP_URL%" target="_blank" rel="noopener">Kostenlos mitmachen</a>
     </nav>
@@ -62,7 +63,10 @@
           </h1>
           <div class="hero__bottom">
             <p class="hero__sub glass">Berufe, Unis und Stipendien, von denen dir keiner erzählt. Und Hilfe, um dort hinzukommen.</p>
-            <a class="btn btn--primary" data-signup href="%SIGNUP_URL%" target="_blank" rel="noopener">Kostenlos mitmachen<span class="btn__arrow" aria-hidden="true">→</span></a>
+            <div class="hero__actions">
+              <a class="btn btn--glass" href="/quiz">Test machen (2 Min.)</a>
+              <a class="btn btn--primary" data-signup href="%SIGNUP_URL%" target="_blank" rel="noopener">Kostenlos mitmachen<span class="btn__arrow" aria-hidden="true">→</span></a>
+            </div>
           </div>
         </div>
 
@@ -123,6 +127,25 @@
       </div>
     </section>
 
+    <!-- PATHFINDER RUN TEASER -->
+    <section class="section test" id="test" aria-labelledby="test-title">
+      <div class="glow glow--oxblood glow--test" aria-hidden="true"></div>
+      <div class="container test__inner">
+        <div class="test__text">
+          <p class="eyebrow">Pathfinder Run</p>
+          <h2 class="display-2" id="test-title" data-reveal>Welcher Weg passt zu dir?</h2>
+          <p class="lead" data-reveal>2 Minuten. Kein Login. Keine Daten. Nur du und ein paar Entscheidungen.</p>
+          <div class="test__actions" data-reveal>
+            <a class="btn btn--primary btn--large" href="/quiz">Test starten<span class="btn__arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <figure class="test__card">
+          <div id="example-card"></div>
+          <figcaption class="note">Beispielergebnis</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <!-- HOW IT WORKS -->
     <section class="section how" id="ablauf" aria-labelledby="how-title">
       <div class="glow glow--oxblood glow--d" aria-hidden="true"></div>
@@ -135,6 +158,7 @@
             <h3>Entdecken</h3>
             <p class="step__q">Was passt zu mir?</p>
             <p>Du lernst Berufe, Studiengänge und Unis kennen, von denen du noch nie gehört hast. Und findest heraus, was davon zu dir passt.</p>
+            <a class="step__link" href="/quiz">Test machen <span aria-hidden="true">→</span></a>
           </li>
           <li class="step glass" data-shine data-reveal>
             <span class="step__num">02</span>

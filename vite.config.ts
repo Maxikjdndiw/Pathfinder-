@@ -20,12 +20,29 @@ function brandMark(): string {
     .replace('<svg ', '<svg class="brand__mark" aria-hidden="true" focusable="false" ');
 }
 
-// base: './' keeps all asset paths relative, so the build works on Netlify,
-// on GitHub Pages (inside a /pathfinder-website/ sub-path) and from a plain folder.
+/** /quiz serves quiz.html in dev and preview too (Netlify does it with a rewrite, see netlify.toml) */
+const quizRoute = {
+  name: 'quiz-route',
+  configureServer(server: { middlewares: { use: (fn: (req: { url?: string }, res: unknown, next: () => void) => void) => void } }) {
+    server.middlewares.use((req, _res, next) => {
+      if (req.url && /^\/quiz\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/quiz\/?/, '/quiz.html');
+      next();
+    });
+  },
+  configurePreviewServer(server: { middlewares: { use: (fn: (req: { url?: string }, res: unknown, next: () => void) => void) => void } }) {
+    server.middlewares.use((req, _res, next) => {
+      if (req.url && /^\/quiz\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/quiz\/?/, '/quiz.html');
+      next();
+    });
+  },
+};
+
+// base: '/' (absolute asset paths) so /quiz and /quiz/ both load their assets on Netlify.
 export default defineConfig({
-  base: './',
+  base: '/',
   // Writes SIGNUP_URL from src/config.ts into the HTML, so the buttons work even before JS loads.
   plugins: [
+    quizRoute,
     {
       name: 'signup-url',
       transformIndexHtml: (html) => html.replaceAll('%SIGNUP_URL%', SIGNUP_URL).replaceAll('<!--brand-mark-->', brandMark()),
@@ -40,6 +57,7 @@ export default defineConfig({
         main: 'index.html',
         impressum: 'impressum.html',
         datenschutz: 'datenschutz.html',
+        quiz: 'quiz.html',
       },
     },
   },
