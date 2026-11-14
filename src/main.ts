@@ -5,6 +5,8 @@ import { SIGNUP_URL } from './config';
 import { CARDS } from './content/cards';
 import type { SceneState } from './scene';
 import { initSvgLiquidGlass } from './liquidGlass';
+import { initBorderGlow } from './borderGlow';
+import type { WarpTextHandle } from './warpText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,6 +90,8 @@ if (!reduceMotion) {
 
 /* 5. The 3D scene: scroll story + lazy loaded Three.js */
 const state: SceneState = { s: 0 };
+let roadCaption: WarpTextHandle | null = null;
+let roadCaptionShown = false;
 
 if (root.classList.contains('has-3d')) {
   const tl = gsap.timeline({
@@ -103,6 +107,10 @@ if (root.classList.contains('has-3d')) {
     .to('[data-caption="1"]', { autoAlpha: 1, duration: 0.06 }, 0.36)
     .to('[data-caption="1"]', { autoAlpha: 0, duration: 0.05 }, 0.56)
     .to('[data-caption="2"]', { autoAlpha: 1, duration: 0.06 }, 0.74)
+    .call(() => {
+      roadCaptionShown = true;
+      roadCaption?.start();
+    }, [], 0.74)
     .to({}, { duration: 0.04 }, 0.96);
 
   const container = document.getElementById('scene');
@@ -119,6 +127,37 @@ if (root.classList.contains('has-3d')) {
           ],
         }),
       )
+      .then(async () => {
+        // road caption: warped text (WarpText from React Bits, ported), no box
+        const box = document.querySelector<HTMLElement>('.hero__warp');
+        if (!box) return;
+        const mod = await import('./warpText').catch(() => null);
+        if (!mod) return; // the caption simply stays hidden
+        roadCaption = mod.createWarpText(box, {
+          text: box.dataset.text ?? '',
+          color: '#141517',
+          lineColors: [undefined, undefined, '#6A1311'],
+          halo: { color: 'rgba(232, 231, 227, 0.75)', blur: 44 },
+          fontFamily: '"Bricolage Grotesque Variable", "Bricolage Grotesque", system-ui, sans-serif',
+          fontWeight: 700,
+          fontSize: 'clamp(30px, 4.2vw, 60px)',
+          letterSpacing: '-0.02em',
+          lineHeight: 1.04,
+          warpStrength: 0.06,
+          warpScale: 1.7,
+          speed: 0.5,
+          lens: 'bulge',
+          pointerInfluence: 0.38,
+          pointerStrength: 0.34,
+          refraction: 0.016,
+          chromatic: 0.25,
+          idleDrift: 0.15,
+          ripple: true,
+          clickRipple: true,
+          intro: true,
+        });
+        if (roadCaptionShown) roadCaption?.start();
+      })
       .catch((err) => {
         console.warn('3D scene unavailable, showing static cards instead.', err);
         fallbackTo2D();
@@ -212,4 +251,12 @@ if (lanyardBox) {
     { rootMargin: '600px 0px' },
   );
   io.observe(lanyardBox);
+}
+
+/* 8. Border glow (React Bits BorderGlow, adapted) on the regular cards.
+   The liquid glass elements (nav, tags, hero) keep their own effect. */
+if (window.matchMedia('(hover: hover)').matches) {
+  initBorderGlow(document.querySelectorAll<HTMLElement>('.step, .tip-card'));
+  // cards on the ocean panel: glow in the light card colour so it shows on blue
+  initBorderGlow(document.querySelectorAll<HTMLElement>('.why__point'), { glowColor: '40 25 94', colors: ['#6A1311', '#6FA3BE', '#F4F2EE'] });
 }

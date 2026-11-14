@@ -28,6 +28,9 @@ img { max-width: 100%; display: block; }
 /* glows reach past the edges; clip them without breaking position: sticky */
 main, .footer { overflow-x: clip; }
 
+.warp-text { position: relative; display: block; overflow: hidden; isolation: isolate; }
+.warp-text canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
 a { color: var(--ocean); text-underline-offset: 3px; }
 
 h1, h2, h3, .display, .display-2 {

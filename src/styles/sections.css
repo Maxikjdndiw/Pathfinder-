@@ -232,6 +232,34 @@
   visibility: hidden;
 }
 .hero__caption strong { font-weight: 500; }
+
+/* road caption as warped text, sitting in the open space above the road */
+.hero__warp {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: clamp(96px, 15vh, 170px);
+  transform: translateX(-50%);
+  width: min(1040px, calc(100% - 2 * var(--gutter)));
+  height: clamp(170px, 26vh, 260px);
+  color: var(--ink);
+  font-family: var(--font-display);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: auto;
+}
+.no-3d .hero__warp { display: none; }
+.hero__warp .warp-text__fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font: 700 clamp(28px, 4vw, 56px) / 1.02 var(--font-display);
+  letter-spacing: -0.02em;
+}
 .no-3d .hero__caption { display: none; }
 
 .scroll-hint {

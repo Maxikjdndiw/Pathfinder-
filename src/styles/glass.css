@@ -23,7 +23,7 @@
 }
 
 /* Light that follows the pointer (set by JS through --mx / --my) */
-[data-shine] { overflow: hidden; isolation: isolate; }
+[data-shine] { isolation: isolate; } /* no overflow:hidden – the border glow reaches past the edge */
 [data-shine]::after {
   content: '';
   position: absolute;

@@ -46,6 +46,8 @@ npm run preview
 - `src/glassPass.ts` – the final WebGL pass: background glows, soft bottom fade, and the real liquid glass (refraction shader) behind the nav, the hero subline and the captions while they sit over the 3D scene.
 - `src/liquidGlass.ts` – liquid glass for the field tags and the nav further down the page: an SVG displacement filter used through `backdrop-filter`. Chromium only; Safari and Firefox keep the frosted glass.
 - Both glass types switch back to frosted glass automatically if the frame rate drops (phones first). Add `?glass=force` to the URL to turn that guard off when testing.
+- `src/warpText.ts` – the road caption in the hero as warped WebGL text (React Bits WarpText, ported, uses `ogl`). The text lives in `data-text` on `.hero__warp` in `index.html`; style and warp settings are in `src/main.ts`.
+- `src/borderGlow.ts` – the edge glow on the step cards, the ocean-section cards and the tip card (React Bits BorderGlow, adapted to brand colours).
 - `src/lanyard/lanyard.js` – the founder badge on a lanyard, ported from the React Bits Lanyard component to plain JavaScript (no React needed). Loaded only when the founder section comes near.
 - Fallback: with `prefers-reduced-motion` or without WebGL, the 3D scene is skipped and a static card grid is shown instead.
 - Phones get fewer cards and a lower pixel ratio. Rendering pauses when the hero is off screen.
