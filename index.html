@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Pathfinder</title>
+  <meta name="description" content="Pathfinder zeigt dir Berufe, Unis, Stipendien und Praktika, von denen dir keiner erzählt – und hilft dir, dort hinzukommen. Für Schülerinnen und Schüler an öffentlichen Schulen." />
+  <meta name="theme-color" content="#E8E7E3" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:title" content="Pathfinder" />
+  <meta property="og:description" content="Berufe, Unis und Stipendien, von denen dir keiner erzählt. Und Hilfe, um dort hinzukommen." />
+  <!-- Placeholder. Replace public/og-image.png and, once you have a domain, use the full URL here. -->
+  <meta property="og:image" content="og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <script>
+    // Decide early whether the 3D scene runs, so the layout never jumps.
+    (function () {
+      var d = document.documentElement, ok = false;
+      try {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var c = document.createElement('canvas');
+        ok = !reduce && !!(c.getContext('webgl2') || c.getContext('webgl'));
+      } catch (e) {}
+      d.classList.add(ok ? 'has-3d' : 'no-3d');
+    })();
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="nav-wrap">
+    <nav class="nav glass" data-shine aria-label="Hauptnavigation">
+      <a class="wordmark" href="#top" aria-label="Pathfinder, zum Seitenanfang">Pathfinder</a>
+      <ul class="nav__links">
+        <li><a href="#ablauf">Wie es funktioniert</a></li>
+        <li><a href="#fuer-wen">Für wen</a></li>
+        <li><a href="#tipps">Tipps</a></li>
+      </ul>
+      <a class="btn btn--primary btn--small" data-signup href="https://forms.gle/PLACEHOLDER" target="_blank" rel="noopener">Kostenlos mitmachen</a>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__sticky">
+        <div class="glow glow--oxblood glow--a" aria-hidden="true"></div>
+        <div class="glow glow--ocean glow--b" aria-hidden="true"></div>
+        <div class="hero__scene" id="scene" aria-hidden="true"></div>
+        <div class="hero__veil" aria-hidden="true"></div>
+
+        <div class="hero__content" data-hero-content>
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__line hero__line--left">Wusstest du, welche</span>
+            <span class="hero__line hero__line--right"><span class="grad-text">Wege</span> dir offenstehen?</span>
+          </h1>
+          <div class="hero__bottom">
+            <p class="hero__sub glass">Berufe, Unis und Stipendien, von denen dir keiner erzählt. Und Hilfe, um dort hinzukommen.</p>
+            <a class="btn btn--primary" data-signup href="https://forms.gle/PLACEHOLDER" target="_blank" rel="noopener">Kostenlos mitmachen<span class="btn__arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <p class="hero__caption glass" data-caption="1">
+          <strong>Dutzende Wege.</strong> Die meisten kennst du noch nicht.
+        </p>
+        <p class="hero__caption glass" data-caption="2">
+          <strong>Pathfinder zeigt dir, welcher zu dir passt.</strong> Und wie du hinkommst.
+        </p>
+
+        <div class="scroll-hint" aria-hidden="true"><span></span></div>
+      </div>
+
+      <!-- Shown instead of the 3D scene when motion is reduced or WebGL is missing -->
+      <ul class="card-grid" id="card-grid" aria-label="Beispiele für Wege, die Pathfinder dir zeigt"></ul>
+    </section>
+
+    <!-- FIELDS -->
+    <section class="section fields" id="fuer-wen" aria-labelledby="fields-title">
+      <div class="glow glow--ocean glow--c" aria-hidden="true"></div>
+      <div class="container">
+        <p class="eyebrow">Für wen</p>
+        <h2 class="display-2" id="fields-title" data-reveal>Egal ob Finance, Design, Marketing, Mode oder Tech.</h2>
+        <p class="lead" data-reveal>Pathfinder ist für Schülerinnen und Schüler ab etwa 15 Jahren, die mehr wollen als das, was sie aus der Schule oder von TikTok kennen. Und für Eltern, die ihre Kinder dabei unterstützen.</p>
+        <ul class="tags" aria-label="Bereiche" data-reveal>
+          <li class="tag glass tag--start">Finance <span>Start</span></li>
+          <li class="tag glass tag--start">Wirtschaft <span>Start</span></li>
+          <li class="tag glass">Unternehmensberatung</li>
+          <li class="tag glass">Design</li>
+          <li class="tag glass">Marketing</li>
+          <li class="tag glass">Mode</li>
+          <li class="tag glass">Tech</li>
+          <li class="tag glass">Medizin</li>
+          <li class="tag glass">Jura</li>
+          <li class="tag glass">Architektur</li>
+          <li class="tag glass">und mehr</li>
+        </ul>
+        <p class="note" data-reveal>Am stärksten starten wir in Finance und Wirtschaft. Weitere Bereiche kommen nach und nach dazu.</p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how" id="ablauf" aria-labelledby="how-title">
+      <div class="glow glow--oxblood glow--d" aria-hidden="true"></div>
+      <div class="container">
+        <p class="eyebrow">Wie es funktioniert</p>
+        <h2 class="display-2" id="how-title" data-reveal>Vier Schritte. Vom ersten „Was gibt es überhaupt?“ bis zur Bewerbung.</h2>
+        <ol class="steps">
+          <li class="step glass" data-shine data-reveal>
+            <span class="step__num">01</span>
+            <h3>Entdecken</h3>
+            <p class="step__q">Was passt zu mir?</p>
+            <p>Du lernst Berufe, Studiengänge und Unis kennen, von denen du noch nie gehört hast. Und findest heraus, was davon zu dir passt.</p>
+          </li>
+          <li class="step glass" data-shine data-reveal>
+            <span class="step__num">02</span>
+            <h3>Aufbauen</h3>
+            <p class="step__q">Lebenslauf und LinkedIn</p>
+            <p>Wir bauen mit dir einen Lebenslauf und ein LinkedIn-Profil, die zeigen, was du kannst. Auch wenn du noch zur Schule gehst.</p>
+          </li>
+          <li class="step glass" data-shine data-reveal>
+            <span class="step__num">03</span>
+            <h3>Finden</h3>
+            <p class="step__q">Praktika in deiner Nähe und darüber hinaus</p>
+            <p>Wir zeigen dir Praktika, Sommerschulen und Programme, die zu deinem Ziel passen.</p>
+          </li>
+          <li class="step glass" data-shine data-reveal>
+            <span class="step__num">04</span>
+            <h3>Bewerben</h3>
+            <p class="step__q">Anschreiben und Vorbereitung</p>
+            <p>Du schreibst starke Anschreiben und gehst vorbereitet ins Gespräch.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- WHY PATHFINDER (ocean section) -->
+    <section class="section why" aria-labelledby="why-title">
+      <div class="container">
+        <div class="why__panel">
+          <p class="eyebrow eyebrow--light">Warum Pathfinder</p>
+          <h2 class="why__quote" id="why-title" data-reveal>ChatGPT beantwortet Fragen. Pathfinder zeigt dir, welche Fragen du stellen solltest.</h2>
+          <p class="why__intro" data-reveal>Schüler an Privatschulen haben Berufsberater und Netzwerke. An öffentlichen Schulen kennen die meisten nur die Berufe, die sie mal auf TikTok gesehen haben. Das ändern wir.</p>
+          <ul class="why__points">
+            <li class="why__point" data-reveal>
+              <h3>KI plus echte Menschen</h3>
+              <p>Die KI hilft dir rund um die Uhr. Echte Menschen schauen drüber, wenn es darauf ankommt.</p>
+            </li>
+            <li class="why__point" data-reveal>
+              <h3>Workshops und persönliches Feedback</h3>
+              <p>Gemeinsam lernen, Fragen stellen und ehrliches Feedback zu deinem Lebenslauf und deinen Bewerbungen bekommen.</p>
+            </li>
+            <li class="why__point" data-reveal>
+              <h3>Tipps von Studierenden an Top Unis</h3>
+              <p>Von Leuten, die den Weg gerade selbst gegangen sind. Nicht aus einem Lehrbuch.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIDER TIPS -->
+    <section class="section tips" id="tipps" aria-labelledby="tips-title">
+      <div class="glow glow--ocean glow--e" aria-hidden="true"></div>
+      <div class="container">
+        <p class="eyebrow">Insider-Tipps</p>
+        <h2 class="display-2" id="tips-title" data-reveal>Wusstest du, was Studierende an Top Unis anders gemacht haben?</h2>
+        <article class="tip-card glass" data-shine data-reveal>
+          <div class="tip-card__media" role="img" aria-label="Platzhalter: Foto folgt">
+            <span>Foto folgt</span>
+          </div>
+          <div class="tip-card__body">
+            <p class="tip-card__kicker">Bald hier</p>
+            <h3>5 Tipps von einem Studenten am King's College London</h3>
+            <p>Wie er seine Uni gefunden hat, was in seiner Bewerbung stand und was er heute anders machen würde. Der Text folgt in Kürze.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOUNDER -->
+    <section class="section founder" aria-labelledby="founder-title">
+      <div class="container founder__inner">
+        <p class="eyebrow">Wer dahintersteht</p>
+        <h2 class="display-2" id="founder-title" data-reveal>Gebaut von einem Schüler, der den Weg selbst gegangen ist.</h2>
+        <div class="founder__text" data-reveal>
+          <p>Hier erzählt der Gründer bald seine Geschichte: wie er selbst Praktika bei Accenture und Deloitte gefunden hat und warum er Pathfinder gebaut hat. Unterstützt wird er von einem erfahrenen Ökonomen.</p>
+          <p class="note">Platzhalter. Der ausführliche Text folgt.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section cta" aria-labelledby="cta-title">
+      <div class="glow glow--oxblood glow--cta" aria-hidden="true"></div>
+      <div class="container cta__inner">
+        <h2 class="display-2" id="cta-title" data-reveal>Sei bei der kostenlosen Pilotphase dabei.</h2>
+        <p class="lead" data-reveal>Melde dich in zwei Minuten an. Wir melden uns, sobald es losgeht.</p>
+        <a class="btn btn--primary btn--large" data-signup data-reveal href="https://forms.gle/PLACEHOLDER" target="_blank" rel="noopener">Kostenlos mitmachen<span class="btn__arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="wordmark wordmark--footer">Pathfinder</p>
+      <p class="footer__place">Pathfinder · Schleswig</p>
+      <ul class="footer__links">
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
