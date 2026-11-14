@@ -1,0 +1,8 @@
+/* Fonts are self-hosted (no requests to Google = no tracking, GDPR friendly). */
+@import '@fontsource-variable/bricolage-grotesque/index.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import './tokens.css';
+@import './base.css';
+@import './glass.css';
+@import './sections.css';
