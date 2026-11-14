@@ -187,18 +187,20 @@
     <section class="section tips" id="tipps" aria-labelledby="tips-title">
       <div class="glow glow--ocean glow--e" aria-hidden="true"></div>
       <div class="container">
-        <p class="eyebrow">Insider-Tipps</p>
-        <h2 class="display-2" id="tips-title" data-reveal>Wusstest du, was Studierende an Top Unis anders gemacht haben?</h2>
-        <article class="tip-card glass" data-shine data-reveal>
-          <div class="tip-card__media" role="img" aria-label="Platzhalter: Foto folgt">
-            <span>Foto folgt</span>
+        <div class="insiders">
+          <div class="insiders__intro" data-reveal>
+            <p class="eyebrow">Insider-Tipps</p>
+            <h2 class="display-2 insiders__title" id="tips-title">Wusstest du, was Studierende an Top Unis anders gemacht haben?</h2>
+            <p class="lead">Echte Tipps von Leuten, die den Weg gerade selbst gegangen sind: an Unis wie dem King's College London, der Bocconi oder der IE Madrid, in Finance, Design, Marketing, Tech und mehr.</p>
+            <div class="insiders__controls">
+              <button class="btn btn--glass insiders__btn" type="button" data-swap-prev aria-label="Vorherige Karte">←</button>
+              <button class="btn btn--glass insiders__btn" type="button" data-swap-next aria-label="Nächste Karte">→</button>
+              <span class="insiders__count" aria-live="polite"><span data-swap-count>01</span> / <span data-swap-total>06</span></span>
+            </div>
+            <p class="note">Platzhalter: Namen, Fotos und Texte folgen.</p>
           </div>
-          <div class="tip-card__body">
-            <p class="tip-card__kicker">Bald hier</p>
-            <h3>5 Tipps von einem Studenten am King's College London</h3>
-            <p>Wie er seine Uni gefunden hat, was in seiner Bewerbung stand und was er heute anders machen würde. Der Text folgt in Kürze.</p>
-          </div>
-        </article>
+          <div class="insiders__stack" id="insider-stack"></div>
+        </div>
       </div>
     </section>
 

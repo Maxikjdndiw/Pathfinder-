@@ -258,7 +258,56 @@ if (lanyardBox) {
 // Mouse/trackpad only (touch is ignored inside); no (hover: hover) gate, which some
 // touchscreen laptops report as false even when a mouse is used.
 {
-  initBorderGlow(document.querySelectorAll<HTMLElement>('.step, .tip-card'));
+  initBorderGlow(document.querySelectorAll<HTMLElement>('.step'));
   // cards on the ocean panel: glow in the light card colour so it shows on blue
   initBorderGlow(document.querySelectorAll<HTMLElement>('.why__point'), { glowColor: '40 25 94', colors: ['#6A1311', '#6FA3BE', '#F4F2EE'] });
+}
+
+/* 9. Insider tips as a swapping card stack (React Bits CardSwap, ported). */
+const insiderStack = document.getElementById('insider-stack');
+if (insiderStack) {
+  Promise.all([import('./cardSwap'), import('./content/insiders')]).then(([{ createCardSwap }, { INSIDERS }]) => {
+    const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+    const base = import.meta.env.BASE_URL;
+    const total = String(INSIDERS.length).padStart(2, '0');
+    const compact = window.matchMedia('(max-width: 560px)').matches;
+    const cards = INSIDERS.map((p, i) => {
+      const el = document.createElement('article');
+      el.className = `insider insider--${p.accent}${compact ? ' insider--compact' : ''}`;
+      el.innerHTML = `
+        <div class="insider__photo">
+          ${p.photo ? `<img src="${base}${esc(p.photo)}" alt="${esc(p.name)}" draggable="false">` : `
+          <svg class="insider__silhouette" viewBox="0 0 100 110" aria-hidden="true"><circle cx="50" cy="38" r="22" fill="currentColor"/><path d="M8 110c0-26 19-42 42-42s42 16 42 42z" fill="currentColor"/></svg>
+          <span class="insider__photo-tag">Foto folgt</span>`}
+        </div>
+        <div class="insider__body">
+          <div class="insider__top"><span class="insider__field">${esc(p.field)}</span><span class="insider__num">${String(i + 1).padStart(2, '0')} / ${total}</span></div>
+          <h3 class="insider__title">${esc(p.title)}</h3>
+          <p class="insider__text">${esc(p.text)}</p>
+          <div class="insider__person">
+            <p class="insider__name">${esc(p.name)}</p>
+            <dl class="insider__meta"><dt>Job</dt><dd>${esc(p.job)}</dd><dt>Studium</dt><dd>${esc(p.education)}</dd></dl>
+          </div>
+        </div>`;
+      return el;
+    });
+    const count = document.querySelector('[data-swap-count]');
+    const totalEl = document.querySelector('[data-swap-total]');
+    if (totalEl) totalEl.textContent = total;
+    const swap = createCardSwap(insiderStack, cards, {
+      ...(compact
+        ? { width: 300, height: 380, cardDistance: 16, verticalDistance: 24, depth: 60, skewAmount: 3, visibleCards: 3 }
+        : { width: 500, height: 320, cardDistance: 46, verticalDistance: 52, depth: 90, skewAmount: 4, visibleCards: 4 }),
+      delay: 5000,
+      autoplay: !reduceMotion,
+      cardRadius: 20,
+      dim: 0.45,
+      label: 'Tipps von Studierenden',
+      onChange: (i) => {
+        if (count) count.textContent = String(i + 1).padStart(2, '0');
+      },
+    });
+    document.querySelector('[data-swap-prev]')?.addEventListener('click', () => swap.prev());
+    document.querySelector('[data-swap-next]')?.addEventListener('click', () => swap.next());
+  });
 }

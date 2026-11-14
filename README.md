@@ -35,6 +35,7 @@ npm run preview
 | Card photos | put files in `public/images/`, then add `image: 'images/<file>'` in `src/content/cards.ts` |
 | Brand colours, fonts, spacing | `src/styles/tokens.css` |
 | Founder badge (lanyard) | Card texts and artwork: `src/lanyard/founderCard.ts`. Look and physics (colours, metal, swing): the `createLanyard(...)` options in `src/main.ts`. To use a real photo or design, pass image URLs as `frontImage` / `backImage` instead. |
+| Insider-Tipps cards | Texts, fields, job and study: `src/content/insiders.ts` (placeholders). Photos: put them in `public/images/` and add `photo: 'images/<file>'` to a card. |
 | Social preview image | `public/og-image.png` (1200 × 630) |
 | Logo | `public/pathfinder-mark.svg` (light backgrounds), `public/pathfinder-mark-dark.svg` (dark backgrounds). The nav inlines `pathfinder-mark.svg` at build time, so replacing that file updates the nav too. |
 | Favicon / app icons | `public/pathfinder-app-icon.svg`; the PNGs (`favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) are rendered from it – regenerate them if the icon changes |
@@ -47,6 +48,7 @@ npm run preview
 - `src/liquidGlass.ts` – liquid glass for the field tags and the nav further down the page: an SVG displacement filter used through `backdrop-filter`. Chromium only; Safari and Firefox keep the frosted glass.
 - Both glass types switch back to frosted glass automatically if the frame rate drops (phones first). Add `?glass=force` to the URL to turn that guard off when testing.
 - `src/warpText.ts` – the road caption in the hero as warped WebGL text (React Bits WarpText, ported, uses `ogl`). The text lives in `data-text` on `.hero__warp` in `index.html`; style and warp settings are in `src/main.ts`.
+- `src/cardSwap.ts` – the swapping card stack in Insider-Tipps (React Bits CardSwap, ported to TypeScript). Drag or fling the front card, click a card behind, use the arrow buttons or arrow keys; it swaps on its own every 5 s and pauses on hover.
 - `src/borderGlow.ts` – the edge glow on the step cards, the ocean-section cards and the tip card (React Bits BorderGlow, adapted to brand colours).
 - `src/lanyard/lanyard.js` – the founder badge on a lanyard, ported from the React Bits Lanyard component to plain JavaScript (no React needed). Loaded only when the founder section comes near.
 - Fallback: with `prefers-reduced-motion` or without WebGL, the 3D scene is skipped and a static card grid is shown instead.
