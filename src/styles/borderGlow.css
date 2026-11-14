@@ -3,7 +3,9 @@
   --edge-proximity: 0;
   --cursor-angle: 45deg;
   --edge-sensitivity: 30;
-  --color-sensitivity: calc(var(--edge-sensitivity) + 20);
+  --color-sensitivity: var(--edge-sensitivity);
+  /* light cards: the original is tuned for dark ones, so lift the layers a bit */
+  --bglow-boost: 1.8;
   --glow-padding: 36px;
   --cone-spread: 25;
   position: relative;
@@ -28,13 +30,13 @@
   z-index: 1;
   -webkit-mask-image: conic-gradient(from var(--cursor-angle) at center, black calc(var(--cone-spread) * 1%), transparent calc((var(--cone-spread) + 15) * 1%), transparent calc((100 - var(--cone-spread) - 15) * 1%), black calc((100 - var(--cone-spread)) * 1%));
   mask-image: conic-gradient(from var(--cursor-angle) at center, black calc(var(--cone-spread) * 1%), transparent calc((var(--cone-spread) + 15) * 1%), transparent calc((100 - var(--cone-spread) - 15) * 1%), black calc((100 - var(--cone-spread)) * 1%));
-  opacity: calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+  opacity: calc(var(--bglow-boost) * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
 }
 .bglow__ring {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 1.5px;
+  padding: 2.5px;
   background: var(--bg-g1), var(--bg-g2), var(--bg-g3), var(--bg-g4), var(--bg-g5), var(--bg-g6), var(--bg-g7), var(--bg-gbase);
   /* only the 1.5px ring: the card keeps its own (glass) background */
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -74,7 +76,7 @@
   z-index: 1;
   -webkit-mask-image: conic-gradient(from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%);
   mask-image: conic-gradient(from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%);
-  opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
+  opacity: calc(var(--bglow-boost) * (var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
 }
 .bglow__light::before {
   content: '';
