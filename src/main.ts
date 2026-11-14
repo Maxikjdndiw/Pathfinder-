@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SIGNUP_URL } from './config';
 import { CARDS } from './content/cards';
 import type { SceneState } from './scene';
+import { initSvgLiquidGlass } from './liquidGlass';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,10 +65,11 @@ if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
 if (!reduceMotion) {
   root.classList.add('js-reveal');
   ScrollTrigger.batch('[data-reveal]', {
-    start: 'top 88%',
+    start: 'top bottom-=24px', // animate as soon as it enters, so nothing sits half-faded on screen
     once: true,
+    // starts at 0.6 opacity (see base.css), so text is readable during the whole animation
     onEnter: (els) =>
-      gsap.to(els, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08, overwrite: true }),
+      gsap.to(els, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', stagger: 0.05, overwrite: true }),
   });
 }
 
@@ -93,7 +95,17 @@ if (root.classList.contains('has-3d')) {
   const container = document.getElementById('scene');
   const load = () =>
     import('./scene')
-      .then(({ createScene }) => createScene(container!, state))
+      .then(({ createScene }) =>
+        createScene(container!, state, {
+          hero: document.querySelector<HTMLElement>('.hero')!,
+          forceGlass: new URLSearchParams(location.search).get('glass') === 'force', // testing only
+          glass: [
+            { el: document.querySelector<HTMLElement>('.nav')!, tint: 0.5, whileOverScene: true },
+            { el: document.querySelector<HTMLElement>('.hero__sub')!, tint: 0.5 },
+            ...[...document.querySelectorAll<HTMLElement>('.hero__caption')].map((el) => ({ el, tint: 0.48 })),
+          ],
+        }),
+      )
       .catch((err) => {
         console.warn('3D scene unavailable, showing static cards instead.', err);
         fallbackTo2D();
@@ -104,4 +116,36 @@ if (root.classList.contains('has-3d')) {
     'requestIdleCallback' in window ? window.requestIdleCallback(cb, { timeout: 1200 }) : setTimeout(cb, 300);
   if (document.readyState === 'complete') idle(load);
   else window.addEventListener('load', () => idle(load), { once: true });
+}
+
+/* 6. Liquid glass (SVG refraction) for the field tags and the nav outside the hero.
+   Chromium only; Safari and Firefox keep the frosted glass. */
+const svgGlassTargets = [
+  document.querySelector<HTMLElement>('.nav'),
+  ...document.querySelectorAll<HTMLElement>('.tag'),
+].filter((el): el is HTMLElement => !!el);
+const stopSvgGlass = initSvgLiquidGlass(svgGlassTargets);
+
+// Phones: if scrolling gets choppy, fall back to the plain frosted glass.
+const forceGlass = new URLSearchParams(location.search).get('glass') === 'force';
+if (!forceGlass && window.matchMedia('(max-width: 760px)').matches && root.classList.contains('has-svg-glass')) {
+  const deltas: number[] = [];
+  let last = 0;
+  let sampling = false;
+  const sample = (t: number) => {
+    if (last) deltas.push(t - last);
+    last = t;
+    if (deltas.length < 90) requestAnimationFrame(sample);
+    else {
+      const sorted = [...deltas].sort((a, b) => a - b);
+      if (sorted[Math.floor(sorted.length / 2)] > 24) stopSvgGlass();
+    }
+  };
+  const onFirstScroll = () => {
+    if (sampling) return;
+    sampling = true;
+    window.removeEventListener('scroll', onFirstScroll);
+    requestAnimationFrame(sample);
+  };
+  window.addEventListener('scroll', onFirstScroll, { passive: true });
 }

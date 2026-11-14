@@ -23,9 +23,12 @@ import {
   LinearSRGBColorSpace,
   Vector2,
   Vector3,
+  Vector4,
   WebGLRenderer,
+  WebGLRenderTarget,
 } from 'three';
 import { CARDS, type PathCard } from './content/cards';
+import { GlassPass, MAX_PANELS } from './glassPass';
 
 export interface SceneState {
   /** scroll driven stage, see file header */
@@ -35,6 +38,26 @@ export interface SceneState {
 export interface SceneHandle {
   dispose(): void;
 }
+
+/** An HTML element that gets real refracting glass drawn behind it inside the WebGL scene. */
+export interface GlassTarget {
+  el: HTMLElement;
+  /** 0..1 milky tint inside the glass (higher = calmer behind text) */
+  tint: number;
+  /** only glass while the element sits fully over the canvas (the fixed nav) */
+  whileOverScene?: boolean;
+}
+
+export interface SceneOptions {
+  /** the tall hero section, used to fade the bottom out before it scrolls away */
+  hero: HTMLElement;
+  glass: GlassTarget[];
+  /** skip the frame-rate guard (for testing) */
+  forceGlass?: boolean;
+}
+
+/** class on an element while the WebGL glass is drawn behind it (CSS drops its own frosted look) */
+const GL_CLASS = 'lg-gl';
 
 const COLORS = {
   card: '#F4F2EE',
@@ -287,7 +310,7 @@ const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 /* Scene                                                              */
 /* ------------------------------------------------------------------ */
 
-export async function createScene(container: HTMLElement, state: SceneState): Promise<SceneHandle> {
+export async function createScene(container: HTMLElement, state: SceneState, opts: SceneOptions): Promise<SceneHandle> {
   const isSmall = window.matchMedia('(max-width: 760px)').matches;
   const count = Math.min(CARDS.length, isSmall ? 20 : 34);
   const texW = isSmall ? 320 : 512;
@@ -313,6 +336,10 @@ export async function createScene(container: HTMLElement, state: SceneState): Pr
   // colours are painted as sRGB into the canvas textures and passed through untouched
   renderer.outputColorSpace = LinearSRGBColorSpace;
   container.appendChild(renderer.domElement);
+
+  // cards render into an offscreen texture; the glass pass composites it to the screen
+  const target = new WebGLRenderTarget(1, 1, { samples: 4 });
+  const glass = new GlassPass(target.texture);
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(FOV, 1, 0.1, 200);
@@ -390,6 +417,42 @@ export async function createScene(container: HTMLElement, state: SceneState): Pr
     });
   }
 
+  /* ----- glass targets ----- */
+  const radii = new Map<HTMLElement, number>();
+  const radiusOf = (el: HTMLElement) => {
+    let r = radii.get(el);
+    if (r === undefined) {
+      r = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0;
+      radii.set(el, r);
+    }
+    return r;
+  };
+  // opacity as you see it, including faded parents (GSAP fades the hero content wrapper)
+  const visibleOpacity = (el: HTMLElement) => {
+    let o = 1;
+    for (let n: HTMLElement | null = el; n && n !== document.body; n = n.parentElement) {
+      const cs = getComputedStyle(n);
+      if (cs.visibility === 'hidden' || cs.display === 'none') return 0;
+      o *= parseFloat(cs.opacity);
+      if (o < 0.01) return 0;
+    }
+    return o;
+  };
+  let glassOn = true;
+  const setGlassClasses = (on: boolean) => {
+    for (const g of opts.glass) {
+      if (!g.whileOverScene) g.el.classList.toggle(GL_CLASS, on);
+      else if (!on) g.el.classList.remove(GL_CLASS);
+    }
+  };
+  const disableGlass = () => {
+    if (!glassOn) return;
+    glassOn = false;
+    setGlassClasses(false);
+    glass.u.uCount.value = 0;
+    document.documentElement.classList.add('lg-reduced');
+  };
+
   /* ----- viewport ----- */
   let width = 1;
   let height = 1;
@@ -399,6 +462,11 @@ export async function createScene(container: HTMLElement, state: SceneState): Pr
     width = container.clientWidth || window.innerWidth;
     height = container.clientHeight || window.innerHeight;
     renderer.setSize(width, height, false);
+    const dpr = renderer.getPixelRatio();
+    target.setSize(Math.round(width * dpr), Math.round(height * dpr));
+    glass.u.uRes.value.set(width, height);
+    glass.u.uDpr.value = dpr;
+    radii.clear();
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     visH = 2 * CAM_Z * Math.tan(MathUtils.degToRad(FOV / 2));
@@ -460,8 +528,10 @@ export async function createScene(container: HTMLElement, state: SceneState): Pr
 
   /* ----- pointer parallax ----- */
   const pointer = new Vector2();
+  const pointerPx = new Vector2(window.innerWidth / 2, 0);
   const onPointer = (e: PointerEvent) => {
     pointer.set((e.clientX / window.innerWidth) * 2 - 1, (e.clientY / window.innerHeight) * 2 - 1);
+    pointerPx.set(e.clientX, e.clientY);
   };
   window.addEventListener('pointermove', onPointer, { passive: true });
 
@@ -477,11 +547,31 @@ export async function createScene(container: HTMLElement, state: SceneState): Pr
   let running = false;
   let raf = 0;
   let visible = true;
+  // frame-rate guard: lower the resolution first, then fall back to the frosted CSS glass
+  let frames = 0;
+  let avgDt = 1 / 60;
+  let degraded = false;
 
   const frame = () => {
     raf = requestAnimationFrame(frame);
     clock.update();
-    const dt = Math.min(clock.getDelta(), 0.05);
+    const rawDt = clock.getDelta();
+    const dt = Math.min(rawDt, 0.05);
+    frames++;
+    if (frames > 90 && !opts.forceGlass && rawDt < 0.5) {
+      avgDt += (rawDt - avgDt) * 0.05;
+      if (frames % 60 === 0 && avgDt > 1 / 42) {
+        if (!degraded && renderer.getPixelRatio() > 1) {
+          degraded = true;
+          renderer.setPixelRatio(1);
+          resize();
+          avgDt = 1 / 60;
+        } else if (glassOn) {
+          disableGlass();
+          avgDt = 1 / 60;
+        }
+      }
+    }
     const time = clock.getElapsed();
     if (introStart < 0) introStart = time;
     const intro = time - introStart;
@@ -557,7 +647,45 @@ export async function createScene(container: HTMLElement, state: SceneState): Pr
       m.visible = opacity > 0.01;
     }
 
+    /* glass panels + bottom fade (DOM reads first, writes after) */
+    const cRect = container.getBoundingClientRect();
+    const heroRect = opts.hero.getBoundingClientRect();
+    const vh = window.innerHeight;
+    // 0 → 1 over the last 45vh before the sticky hero lets go, straight from the real scroll position
+    glass.u.uFade.value = 1 - clamp01((heroRect.bottom - vh) / (vh * 0.45));
+    glass.u.uTime.value = time;
+    glass.u.uShift.value = s;
+    glass.u.uPointer.value.set(pointerPx.x - cRect.left, pointerPx.y - cRect.top);
+
+    let panels = 0;
+    const toggles: [HTMLElement, boolean][] = [];
+    if (glassOn) {
+      const rects = glass.u.uRect.value as Vector4[];
+      const infos = glass.u.uInfo.value as Vector4[];
+      for (const g of opts.glass) {
+        if (panels >= MAX_PANELS) break;
+        const r = g.el.getBoundingClientRect();
+        if (g.whileOverScene) {
+          const over = r.top >= cRect.top && r.bottom <= cRect.bottom - 4 && cRect.height > 0;
+          if (over !== g.el.classList.contains(GL_CLASS)) toggles.push([g.el, over]);
+          if (!over) continue;
+        }
+        if (r.width < 1 || r.bottom < cRect.top || r.top > cRect.bottom) continue;
+        const strength = visibleOpacity(g.el);
+        if (strength < 0.01) continue;
+        rects[panels].set(r.left - cRect.left, r.top - cRect.top, r.width, r.height);
+        infos[panels].set(radiusOf(g.el), strength, g.tint, 0);
+        panels++;
+      }
+    }
+    glass.u.uCount.value = panels;
+    for (const [el, on] of toggles) el.classList.toggle(GL_CLASS, on);
+
+    renderer.setRenderTarget(target);
+    renderer.clear();
     renderer.render(scene, camera);
+    renderer.setRenderTarget(null);
+    renderer.render(glass.scene, glass.camera);
   };
 
   const start = () => {
@@ -569,6 +697,8 @@ export async function createScene(container: HTMLElement, state: SceneState): Pr
   const stop = () => {
     running = false;
     cancelAnimationFrame(raf);
+    // the fixed nav must not stay see-through once the scene stops drawing behind it
+    for (const g of opts.glass) if (g.whileOverScene) g.el.classList.remove(GL_CLASS);
   };
 
   // only render while the hero is on screen and the tab is visible
@@ -587,6 +717,7 @@ export async function createScene(container: HTMLElement, state: SceneState): Pr
   renderer.domElement.style.opacity = '0';
   renderer.domElement.style.transition = 'opacity 0.8s ease';
   requestAnimationFrame(() => (renderer.domElement.style.opacity = '1'));
+  setGlassClasses(true);
   start();
 
   return {
@@ -600,7 +731,10 @@ export async function createScene(container: HTMLElement, state: SceneState): Pr
         (c.mesh.material.uniforms.map.value as CanvasTexture).dispose();
         c.mesh.material.dispose();
       }
+      setGlassClasses(false);
       geometry.dispose();
+      glass.dispose();
+      target.dispose();
       renderer.dispose();
       renderer.domElement.remove();
     },

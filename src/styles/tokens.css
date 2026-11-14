@@ -42,7 +42,7 @@
   --s-3: 24px;
   --s-4: 40px;
   --s-5: 72px;
-  --s-section: clamp(112px, 16vw, 200px);
+  --s-section: clamp(72px, 9vw, 128px); /* ~72px phone, 128px desktop */
 
   /* Radius */
   --r-tag: 6px;

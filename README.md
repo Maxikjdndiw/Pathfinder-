@@ -40,6 +40,9 @@ npm run preview
 
 - `src/main.ts` – sign-up links, scroll reveals, the scroll timeline of the hero, lazy loading of the 3D scene.
 - `src/scene.ts` – the Three.js card scene: cards fly in, form a ring around the headline, a tilted wall, then a road into the distance. Cards are drawn in code onto canvas textures; fast cards get a chromatic blur in the shader.
+- `src/glassPass.ts` – the final WebGL pass: background glows, soft bottom fade, and the real liquid glass (refraction shader) behind the nav, the hero subline and the captions while they sit over the 3D scene.
+- `src/liquidGlass.ts` – liquid glass for the field tags and the nav further down the page: an SVG displacement filter used through `backdrop-filter`. Chromium only; Safari and Firefox keep the frosted glass.
+- Both glass types switch back to frosted glass automatically if the frame rate drops (phones first). Add `?glass=force` to the URL to turn that guard off when testing.
 - Fallback: with `prefers-reduced-motion` or without WebGL, the 3D scene is skipped and a static card grid is shown instead.
 - Phones get fewer cards and a lower pixel ratio. Rendering pauses when the hero is off screen.
 - Privacy: no cookies, no tracking, fonts are self-hosted (no requests to Google Fonts).
