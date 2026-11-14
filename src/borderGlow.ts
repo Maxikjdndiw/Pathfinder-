@@ -87,7 +87,25 @@ export function initBorderGlow(elements: Iterable<HTMLElement>, opts: BorderGlow
       el.prepend(layer);
     }
 
+    // Opacities are computed here instead of with CSS calc() on custom properties,
+    // which some browsers (Safari in particular) do not evaluate reliably.
+    const layers = { ring: cone, fill, light };
+    const sens = o.edgeSensitivity;
+    const boost = 1.8; // tuned for light cards
+    const show = (edge: number) => {
+      const t = Math.max(0, Math.min(1, (edge - sens) / (100 - sens)));
+      layers.ring.style.opacity = String(Math.min(1, t * boost));
+      layers.light.style.opacity = String(Math.min(1, t * boost));
+      layers.fill.style.opacity = String(Math.min(1, t * o.fillOpacity));
+    };
+    const hide = () => {
+      el.classList.add('is-leaving');
+      for (const l of Object.values(layers)) l.style.opacity = '0';
+    };
+
     el.addEventListener('pointermove', (e) => {
+      if (e.pointerType === 'touch') return;
+      el.classList.remove('is-leaving');
       const r = el.getBoundingClientRect();
       const x = e.clientX - r.left;
       const y = e.clientY - r.top;
@@ -97,11 +115,12 @@ export function initBorderGlow(elements: Iterable<HTMLElement>, opts: BorderGlow
       const dy = y - cy;
       const kx = dx !== 0 ? cx / Math.abs(dx) : Infinity;
       const ky = dy !== 0 ? cy / Math.abs(dy) : Infinity;
-      const edge = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+      const edge = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1) * 100;
       let angle = dx === 0 && dy === 0 ? 0 : Math.atan2(dy, dx) * (180 / Math.PI) + 90;
       if (angle < 0) angle += 360;
-      el.style.setProperty('--edge-proximity', (edge * 100).toFixed(3));
-      el.style.setProperty('--cursor-angle', `${angle.toFixed(3)}deg`);
+      el.style.setProperty('--cursor-angle', `${angle.toFixed(2)}deg`);
+      show(edge);
     });
+    el.addEventListener('pointerleave', hide);
   }
 }

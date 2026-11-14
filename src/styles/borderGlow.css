@@ -3,9 +3,6 @@
   --edge-proximity: 0;
   --cursor-angle: 45deg;
   --edge-sensitivity: 30;
-  --color-sensitivity: var(--edge-sensitivity);
-  /* light cards: the original is tuned for dark ones, so lift the layers a bit */
-  --bglow-boost: 1.8;
   --glow-padding: 36px;
   --cone-spread: 25;
   position: relative;
@@ -18,19 +15,16 @@
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  transition: opacity 0.25s ease-out;
+  opacity: 0; /* set by src/borderGlow.ts while the pointer is over the card */
+  transition: opacity 0.2s ease-out;
 }
-.bglow:not(:hover) > .bglow__layer {
-  opacity: 0;
-  transition: opacity 0.75s ease-in-out;
-}
+.bglow.is-leaving > .bglow__layer { transition: opacity 0.75s ease-in-out; }
 
 /* coloured mesh-gradient border, shown in a cone towards the pointer */
 .bglow__cone {
   z-index: 1;
   -webkit-mask-image: conic-gradient(from var(--cursor-angle) at center, black calc(var(--cone-spread) * 1%), transparent calc((var(--cone-spread) + 15) * 1%), transparent calc((100 - var(--cone-spread) - 15) * 1%), black calc((100 - var(--cone-spread)) * 1%));
   mask-image: conic-gradient(from var(--cursor-angle) at center, black calc(var(--cone-spread) * 1%), transparent calc((var(--cone-spread) + 15) * 1%), transparent calc((100 - var(--cone-spread) - 15) * 1%), black calc((100 - var(--cone-spread)) * 1%));
-  opacity: calc(var(--bglow-boost) * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
 }
 .bglow__ring {
   position: absolute;
@@ -66,7 +60,6 @@
     conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
   -webkit-mask-composite: source-out, source-over, source-over, source-over, source-over, source-over;
   mask-composite: subtract, add, add, add, add, add;
-  opacity: calc(var(--fill-opacity, 0.35) * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
   mix-blend-mode: soft-light;
 }
 
@@ -76,7 +69,6 @@
   z-index: 1;
   -webkit-mask-image: conic-gradient(from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%);
   mask-image: conic-gradient(from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%);
-  opacity: calc(var(--bglow-boost) * (var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
 }
 .bglow__light::before {
   content: '';

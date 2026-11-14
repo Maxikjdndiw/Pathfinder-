@@ -255,7 +255,9 @@ if (lanyardBox) {
 
 /* 8. Border glow (React Bits BorderGlow, adapted) on the regular cards.
    The liquid glass elements (nav, tags, hero) keep their own effect. */
-if (window.matchMedia('(hover: hover)').matches) {
+// Mouse/trackpad only (touch is ignored inside); no (hover: hover) gate, which some
+// touchscreen laptops report as false even when a mouse is used.
+{
   initBorderGlow(document.querySelectorAll<HTMLElement>('.step, .tip-card'));
   // cards on the ocean panel: glow in the light card colour so it shows on blue
   initBorderGlow(document.querySelectorAll<HTMLElement>('.why__point'), { glowColor: '40 25 94', colors: ['#6A1311', '#6FA3BE', '#F4F2EE'] });
