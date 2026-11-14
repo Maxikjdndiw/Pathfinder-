@@ -493,7 +493,46 @@
 /* ---------- Founder ---------- */
 .founder__inner {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: var(--s-4);
+  align-items: center;
+}
+.founder__badge {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.founder__badge .founder__lanyard {
+  width: 100%;
+  height: clamp(460px, 44vw, 620px);
+  /* the band comes in from above: fade it in instead of a hard top edge */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 16%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 16%);
+}
+.founder__lanyard .lanyard-canvas { cursor: default; }
+.founder__hint {
+  margin-top: var(--s-1);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.founder__badge.is-live .founder__hint { opacity: 1; }
+/* no WebGL: show the card artwork as a still, slightly tilted card */
+.founder__still {
+  display: block;
+  width: min(260px, 70%);
+  height: auto;
+  margin: var(--s-4) auto 0;
+  border-radius: 18px;
+  transform: rotate(-3deg);
+  box-shadow: 0 30px 60px -28px rgba(20, 21, 23, 0.45), 0 0 0 1px var(--line);
+}
+@media (max-width: 860px) {
+  .founder__inner { grid-template-columns: 1fr; gap: 0; }
+  .founder__badge .founder__lanyard { height: 480px; }
 }
 .founder__text {
   margin-top: var(--s-4);

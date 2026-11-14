@@ -34,6 +34,7 @@ npm run preview
 | Flying cards (titles, details, colours) | `src/content/cards.ts` |
 | Card photos | put files in `public/images/`, then add `image: 'images/<file>'` in `src/content/cards.ts` |
 | Brand colours, fonts, spacing | `src/styles/tokens.css` |
+| Founder badge (lanyard) | Card texts and artwork: `src/lanyard/founderCard.ts`. Look and physics (colours, metal, swing): the `createLanyard(...)` options in `src/main.ts`. To use a real photo or design, pass image URLs as `frontImage` / `backImage` instead. |
 | Social preview image | `public/og-image.png` (1200 × 630) |
 | Logo | `public/pathfinder-mark.svg` (light backgrounds), `public/pathfinder-mark-dark.svg` (dark backgrounds). The nav inlines `pathfinder-mark.svg` at build time, so replacing that file updates the nav too. |
 | Favicon / app icons | `public/pathfinder-app-icon.svg`; the PNGs (`favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) are rendered from it – regenerate them if the icon changes |
@@ -45,6 +46,7 @@ npm run preview
 - `src/glassPass.ts` – the final WebGL pass: background glows, soft bottom fade, and the real liquid glass (refraction shader) behind the nav, the hero subline and the captions while they sit over the 3D scene.
 - `src/liquidGlass.ts` – liquid glass for the field tags and the nav further down the page: an SVG displacement filter used through `backdrop-filter`. Chromium only; Safari and Firefox keep the frosted glass.
 - Both glass types switch back to frosted glass automatically if the frame rate drops (phones first). Add `?glass=force` to the URL to turn that guard off when testing.
+- `src/lanyard/lanyard.js` – the founder badge on a lanyard, ported from the React Bits Lanyard component to plain JavaScript (no React needed). Loaded only when the founder section comes near.
 - Fallback: with `prefers-reduced-motion` or without WebGL, the 3D scene is skipped and a static card grid is shown instead.
 - Phones get fewer cards and a lower pixel ratio. Rendering pauses when the hero is off screen.
 - Privacy: no cookies, no tracking, fonts are self-hosted (no requests to Google Fonts).

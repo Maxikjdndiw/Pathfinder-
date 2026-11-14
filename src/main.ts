@@ -162,3 +162,54 @@ if (!forceGlass && window.matchMedia('(max-width: 760px)').matches && root.class
   };
   window.addEventListener('scroll', onFirstScroll, { passive: true });
 }
+
+/* 7. Founder badge on a lanyard (React Bits Lanyard, ported). Loaded only when the
+   founder section comes near, so it never slows down the first screen. */
+const lanyardBox = document.getElementById('founder-lanyard');
+if (lanyardBox) {
+  const badge = lanyardBox.closest<HTMLElement>('.founder__badge')!;
+  const io = new IntersectionObserver(
+    async ([entry]) => {
+      if (!entry.isIntersecting) return;
+      io.disconnect();
+      const { founderArtwork } = await import('./lanyard/founderCard');
+      const art = await founderArtwork();
+      let lanyard = null;
+      if (root.classList.contains('has-3d') || reduceMotion) {
+        const { createLanyard } = await import('./lanyard/lanyard.js');
+        lanyard = createLanyard(lanyardBox, {
+          ...art,
+          cardColor: '#F4F2EE',
+          strapColor: '#6A1311',
+          finish: 'glossy',
+          metal: 'graphite',
+          cornerRadius: 0.35,
+          size: 0.6,
+          strapLength: 0.52,
+          strapWidth: 0.7,
+          breeze: 0.35,
+          damping: 0.55,
+        });
+      }
+      if (lanyard) {
+        if (!window.matchMedia('(hover: hover)').matches) {
+          const hint = badge.querySelector('.founder__hint');
+          if (hint) hint.textContent = 'Zieh an der Karte. Tippen dreht sie um.';
+        }
+        badge.classList.add('is-live');
+      }
+      else {
+        // no WebGL: a still image of the same card
+        lanyardBox.remove();
+        badge.querySelector('.founder__hint')?.remove();
+        const img = new Image();
+        img.className = 'founder__still';
+        img.src = art.frontImage;
+        img.alt = '';
+        badge.appendChild(img);
+      }
+    },
+    { rootMargin: '600px 0px' },
+  );
+  io.observe(lanyardBox);
+}
