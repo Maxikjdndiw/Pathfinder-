@@ -27,7 +27,7 @@ import {
   WebGLRenderer,
   WebGLRenderTarget,
 } from 'three';
-import { CARDS, type PathCard } from './content/cards';
+import { CARDS, spreadPhotoCards, type PathCard } from './content/cards';
 import { GlassPass, MAX_PANELS } from './glassPass';
 
 export interface SceneState {
@@ -118,6 +118,10 @@ function drawCard(
   index: number,
   image?: HTMLImageElement,
 ): void {
+  if (image) {
+    drawPhotoCard(canvas, card, index, image);
+    return;
+  }
   const W = canvas.width;
   const H = canvas.height;
   const k = W / 512; // design at 512px wide, scale for smaller textures
@@ -132,18 +136,7 @@ function drawCard(
 
   // background
   let text = COLORS.card;
-  if (image) {
-    const s = Math.max(W / image.width, H / image.height);
-    const iw = image.width * s;
-    const ih = image.height * s;
-    ctx.drawImage(image, (W - iw) / 2, (H - ih) / 2, iw, ih);
-    const shade = ctx.createLinearGradient(0, 0, 0, H);
-    shade.addColorStop(0, 'rgba(20,21,23,0.72)');
-    shade.addColorStop(0.55, 'rgba(20,21,23,0.25)');
-    shade.addColorStop(1, 'rgba(20,21,23,0.05)');
-    ctx.fillStyle = shade;
-    ctx.fillRect(0, 0, W, H);
-  } else if (card.variant === 'oxblood') {
+  if (card.variant === 'oxblood') {
     const g = ctx.createLinearGradient(0, 0, 0, H);
     g.addColorStop(0, COLORS.oxbloodDark);
     g.addColorStop(1, COLORS.oxbloodLight);
@@ -236,7 +229,102 @@ function drawCard(
   ctx.restore();
 
   // hairline border on light cards
-  if (card.variant === 'card' && !image) {
+  if (card.variant === 'card') {
+    ctx.strokeStyle = COLORS.line;
+    ctx.lineWidth = 3 * k;
+    ctx.beginPath();
+    ctx.roundRect(1.5 * k, 1.5 * k, W - 3 * k, H - 3 * k, r);
+    ctx.stroke();
+  }
+}
+
+/**
+ * Photo card: the (already duotoned, see scripts/card-photos.mjs) photo fills the top 60 %,
+ * kind label, title and detail sit below on a solid band in the variant colour.
+ */
+function drawPhotoCard(canvas: HTMLCanvasElement, card: PathCard, index: number, image: HTMLImageElement): void {
+  const W = canvas.width;
+  const H = canvas.height;
+  const k = W / 512;
+  const ctx = canvas.getContext('2d')!;
+  ctx.clearRect(0, 0, W, H);
+  const r = 34 * k;
+  const split = Math.round(H * 0.6);
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.roundRect(0, 0, W, H, r);
+  ctx.clip();
+
+  // solid band in the variant colour (whole card first, the photo covers the top)
+  if (card.variant === 'oxblood') {
+    const g = ctx.createLinearGradient(0, split, 0, H);
+    g.addColorStop(0, COLORS.oxbloodDark);
+    g.addColorStop(1, COLORS.oxbloodLight);
+    ctx.fillStyle = g;
+  } else {
+    ctx.fillStyle = card.variant === 'ocean' ? COLORS.ocean : card.variant === 'ink' ? COLORS.ink : COLORS.card;
+  }
+  ctx.fillRect(0, 0, W, H);
+  const text = card.variant === 'card' ? COLORS.ink : COLORS.card;
+
+  // photo, cover-fitted into the top part
+  const s = Math.max(W / image.width, split / image.height);
+  const iw = image.width * s;
+  const ih = image.height * s;
+  ctx.drawImage(image, (W - iw) / 2, (split - ih) / 2, iw, ih);
+  // a faint top highlight, like the typographic cards
+  const hl = ctx.createLinearGradient(0, 0, 0, split * 0.5);
+  hl.addColorStop(0, 'rgba(255,255,255,0.10)');
+  hl.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = hl;
+  ctx.fillRect(0, 0, W, split);
+
+  const pad = 40 * k;
+  ctx.fillStyle = text;
+  ctx.textBaseline = 'alphabetic';
+  const spacing = (px: number) => {
+    if ('letterSpacing' in ctx) (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = `${px}px`;
+  };
+
+  // kind label + number
+  let y = split + 50 * k;
+  ctx.globalAlpha = 0.78;
+  ctx.font = `500 ${21 * k}px ${BODY_FONT}`;
+  spacing(2.2 * k);
+  ctx.fillText(card.kind.toUpperCase(), pad, y);
+  const num = String(index + 1).padStart(2, '0');
+  ctx.fillText(num, W - pad - ctx.measureText(num).width, y);
+  spacing(0);
+  ctx.globalAlpha = 1;
+
+  // title: at most two lines, shrinks to fit
+  let size = 60 * k;
+  ctx.font = `700 ${size}px ${DISPLAY_FONT}`;
+  let lines = wrapText(ctx, card.title, W - pad * 2);
+  while ((lines.length > 2 || lines.some((l) => ctx.measureText(l).width > W - pad * 2)) && size > 32 * k) {
+    size -= 3 * k;
+    ctx.font = `700 ${size}px ${DISPLAY_FONT}`;
+    lines = wrapText(ctx, card.title, W - pad * 2);
+  }
+  y += 18 * k + size * 0.82;
+  for (const l of lines) {
+    ctx.fillText(l, pad, y);
+    y += size * 0.98;
+  }
+
+  // detail (one or two lines)
+  ctx.font = `400 ${25 * k}px ${BODY_FONT}`;
+  ctx.globalAlpha = 0.9;
+  y += 6 * k;
+  for (const l of wrapText(ctx, card.detail, W - pad * 2).slice(0, 2)) {
+    ctx.fillText(l, pad, y);
+    y += 32 * k;
+  }
+  ctx.globalAlpha = 1;
+  ctx.restore();
+
+  if (card.variant === 'card') {
     ctx.strokeStyle = COLORS.line;
     ctx.lineWidth = 3 * k;
     ctx.beginPath();
@@ -312,7 +400,9 @@ const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
 export async function createScene(container: HTMLElement, state: SceneState, opts: SceneOptions): Promise<SceneHandle> {
   const isSmall = window.matchMedia('(max-width: 760px)').matches;
-  const count = Math.min(CARDS.length, isSmall ? 20 : 34);
+  // photo cards spread evenly through ring, wall and road; phones take the first 20
+  const deckCards = spreadPhotoCards(CARDS);
+  const count = Math.min(deckCards.length, isSmall ? 20 : 34);
   const texW = isSmall ? 320 : 512;
   const texH = Math.round(texW * (CARD_H / CARD_W));
 
@@ -363,7 +453,7 @@ export async function createScene(container: HTMLElement, state: SceneState, opt
 
   const cards: CardObj[] = [];
   for (let i = 0; i < count; i++) {
-    const data = CARDS[i];
+    const data = deckCards[i];
     const canvas = document.createElement('canvas');
     canvas.width = texW;
     canvas.height = texH;
@@ -377,6 +467,7 @@ export async function createScene(container: HTMLElement, state: SceneState, opt
     if (data.image) {
       const img = new Image();
       img.decoding = 'async';
+      // lazy: only loaded with the 3D scene; on error the typographic card simply stays
       img.onload = () => {
         drawCard(canvas, data, i, img);
         tex.needsUpdate = true;

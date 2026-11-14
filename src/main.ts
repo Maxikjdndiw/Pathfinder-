@@ -2,7 +2,7 @@ import './styles/index.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SIGNUP_URL } from './config';
-import { CARDS } from './content/cards';
+import { CARDS, spreadPhotoCards } from './content/cards';
 import type { SceneState } from './scene';
 import { initSvgLiquidGlass } from './liquidGlass';
 import { initBorderGlow } from './borderGlow';
@@ -25,12 +25,14 @@ function renderCardGrid(): void {
   const grid = document.getElementById('card-grid');
   if (!grid || grid.childElementCount) return;
   const base = import.meta.env.BASE_URL;
-  grid.innerHTML = CARDS.slice(0, 12)
+  grid.innerHTML = spreadPhotoCards(CARDS)
+    .slice(0, 12)
     .map((c) => {
-      const style = c.image
-        ? ` style="background-image:linear-gradient(180deg,rgba(20,21,23,.7),rgba(20,21,23,.1)),url('${base}${c.image.replace(/^\//, '')}');color:var(--card)"`
+      const img = c.image
+        ? `<img class="path-card__img" src="${base}${c.image.replace(/^\//, '')}" alt="" loading="lazy" decoding="async" onerror="this.parentElement.classList.remove('path-card--photo');this.remove()">`
         : '';
-      return `<li class="path-card path-card--${c.variant}"${style}>
+      return `<li class="path-card path-card--${c.variant}${c.image ? ' path-card--photo' : ''}">
+        ${img}
         <span class="path-card__kind">${c.kind}</span>
         <span class="path-card__title">${c.title}</span>
         <span class="path-card__detail">${c.detail}</span>

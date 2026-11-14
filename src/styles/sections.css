@@ -322,6 +322,16 @@
 .path-card--ocean { background-image: linear-gradient(180deg, var(--ocean) 0%, var(--ocean) 45%, var(--ocean-light) 100%); color: var(--card); }
 .path-card--ink { background-color: var(--ink); color: var(--card); }
 .path-card--card { background-color: var(--card); color: var(--ink); border: 1px solid var(--line); }
+/* photo card: duotone photo on top, text on the solid colour below */
+.path-card--photo { justify-content: flex-end; overflow: hidden; position: relative; }
+.path-card--photo.path-card--ocean { background-image: none; background-color: var(--ocean); }
+.path-card__img {
+  position: absolute;
+  inset: 0 0 auto 0;
+  width: 100%;
+  height: 58%;
+  object-fit: cover;
+}
 
 /* ---------- Generic section ---------- */
 .section {
