@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Pathfinder">
+  <rect width="512" height="512" rx="112" fill="#E8E7E3"></rect>
+  <g transform="translate(80 80) scale(5.5)">
+    <g fill="#6FA3BE">
+      <path d="M32 14 L35 32 L29 32 Z" transform="rotate(45 32 32)"></path>
+      <path d="M32 14 L35 32 L29 32 Z" transform="rotate(135 32 32)"></path>
+      <path d="M32 14 L35 32 L29 32 Z" transform="rotate(225 32 32)"></path>
+      <path d="M32 14 L35 32 L29 32 Z" transform="rotate(315 32 32)"></path>
+    </g>
+    <path d="M32 3 L37 32 L27 32 Z" fill="#6A1311"></path>
+    <path d="M32 61 L37 32 L27 32 Z" fill="#141517"></path>
+    <path d="M61 32 L32 27 L32 37 Z" fill="#141517"></path>
+    <path d="M3 32 L32 27 L32 37 Z" fill="#141517"></path>
+    <circle cx="32" cy="32" r="3" fill="#E8E7E3"></circle>
+  </g>
+</svg>

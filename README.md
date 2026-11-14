@@ -35,6 +35,8 @@ npm run preview
 | Card photos | put files in `public/images/`, then add `image: 'images/<file>'` in `src/content/cards.ts` |
 | Brand colours, fonts, spacing | `src/styles/tokens.css` |
 | Social preview image | `public/og-image.png` (1200 × 630) |
+| Logo | `public/pathfinder-mark.svg` (light backgrounds), `public/pathfinder-mark-dark.svg` (dark backgrounds). The nav inlines `pathfinder-mark.svg` at build time, so replacing that file updates the nav too. |
+| Favicon / app icons | `public/pathfinder-app-icon.svg`; the PNGs (`favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) are rendered from it – regenerate them if the icon changes |
 
 ## How the page is built
 

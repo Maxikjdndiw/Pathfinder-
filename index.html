@@ -13,7 +13,10 @@
   <!-- Placeholder. Replace public/og-image.png and, once you have a domain, use the full URL here. -->
   <meta property="og:image" content="og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="pathfinder-app-icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="site.webmanifest" />
   <script>
     // Decide early whether the 3D scene runs, so the layout never jumps.
     (function () {
@@ -33,7 +36,7 @@
 
   <header class="nav-wrap">
     <nav class="nav glass" data-shine aria-label="Hauptnavigation">
-      <a class="wordmark" href="#top" aria-label="Pathfinder, zum Seitenanfang">Pathfinder</a>
+      <a class="brand" href="#top" aria-label="Pathfinder, zum Seitenanfang"><!--brand-mark--><span class="wordmark">Pathfinder</span></a>
       <ul class="nav__links">
         <li><a href="#ablauf">Wie es funktioniert</a></li>
         <li><a href="#fuer-wen">Für wen</a></li>
@@ -225,7 +228,7 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p class="wordmark wordmark--footer">Pathfinder</p>
+      <p class="brand brand--footer"><img class="brand__mark" src="pathfinder-mark.svg" alt="" width="64" height="64" /><span class="wordmark wordmark--footer">Pathfinder</span></p>
       <p class="footer__place">Pathfinder · Schleswig</p>
       <ul class="footer__links">
         <li><a href="impressum.html">Impressum</a></li>
