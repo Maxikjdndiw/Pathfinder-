@@ -44,6 +44,24 @@
 }
 .nav__links a:hover { background: rgba(20, 21, 23, 0.06); }
 
+/* letter wave on hover and keyboard focus */
+.wave { display: inline-block; white-space: nowrap; }
+.wave > span { display: inline-block; will-change: transform; }
+.nav__links a:hover .wave > span,
+.nav__links a:focus-visible .wave > span {
+  animation: letter-wave 210ms cubic-bezier(0.3, 0.7, 0.4, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes letter-wave {
+  0% { transform: translateY(0); }
+  45% { transform: translateY(-2.5px); }
+  100% { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav__links a:hover .wave > span,
+  .nav__links a:focus-visible .wave > span { animation: none; }
+}
+
 @media (max-width: 760px) {
   .nav__links { display: none; }
   .nav { padding-left: 20px; }

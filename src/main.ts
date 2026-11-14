@@ -50,6 +50,19 @@ function fallbackTo2D(): void {
 
 if (root.classList.contains('no-3d')) renderCardGrid();
 
+/* Nav links: split into letters for the hover/focus wave. Screen readers get the
+   full word through aria-label; the letter spans are hidden from them. */
+document.querySelectorAll<HTMLAnchorElement>('.nav__links a').forEach((link) => {
+  const text = link.textContent?.trim() ?? '';
+  if (!text || link.querySelector('.wave')) return;
+  link.setAttribute('aria-label', text);
+  const chars = [...text];
+  const step = Math.min(14, 170 / chars.length); // whole wave stays around 300-400 ms
+  link.innerHTML = `<span class="wave" aria-hidden="true">${chars
+    .map((c, i) => `<span style="--d:${(i * step).toFixed(0)}ms">${c === ' ' ? '&nbsp;' : c}</span>`)
+    .join('')}</span>`;
+});
+
 /* 3. Light that follows the pointer on glass elements */
 if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
   document.querySelectorAll<HTMLElement>('[data-shine]').forEach((el) => {
