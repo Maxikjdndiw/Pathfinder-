@@ -1,10 +1,9 @@
 /**
- * "Netzwerk" section: tile list / fallback grid, the sphere (lazy) and the bento card effects.
+ * "Netzwerk" section: tile list / fallback grid and the sphere (lazy).
  * Loaded after the first paint (see main.ts), the sphere and Three.js only when the
  * section comes near the viewport.
  */
 import { NETWORK_GROUP_LABELS, NETWORK_TILES, type NetworkTile } from '../data/networkTiles';
-import { initBento } from './bento';
 import type { SphereControls } from './sphere';
 
 const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
@@ -30,8 +29,6 @@ export function initNetwork(): void {
       </a>
     </li>`,
   ).join('');
-
-  initBento(section.querySelector<HTMLElement>('.bento')!);
 
   const use3D = root.classList.contains('has-3d');
   if (!use3D) {
