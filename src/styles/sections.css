@@ -620,16 +620,17 @@
   padding: clamp(64px, 10vw, 128px) clamp(24px, 6vw, 80px);
   color: var(--card);
   /* fallback and first paint, in the same colours as the Grainient */
-  background: linear-gradient(125deg, #3a0a08 0%, var(--oxblood-dark) 30%, var(--oxblood) 50%, #0b4f70 78%, var(--ocean) 100%);
+  background: linear-gradient(150deg, #021c29 0%, #043a55 35%, #075a82 70%, var(--ocean) 100%);
 }
-.cta__grain { position: absolute; inset: 0; z-index: 0; }
+.cta__grain,
+.cta__grain.grainient-container { position: absolute; inset: 0; z-index: 0; width: auto; height: auto; }
 .cta__grain canvas { opacity: 0; transition: opacity 0.8s ease; }
 .cta__grain.is-on canvas { opacity: 1; }
 .cta__panel .cta__inner { position: relative; z-index: 1; }
 .cta .display-2 { color: var(--card); }
 .cta .lead { color: rgba(244, 242, 238, 0.86); }
 .btn--light {
-  color: var(--oxblood-dark);
+  color: var(--ink);
   background: var(--card);
   border-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 12px 30px -12px rgba(20, 21, 23, 0.55);
@@ -695,26 +696,11 @@
 .section:has(.section-ascii.is-on) > .glow { opacity: 0; transition: opacity 1.2s ease; }
 /* "Für wen": the band of light sits behind the tags, never behind the heading or body text */
 .fields .section-ascii.gradient-ascii-container {
-  top: auto;
-  height: var(--ascii-h, 300px);
-  bottom: 0;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22%);
-  mask-image: linear-gradient(180deg, transparent 0, #000 22%);
-}
-/* desktop: a large radial glow in the empty right part, cropped by the section's lower edge */
-@media (min-width: 861px) {
-  .fields .section-ascii.gradient-ascii-container {
-    top: 0;
-    bottom: 0;
-    left: auto;
-    right: 0;
-    width: 58%;
-    height: auto;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 35%), linear-gradient(180deg, transparent 0, #000 25%);
-    -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(90deg, transparent 0, #000 35%), linear-gradient(180deg, transparent 0, #000 25%);
-    mask-composite: intersect;
-  }
+  /* position set from the tags in main.ts; soft sides, cropped by the section edge below */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%), linear-gradient(180deg, transparent 0, #000 30%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%), linear-gradient(180deg, transparent 0, #000 30%);
+  mask-composite: intersect;
 }
 /* tags over the glow: a milkier glass keeps the labels clearly readable */
 .has-svg-glass .fields .tag.lg-svg { --lg-tint: 0.55; }

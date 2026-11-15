@@ -329,11 +329,11 @@ if (exampleHost) {
    ported). WebGL2 only; created when the section comes near, the CSS glow stays as fallback. */
 {
   // light mode: from the edge of the light to its brightest point
-  // a light stop between ocean and oxblood keeps the blue to red transition clean (no muddy purple)
-  const BRAND_RAMP = ['#6FA3BE', '#096996', '#E8E7E3', '#741714', '#5F0F0C'];
+  // blue only: ocean-light at the edge of the light, ocean at its core
+  const BRAND_RAMP = ['#6FA3BE', '#3f87ab', '#096996'];
   const presets: Record<string, import('./gradientAscii/gradientAscii').GradientAsciiOptions> = {
     // a radial glow rising from the section's lower edge (cropped by it), behind the tags
-    fields: { shape: 'rise', scale: 0.72, variation: 2, gradientOpacity: 0.9, glyphOpacity: 0.8 },
+    fields: { shape: 'rise', scale: 0.8, variation: 2, gradientOpacity: 0.8, glyphOpacity: 0.7 },
   };
   document.querySelectorAll<HTMLElement>('[data-ascii]').forEach((host) => {
     const io = new IntersectionObserver(
@@ -362,22 +362,21 @@ if (exampleHost) {
         if (handle) host.classList.add('is-on');
         // "Für wen": size the band layer to the tags, so it never runs behind the text
         if (host.dataset.ascii === 'fields') {
-          const phone = window.matchMedia('(max-width: 860px)');
           const fit = () => {
-            if (!phone.matches) {
-              host.style.removeProperty('--ascii-h');
-              host.style.bottom = '';
-              return;
-            }
-            const tags = host.parentElement?.querySelector<HTMLElement>('.tags-wrap');
+            const tags = host.parentElement?.querySelector<HTMLElement>('.tags');
             const section = host.parentElement;
             if (!tags || !section) return;
             const t = tags.getBoundingClientRect();
             const sct = section.getBoundingClientRect();
-            // from just above the tags down to the section's lower edge, which crops the glow
-            const top = t.top - sct.top - 24;
-            host.style.setProperty('--ascii-h', `${Math.round(sct.height - top)}px`);
-            host.style.bottom = '0px';
+            // a box centred on the tags: it starts at their middle and ends at the section edge,
+            // so the glow rises from just under the tags and the edge crops it
+            const pad = Math.min(160, sct.width * 0.12);
+            const left = Math.max(0, t.left - sct.left - pad);
+            const width = Math.min(sct.width - left, t.width + pad * 2);
+            // the layer starts well above the tags so the round glow has room to form;
+            // its brightest part ends up just under the tags, the section edge crops the rest
+            const top = Math.max(0, t.top - sct.top - t.height * 0.6);
+            Object.assign(host.style, { left: `${Math.round(left)}px`, width: `${Math.round(width)}px`, top: `${Math.round(top)}px`, bottom: '0px', height: 'auto' });
           };
           fit();
           new ResizeObserver(fit).observe(host.parentElement!);
@@ -401,15 +400,19 @@ if (exampleHost) {
         const { createGrainient } = await import('./grainient/grainient.js');
         const handle = createGrainient(host, {
           // dark brand ramp: light text stays readable on every colour
-          colors: ['#3a0a08', '#5F0F0C', '#6A1311', '#0b4f70', '#096996'],
+          // our blues only; the lightest stays dark enough for the light text
+          colors: ['#021c29', '#043a55', '#075a82', '#096996', '#1b78a4'],
           type: 'linear',
-          angle: 125,
-          flow: 0.9,
-          scale: 1.1,
-          silk: 0.3,
-          speed: 0.7,
-          grainAmount: 0.07,
-          grainSize: 1.2,
+          angle: 150,
+          // a soft fold of light like the reference, not a flat field
+          flow: 1.6,
+          scale: 1.4,
+          silk: 0.8,
+          contrast: 1.15,
+          speed: 0.6,
+          // dense, fine film grain like the reference
+          grainAmount: 0.16,
+          grainSize: 1,
           variation: 3,
         });
         if (handle) host.classList.add('is-on');
