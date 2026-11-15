@@ -704,3 +704,5 @@
 }
 /* tags over the glow: a milkier glass keeps the labels clearly readable */
 .has-svg-glass .fields .tag.lg-svg { --lg-tint: 0.55; }
+/* room under the tags for the glow, which rises from the section's lower edge */
+.section.fields { padding-bottom: clamp(72px, 9vw, 128px); }

@@ -333,7 +333,7 @@ if (exampleHost) {
   const BRAND_RAMP = ['#6FA3BE', '#3f87ab', '#096996'];
   const presets: Record<string, import('./gradientAscii/gradientAscii').GradientAsciiOptions> = {
     // a radial glow rising from the section's lower edge (cropped by it), behind the tags
-    fields: { shape: 'rise', scale: 0.8, variation: 2, gradientOpacity: 0.8, glyphOpacity: 0.7 },
+    fields: { shape: 'rise', scale: 1.1, variation: 2, gradientOpacity: 0.8, glyphOpacity: 0.7 },
   };
   document.querySelectorAll<HTMLElement>('[data-ascii]').forEach((host) => {
     const io = new IntersectionObserver(
@@ -375,7 +375,7 @@ if (exampleHost) {
             const width = Math.min(sct.width - left, t.width + pad * 2);
             // the layer starts well above the tags so the round glow has room to form;
             // its brightest part ends up just under the tags, the section edge crops the rest
-            const top = Math.max(0, t.top - sct.top - t.height * 0.6);
+            const top = Math.max(0, t.top - sct.top - t.height * 1.1);
             Object.assign(host.style, { left: `${Math.round(left)}px`, width: `${Math.round(width)}px`, top: `${Math.round(top)}px`, bottom: '0px', height: 'auto' });
           };
           fit();

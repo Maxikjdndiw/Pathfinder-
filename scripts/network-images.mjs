@@ -25,6 +25,19 @@ const PHOTOS = {
   'kings-college': ['kings-college.jpg', 'card'],
 };
 
+// tile photos supplied for the Netzwerk only (assets/network-photos/<slug>.jpg)
+const NETWORK_PHOTOS = {
+  'field-marketing': 'oxblood',
+  'field-recht': 'ink',
+  'city-madrid': 'ocean',
+  'city-amsterdam': 'ink',
+  'activity-buddies': 'oxblood',
+  'activity-mock-interview': 'ocean',
+  'activity-essay': 'card',
+  'activity-stipendien': 'ink',
+};
+for (const [slug, variant] of Object.entries(NETWORK_PHOTOS)) PHOTOS[slug] = [`../network-photos/${slug}.jpg`, variant];
+
 for (const [slug, [file, variant]] of Object.entries(PHOTOS)) {
   // 'attention' keeps the most detailed region (the subject) when cropping to a square
   const pipeline = sharp(`assets/card-photos/${file}`)
@@ -100,7 +113,6 @@ const PLACEHOLDERS = {
     <circle cx="${210 + 2 * 126 + 48}" cy="${330 + 2 * 126 + 48}" r="86" fill="none" stroke="${C.card}" stroke-width="8" opacity="0.8"/>`),
 };
 
-for (const [name, svg] of Object.entries(PLACEHOLDERS)) {
-  writeFileSync(`${OUT}/${name}.svg`, svg);
-  console.log(`placeholder ${name}.svg ${Math.round(statSync(`${OUT}/${name}.svg`).size / 1024 * 10) / 10} KB`);
-}
+// Placeholders are no longer written: every tile has a photo now. PLACEHOLDERS stays as a reference.
+void PLACEHOLDERS;
+void statSync;

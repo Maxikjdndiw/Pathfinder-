@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
-<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d1e21"/><stop offset="1" stop-color="#141517"/></linearGradient>
-<radialGradient id="hl" cx="0.25" cy="0.15" r="0.8"><stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient></defs>
-<rect width="1024" height="1024" fill="url(#bg)"/>
-    <path d="M150 760 V380 L210 320 L270 380 V760 Z" fill="#F4F2EE" opacity="0.22"/><path d="M300 760 V310 L360 250 L420 310 V760 Z" fill="#F4F2EE" opacity="0.3"/><path d="M450 760 V380 L510 320 L570 380 V760 Z" fill="#6A1311" opacity="0.95"/><path d="M600 760 V310 L660 250 L720 310 V760 Z" fill="#F4F2EE" opacity="0.45999999999999996"/><path d="M750 760 V380 L810 320 L870 380 V760 Z" fill="#F4F2EE" opacity="0.54"/>
-    <rect x="120" y="800" width="780" height="10" rx="5" fill="#6FA3BE" opacity="0.7"/><rect x="180" y="840" width="660" height="10" rx="5" fill="#6FA3BE" opacity="0.49999999999999994"/><rect x="240" y="880" width="540" height="10" rx="5" fill="#6FA3BE" opacity="0.29999999999999993"/><rect width="1024" height="1024" fill="url(#hl)"/>
-</svg>

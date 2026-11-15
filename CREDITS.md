@@ -22,8 +22,13 @@ universities are not partners.
 
 ## Netzwerk tiles
 
-The sphere tiles in the "Netzwerk" section reuse six of the photos above (no new downloads):
-Finance & Wirtschaft (finance), Design (design), Mode (mode), Tech (tech), Mailand (bocconi),
-London (kings-college). `npm run network-images` crops them square and applies the same duotone
-as the matching card, into `public/images/network/`. The other eight tiles are abstract
-placeholder graphics made for this site, not photos.
+The 14 sphere tiles in the "Netzwerk" section are all photos. `npm run network-images` crops each
+one square and applies the brand duotone, into `public/images/network/`.
+
+- Six reuse the card photos above (no new downloads): Finance & Wirtschaft (finance), Design (design),
+  Mode (mode), Tech (tech), Mailand (bocconi), London (kings-college).
+- Eight were supplied for the Netzwerk (free photos, checked by the owner; originals in
+  `assets/network-photos/`): Marketing (mood board), Recht & Politik (court house facade), Madrid
+  (Gran Vía at sunset), Amsterdam (canal houses), Bewerbungs-Buddies (two laptops), Mock Interviews
+  (two chairs), Essay-Feedback (book page), Stipendien & Fristen (monthly planner).
+  Photographer names: add here.
