@@ -104,7 +104,6 @@ if (root.classList.contains('has-3d')) {
           forceGlass: new URLSearchParams(location.search).get('glass') === 'force', // testing only
           glass: [
             { el: document.querySelector<HTMLElement>('.nav')!, tint: 0.5, whileOverScene: true },
-            { el: document.querySelector<HTMLElement>('.hero__sub')!, tint: 0.5 },
             ...[...document.querySelectorAll<HTMLElement>('.hero__caption')].map((el) => ({ el, tint: 0.48 })),
           ],
         }),

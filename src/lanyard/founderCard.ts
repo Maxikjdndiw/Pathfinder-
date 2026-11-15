@@ -72,26 +72,26 @@ function front(mark: HTMLImageElement | null): string {
   ctx.textBaseline = 'alphabetic';
   ctx.fillText('Pathfinder', PAD + markVisible + markVisible / 2, y + cap / 2);
 
-  // eyebrow
+  // label
   ctx.font = `500 30px ${BODY}`;
   spaced(ctx, 2.4);
   ctx.fillStyle = C.oxblood;
   ctx.fillRect(PAD, 612, 48, 3);
   ctx.fillText('GRÜNDER', PAD + 70, 624);
 
-  // title
+  // name
   ctx.fillStyle = C.ink;
-  ctx.font = `700 118px ${DISPLAY}`;
-  spaced(ctx, -3.5);
-  ['Den Weg', 'selbst', 'gegangen.'].forEach((l, i) => ctx.fillText(l, PAD - 4, 780 + i * 116));
+  ctx.font = `700 190px ${DISPLAY}`;
+  spaced(ctx, -5);
+  ctx.fillText('Maxi', PAD - 8, 830);
 
-  // body
-  ctx.font = `400 36px ${BODY}`;
+  // lines
+  ctx.font = `500 50px ${BODY}`;
   spaced(ctx, 0);
+  ctx.fillStyle = C.ink;
+  ctx.fillText('IB Schüler, Schule Louisenlund', PAD, 950);
   ctx.fillStyle = C.inkMuted;
-  wrap(ctx, 'Praktika bei Accenture und Deloitte. Unterstützt von einer erfahrenen Ökonomin.', W - PAD * 2).forEach((l, i) =>
-    ctx.fillText(l, PAD, 1150 + i * 52),
-  );
+  ctx.fillText('Schleswig', PAD, 1020);
 
   // footer line with arrow, like the path cards
   const by = H - 130;
@@ -104,7 +104,7 @@ function front(mark: HTMLImageElement | null): string {
   ctx.font = `500 28px ${BODY}`;
   spaced(ctx, 1.5);
   ctx.fillStyle = C.inkMuted;
-  ctx.fillText('PATHFINDER · SCHLESWIG', PAD, by + 62);
+  ctx.fillText('UMDREHEN FÜR MEHR', PAD, by + 62);
   ctx.strokeStyle = C.oxblood;
   ctx.lineWidth = 4;
   ctx.beginPath();
@@ -129,22 +129,21 @@ function back(markDark: HTMLImageElement | null): string {
   if (markDark) ctx.drawImage(markDark, PAD - 12, 250, 150, 150);
 
   ctx.fillStyle = C.card;
-  ctx.font = `700 84px ${DISPLAY}`;
-  spaced(ctx, -2.2);
-  let y = 560;
-  for (const sentence of ['ChatGPT beantwortet Fragen.', 'Pathfinder zeigt dir, welche Fragen du stellen solltest.']) {
-    for (const l of wrap(ctx, sentence, W - PAD * 2)) {
-      ctx.fillText(l, PAD - 3, y);
-      y += 88;
-    }
-    y += 44; // pause between the two sentences
-  }
+  ctx.font = `700 92px ${DISPLAY}`;
+  spaced(ctx, -2.5);
+  ctx.fillText('Kurz und knapp', PAD - 3, 560);
 
-  ctx.font = `500 28px ${BODY}`;
-  spaced(ctx, 1.5);
-  ctx.globalAlpha = 0.85;
-  ctx.fillText('KOSTENLOSE PILOTPHASE', PAD, H - 68);
-  ctx.globalAlpha = 1;
+  ctx.font = `400 42px ${BODY}`;
+  spaced(ctx, 0);
+  let y = 700;
+  for (const item of ['Geboren in Querétaro, Mexiko. Aufgewachsen in Schleswig.', 'Spricht Deutsch, Spanisch und Englisch.']) {
+    ctx.fillRect(PAD, y - 16, 14, 14);
+    for (const l of wrap(ctx, item, W - PAD * 2 - 44)) {
+      ctx.fillText(l, PAD + 44, y);
+      y += 58;
+    }
+    y += 40;
+  }
   return c.toDataURL('image/png');
 }
 

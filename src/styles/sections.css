@@ -192,10 +192,11 @@
   max-width: 30ch;
   color: var(--ink);
 }
-.hero__sub.glass {
-  max-width: 400px;
-  padding: 18px 22px;
-  border-radius: var(--r-glass);
+/* the subline is plain text with a thin rule above: calmer than a glass box */
+.hero__sub {
+  padding-top: var(--s-2);
+  border-top: 1.5px solid var(--ink);
+  max-width: 34ch;
 }
 
 /* soft stone haze between the cards and the headline, so the words always win */
@@ -212,6 +213,8 @@
 .has-3d .hero__title .hero__line {
   text-shadow: 0 0 28px rgba(232, 231, 227, 0.9), 0 0 2px rgba(232, 231, 227, 0.8);
 }
+/* no box around the subline any more, so it gets the same soft haze over the cards */
+.has-3d .hero__sub, .has-3d .hero__link { text-shadow: 0 0 22px rgba(232, 231, 227, 0.95), 0 0 2px rgba(232, 231, 227, 0.9); }
 /* a shadow would shine through the transparent gradient fill */
 .has-3d .hero__title .grad-text { text-shadow: none; }
 
@@ -403,7 +406,36 @@
 }
 .step__link:hover { color: var(--oxblood-dark); }
 
-.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; pointer-events: auto; }
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); pointer-events: auto; }
+.hero__link {
+  order: 2;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding: 6px 0 2px;
+}
+.hero__link:hover { color: var(--oxblood); }
+.nav__cta-short { display: none; }
+
+/* ---------- phones: fewer buttons, less text ---------- */
+@media (max-width: 560px) {
+  .nav__cta-long { display: none; }
+  .nav__cta-short { display: inline; }
+  .scroll-hint { display: none; }
+  .hero__bottom { gap: var(--s-3); }
+  .hero__sub { font-size: var(--fs-body); line-height: var(--lh-body); }
+  .hero__actions { gap: var(--s-2) var(--s-3); }
+  /* steps: title and question are enough on a phone */
+  .step p:not(.step__q) { display: none; }
+  .step { gap: 4px; padding: var(--s-2) var(--s-3); }
+  .step__num { padding-bottom: var(--s-1); }
+  /* swiping works, so no arrow buttons */
+  .insiders__btn { display: none; }
+  .insiders__controls { margin: var(--s-2) 0 var(--s-1); }
+  /* the sign-up button follows right below, no second arrow */
+  .network__go { display: none; }
+}
 
 /* ---------- How it works ---------- */
 .how .display-2 { max-width: 20ch; }
@@ -671,7 +703,12 @@
 }
 .legal__main h1 { margin-bottom: var(--s-2); }
 .legal__main h2 { font-size: var(--fs-h2); margin: var(--s-4) 0 var(--s-1); }
-.legal__main p { max-width: 60ch; }
+.legal__main p { max-width: 60ch; margin-bottom: var(--s-2); }
+.legal__main a { overflow-wrap: anywhere; }
+.legal__date { color: var(--ink-muted); }
+.legal__list { list-style: disc; padding-left: 1.3em; margin-bottom: var(--s-2); max-width: 60ch; }
+.legal__list li { margin-bottom: 4px; }
+@media (max-width: 560px) { .legal__main .display-2 { font-size: clamp(30px, 8.6vw, 40px); overflow-wrap: anywhere; hyphens: auto; } }
 
 @media (max-width: 560px) {
   .hero__bottom { flex-direction: column; align-items: flex-start; }
@@ -706,3 +743,52 @@
 .has-svg-glass .fields .tag.lg-svg { --lg-tint: 0.55; }
 /* room under the tags for the glow, which rises from the section's lower edge */
 .section.fields { padding-bottom: clamp(72px, 9vw, 128px); }
+
+/* ---------- Founder story ---------- */
+.founder__intro { margin-top: var(--s-3); font-size: var(--fs-body-lg); line-height: var(--lh-body-lg); max-width: 56ch; }
+.founder__text { color: var(--ink-muted); }
+.founder__mentor {
+  margin-top: var(--s-4);
+  padding: var(--s-3);
+  border-radius: var(--r-card);
+  background: var(--card);
+  border: 1px solid var(--line);
+  max-width: 56ch;
+}
+.founder__mentor-label {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  margin-bottom: 6px;
+}
+.founder__quote { margin-top: var(--s-5); }
+.founder__quote blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+}
+.founder__quote figcaption { margin-top: var(--s-2); font-size: var(--fs-label); color: var(--ink-muted); }
+/* soft stone haze behind the subline and the actions: keeps them readable over the cards,
+   without a box around them */
+.has-3d .hero__bottom { position: relative; }
+.has-3d .hero__bottom::before {
+  content: '';
+  position: absolute;
+  inset: -48px -64px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(232, 231, 227, 0.94), rgba(232, 231, 227, 0.78) 55%, rgba(232, 231, 227, 0));
+}
+@media (min-width: 561px) {
+  .has-3d .hero__bottom::before {
+    background:
+      radial-gradient(closest-side at 22% 50%, rgba(232, 231, 227, 0.95), rgba(232, 231, 227, 0.8) 55%, rgba(232, 231, 227, 0)),
+      radial-gradient(closest-side at 82% 50%, rgba(232, 231, 227, 0.95), rgba(232, 231, 227, 0.8) 50%, rgba(232, 231, 227, 0));
+  }
+}
