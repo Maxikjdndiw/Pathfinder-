@@ -324,3 +324,61 @@ if (exampleHost) {
   if (document.readyState === 'complete') idle(startNetwork);
   else window.addEventListener('load', () => idle(startNetwork), { once: true });
 }
+
+/* 12. ASCII gradient behind "Für wen" and the final call to action (React Bits GradientASCII,
+   ported). WebGL2 only; created when the section comes near, the CSS glow stays as fallback. */
+{
+  // light mode: from the edge of the light to its brightest point
+  const BRAND_RAMP = ['#6FA3BE', '#096996', '#6A1311', '#5F0F0C']; // ocean-light, ocean, oxblood, oxblood-dark
+  const presets: Record<string, import('./gradientAscii/gradientAscii').GradientAsciiOptions> = {
+    fields: { shape: 'pinch', scale: 1.15, variation: 2, gradientOpacity: 0.65, glyphOpacity: 0.65 },
+    cta: { shape: 'eclipse', scale: 2.35, variation: 5 },
+  };
+  document.querySelectorAll<HTMLElement>('[data-ascii]').forEach((host) => {
+    const io = new IntersectionObserver(
+      async ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        const { createGradientAscii } = await import('./gradientAscii/gradientAscii.js');
+        const handle = createGradientAscii(host, {
+          colors: BRAND_RAMP,
+          lightMode: true,
+          characters: ' .:+=xX#',
+          cellSize: 16,
+          density: 0.85,
+          glyphOpacity: 0.8,
+          gradientOpacity: 0.85,
+          glow: 0.25,
+          flicker: 0.15,
+          softness: 0.7,
+          flow: 0.6,
+          speed: 0.6,
+          grain: 0.04,
+          clickEffect: 'wave',
+          fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace',
+          ...presets[host.dataset.ascii ?? ''],
+        });
+        if (handle) host.classList.add('is-on');
+        // "Für wen": size the band layer to the tags, so it never runs behind the text
+        if (host.dataset.ascii === 'fields') {
+          const fit = () => {
+            const tags = host.parentElement?.querySelector<HTMLElement>('.tags-wrap');
+            const section = host.parentElement;
+            if (!tags || !section) return;
+            const t = tags.getBoundingClientRect();
+            const sct = section.getBoundingClientRect();
+            // from just above the first row of tags to just below the last one
+            const top = t.top - sct.top - 20;
+            const h = t.height + 40;
+            host.style.setProperty('--ascii-h', `${Math.round(h)}px`);
+            host.style.bottom = `${Math.round(sct.height - top - h)}px`;
+          };
+          fit();
+          new ResizeObserver(fit).observe(host.parentElement!);
+        }
+      },
+      { rootMargin: '300px 0px' },
+    );
+    io.observe(host);
+  });
+}

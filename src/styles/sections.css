@@ -675,3 +675,22 @@
   .hero__bottom { flex-direction: column; align-items: flex-start; }
   .hero__line--right { text-align: left; }
 }
+
+/* ---------- ASCII gradient backgrounds (Für wen, final call to action) ---------- */
+.section-ascii,
+.section-ascii.gradient-ascii-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* soft top and bottom edges, so no straight cut is visible between sections */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 90%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 90%, transparent 100%);
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.section-ascii.is-on { opacity: 1; }
+/* the CSS glow stays as the fallback and steps back once the ASCII gradient runs */
+.section:has(.section-ascii.is-on) > .glow { opacity: 0; transition: opacity 1.2s ease; }
+/* "Für wen": the band of light sits behind the tags, never behind the heading or body text */
+.fields .section-ascii.gradient-ascii-container { top: auto; height: var(--ascii-h, 300px); bottom: 0; }
