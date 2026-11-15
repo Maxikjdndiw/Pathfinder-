@@ -1,5 +1,7 @@
 /**
- * BorderGlow – ported from the React Bits <BorderGlow /> component (https://reactbits.dev)
+ * BorderGlow: ported from the React Bits <BorderGlow /> component (https://reactbits.dev)
+ * Copyright (c) 2026 David Haz, MIT + Commons Clause License Condition v1.0 (React Bits).
+ * Used as part of this website only; not for resale or redistribution as a component.
  * as a plain function that upgrades existing elements instead of wrapping them.
  * Near the edge, a coloured mesh-gradient border, a soft fill and an outer glow follow
  * the pointer's direction.

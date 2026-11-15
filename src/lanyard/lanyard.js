@@ -1,5 +1,7 @@
 /**
- * Lanyard – ported from the React Bits <Lanyard /> component (https://reactbits.dev)
+ * Lanyard: ported from the React Bits <Lanyard /> component (https://reactbits.dev)
+ * Copyright (c) 2026 David Haz, MIT + Commons Clause License Condition v1.0 (React Bits).
+ * Used as part of this website only; not for resale or redistribution as a component.
  * to a plain, framework-free module. Physics, rendering and props are unchanged;
  * only the React wrapper (useRef/useEffect) is replaced by createLanyard().
  *

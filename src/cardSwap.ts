@@ -1,5 +1,7 @@
 /**
- * CardSwap – ported from the React Bits <CardSwap /> component (https://reactbits.dev)
+ * CardSwap: ported from the React Bits <CardSwap /> component (https://reactbits.dev)
+ * Copyright (c) 2026 David Haz, MIT + Commons Clause License Condition v1.0 (React Bits).
+ * Used as part of this website only; not for resale or redistribution as a component.
  * to plain TypeScript (no React, no icon package). The spring physics, drag/fling,
  * autoplay, parallax and hover spread are unchanged.
  *

@@ -244,7 +244,8 @@ export class TiltedCard {
 
   private frame = (now: number) => {
     this.raf = 0;
-    const dt = Math.min(0.034, (now - this.last) / 1000);
+    // rAF timestamps can be slightly earlier than performance.now() at wake(): never go negative
+    const dt = Math.max(0, Math.min(0.034, (now - this.last) / 1000));
     this.last = now;
     // smoothness 0 = snappy, 1 = soft
     const k = 320 - 240 * this.o.smoothness;

@@ -1,5 +1,7 @@
 /**
- * WarpText – ported from the React Bits <WarpText /> component (https://reactbits.dev)
+ * WarpText: ported from the React Bits <WarpText /> component (https://reactbits.dev)
+ * Copyright (c) 2026 David Haz, MIT + Commons Clause License Condition v1.0 (React Bits).
+ * Used as part of this website only; not for resale or redistribution as a component.
  * to plain TypeScript (no React). The shader, lensing, click ripples and intro are unchanged.
  *
  * Pathfinder additions:

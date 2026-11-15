@@ -19,3 +19,11 @@ Photos are converted to duotone in brand colours by `npm run card-photos`.
 
 City photos only for universities – no buildings, crests or logos, so it is clear the
 universities are not partners.
+
+## Netzwerk tiles
+
+The sphere tiles in the "Netzwerk" section reuse six of the photos above (no new downloads):
+Finance & Wirtschaft (finance), Design (design), Mode (mode), Tech (tech), Mailand (bocconi),
+London (kings-college). `npm run network-images` crops them square and applies the same duotone
+as the matching card, into `public/images/network/`. The other eight tiles are abstract
+placeholder graphics made for this site, not photos.

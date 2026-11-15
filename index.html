@@ -41,6 +41,7 @@
         <li><a href="#ablauf">Wie es funktioniert</a></li>
         <li><a href="#fuer-wen">Für wen</a></li>
         <li><a href="#tipps">Tipps</a></li>
+        <li><a href="#netzwerk">Netzwerk</a></li>
         <li><a href="/quiz">Test</a></li>
       </ul>
       <a class="btn btn--primary btn--small" data-signup href="%SIGNUP_URL%" target="_blank" rel="noopener">Kostenlos mitmachen</a>
@@ -224,6 +225,72 @@
             <p class="note">Platzhalter: Namen, Fotos und Texte folgen.</p>
           </div>
           <div class="insiders__stack" id="insider-stack"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NETZWERK -->
+    <section class="section network" id="netzwerk" aria-labelledby="network-title">
+      <div class="glow glow--ocean glow--network" aria-hidden="true"></div>
+      <div class="container">
+        <p class="eyebrow">Das Netzwerk</p>
+        <h2 class="display-2 network__title" id="network-title" data-reveal>Mehr als ein Coaching: eine Community</h2>
+        <p class="lead" data-reveal>Tausch dich mit Leuten aus, die gerade bewerben oder es schon geschafft haben.</p>
+
+        <!-- Sphere of 14 tiles (src/network/sphere.ts, lazy loaded). Without WebGL or with reduced motion
+             the list below is shown as a grid. In 3D mode the list stays readable for screen readers. -->
+        <div class="network__sphere" id="network-sphere">
+          <div class="network__canvas" aria-hidden="true"></div>
+          <div class="network__caption" aria-live="polite">
+            <p class="network__group" data-tile-group></p>
+            <p class="network__tile-title" data-tile-title></p>
+            <p class="network__tile-text" data-tile-text></p>
+          </div>
+          <div class="network__controls">
+            <button class="btn btn--glass network__btn" type="button" data-sphere-prev aria-label="Vorheriges Thema">←</button>
+            <a class="btn btn--primary network__btn network__go" data-tile-link href="#netzwerk-anmelden" aria-label="Zur Anmeldung"><span aria-hidden="true">→</span></a>
+            <button class="btn btn--glass network__btn" type="button" data-sphere-next aria-label="Nächstes Thema">→</button>
+          </div>
+        </div>
+        <ul class="network__grid" id="network-grid" aria-label="Themen im Netzwerk"></ul>
+
+        <ul class="bento" aria-label="Was dich im Netzwerk erwartet">
+          <li class="bento__card">
+            <span class="bento__art"><svg viewBox="0 0 120 80" aria-hidden="true" focusable="false"><rect x="14" y="22" width="52" height="40" rx="8" fill="var(--ocean)" opacity=".55" transform="rotate(-8 40 42)"/><rect x="34" y="16" width="52" height="40" rx="8" fill="var(--oxblood-light)" opacity=".8" transform="rotate(4 60 36)"/><rect x="54" y="22" width="52" height="40" rx="8" fill="var(--card)" opacity=".9" transform="rotate(10 80 42)"/></svg></span>
+            <h3 class="bento__title">Aktuelle Bewerber</h3>
+            <p class="bento__text">Du bist nicht allein im Bewerbungsstress. Tausch dich mit Leuten aus, die gerade dasselbe durchmachen.</p>
+          </li>
+          <li class="bento__card">
+            <span class="bento__art"><svg viewBox="0 0 120 80" aria-hidden="true" focusable="false"><path d="M12 66 C 40 66, 52 22, 92 20" fill="none" stroke="var(--ocean-light)" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 9"/><circle cx="12" cy="66" r="6" fill="var(--card)" opacity=".5"/><circle cx="96" cy="20" r="12" fill="var(--oxblood-light)"/><circle cx="96" cy="20" r="5" fill="var(--card)"/></svg></span>
+            <h3 class="bento__title">Aufgenommene Studierende</h3>
+            <p class="bento__text">Frag die, die es geschafft haben, wie es wirklich läuft.</p>
+          </li>
+          <li class="bento__card">
+            <span class="bento__art"><svg viewBox="0 0 120 80" aria-hidden="true" focusable="false"><circle cx="46" cy="40" r="24" fill="none" stroke="var(--card)" stroke-width="7" opacity=".9"/><circle cx="74" cy="40" r="24" fill="none" stroke="var(--ocean-light)" stroke-width="7"/></svg></span>
+            <h3 class="bento__title">Bewerbungs-Buddies</h3>
+            <p class="bento__text">Gemeinsam bewerben, sich erinnern und anfeuern.</p>
+          </li>
+          <li class="bento__card">
+            <span class="bento__art"><svg viewBox="0 0 120 80" aria-hidden="true" focusable="false"><rect x="10" y="10" width="62" height="34" rx="17" fill="var(--card)" opacity=".9"/><path d="M24 42 l-6 14 16-12z" fill="var(--card)" opacity=".9"/><rect x="48" y="36" width="62" height="34" rx="17" fill="var(--ocean)"/><path d="M96 68 l6 10 -16-8z" fill="var(--ocean)"/></svg></span>
+            <h3 class="bento__title">Mock Interviews</h3>
+            <p class="bento__text">Echte Übung vor dem echten Gespräch.</p>
+          </li>
+          <li class="bento__card">
+            <span class="bento__art"><svg viewBox="0 0 120 80" aria-hidden="true" focusable="false"><rect x="22" y="8" width="76" height="12" rx="4" fill="var(--ocean)"/><rect x="22" y="26" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="38" y="26" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="54" y="26" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="70" y="26" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="86" y="26" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="22" y="42" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="38" y="42" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="54" y="42" width="12" height="12" rx="3" fill="var(--oxblood-light)" opacity="1"/><rect x="70" y="42" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="86" y="42" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="22" y="58" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="38" y="58" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="54" y="58" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="70" y="58" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/><rect x="86" y="58" width="12" height="12" rx="3" fill="var(--card)" opacity="0.18"/></svg></span>
+            <h3 class="bento__title">Stipendien &amp; Fristen</h3>
+            <p class="bento__text">Wissen, das sonst keiner zusammenträgt, an einem Ort.</p>
+          </li>
+          <li class="bento__card">
+            <span class="bento__art"><svg viewBox="0 0 120 80" aria-hidden="true" focusable="false"><path d="M36 74 V30 a24 24 0 0 1 48 0 V74 z" fill="none" stroke="var(--card)" stroke-width="5" opacity=".85"/><path d="M60 74 V18 l22 8 V74 z" fill="var(--oxblood-light)"/><circle cx="76" cy="50" r="3" fill="var(--card)"/></svg></span>
+            <h3 class="bento__title">Neue Türen</h3>
+            <p class="bento__text">Tipps zu Praktika und Kontakten, die im Netzwerk geteilt werden.</p>
+          </li>
+        </ul>
+
+        <div class="network__footer" data-reveal>
+          <p class="network__note">Das Netzwerk wächst mit den ersten Jahrgängen. Im Pilot baust du es mit uns auf.</p>
+          <p class="network__access">Im Coaching ist der Zugang inklusive. Danach kostet er einen kleinen Monatsbeitrag. Den genauen Preis legen wir fest, sobald die ersten Jahrgänge dabei sind.</p>
+          <a class="btn btn--primary btn--large" id="netzwerk-anmelden" data-signup href="%SIGNUP_URL%" target="_blank" rel="noopener">Zum Pilot anmelden<span class="btn__arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>

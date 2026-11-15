@@ -316,3 +316,11 @@ if (exampleHost) {
     { intro: false },
   );
 }
+
+/* 11. Netzwerk section: tile list, bento effects; sphere + Three.js only near the viewport */
+{
+  const startNetwork = () => import('./network').then(({ initNetwork }) => initNetwork());
+  const idle = (cb: () => void) => ('requestIdleCallback' in window ? window.requestIdleCallback(cb, { timeout: 1500 }) : setTimeout(cb, 400));
+  if (document.readyState === 'complete') idle(startNetwork);
+  else window.addEventListener('load', () => idle(startNetwork), { once: true });
+}
