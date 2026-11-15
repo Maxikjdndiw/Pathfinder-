@@ -32,3 +32,5 @@ one square and applies the brand duotone, into `public/images/network/`.
   (Gran Vía at sunset), Amsterdam (canal houses), Bewerbungs-Buddies (two laptops), Mock Interviews
   (two chairs), Essay-Feedback (book page), Stipendien & Fristen (monthly planner).
   Photographer names: add here.
+- Five of these are also used on path cards: Marketing (mood board), Jura (court house),
+  IE Madrid (Madrid city view, not the university), Stipendium (planner), Journalismus (book page).
