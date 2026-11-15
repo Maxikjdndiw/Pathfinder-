@@ -93,24 +93,6 @@
         <h2 class="display-2" id="fields-title" data-reveal>Egal ob Finance, Design, Marketing, Mode oder Tech.</h2>
         <p class="lead" data-reveal>Pathfinder ist für Schülerinnen und Schüler ab etwa 15 Jahren, die mehr wollen als das, was sie aus der Schule oder von TikTok kennen. Und für Eltern, die ihre Kinder dabei unterstützen.</p>
         <div class="tags-wrap" data-reveal>
-          <svg class="tags-path" viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="path-grad-a" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="0">
-                <stop offset="0" stop-color="#5F0F0C" />
-                <stop offset="0.45" stop-color="#741714" />
-                <stop offset="1" stop-color="#096996" />
-              </linearGradient>
-              <linearGradient id="path-grad-b" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="0">
-                <stop offset="0" stop-color="#096996" />
-                <stop offset="0.55" stop-color="#6FA3BE" />
-                <stop offset="1" stop-color="#6A1311" />
-              </linearGradient>
-            </defs>
-            <path class="tags-path__ox" d="M-20 150 C 140 40, 300 40, 420 110 S 700 200, 820 90 S 980 20, 1040 70" />
-            <path class="tags-path__oc" d="M-20 70 C 120 160, 280 190, 430 120 S 690 10, 830 120 S 960 190, 1040 150" />
-            <circle class="tags-path__dot" cx="420" cy="110" r="7" />
-            <circle class="tags-path__dot tags-path__dot--oc" cx="830" cy="120" r="6" />
-          </svg>
         <ul class="tags" aria-label="Bereiche">
           <li class="tag glass tag--start">Finance <span>Start</span></li>
           <li class="tag glass tag--start">Wirtschaft <span>Start</span></li>
@@ -287,12 +269,16 @@
 
     <!-- FINAL CTA -->
     <section class="section cta" aria-labelledby="cta-title">
-      <div class="glow glow--oxblood glow--cta" aria-hidden="true"></div>
-      <div class="section-ascii" data-ascii="cta" aria-hidden="true"></div>
-      <div class="container cta__inner">
-        <h2 class="display-2" id="cta-title" data-reveal>Sei bei der kostenlosen Pilotphase dabei.</h2>
-        <p class="lead" data-reveal>Melde dich in zwei Minuten an. Wir melden uns, sobald es losgeht.</p>
-        <a class="btn btn--primary btn--large" data-signup data-reveal href="%SIGNUP_URL%" target="_blank" rel="noopener">Kostenlos mitmachen<span class="btn__arrow" aria-hidden="true">→</span></a>
+      <div class="container">
+        <div class="cta__panel">
+          <!-- Grainient (src/grainient/grainient.js); the panel's CSS gradient is the fallback -->
+          <div class="cta__grain" id="cta-grain" aria-hidden="true"></div>
+          <div class="cta__inner">
+            <h2 class="display-2" id="cta-title" data-reveal>Sei bei der kostenlosen Pilotphase dabei.</h2>
+            <p class="lead" data-reveal>Melde dich in zwei Minuten an. Wir melden uns, sobald es losgeht.</p>
+            <a class="btn btn--light btn--large" data-signup data-reveal href="%SIGNUP_URL%" target="_blank" rel="noopener">Kostenlos mitmachen<span class="btn__arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
       </div>
     </section>
   </main>

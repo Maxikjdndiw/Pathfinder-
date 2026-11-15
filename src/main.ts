@@ -329,10 +329,11 @@ if (exampleHost) {
    ported). WebGL2 only; created when the section comes near, the CSS glow stays as fallback. */
 {
   // light mode: from the edge of the light to its brightest point
-  const BRAND_RAMP = ['#6FA3BE', '#096996', '#6A1311', '#5F0F0C']; // ocean-light, ocean, oxblood, oxblood-dark
+  // a light stop between ocean and oxblood keeps the blue to red transition clean (no muddy purple)
+  const BRAND_RAMP = ['#6FA3BE', '#096996', '#E8E7E3', '#741714', '#5F0F0C'];
   const presets: Record<string, import('./gradientAscii/gradientAscii').GradientAsciiOptions> = {
-    fields: { shape: 'pinch', scale: 1.15, variation: 2, gradientOpacity: 0.65, glyphOpacity: 0.65 },
-    cta: { shape: 'eclipse', scale: 2.35, variation: 5 },
+    // a radial glow rising from the section's lower edge (cropped by it), behind the tags
+    fields: { shape: 'rise', scale: 0.72, variation: 2, gradientOpacity: 0.9, glyphOpacity: 0.8 },
   };
   document.querySelectorAll<HTMLElement>('[data-ascii]').forEach((host) => {
     const io = new IntersectionObserver(
@@ -361,17 +362,22 @@ if (exampleHost) {
         if (handle) host.classList.add('is-on');
         // "Für wen": size the band layer to the tags, so it never runs behind the text
         if (host.dataset.ascii === 'fields') {
+          const phone = window.matchMedia('(max-width: 860px)');
           const fit = () => {
+            if (!phone.matches) {
+              host.style.removeProperty('--ascii-h');
+              host.style.bottom = '';
+              return;
+            }
             const tags = host.parentElement?.querySelector<HTMLElement>('.tags-wrap');
             const section = host.parentElement;
             if (!tags || !section) return;
             const t = tags.getBoundingClientRect();
             const sct = section.getBoundingClientRect();
-            // from just above the first row of tags to just below the last one
-            const top = t.top - sct.top - 20;
-            const h = t.height + 40;
-            host.style.setProperty('--ascii-h', `${Math.round(h)}px`);
-            host.style.bottom = `${Math.round(sct.height - top - h)}px`;
+            // from just above the tags down to the section's lower edge, which crops the glow
+            const top = t.top - sct.top - 24;
+            host.style.setProperty('--ascii-h', `${Math.round(sct.height - top)}px`);
+            host.style.bottom = '0px';
           };
           fit();
           new ResizeObserver(fit).observe(host.parentElement!);
@@ -381,4 +387,35 @@ if (exampleHost) {
     );
     io.observe(host);
   });
+}
+
+/* 13. Grainient in the final call to action panel (React Bits Grainient, ported). WebGL2 only;
+   the panel's CSS gradient stays underneath as the fallback. */
+{
+  const host = document.getElementById('cta-grain');
+  if (host) {
+    const io = new IntersectionObserver(
+      async ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        const { createGrainient } = await import('./grainient/grainient.js');
+        const handle = createGrainient(host, {
+          // dark brand ramp: light text stays readable on every colour
+          colors: ['#3a0a08', '#5F0F0C', '#6A1311', '#0b4f70', '#096996'],
+          type: 'linear',
+          angle: 125,
+          flow: 0.9,
+          scale: 1.1,
+          silk: 0.3,
+          speed: 0.7,
+          grainAmount: 0.07,
+          grainSize: 1.2,
+          variation: 3,
+        });
+        if (handle) host.classList.add('is-on');
+      },
+      { rootMargin: '300px 0px' },
+    );
+    io.observe(host);
+  }
 }
