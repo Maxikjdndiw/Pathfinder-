@@ -1,0 +1,74 @@
+/* ------------------------------------------------------------------
+   Shapes: buttons and boxes are soft rounded rectangles (not pills).
+   Tokens in tokens.css. A box that holds other boxes sets --inner-r:
+     --inner-r: max(var(--radius-min), calc(<its radius> - <its padding>))
+   and its children use it, so corners stay parallel (concentric).
+   Tags and chips stay pills.
+   ------------------------------------------------------------------ */
+
+/* ---------- buttons ---------- */
+.btn {
+  height: var(--btn-h);
+  padding: 0 28px;
+  gap: 16px;
+  border-radius: var(--radius-button);
+}
+.btn--large { height: var(--btn-h); padding: 0 28px; }
+@media (max-width: 560px) {
+  :root { --btn-h: 48px; }
+}
+.skip-link { border-radius: var(--radius-button); }
+
+/* ---------- nav: floating rounded rectangle, 10px inner padding ---------- */
+.nav {
+  border-radius: var(--radius-nav);
+  padding: var(--nav-pad) var(--nav-pad) var(--nav-pad) 22px;
+  --inner-r: max(var(--radius-min), calc(var(--radius-nav) - var(--nav-pad)));
+}
+.nav .btn { height: 44px; padding: 0 20px; border-radius: var(--inner-r); }
+.nav__links a { border-radius: var(--inner-r); }
+
+/* ---------- cards and boxed sections ---------- */
+.step,
+.hero__caption,
+.why__panel,
+.cta__panel,
+.founder__mentor,
+.founder__still,
+.path-card,
+.network__item-link {
+  border-radius: var(--radius-card);
+}
+
+/* boxes with content near their edges */
+.why__panel { --inner-r: max(var(--radius-min), calc(var(--radius-card) - clamp(32px, 6vw, 88px))); }
+.why__point { border-radius: var(--inner-r); }
+
+.cta__panel { --inner-r: max(var(--radius-min), calc(var(--radius-card) - clamp(24px, 6vw, 80px))); }
+.cta__panel .btn { border-radius: var(--inner-r); }
+
+.network__item-link { --inner-r: max(var(--radius-min), calc(var(--radius-card) - 10px)); }
+.network__item-link img { border-radius: var(--inner-r); }
+
+/* square icon buttons follow the button height */
+.insiders__btn,
+.network__btn,
+.network__go { width: var(--btn-h); height: var(--btn-h); padding: 0; }
+
+/* insider cards (card swap): 24px, photo inset by the card padding */
+.insider { --inner-r: max(var(--radius-min), calc(var(--radius-card) - 10px)); }
+.insider--compact { --inner-r: max(var(--radius-min), calc(var(--radius-card) - 8px)); }
+.card-swap .insider__photo { border-radius: var(--inner-r); }
+
+@media (max-width: 760px) {
+  .network__panel {
+    border-radius: var(--radius-card);
+    --inner-r: max(var(--radius-min), calc(var(--radius-card) - 18px));
+  }
+  .network__panel .btn { border-radius: var(--inner-r); }
+  .network__footer {
+    border-radius: var(--radius-card);
+    --inner-r: max(var(--radius-min), calc(var(--radius-card) - 20px));
+  }
+  .network__footer .btn { border-radius: var(--inner-r); }
+}

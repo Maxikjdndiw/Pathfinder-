@@ -44,10 +44,19 @@
   --s-5: 72px;
   --s-section: clamp(72px, 9vw, 128px); /* ~72px phone, 128px desktop */
 
-  /* Radius */
+  /* Shapes: soft rounded rectangles. Nested boxes use
+     max(var(--radius-min), calc(<parent radius> - <gap to the parent edge>)), see shapes.css */
+  --radius-nav: 28px;
+  --radius-card: 24px;
+  --radius-button: 16px;
+  --radius-min: 8px;
+  --nav-pad: 10px;
+  --btn-h: 52px;
+
+  /* Radius (older names, kept for tags and small parts) */
   --r-tag: 6px;
   --r-card: 12px;
-  --r-glass: 22px;
+  --r-glass: var(--radius-card);
   --r-pill: 999px;
 
   --max-width: 1240px;

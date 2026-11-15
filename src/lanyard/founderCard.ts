@@ -54,48 +54,52 @@ function canvas(w: number, h: number) {
   return [c, c.getContext('2d')!] as const;
 }
 
-function front(mark: HTMLImageElement | null): string {
+function front(photo: HTMLImageElement | null): string {
   const [c, ctx] = canvas(W, H);
-  ctx.fillStyle = C.card;
+  ctx.fillStyle = C.ink;
   ctx.fillRect(0, 0, W, H);
 
-  // logo: mark at 1.3x cap height of the wordmark, gap of half the mark (same rule as the nav)
-  const size = 64;
-  const cap = size * 0.66;
-  const markVisible = cap * 1.3;
-  const markBox = (markVisible * 64) / 58;
-  const y = 300;
-  if (mark) ctx.drawImage(mark, PAD - (markBox - markVisible) / 2, y - cap / 2 - (markBox - cap) / 2, markBox, markBox);
-  ctx.fillStyle = C.ink;
-  ctx.font = `700 ${size}px ${DISPLAY}`;
-  spaced(ctx, -1.3);
-  ctx.textBaseline = 'alphabetic';
-  ctx.fillText('Pathfinder', PAD + markVisible + markVisible / 2, y + cap / 2);
+  // photo fills the front (cover); natural colours, no filter.
+  // Anchored a little above centre, so the face stays fully visible below the lanyard slot.
+  if (photo) {
+    const s = Math.max(W / photo.naturalWidth, H / photo.naturalHeight);
+    const w = photo.naturalWidth * s;
+    const h = photo.naturalHeight * s;
+    ctx.drawImage(photo, (W - w) / 2, (H - h) * 0.3, w, h);
+  }
 
+  // soft dark gradient at the bottom for the text
+  const g = ctx.createLinearGradient(0, H * 0.5, 0, H);
+  g.addColorStop(0, 'rgba(20,21,23,0)');
+  g.addColorStop(0.45, 'rgba(20,21,23,0.55)');
+  g.addColorStop(1, 'rgba(20,21,23,0.9)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, H * 0.5, W, H * 0.5);
+
+  ctx.textBaseline = 'alphabetic';
   // label
   ctx.font = `500 30px ${BODY}`;
   spaced(ctx, 2.4);
-  ctx.fillStyle = C.oxblood;
-  ctx.fillRect(PAD, 612, 48, 3);
-  ctx.fillText('GRÜNDER', PAD + 70, 624);
+  ctx.fillStyle = C.stone;
+  ctx.fillRect(PAD, 1018, 48, 3);
+  ctx.fillText('GRÜNDER', PAD + 70, 1030);
 
   // name
-  ctx.fillStyle = C.ink;
-  ctx.font = `700 190px ${DISPLAY}`;
-  spaced(ctx, -5);
-  ctx.fillText('Maxi', PAD - 8, 830);
+  ctx.font = `700 150px ${DISPLAY}`;
+  spaced(ctx, -4);
+  ctx.fillText('Maxi', PAD - 6, 1170);
 
   // lines
-  ctx.font = `500 50px ${BODY}`;
+  ctx.font = `500 44px ${BODY}`;
   spaced(ctx, 0);
-  ctx.fillStyle = C.ink;
-  ctx.fillText('IB Schüler, Schule Louisenlund', PAD, 950);
-  ctx.fillStyle = C.inkMuted;
-  ctx.fillText('Schleswig', PAD, 1020);
+  ctx.fillText('IB Schüler, Schule Louisenlund', PAD, 1236);
+  ctx.globalAlpha = 0.85;
+  ctx.fillText('Schleswig', PAD, 1290);
+  ctx.globalAlpha = 1;
 
-  // footer line with arrow, like the path cards
-  const by = H - 130;
-  ctx.strokeStyle = C.line;
+  // hint with arrow
+  const by = H - 106;
+  ctx.strokeStyle = 'rgba(232,231,227,0.45)';
   ctx.lineWidth = 3;
   ctx.beginPath();
   ctx.moveTo(PAD, by);
@@ -103,16 +107,16 @@ function front(mark: HTMLImageElement | null): string {
   ctx.stroke();
   ctx.font = `500 28px ${BODY}`;
   spaced(ctx, 1.5);
-  ctx.fillStyle = C.inkMuted;
-  ctx.fillText('UMDREHEN FÜR MEHR', PAD, by + 62);
-  ctx.strokeStyle = C.oxblood;
+  ctx.fillStyle = C.stone;
+  ctx.fillText('UMDREHEN FÜR MEHR', PAD, by + 58);
+  ctx.strokeStyle = C.stone;
   ctx.lineWidth = 4;
   ctx.beginPath();
-  ctx.moveTo(W - PAD - 52, by + 50);
-  ctx.lineTo(W - PAD, by + 50);
-  ctx.moveTo(W - PAD - 18, by + 34);
-  ctx.lineTo(W - PAD, by + 50);
-  ctx.lineTo(W - PAD - 18, by + 66);
+  ctx.moveTo(W - PAD - 52, by + 46);
+  ctx.lineTo(W - PAD, by + 46);
+  ctx.moveTo(W - PAD - 18, by + 30);
+  ctx.lineTo(W - PAD, by + 46);
+  ctx.lineTo(W - PAD - 18, by + 62);
   ctx.stroke();
   return c.toDataURL('image/png');
 }
@@ -176,6 +180,8 @@ export async function founderArtwork() {
     new Promise((r) => setTimeout(r, 2000)),
   ]);
   const base = import.meta.env.BASE_URL;
-  const [mark, markDark] = await Promise.all([loadImg(`${base}pathfinder-mark.svg`), loadImg(`${base}pathfinder-mark-dark.svg`)]);
-  return { frontImage: front(mark), backImage: back(markDark), strapImage: strap(markDark) };
+  // founder photo: WebP first, JPG as fallback (same files as the <picture> in index.html)
+  const photo = (await loadImg(`${base}images/founder.webp`)) ?? (await loadImg(`${base}images/founder.jpg`));
+  const markDark = await loadImg(`${base}pathfinder-mark-dark.svg`);
+  return { frontImage: front(photo), backImage: back(markDark), strapImage: strap(markDark) };
 }

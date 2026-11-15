@@ -145,3 +145,7 @@
   white-space: nowrap;
   border: 0;
 }
+
+/* wildcard box on the card back: inset by the back's padding (24 design px) */
+.rc-back { --inner-r: max(var(--radius-min), calc(var(--tc-radius) - 24 * var(--u))); }
+.rc-wild { border-radius: var(--inner-r); }

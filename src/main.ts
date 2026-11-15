@@ -281,7 +281,7 @@ if (insiderStack) {
         : { width: 500, height: 320, cardDistance: 46, verticalDistance: 52, depth: 90, skewAmount: 4, visibleCards: 4 }),
       delay: 5000,
       autoplay: !reduceMotion,
-      cardRadius: 20,
+      cardRadius: 24, // --radius-card
       dim: 0.45,
       label: 'Tipps von Studierenden',
       onChange: (i) => {

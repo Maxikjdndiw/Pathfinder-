@@ -792,3 +792,7 @@
       radial-gradient(closest-side at 82% 50%, rgba(232, 231, 227, 0.95), rgba(232, 231, 227, 0.8) 50%, rgba(232, 231, 227, 0));
   }
 }
+
+/* founder photo: shown on the lanyard card; the <picture> itself stays for screen readers
+   (and is the source image), visually hidden so the photo appears only once */
+.founder__photo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

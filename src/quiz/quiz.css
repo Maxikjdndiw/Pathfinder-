@@ -349,3 +349,29 @@ input[type='range']:disabled { opacity: 0.5; cursor: default; }
 .q-dl__step { padding: 12px 14px; border-radius: 12px; background: rgba(106, 19, 17, 0.07); }
 .q-dl__step dd { font-weight: 500; }
 .q-footnote { margin-top: var(--s-3); max-width: 52ch; text-align: center; font-size: var(--fs-caption); line-height: var(--lh-caption); color: var(--ink-muted); }
+
+/* ---------- shapes (see styles/shapes.css) ---------- */
+.q-screen {
+  --q-pad: clamp(24px, 5vw, 44px);
+  padding: var(--q-pad);
+  border-radius: var(--radius-card);
+  /* everything inside sits at least --q-pad from the edge */
+  --inner-r: max(var(--radius-min), calc(var(--radius-card) - var(--q-pad)));
+}
+.q-screen--wide { padding: 0; --inner-r: var(--radius-button); }
+.q-screen .btn,
+.q-option,
+.q-pill,
+.q-choice,
+.q-poster,
+.q-input,
+.q-hint { border-radius: var(--inner-r); }
+.q-pill { min-height: var(--btn-h); }
+.q-block {
+  border-radius: var(--radius-card);
+  --inner-r: max(var(--radius-min), calc(var(--radius-card) - clamp(22px, 5vw, 36px)));
+}
+.q-field { border-radius: var(--inner-r); }
+.q-dl__step { border-radius: max(var(--radius-min), calc(var(--inner-r) - 16px)); }
+/* result page buttons stand on their own */
+.q-result__cta .btn, .q-actions--center .btn { border-radius: var(--radius-button); }
