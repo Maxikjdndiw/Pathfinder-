@@ -272,6 +272,9 @@
   .step p:not(.step__q) { display: none; }
   .step { gap: 4px; padding: var(--s-2) var(--s-3); }
   .step__num { padding-bottom: var(--s-1); }
+  /* swiping works, so no arrow buttons */
+  .insiders__btn { display: none; }
+  .insiders__controls { margin: var(--s-2) 0 var(--s-1); }
   /* the sign-up button follows right below, no second arrow */
   .network__go { display: none; }
 }
@@ -407,6 +410,27 @@
 }
 
 /* ---------- Insiders (card swap) ---------- */
+.insiders {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: var(--s-4);
+  align-items: center;
+}
+.insiders__title { font-size: clamp(36px, 4.4vw, 60px); max-width: 14ch; margin-bottom: var(--s-3); }
+.insiders__controls { display: flex; align-items: center; gap: 10px; margin: var(--s-3) 0 var(--s-2); }
+.insiders__btn { width: 48px; height: 48px; padding: 0; font-size: 18px; }
+.insiders__count { margin-left: 6px; font-size: var(--fs-label); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.insiders__stack { height: clamp(420px, 38vw, 520px); }
+/* once sized, the stack is as tall as card 01 needs (set by main.ts), never cut */
+.insiders__stack.is-sized { height: var(--swap-stage-h); }
+@media (max-width: 900px) {
+  .insiders { grid-template-columns: 1fr; gap: var(--s-2); }
+  .insiders__stack { height: 440px; }
+}
+@media (max-width: 560px) {
+  .insiders__stack { height: 470px; }
+}
+
 /* ---------- Founder ---------- */
 .founder__inner {
   display: grid;

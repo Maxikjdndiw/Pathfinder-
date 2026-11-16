@@ -49,9 +49,14 @@
 .network__item-link img { border-radius: var(--inner-r); }
 
 /* square icon buttons follow the button height */
+.insiders__btn,
 .network__btn,
 .network__go { width: var(--btn-h); height: var(--btn-h); padding: 0; }
 
+/* insider cards (card swap): 24px, photo inset by the card padding */
+.insider { --inner-r: max(var(--radius-min), calc(var(--radius-card) - 10px)); }
+.insider--compact { --inner-r: max(var(--radius-min), calc(var(--radius-card) - 8px)); }
+.card-swap .insider__photo { border-radius: var(--inner-r); }
 
 @media (max-width: 760px) {
   .network__panel {

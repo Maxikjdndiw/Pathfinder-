@@ -1,19 +1,21 @@
 /**
- * Mentor tip cards in "Insider-Tipps". Add a card by adding an entry.
- * Photo: put a square image in /public/images and set  photo: 'images/<file>'.
- * Full tips unlock after signup, so cards only show short bullets (one line each).
+ * Real insider cards, shown first in the "Insider-Tipps" card stack (placeholders follow).
+ * Add a card by adding an entry; it replaces one placeholder.
+ * Full tips unlock after signup, so cards only show short bullets.
  */
 export interface Mentor {
+  /** chip at the top left */
+  field: string;
   name: string;
   role: string;
   tips: string[];
   /** card accent from the brand palette */
   accent: 'oxblood' | 'ocean' | 'ink';
-  photo?: string;
 }
 
 export const MENTORS: Mentor[] = [
   {
+    field: 'Finance',
     name: 'Simone Simoncelli',
     role: 'Associate bei BlackRock',
     accent: 'oxblood',
@@ -26,6 +28,7 @@ export const MENTORS: Mentor[] = [
     ],
   },
   {
+    field: 'Deep Tech',
     name: 'Axel Thierauf',
     role: 'Venture Capital Deep Tech Investor, QAI Ventures',
     accent: 'ocean',

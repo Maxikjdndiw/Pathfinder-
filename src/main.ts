@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initNavWave, initShine, initSignupLinks } from './common';
 import { createCardSwap } from './components/card-swap';
-import { MENTORS } from './content/mentors';
 import './components/topography.css'; // the static map fallback needs it before the WebGL chunk loads
 import { initSvgLiquidGlass } from './liquidGlass';
 import { initBorderGlow } from './borderGlow';
@@ -159,30 +158,109 @@ if (lanyardBox) {
   initBorderGlow(document.querySelectorAll<HTMLElement>('.why__point'), { glowColor: '40 25 94', colors: ['#6A1311', '#6FA3BE', '#F4F2EE'] });
 }
 
-/* 9. Insider tips: mentor cards (data in src/content/mentors.ts). "Mehr erfahren" leads to
-   the signup, because the full tips unlock after signing up. */
-{
-  const grid = document.getElementById('mentor-grid');
-  if (grid) {
+/* 9. Insider tips as a swapping card stack (React Bits CardSwap, ported).
+   The real cards (src/content/mentors.ts) come first, placeholders fill up to 6.
+   All cards share one size, taken from the tallest real card, so nothing is cut. */
+const insiderStack = document.getElementById('insider-stack');
+if (insiderStack) {
+  Promise.all([import('./cardSwap'), import('./content/insiders'), import('./content/mentors')]).then(([{ createCardSwap, stackBounds }, { INSIDERS: ALL_PLACEHOLDERS }, { MENTORS }]) => {
     const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
     const base = import.meta.env.BASE_URL;
-    grid.innerHTML = MENTORS.map(
-      (m) => `
-      <article class="mentor mentor--${m.accent}">
-        <a class="mentor__rail" href="#signup" aria-label="Mehr erfahren: alle Tipps von ${esc(m.name)} nach der Anmeldung">Mehr erfahren <span aria-hidden="true">←</span></a><!-- the rail is rotated, so this arrow points down to the signup -->
-        <div class="mentor__body">
-          <div class="mentor__head">
-            <span class="mentor__photo">${m.photo ? `<img src="${base}${esc(m.photo)}" alt="" loading="lazy">` : '<svg viewBox="0 0 100 110" aria-hidden="true"><circle cx="50" cy="38" r="22" fill="currentColor"/><path d="M8 110c0-26 19-42 42-42s42 16 42 42z" fill="currentColor"/></svg>'}</span>
-            <div>
-              <h3 class="mentor__name">${esc(m.name)}</h3>
-              <p class="mentor__role">${esc(m.role)}</p>
-            </div>
+    const INSIDERS = ALL_PLACEHOLDERS.slice(0, Math.max(0, 6 - MENTORS.length));
+    const total = String(MENTORS.length + INSIDERS.length).padStart(2, '0');
+    const compact = window.matchMedia('(max-width: 560px)').matches;
+    const num = (i: number) => `${String(i + 1).padStart(2, '0')} / ${total}`;
+    const initials = (name: string) => name.split(/\s+/).map((w) => w[0]).slice(0, 2).join('');
+
+    const real = MENTORS.map((m, i) => {
+      const el = document.createElement('article');
+      el.className = `insider insider--featured insider--${m.accent}${compact ? ' insider--compact' : ''}`;
+      el.innerHTML = `
+        <div class="insider__top"><span class="insider__field">${esc(m.field)}</span><span class="insider__num">${num(i)}</span></div>
+        <div class="insider__who">
+          <span class="insider__mono" aria-hidden="true">${esc(initials(m.name))}</span>
+          <div>
+            <p class="insider__name">${esc(m.name)}</p>
+            <p class="insider__role">${esc(m.role)}</p>
           </div>
-          <ul class="mentor__tips">${m.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
         </div>
-      </article>`,
-    ).join('');
-  }
+        <ul class="insider__bullets">${m.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+        <a class="insider__more" href="#signup">Mehr erfahren <span aria-hidden="true">→</span></a>`;
+      return el;
+    });
+
+    const placeholders = INSIDERS.map((p, i) => {
+      const el = document.createElement('article');
+      el.className = `insider insider--${p.accent}${compact ? ' insider--compact' : ''}`;
+      el.innerHTML = `
+        <div class="insider__photo">
+          ${p.photo ? `<img src="${base}${esc(p.photo)}" alt="${esc(p.name)}" draggable="false">` : `
+          <svg class="insider__silhouette" viewBox="0 0 100 110" aria-hidden="true"><circle cx="50" cy="38" r="22" fill="currentColor"/><path d="M8 110c0-26 19-42 42-42s42 16 42 42z" fill="currentColor"/></svg>
+          <span class="insider__photo-tag">Foto folgt</span>`}
+        </div>
+        <div class="insider__body">
+          <div class="insider__top"><span class="insider__field">${esc(p.field)}</span><span class="insider__num">${num(i + MENTORS.length)}</span></div>
+          <h3 class="insider__title">${esc(p.title)}</h3>
+          <p class="insider__text">${esc(p.text)}</p>
+          <div class="insider__person">
+            <p class="insider__name">${esc(p.name)}</p>
+            <dl class="insider__meta"><dt>Job</dt><dd>${esc(p.job)}</dd><dt>Studium</dt><dd>${esc(p.education)}</dd></dl>
+          </div>
+        </div>`;
+      return el;
+    });
+    const cards = [...real, ...placeholders];
+
+    const geo = compact
+      ? { cardDistance: 12, verticalDistance: 18, depth: 50, skewAmount: 2, visibleCards: 3, pad: 10 }
+      : { cardDistance: 40, verticalDistance: 46, depth: 80, skewAmount: 3, visibleCards: 4, pad: 28 };
+    // card width: as wide as the column allows (max 560), so the stage is never scaled down
+    const avail = insiderStack.clientWidth || insiderStack.parentElement!.clientWidth;
+    const boundsFor = (width: number, height: number) =>
+      stackBounds({ width, height, cardDistance: geo.cardDistance, verticalDistance: geo.verticalDistance, depth: geo.depth, skewAmount: geo.skewAmount, visible: geo.visibleCards, hoverSpread: 0.12, pad: geo.pad });
+    let width = compact ? 340 : 560;
+    for (let k = 0; k < 4; k++) width = Math.floor(width - Math.max(0, boundsFor(width, 400).width - avail));
+    width = Math.max(240, width);
+    // height: measure the real cards at that width, the tallest sets every card
+    const probe = document.createElement('div');
+    probe.className = 'card-swap insider-probe';
+    probe.style.cssText = `position:absolute;left:-9999px;top:0;visibility:hidden;width:${width}px`;
+    document.body.appendChild(probe);
+    let tallest = 0;
+    for (const card of real) {
+      const clone = card.cloneNode(true) as HTMLElement;
+      clone.style.height = 'auto';
+      probe.appendChild(clone);
+      tallest = Math.max(tallest, clone.getBoundingClientRect().height);
+      clone.remove();
+    }
+    const height = Math.max(compact ? 380 : 320, Math.ceil(tallest) + 2);
+    probe.remove();
+
+    const count = document.querySelector('[data-swap-count]');
+    const totalEl = document.querySelector('[data-swap-total]');
+    const note = document.querySelector<HTMLElement>('[data-insider-note]');
+    if (totalEl) totalEl.textContent = total;
+    const swap = createCardSwap(insiderStack, cards, {
+      ...geo,
+      width,
+      height,
+      delay: 5000,
+      autoplay: !reduceMotion,
+      cardRadius: 24, // --radius-card
+      dim: 0.45,
+      label: 'Tipps von Studierenden',
+      onChange: (i) => {
+        if (count) count.textContent = String(i + 1).padStart(2, '0');
+        // the placeholder note belongs to the placeholder cards only
+        if (note) note.hidden = i < MENTORS.length;
+      },
+    });
+    if (note) note.hidden = true;
+    insiderStack.classList.add('is-sized');
+    document.querySelector('[data-swap-prev]')?.addEventListener('click', () => swap.prev());
+    document.querySelector('[data-swap-next]')?.addEventListener('click', () => swap.next());
+  });
 }
 
 /* 10. Pathfinder Run teaser: example result card (Dealmaker), same component as the quiz */
