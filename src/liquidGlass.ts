@@ -1,6 +1,5 @@
 /**
- * Liquid glass for HTML elements that are NOT over the 3D scene (field tags, the nav
- * further down the page).
+ * Liquid glass for the field tags in "Für wen".
  *
  * Each element gets its own SVG filter, applied with `backdrop-filter: url(#…)`:
  *  - a displacement map generated from the element's rounded shape: zero in the calm

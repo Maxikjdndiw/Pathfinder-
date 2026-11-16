@@ -30,6 +30,8 @@ export interface CardSwapOptions {
   cardRadius?: number;
   intro?: boolean;
   label?: string;
+  /** free space around the stack inside the stage (px), for shadows and the hover spread */
+  pad?: number;
   onChange?: (index: number) => void;
   onCardClick?: (index: number) => void;
 }
@@ -51,7 +53,8 @@ const DOWN = { x: 0, y: 1 };
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
-const stackBounds = (o: { width: number; height: number; cardDistance: number; verticalDistance: number; depth: number; skewAmount: number; visible: number; hoverSpread: number }) => {
+export const stackBounds = (o: { width: number; height: number; cardDistance: number; verticalDistance: number; depth: number; skewAmount: number; visible: number; hoverSpread: number; pad?: number }) => {
+  const PAD_ = o.pad ?? PAD;
   const slope = Math.tan((o.skewAmount * Math.PI) / 180);
   const spread = 1 + Math.max(0, o.hoverSpread);
   let minX = Infinity;
@@ -72,10 +75,10 @@ const stackBounds = (o: { width: number; height: number; cardDistance: number; v
     }
   }
   return {
-    width: Math.ceil(maxX - minX + PAD * 2),
-    height: Math.ceil(maxY - minY + PAD * 2),
-    originX: PAD - minX,
-    originY: PAD - minY,
+    width: Math.ceil(maxX - minX + PAD_ * 2),
+    height: Math.ceil(maxY - minY + PAD_ * 2),
+    originX: PAD_ - minX,
+    originY: PAD_ - minY,
   };
 };
 
@@ -134,7 +137,7 @@ export function createCardSwap(root: HTMLElement, cards: HTMLElement[], options:
     dim: clamp(o.dim, 0, 1),
     bounds: { width: 0, height: 0, originX: 0, originY: 0 },
   };
-  s.bounds = stackBounds({ width: s.width, height: s.height, cardDistance: s.dx, verticalDistance: s.dy, depth: s.dz, skewAmount: s.skew, visible: s.visible, hoverSpread: s.hoverSpread });
+  s.bounds = stackBounds({ width: s.width, height: s.height, cardDistance: s.dx, verticalDistance: s.dy, depth: s.dz, skewAmount: s.skew, visible: s.visible, hoverSpread: s.hoverSpread, pad: o.pad });
 
   // ----- DOM -----
   root.classList.add('card-swap');

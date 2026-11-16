@@ -60,5 +60,12 @@
   --r-pill: 999px;
 
   --max-width: 1240px;
+  /* page grid shared by header and hero */
+  --page-margin: 48px;
+  --page-w: min(1280px, 100% - 2 * var(--page-margin));
+  --nav-h: 80px; /* 16px offset + 64px bar */
   --gutter: clamp(16px, 4vw, 40px);
+}
+@media (max-width: 899px) {
+  :root { --page-margin: 20px; }
 }

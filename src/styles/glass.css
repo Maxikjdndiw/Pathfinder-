@@ -76,7 +76,6 @@
     0 12px 30px -14px rgba(20, 21, 23, 0.3),
     0 2px 6px rgba(20, 21, 23, 0.05);
 }
-.has-svg-glass .nav.lg-svg { --lg-tint: 0.55; }
 
 /* thin specular rim, brightest where the pointer is (--lx) */
 .has-svg-glass .glass.lg-svg::before {
@@ -92,13 +91,3 @@
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
 }
-
-/* WebGL refraction: the glass is drawn inside the 3D scene, so the element itself is clear */
-.glass.lg-gl {
-  background: transparent !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-}
-.glass.lg-gl::before { display: none; }

@@ -30,12 +30,10 @@
 
 /* ---------- cards and boxed sections ---------- */
 .step,
-.hero__caption,
 .why__panel,
 .cta__panel,
 .founder__mentor,
 .founder__still,
-.path-card,
 .network__item-link {
   border-radius: var(--radius-card);
 }

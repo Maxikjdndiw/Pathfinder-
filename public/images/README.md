@@ -1,9 +1,5 @@
-# Card images
+# Images
 
-Put real photos for the flying cards here (portrait, about 3:4, e.g. 900 x 1200 px, JPG or WebP, under 200 kB each).
-
-Then open `src/content/cards.ts` and add `image: 'images/<file>'` to the card, for example:
-
-    { title: 'Bocconi', detail: 'Studium in Mailand', kind: 'Uni', variant: 'card', image: 'images/bocconi.jpg' },
-
-Cards without an image keep their generated colour fill.
+- `hero/`: the four hero cards, made by `npm run hero-cards` from `assets/card-photos/` (duotone, 680 x 880 WebP).
+- `topography.svg`: static contour map for the hero (no WebGL or reduced motion), made by `npm run topography-svg`.
+- `network/`: Netzwerk tiles, made by `npm run network-images`.

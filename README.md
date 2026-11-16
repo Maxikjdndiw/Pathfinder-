@@ -30,9 +30,9 @@ npm run preview
 | --- | --- |
 | Sign-up link (Google Form) | `src/config.ts` → `SIGNUP_URL` (used by every "Kostenlos mitmachen" button) |
 | Page texts | `index.html` (each section is marked with a comment) |
-| Impressum / Datenschutz | `impressum.html`, `datenschutz.html` (placeholders, must be filled before launch) |
-| Flying cards (titles, details, colours) | `src/content/cards.ts` |
-| Card photos | put files in `public/images/`, then add `image: 'images/<file>'` in `src/content/cards.ts` |
+| Impressum / Datenschutz | `impressum.html`, `datenschutz.html` |
+| Hero card stack (4 cards) | Markup and labels: `.hero-stack` in `index.html`. Photos: originals in `assets/card-photos/`, run `npm run hero-cards` (duotone, into `public/images/hero/`) |
+| Hero contour map | Live version: `src/components/topography.ts`. Static fallback: `npm run topography-svg` writes `public/images/topography.svg` |
 | Brand colours, fonts, spacing | `src/styles/tokens.css` |
 | Founder badge (lanyard) | Card texts and artwork: `src/lanyard/founderCard.ts`. Look and physics (colours, metal, swing): the `createLanyard(...)` options in `src/main.ts`. To use a real photo or design, pass image URLs as `frontImage` / `backImage` instead. |
 | Insider-Tipps cards | Texts, fields, job and study: `src/content/insiders.ts` (placeholders). Photos: put them in `public/images/` and add `photo: 'images/<file>'` to a card. |
@@ -42,17 +42,13 @@ npm run preview
 
 ## How the page is built
 
-- `src/main.ts` – sign-up links, scroll reveals, the scroll timeline of the hero, lazy loading of the 3D scene.
-- `src/scene.ts` – the Three.js card scene: cards fly in, form a ring around the headline, a tilted wall, then a road into the distance. Cards are drawn in code onto canvas textures; fast cards get a chromatic blur in the shader.
-- `src/glassPass.ts` – the final WebGL pass: background glows, soft bottom fade, and the real liquid glass (refraction shader) behind the nav, the hero subline and the captions while they sit over the 3D scene.
-- `src/liquidGlass.ts` – liquid glass for the field tags and the nav further down the page: an SVG displacement filter used through `backdrop-filter`. Chromium only; Safari and Firefox keep the frosted glass.
-- Both glass types switch back to frosted glass automatically if the frame rate drops (phones first). Add `?glass=force` to the URL to turn that guard off when testing.
-- `src/warpText.ts` – the road caption in the hero as warped WebGL text (React Bits WarpText, ported, uses `ogl`). The text lives in `data-text` on `.hero__warp` in `index.html`; style and warp settings are in `src/main.ts`.
+- `src/main.ts`: sign-up links, scroll reveals, the hero card stack and its scroll transition (GSAP ScrollTrigger), lazy loading of the heavier parts.
+- `src/components/card-swap.ts`: the hero card stack (React Bits Card Swap, rebuilt in plain TypeScript with GSAP): every 4 s the front card drops to the back; pauses on hover, off screen and in a hidden tab; static with reduced motion.
+- `src/components/topography.ts`: the contour map behind the hero and "Für wen" (React Bits Topography, rebuilt as one small WebGL shader, no Three.js). Rises gently under the mouse, slow drift on touch, max pixel ratio 1.5, pauses off screen. Without WebGL or with reduced motion the static `public/images/topography.svg` is shown.
+- `src/liquidGlass.ts`: liquid glass for the field tags: an SVG displacement filter used through `backdrop-filter`. Chromium only; Safari and Firefox keep the frosted glass. Switches back to frosted glass if the frame rate drops on phones.
 - `src/cardSwap.ts` – the swapping card stack in Insider-Tipps (React Bits CardSwap, ported to TypeScript). Drag or fling the front card, click a card behind, use the arrow buttons or arrow keys; it swaps on its own every 5 s and pauses on hover.
 - `src/borderGlow.ts` – the edge glow on the step cards, the ocean-section cards and the tip card (React Bits BorderGlow, adapted to brand colours).
 - `src/lanyard/lanyard.js` – the founder badge on a lanyard, ported from the React Bits Lanyard component to plain JavaScript (no React needed). Loaded only when the founder section comes near.
-- Fallback: with `prefers-reduced-motion` or without WebGL, the 3D scene is skipped and a static card grid is shown instead.
-- Phones get fewer cards and a lower pixel ratio. Rendering pauses when the hero is off screen.
 - Privacy: no cookies, no tracking, fonts are self-hosted (no requests to Google Fonts).
 
 ## Deploy

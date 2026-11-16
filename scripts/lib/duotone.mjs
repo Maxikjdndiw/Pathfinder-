@@ -1,5 +1,5 @@
 /**
- * Brand duotone, shared by the path cards (scripts/card-photos.mjs) and the network tiles
+ * Brand duotone, shared by the hero cards (scripts/hero-cards.mjs) and the network tiles
  * (scripts/network-images.mjs) so both look like one world.
  * Shadows in the variant colour, highlights in --card (#F4F2EE).
  */

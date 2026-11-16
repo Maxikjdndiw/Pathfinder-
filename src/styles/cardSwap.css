@@ -155,3 +155,47 @@
 .insider--compact .insider__title { margin-top: 10px; font-size: 20px; }
 .insider--compact .insider__text { font-size: 13.5px; line-height: 19px; }
 .insider--compact .insider__meta dd { white-space: normal; }
+
+/* ---------- Card 01: a real insider (monogram, quote, tips) ---------- */
+.insider--featured {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 24px 26px 26px;
+}
+.insider--featured .insider__field { background: var(--grad-oxblood); }
+.insider__who { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+.insider__mono {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--oxblood);
+  color: var(--stone);
+  font: 700 21px / 1 var(--font-display);
+  letter-spacing: -0.01em;
+}
+.insider--featured .insider__name { font-size: 15px; line-height: 20px; font-weight: 500; }
+.insider__role, .insider__path { font-size: 13.5px; line-height: 19px; color: var(--ink-muted); }
+.insider__quote {
+  margin: 20px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font: 700 26px / 1.12 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.insider__qm { color: var(--oxblood); }
+.insider__tips { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; }
+.insider__tips li { display: grid; grid-template-columns: 22px 1fr; gap: 6px; }
+.insider__tip-num { font: 700 15px / 20px var(--font-display); color: var(--oxblood); font-variant-numeric: tabular-nums; }
+.insider__tip-title { font-size: 14.5px; line-height: 20px; font-weight: 700; color: var(--ink); }
+.insider__tip-text { margin-top: 2px; font-size: 13.5px; line-height: 19px; color: var(--ink-muted); }
+
+.insider--featured.insider--compact { padding: 18px 18px 20px; }
+.insider--compact .insider__quote { font-size: 22px; margin-top: 16px; padding-top: 14px; }
+.insider--compact .insider__tips { margin-top: 16px; gap: 10px; }
+.insider--compact .insider__tip-text { font-size: 13px; line-height: 18.5px; }
