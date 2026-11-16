@@ -187,20 +187,13 @@
     <section class="section tips" id="tipps" aria-labelledby="tips-title">
       <div class="glow glow--ocean glow--e" aria-hidden="true"></div>
       <div class="container">
-        <div class="insiders">
-          <div class="insiders__intro" data-reveal>
-            <p class="eyebrow">Insider-Tipps</p>
-            <h2 class="display-2 insiders__title" id="tips-title">Wusstest du, was Studierende an Top Unis anders gemacht haben?</h2>
-            <p class="lead">Echte Tipps von Leuten, die den Weg gerade selbst gegangen sind: an Unis wie dem King's College London, der Bocconi oder der IE Madrid, in Finance, Design, Marketing, Tech und mehr.</p>
-            <div class="insiders__controls">
-              <button class="btn btn--glass insiders__btn" type="button" data-swap-prev aria-label="Vorherige Karte">←</button>
-              <button class="btn btn--glass insiders__btn" type="button" data-swap-next aria-label="Nächste Karte">→</button>
-              <span class="insiders__count" aria-live="polite"><span data-swap-count>01</span> / <span data-swap-total>06</span></span>
-            </div>
-            <p class="note" data-insider-note hidden>Platzhalter: Namen, Fotos und Texte folgen.</p>
-          </div>
-          <div class="insiders__stack" id="insider-stack"></div>
+        <div class="mentors__intro" data-reveal>
+          <p class="eyebrow">Insider-Tipps</p>
+          <h2 class="display-2" id="tips-title">Wusstest du, was Studierende an Top Unis anders gemacht haben?</h2>
+          <p class="lead">Echte Tipps von Leuten, die den Weg gerade selbst gegangen sind: an Unis wie dem King's College London, der Bocconi oder der IE Madrid, in Finance, Design, Marketing, Tech und mehr.</p>
         </div>
+        <!-- Cards from src/content/mentors.ts -->
+        <div class="mentor-grid" id="mentor-grid"></div>
       </div>
     </section>
 
@@ -275,7 +268,7 @@
     </section>
 
     <!-- FINAL CTA -->
-    <section class="section cta" aria-labelledby="cta-title">
+    <section class="section cta" id="signup" aria-labelledby="cta-title">
       <div class="container">
         <div class="cta__panel">
           <!-- Grainient (src/grainient/grainient.js); the panel's CSS gradient is the fallback -->

@@ -1,0 +1,88 @@
+/* ---------- Insider-Tipps: mentor tip cards ---------- */
+.mentors__intro { max-width: 720px; }
+.mentors__intro .display-2 { font-size: clamp(36px, 4.4vw, 60px); max-width: 18ch; }
+.mentors__intro .lead { margin-top: var(--s-3); }
+
+.mentor-grid {
+  margin-top: var(--s-4);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3);
+}
+@media (max-width: 760px) {
+  .mentor-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-2); }
+}
+
+.mentor {
+  --accent: var(--oxblood);
+  --accent-soft: rgba(106, 19, 17, 0.07);
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  border-radius: var(--radius-card);
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px -26px rgba(20, 21, 23, 0.32), 0 2px 6px rgba(20, 21, 23, 0.04);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.mentor--ocean { --accent: var(--ocean); --accent-soft: rgba(9, 105, 150, 0.08); }
+.mentor--ink { --accent: var(--ink); --accent-soft: rgba(20, 21, 23, 0.06); }
+.mentor:hover { transform: translateY(-3px); box-shadow: 0 26px 50px -26px rgba(20, 21, 23, 0.38), 0 2px 6px rgba(20, 21, 23, 0.05); }
+@media (prefers-reduced-motion: reduce) { .mentor, .mentor:hover { transition: none; transform: none; } }
+
+/* left rail: vertical "Mehr erfahren", centred, along the card edge */
+.mentor__rail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  background: var(--accent-soft);
+  border-left: 1px solid var(--line); /* sits on the inner side after the rotation */
+  color: var(--accent);
+  font: 500 13px / 1 var(--font-body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.mentor__rail:hover { background: var(--accent); color: var(--card); }
+.mentor__rail:focus-visible { outline-offset: -4px; border-radius: var(--radius-min); }
+
+.mentor__body { padding: 28px 28px 30px; }
+.mentor__head { display: flex; align-items: center; gap: 16px; }
+.mentor__photo {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: end center;
+  background: var(--accent-soft);
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.mentor__photo img { width: 100%; height: 100%; object-fit: cover; }
+.mentor__photo svg { width: 70%; opacity: 0.45; }
+.mentor__name { font: 700 22px / 1.1 var(--font-display); letter-spacing: -0.02em; }
+.mentor__role { margin-top: 4px; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+
+.mentor__tips { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+.mentor__tips li { position: relative; padding-left: 20px; font-size: 15.5px; line-height: 22px; color: var(--ink); }
+.mentor__tips li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+@media (max-width: 560px) {
+  .mentor { grid-template-columns: 40px minmax(0, 1fr); }
+  .mentor__body { padding: 22px 20px 24px; }
+}
