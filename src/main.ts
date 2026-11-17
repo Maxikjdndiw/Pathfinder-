@@ -336,15 +336,12 @@ if (exampleHost) {
             if (!tags || !section) return;
             const t = tags.getBoundingClientRect();
             const sct = section.getBoundingClientRect();
-            // a box centred on the tags: it starts at their middle and ends at the section edge,
-            // so the glow rises from just under the tags and the edge crops it
-            const pad = Math.min(160, sct.width * 0.12);
-            const left = Math.max(0, t.left - sct.left - pad);
-            const width = Math.min(sct.width - left, t.width + pad * 2);
-            // the layer starts well above the tags so the round glow has room to form;
-            // its brightest part ends up just under the tags, the section edge crops the rest
-            const top = Math.max(0, t.top - sct.top - t.height * 1.1);
-            Object.assign(host.style, { left: `${Math.round(left)}px`, width: `${Math.round(width)}px`, top: `${Math.round(top)}px`, bottom: '0px', height: 'auto' });
+            // full page width. The glow is brightest near the layer's lower edge, so the layer
+            // ends a little under the tags: the light sits behind them and fades out softly
+            // further down instead of being cut off by the section edge
+            const top = Math.max(0, t.top - sct.top - 520);
+            const bottom = Math.round(sct.bottom - t.bottom - 90);
+            Object.assign(host.style, { left: '0px', width: '100%', top: `${Math.round(top)}px`, bottom: `${bottom}px`, height: 'auto' });
           };
           fit();
           new ResizeObserver(fit).observe(host.parentElement!);
