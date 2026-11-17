@@ -1,0 +1,78 @@
+/* Hero trail and stops (see hero-trail.ts). Colours come from tokens.css. */
+.hero__trail {
+  --trail-draw: 4s; /* keep in sync with DRAW_SECONDS in hero-trail.ts */
+  position: relative;
+}
+
+/* ---------- pills: same height and padding everywhere ---------- */
+.stop__pill {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--oxblood);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--oxblood);
+  font: 500 13px / 1 var(--font-body);
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  transform-origin: center;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.stop__pill:hover,
+.stop__pill:focus-visible,
+.stop__pill:focus {
+  transform: scale(1.08);
+  background: var(--oxblood);
+  color: var(--card);
+}
+.stop__pill:focus-visible { outline: 2px solid var(--ocean); outline-offset: 3px; border-radius: 999px; }
+.stop__dot {
+  display: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--oxblood);
+  box-shadow: 0 0 0 3px var(--card);
+  transition: transform 0.2s ease;
+}
+
+/* ---------- small screens: no trail, stops wrap under the buttons ---------- */
+.trail__svg { display: none; }
+.trail__stops { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ---------- wide screens: winding trail on the right ---------- */
+@media (min-width: 1100px) {
+  .hero__trail { height: clamp(560px, calc(100svh - 150px), 720px); }
+  .trail__svg { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .trail__path {
+    fill: none;
+    stroke: var(--oxblood);
+    stroke-opacity: 0.55;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  .trail__stops { display: block; margin: 0; position: absolute; inset: 0; }
+  .stop { position: absolute; width: 0; height: 0; z-index: 1; opacity: 0; }
+  .stop:hover, .stop:focus-within { z-index: 5; }
+  .stop__dot { display: block; position: absolute; left: -4.5px; top: -4.5px; }
+  .stop:hover .stop__dot, .stop:focus-within .stop__dot { transform: scale(1.35); }
+  .stop__pill { position: absolute; }
+
+  /* once placed: draw the line once, fade each stop in as the line reaches it */
+  .hero__trail.is-placed .trail__path { animation: trail-draw var(--trail-draw) linear forwards; }
+  .hero__trail.is-placed .stop { animation: stop-in 0.5s ease forwards; animation-delay: var(--t, 0s); }
+}
+@keyframes trail-draw { to { stroke-dashoffset: 0; } }
+@keyframes stop-in { to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__trail.is-placed .trail__path { animation: none; stroke-dashoffset: 0; }
+  .hero__trail.is-placed .stop { animation: none; opacity: 1; }
+  .stop__pill, .stop__dot { transition: none; }
+}

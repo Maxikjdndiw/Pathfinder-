@@ -52,6 +52,8 @@
     <!-- HERO + "Für wen": one surface with the contour map behind it (src/components/topography.ts) -->
     <div class="topo-surface" id="topo-surface">
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <!-- map layer: contour lines with a soft radial mask, grain on top (pure CSS) -->
+      <div class="hero__map" aria-hidden="true"></div>
       <div class="hero__grid">
         <div class="hero__text" data-hero-text>
           <p class="hero__kicker">Für Schülerinnen und Schüler ab 15</p>
@@ -64,14 +66,25 @@
           <p class="hero__note">Kostenlos in der Pilotphase. Kein Login für den Test.</p>
         </div>
 
-        <div class="hero__stack-col" data-hero-stack>
-          <!-- Card stack (src/components/card-swap.ts). Static HTML, so it shows before any script. -->
-          <div class="hero-stack" id="hero-stack" role="img" aria-label="Beispiele für Wege: Finance, Design, Medizin, Studieren im Ausland">
-            <figure class="hc" style="--i: 0"><img src="/images/hero/finance.webp" alt="" width="680" height="880" fetchpriority="high" decoding="async" /><span class="hc__grad"></span><figcaption class="hc__text"><span class="hc__kicker">Weg 01</span><span class="hc__label">Finance</span></figcaption><span class="hc__shade"></span></figure>
-            <figure class="hc" style="--i: 1"><img src="/images/hero/design.webp" alt="" width="680" height="880" decoding="async" /><span class="hc__grad"></span><figcaption class="hc__text"><span class="hc__kicker">Weg 02</span><span class="hc__label">Design</span></figcaption><span class="hc__shade"></span></figure>
-            <figure class="hc" style="--i: 2"><img src="/images/hero/medizin.webp" alt="" width="680" height="880" decoding="async" /><span class="hc__grad"></span><figcaption class="hc__text"><span class="hc__kicker">Weg 03</span><span class="hc__label">Medizin</span></figcaption><span class="hc__shade"></span></figure>
-            <figure class="hc" style="--i: 3"><img src="/images/hero/auslandsjahr.webp" alt="" width="680" height="880" decoding="async" /><span class="hc__grad"></span><figcaption class="hc__text"><span class="hc__kicker">Weg 04</span><span class="hc__label">Studieren im Ausland</span></figcaption><span class="hc__shade"></span></figure>
-          </div>
+        <!-- Trail with 12 stops (src/components/hero-trail.ts places the stops along the path) -->
+        <div class="hero__trail" data-hero-trail>
+          <svg class="trail__svg" aria-hidden="true" focusable="false">
+            <path class="trail__path" pathLength="1" d="" />
+          </svg>
+          <ul class="trail__stops" aria-label="Beispiele für Wege">
+            <li class="stop" style="--i: 0"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Finance</span></li>
+            <li class="stop" style="--i: 1"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Design</span></li>
+            <li class="stop" style="--i: 2"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Marketing</span></li>
+            <li class="stop" style="--i: 3"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Mode</span></li>
+            <li class="stop" style="--i: 4"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Tech</span></li>
+            <li class="stop" style="--i: 5"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Medizin</span></li>
+            <li class="stop" style="--i: 6"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Jura</span></li>
+            <li class="stop" style="--i: 7"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Architektur</span></li>
+            <li class="stop" style="--i: 8"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Medien</span></li>
+            <li class="stop" style="--i: 9"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Gründen</span></li>
+            <li class="stop" style="--i: 10"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Studieren im Ausland</span></li>
+            <li class="stop" style="--i: 11"><span class="stop__dot" aria-hidden="true"></span><span class="stop__pill" tabindex="0">Stipendien</span></li>
+          </ul>
         </div>
       </div>
     </section>

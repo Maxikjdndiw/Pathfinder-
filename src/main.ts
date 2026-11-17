@@ -2,7 +2,7 @@ import './styles/index.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initNavWave, initShine, initSignupLinks } from './common';
-import { createCardSwap } from './components/card-swap';
+import { initHeroTrail } from './components/hero-trail';
 import './components/topography.css'; // the static map fallback needs it before the WebGL chunk loads
 import { initSvgLiquidGlass } from './liquidGlass';
 import { initBorderGlow } from './borderGlow';
@@ -35,10 +35,10 @@ if (!reduceMotion) {
   });
 }
 
-/* 5. Hero: card stack (React Bits Card Swap, rebuilt) and the contour map background
-   (React Bits Topography, rebuilt). Reduced motion: static stack and the static map. */
-const heroStack = document.getElementById('hero-stack');
-if (heroStack) createCardSwap(heroStack);
+/* 5. Hero: trail with 12 stops (src/components/hero-trail.ts). The contour canvas below
+   serves "Für wen"; the hero has its own CSS map on top of it. */
+const heroTrail = document.querySelector<HTMLElement>('[data-hero-trail]');
+if (heroTrail) initHeroTrail(heroTrail);
 
 {
   const surface = document.getElementById('topo-surface');
@@ -55,17 +55,15 @@ if (heroStack) createCardSwap(heroStack);
   }
 }
 
-/* 6. Scroll transition into "Für wen": the stack moves up and fades, the text fades a little.
-   On phones the stack sits below the text, so it moves only a few pixels and never reaches it. */
+/* 6. Scroll transition into "Für wen": the trail and the text fade a little. */
 if (!reduceMotion) {
   const mm = gsap.matchMedia();
   const scrub = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 };
   mm.add('(min-width: 900px)', () => {
-    gsap.to('[data-hero-stack]', { y: -120, autoAlpha: 0, ease: 'none', scrollTrigger: scrub });
+    gsap.to('[data-hero-trail]', { autoAlpha: 0.35, ease: 'none', scrollTrigger: scrub });
     gsap.to('[data-hero-text]', { autoAlpha: 0.35, ease: 'none', scrollTrigger: scrub });
   });
   mm.add('(max-width: 899px)', () => {
-    gsap.to('[data-hero-stack]', { y: -16, autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: '[data-hero-stack]', start: 'top 35%', end: 'bottom top', scrub: 0.6 } });
     gsap.to('[data-hero-text]', { autoAlpha: 0.5, ease: 'none', scrollTrigger: { trigger: '[data-hero-text]', start: 'top top', end: 'bottom top', scrub: 0.6 } });
   });
 }

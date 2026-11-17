@@ -124,6 +124,8 @@
    48px side margin (20px below 900px). */
 .hero {
   position: relative;
+  z-index: 0; /* own layer above the fixed contour canvas of "Für wen" */
+  isolation: isolate;
   min-height: max(640px, 100vh);
   min-height: max(640px, 100svh);
   display: flex;
@@ -138,8 +140,41 @@
   column-gap: 24px;
   align-items: center;
 }
-.hero__text { grid-column: 1 / span 6; display: flex; flex-direction: column; align-items: flex-start; }
-.hero__stack-col { grid-column: 8 / span 5; display: flex; justify-content: flex-end; }
+.hero__text { grid-column: 1 / span 6; display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 1; }
+.hero__trail { grid-column: 7 / span 6; z-index: 1; }
+@media (max-width: 1099px) {
+  .hero__grid { row-gap: 32px; }
+  .hero__trail { grid-column: 1 / -1; }
+}
+
+/* Background layers, all behind the text: plain base, contour map, paper grain.
+   The base fades out at the bottom, so the contour lines of "Für wen" start softly. */
+.hero::before,
+.hero::after,
+.hero__map {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent);
+  mask-image: linear-gradient(180deg, #000 80%, transparent);
+}
+.hero::before { background: var(--stone); }
+/* contour lines: larger and fainter than the original map, fading out towards the edges */
+.hero__map {
+  background: url('/images/topography.svg') 70% 40% / 2600px auto repeat;
+  opacity: 0.38;
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 66% 48%, #000 25%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 70% at 66% 48%, #000 25%, transparent 100%);
+}
+/* paper grain: a small static noise tile; change its strength with --grain */
+.hero::after {
+  --grain: 0.08;
+  opacity: var(--grain);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
 
 .hero__kicker {
   font: 500 14px / 20px var(--font-body);
@@ -182,9 +217,8 @@
 
 @media (max-width: 899px) {
   .hero { min-height: 0; display: block; padding-bottom: 56px; }
-  .hero__grid { grid-template-columns: minmax(0, 1fr); row-gap: 56px; }
-  .hero__text, .hero__stack-col { grid-column: 1; }
-  .hero__stack-col { justify-content: center; }
+  .hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .hero__text, .hero__trail { grid-column: 1; }
   .hero__title { font-size: 44px; }
   .hero__sub { font-size: 17px; }
   .hero__actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 420px; }

@@ -31,7 +31,7 @@ npm run preview
 | Sign-up link (Google Form) | `src/config.ts` → `SIGNUP_URL` (used by every "Kostenlos mitmachen" button) |
 | Page texts | `index.html` (each section is marked with a comment) |
 | Impressum / Datenschutz | `impressum.html`, `datenschutz.html` |
-| Hero card stack (4 cards) | Markup and labels: `.hero-stack` in `index.html`. Photos: originals in `assets/card-photos/`, run `npm run hero-cards` (duotone, into `public/images/hero/`) |
+| Hero trail and stops | Stop labels: the `.stop` list in `index.html` (hero section). Trail shape: `TRAIL_POINTS` in `src/components/hero-trail.ts`. Pill and line colours: `src/components/hero-trail.css`. Map and grain: `.hero__map` and `.hero::after` (`--grain`) in `src/styles/sections.css` |
 | Hero contour map | Live version: `src/components/topography.ts`. Static fallback: `npm run topography-svg` writes `public/images/topography.svg` |
 | Brand colours, fonts, spacing | `src/styles/tokens.css` |
 | Founder badge (lanyard) | Card texts and artwork: `src/lanyard/founderCard.ts`. Look and physics (colours, metal, swing): the `createLanyard(...)` options in `src/main.ts`. To use a real photo or design, pass image URLs as `frontImage` / `backImage` instead. |
@@ -42,8 +42,8 @@ npm run preview
 
 ## How the page is built
 
-- `src/main.ts`: sign-up links, scroll reveals, the hero card stack and its scroll transition (GSAP ScrollTrigger), lazy loading of the heavier parts.
-- `src/components/card-swap.ts`: the hero card stack (React Bits Card Swap, rebuilt in plain TypeScript with GSAP): every 4 s the front card drops to the back; pauses on hover, off screen and in a hidden tab; static with reduced motion.
+- `src/main.ts`: sign-up links, scroll reveals, the hero trail and its scroll transition (GSAP ScrollTrigger), lazy loading of the heavier parts.
+- `src/components/hero-trail.ts`: the hero trail. Builds the line from `TRAIL_POINTS`, spaces the 12 stops evenly along it and places each pill on alternating sides where it has the most clear space. Below 1100px the stops wrap in a row instead.
 - `src/components/topography.ts`: the contour map behind the hero and "Für wen" (React Bits Topography, rebuilt as one small WebGL shader, no Three.js). Rises gently under the mouse, slow drift on touch, max pixel ratio 1.5, pauses off screen. Without WebGL or with reduced motion the static `public/images/topography.svg` is shown.
 - `src/liquidGlass.ts`: liquid glass for the field tags: an SVG displacement filter used through `backdrop-filter`. Chromium only; Safari and Firefox keep the frosted glass. Switches back to frosted glass if the frame rate drops on phones.
 - `src/cardSwap.ts` – the swapping card stack in Insider-Tipps (React Bits CardSwap, ported to TypeScript). Drag or fling the front card, click a card behind, use the arrow buttons or arrow keys; it swaps on its own every 5 s and pauses on hover.
