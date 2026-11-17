@@ -8,10 +8,10 @@ import sharp from 'sharp';
 const W = 900;
 const H = 1271;
 const INK = '#141517';
-const STONE = '#E8E7E3';
-const OX = '#6A1311';
-const OXL = '#741714';
-const OC = '#096996';
+const STONE = '#FFFFFF';
+const OX = '#7A1F2E';
+const OXL = '#8A2636';
+const OC = '#1B2F52';
 
 const bg = (top, bottom) => `<defs><linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="${top}"/><stop offset="1" stop-color="${bottom}"/></linearGradient>
 <radialGradient id="glow" cx="0.7" cy="0.25" r="0.7"><stop offset="0" stop-color="${STONE}" stop-opacity="0.18"/><stop offset="1" stop-color="${STONE}" stop-opacity="0"/></radialGradient></defs>
@@ -107,11 +107,11 @@ const palettes = {
   dealmaker: ['#1d2633', INK],
   mastermind: ['#2a1a19', INK],
   creator: [OX, INK],
-  builder: ['#10202a', INK],
-  storyteller: ['#2a1513', INK],
+  builder: ['#111a2b', INK],
+  storyteller: ['#2a141a', INK],
   leader: ['#5d6b74', '#1b1f24'],
-  detective: ['#0f2d3d', INK],
-  connector: ['#3a1312', INK],
+  detective: ['#121d33', INK],
+  connector: ['#3a1219', INK],
 };
 
 for (const [slug, draw] of Object.entries(motifs)) {

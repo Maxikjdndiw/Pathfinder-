@@ -56,7 +56,7 @@ for (const [slug, [file, variant]] of Object.entries(PHOTOS)) {
 }
 
 /* ---------- placeholders: one style, abstract shapes, theme colours ---------- */
-const C = { stone: '#E8E7E3', card: '#F4F2EE', ink: '#141517', ox: '#6A1311', oxD: '#5F0F0C', oxL: '#741714', oc: '#096996', ocL: '#6FA3BE' };
+const C = { stone: '#FFFFFF', card: '#FFFFFF', ink: '#141517', ox: '#7A1F2E', oxD: '#6B1A27', oxL: '#8A2636', oc: '#1B2F52', ocL: '#6F84A8' };
 
 const frame = (bg1, bg2, body) => `<svg xmlns="http://www.w3.org/2000/svg" width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}">
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient>
@@ -80,7 +80,7 @@ const PLACEHOLDERS = {
     <circle cx="282" cy="560" r="120" fill="${C.ox}" opacity="0.9"/><circle cx="742" cy="560" r="120" fill="${C.card}" opacity="0.35"/>
     <rect x="372" y="780" width="280" height="36" rx="18" fill="${C.card}" opacity="0.6"/>`),
   // Madrid: warm sun over stepped blocks
-  'city-madrid': frame(C.oc, '#0b5578', `
+  'city-madrid': frame(C.oc, '#142540', `
     <circle cx="700" cy="330" r="150" fill="${C.card}" opacity="0.85"/>
     ${[[80, 640, 220, 384], [300, 540, 200, 484], [500, 600, 180, 424], [680, 500, 260, 524]].map(([x, y, w, h]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="18" fill="${C.ink}" opacity="0.55"/>`).join('')}
     ${path(C.ocL, 'M60 900 C 300 860, 600 940, 980 880')}`),
@@ -94,7 +94,7 @@ const PLACEHOLDERS = {
     <circle cx="640" cy="520" r="230" fill="${C.oc}" opacity="0.8"/>
     ${path(C.card, 'M150 860 C 380 800, 640 800, 880 860')}`),
   // Mock Interviews: two speech-like rounded shapes facing each other
-  'activity-mock-interview': frame(C.oc, '#0b5578', `
+  'activity-mock-interview': frame(C.oc, '#142540', `
     <rect x="120" y="260" width="460" height="300" rx="150" fill="${C.card}" opacity="0.9"/>
     <path d="M220 540 L190 640 L320 555 Z" fill="${C.card}" opacity="0.9"/>
     <rect x="444" y="520" width="460" height="300" rx="150" fill="${C.ink}" opacity="0.75"/>
