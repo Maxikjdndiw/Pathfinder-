@@ -4,14 +4,14 @@
  * by passing an image URL instead.
  */
 const C = {
-  stone: '#E8E7E3',
-  card: '#F4F2EE',
+  stone: '#FFFFFF',
+  card: '#FFFFFF',
   line: '#CFCDC7',
   ink: '#141517',
   inkMuted: '#5E5F63',
-  oxblood: '#6A1311',
-  oxbloodDark: '#5F0F0C',
-  oxbloodLight: '#741714',
+  oxblood: '#7A1F2E',
+  oxbloodDark: '#6B1A27',
+  oxbloodLight: '#8A2636',
 };
 const DISPLAY = '"Bricolage Grotesque Variable", "Bricolage Grotesque", system-ui, sans-serif';
 const BODY = 'Inter, system-ui, sans-serif';
@@ -99,7 +99,7 @@ function front(photo: HTMLImageElement | null): string {
 
   // hint with arrow
   const by = H - 106;
-  ctx.strokeStyle = 'rgba(232,231,227,0.45)';
+  ctx.strokeStyle = 'rgba(255, 255, 255,0.45)';
   ctx.lineWidth = 3;
   ctx.beginPath();
   ctx.moveTo(PAD, by);

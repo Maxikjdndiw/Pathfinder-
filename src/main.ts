@@ -113,8 +113,8 @@ if (lanyardBox) {
         const { createLanyard } = await import('./lanyard/lanyard.js');
         lanyard = createLanyard(lanyardBox, {
           ...art,
-          cardColor: '#F4F2EE',
-          strapColor: '#6A1311',
+          cardColor: '#FFFFFF',
+          strapColor: '#7A1F2E',
           finish: 'glossy',
           metal: 'graphite',
           cornerRadius: 0.35,
@@ -155,7 +155,7 @@ if (lanyardBox) {
 {
   initBorderGlow(document.querySelectorAll<HTMLElement>('.step'));
   // cards on the ocean panel: glow in the light card colour so it shows on blue
-  initBorderGlow(document.querySelectorAll<HTMLElement>('.why__point'), { glowColor: '40 25 94', colors: ['#6A1311', '#6FA3BE', '#F4F2EE'] });
+  initBorderGlow(document.querySelectorAll<HTMLElement>('.why__point'), { glowColor: '0 0 100', colors: ['#7A1F2E', '#6F84A8', '#FFFFFF'] });
 }
 
 /* 9. Insider tips as a swapping card stack (React Bits CardSwap, ported).
@@ -299,7 +299,7 @@ if (exampleHost) {
 {
   // light mode: from the edge of the light to its brightest point
   // blue only: ocean-light at the edge of the light, ocean at its core
-  const BRAND_RAMP = ['#6FA3BE', '#3f87ab', '#096996'];
+  const BRAND_RAMP = ['#6F84A8', '#3E5680', '#1B2F52'];
   const presets: Record<string, import('./gradientAscii/gradientAscii').GradientAsciiOptions> = {
     // a radial glow rising from the section's lower edge (cropped by it), behind the tags
     fields: { shape: 'rise', scale: 1.1, variation: 2, gradientOpacity: 0.8, glyphOpacity: 0.7 },
@@ -370,7 +370,7 @@ if (exampleHost) {
         const handle = createGrainient(host, {
           // dark brand ramp: light text stays readable on every colour
           // our blues only; the lightest stays dark enough for the light text
-          colors: ['#021c29', '#043a55', '#075a82', '#096996', '#1b78a4'],
+          colors: ['#0A1220', '#111E36', '#162746', '#1B2F52', '#2B4572'],
           type: 'linear',
           angle: 150,
           // a soft fold of light like the reference, not a flat field

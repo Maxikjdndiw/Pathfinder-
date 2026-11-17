@@ -54,12 +54,12 @@ function gradientVars(colors: string[]): Record<string, string> {
 export function initBorderGlow(elements: Iterable<HTMLElement>, opts: BorderGlowOptions = {}): void {
   const o = {
     edgeSensitivity: 8, // starts glowing soon after the pointer leaves the centre
-    glowColor: '199 89 31', // ocean
+    glowColor: '218 50 21', // navy
     glowRadius: 44,
     glowIntensity: 1.5,
     coneSpread: 25,
     fillOpacity: 0.55,
-    colors: ['#6A1311', '#096996', '#6FA3BE'], // oxblood, ocean, ocean-light
+    colors: ['#7A1F2E', '#1B2F52', '#6F84A8'], // oxblood, ocean, ocean-light
     ...opts,
   };
   const vars = {

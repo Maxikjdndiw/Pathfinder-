@@ -1,24 +1,24 @@
 /* Pathfinder brand tokens. Change brand values here only. */
 :root {
   /* Colour */
-  --stone: #E8E7E3;
-  --card: #F4F2EE;
+  --stone: #FFFFFF;
+  --card: #FFFFFF;
   --line: #CFCDC7;
   --ink: #141517;
   --ink-muted: #5E5F63;
-  --oxblood: #6A1311;
-  --oxblood-dark: #5F0F0C;
-  --oxblood-light: #741714;
-  --ocean: #096996;
-  --ocean-light: #6FA3BE; /* shapes only, never text */
+  --oxblood: #7A1F2E;
+  --oxblood-dark: #6B1A27;
+  --oxblood-light: #8A2636;
+  --ocean: #1B2F52;
+  --ocean-light: #6F84A8; /* shapes only, never text */
 
   /* Gradients */
   --grad-oxblood: linear-gradient(180deg, var(--oxblood-dark), var(--oxblood-light));
   --grad-ocean: linear-gradient(180deg, var(--ocean), var(--ocean-light));
 
   /* Liquid glass */
-  --glass-bg: rgba(244, 242, 238, 0.55);
-  --glass-bg-strong: rgba(244, 242, 238, 0.72);
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.72);
   --glass-border: rgba(255, 255, 255, 0.6);
   --glass-border-bottom: rgba(20, 21, 23, 0.08);
   --glass-blur: blur(20px) saturate(160%);

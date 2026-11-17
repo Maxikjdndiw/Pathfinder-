@@ -1,6 +1,6 @@
 /* CardSwap (React Bits, ported) – engine styles, with the Pathfinder light theme */
 .card-swap {
-  --swap-tile: linear-gradient(180deg, #F7F6F2 0%, var(--card) 100%);
+  --swap-tile: linear-gradient(180deg, #FFFFFF 0%, var(--card) 100%);
   --swap-tile-edge: rgba(20, 21, 23, 0.08);
   --swap-tile-highlight: rgba(255, 255, 255, 0.9);
   --swap-shadow: 0 30px 60px -28px rgba(20, 21, 23, 0.38), 0 10px 24px -14px rgba(20, 21, 23, 0.2);
@@ -99,7 +99,7 @@
   bottom: 0;
   width: 78%;
   transform: translateX(-50%);
-  color: rgba(244, 242, 238, 0.28);
+  color: rgba(255, 255, 255, 0.28);
 }
 .insider__photo-tag {
   position: relative;

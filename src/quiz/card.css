@@ -109,7 +109,7 @@
   padding: calc(9 * var(--u)) calc(10 * var(--u));
   border-radius: 12px;
   border: 1px dashed var(--ocean);
-  background: rgba(9, 105, 150, 0.06);
+  background: rgba(27, 47, 82, 0.06);
   font-size: calc(13 * var(--u));
   line-height: 1.25;
 }

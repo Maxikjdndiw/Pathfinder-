@@ -17,12 +17,12 @@
   justify-content: space-between;
   gap: var(--s-3);
   /* simple frosted glass: stone at 75 %, blur, one line colour border */
-  background: rgba(232, 231, 227, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--line);
 }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .nav {
-    background: rgba(232, 231, 227, 0.75);
+    background: rgba(255, 255, 255, 0.75);
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
   }
@@ -332,7 +332,7 @@
   right: -20%;
   top: -35%;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(244, 242, 238, 0.14), rgba(244, 242, 238, 0));
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0));
   pointer-events: none;
 }
 .eyebrow--light { color: var(--card); }
@@ -496,7 +496,7 @@
   padding: clamp(64px, 10vw, 128px) clamp(24px, 6vw, 80px);
   color: var(--card);
   /* fallback and first paint, in the same colours as the Grainient */
-  background: linear-gradient(150deg, #021c29 0%, #043a55 35%, #075a82 70%, var(--ocean) 100%);
+  background: linear-gradient(150deg, #0A1220 0%, #111E36 35%, #162746 70%, var(--ocean) 100%);
 }
 .cta__grain,
 .cta__grain.grainient-container { position: absolute; inset: 0; z-index: 0; width: auto; height: auto; }
@@ -504,7 +504,7 @@
 .cta__grain.is-on canvas { opacity: 1; }
 .cta__panel .cta__inner { position: relative; z-index: 1; }
 .cta .display-2 { color: var(--card); }
-.cta .lead { color: rgba(244, 242, 238, 0.86); }
+.cta .lead { color: rgba(255, 255, 255, 0.86); }
 .btn--light {
   color: var(--ink);
   background: var(--card);
@@ -627,13 +627,13 @@
   inset: -48px -64px;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(closest-side, rgba(232, 231, 227, 0.94), rgba(232, 231, 227, 0.78) 55%, rgba(232, 231, 227, 0));
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.78) 55%, rgba(255, 255, 255, 0));
 }
 @media (min-width: 561px) {
   .has-3d .hero__bottom::before {
     background:
-      radial-gradient(closest-side at 22% 50%, rgba(232, 231, 227, 0.95), rgba(232, 231, 227, 0.8) 55%, rgba(232, 231, 227, 0)),
-      radial-gradient(closest-side at 82% 50%, rgba(232, 231, 227, 0.95), rgba(232, 231, 227, 0.8) 50%, rgba(232, 231, 227, 0));
+      radial-gradient(closest-side at 22% 50%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8) 55%, rgba(255, 255, 255, 0)),
+      radial-gradient(closest-side at 82% 50%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0));
   }
 }
 

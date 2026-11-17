@@ -3,7 +3,7 @@
   --tc-w: 340px;
   --tc-h: 480px;
   --tc-radius: 24px;
-  --tc-glare-color: #f4f2ee;
+  --tc-glare-color: #FFFFFF;
   position: relative;
   width: var(--tc-w);
   height: var(--tc-h);

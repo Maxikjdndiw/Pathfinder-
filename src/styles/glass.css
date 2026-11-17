@@ -67,7 +67,7 @@
 .has-svg-glass .glass.lg-svg {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
-    rgba(244, 242, 238, var(--lg-tint, 0.3));
+    rgba(255, 255, 255, var(--lg-tint, 0.3));
   -webkit-backdrop-filter: var(--lg-filter) saturate(165%) brightness(1.03);
   backdrop-filter: var(--lg-filter) saturate(165%) brightness(1.03);
   border-color: transparent;

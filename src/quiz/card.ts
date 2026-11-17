@@ -79,7 +79,7 @@ export function mountResultCard(host: HTMLElement, d: CardData, opts: { intro?: 
     rotateAmplitude: 12,
     scaleOnHover: 1.04,
     glare: 0.35,
-    glareColor: '#F4F2EE',
+    glareColor: '#FFFFFF',
     shadow: 0.5,
     radius: 24,
     smoothness: 0.6,
