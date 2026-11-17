@@ -39,4 +39,15 @@ export const MENTORS: Mentor[] = [
       'Deep Tech braucht verschiedene Talente',
     ],
   },
+  {
+    field: 'Fashion',
+    name: 'Xiao Lan',
+    role: 'Studied fashion design, now working in luxury retail',
+    accent: 'ink',
+    tips: [
+      "Don't be afraid to change direction.",
+      'An unexpected job can teach you confidence and people skills.',
+      "You don't need to have everything figured out.",
+    ],
+  },
 ];

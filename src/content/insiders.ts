@@ -17,15 +17,6 @@ export interface Insider {
 /** Placeholder cards; real cards come from src/content/mentors.ts and go first. */
 export const INSIDERS: Insider[] = [
   {
-    field: 'Wirtschaft',
-    title: 'So habe ich mein erstes Praktikum gefunden',
-    text: 'Ohne Kontakte, mit einer guten E-Mail und viel Geduld.',
-    name: 'Name folgt',
-    job: 'Praktikum, Unternehmensberatung',
-    education: 'BSc International Economics, Bocconi Mailand',
-    accent: 'ocean',
-  },
-  {
     field: 'Design',
     title: 'Ein Portfolio, das auffällt',
     text: 'Warum fünf starke Arbeiten mehr zählen als zwanzig mittelmäßige.',
