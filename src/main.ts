@@ -1,7 +1,7 @@
 import './styles/index.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { initNavWave, initShine, initSignupLinks } from './common';
+import { initNavGlass, initNavWave, initShine, initSignupLinks } from './common';
 import { initHeroTrail } from './components/hero-trail';
 import './components/topography.css'; // the static map fallback needs it before the WebGL chunk loads
 import { initSvgLiquidGlass } from './liquidGlass';
@@ -16,6 +16,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 /* 1. Every "Kostenlos mitmachen" button uses the one link from src/config.ts */
 initSignupLinks();
+initNavGlass();
 
 /* Nav links: letter wave on hover/focus (src/common.ts) */
 initNavWave();

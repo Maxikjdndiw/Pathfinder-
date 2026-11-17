@@ -1,5 +1,5 @@
 /**
- * Liquid glass for the field tags in "Für wen".
+ * Liquid glass for the header and the field tags in "Für wen".
  *
  * Each element gets its own SVG filter, applied with `backdrop-filter: url(#…)`:
  *  - a displacement map generated from the element's rounded shape: zero in the calm
@@ -80,7 +80,17 @@ const channel = {
   b: '0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0',
 };
 
-export function initSvgLiquidGlass(elements: HTMLElement[]): () => void {
+export interface LiquidGlassOptions {
+  /** filter id prefix, unique per call */
+  prefix?: string;
+  /** blur of the page behind the glass (px); higher = frostier */
+  blur?: number;
+  /** red/blue fringe at the rim; off = one clean refraction */
+  chromatic?: boolean;
+}
+
+export function initSvgLiquidGlass(elements: HTMLElement[], options: LiquidGlassOptions = {}): () => void {
+  const { prefix = 'liquid-glass', blur = 0.8, chromatic = true } = options;
   if (!elements.length || !supportsSvgBackdrop()) return () => {};
   document.documentElement.classList.add('has-svg-glass');
 
@@ -97,7 +107,7 @@ export function initSvgLiquidGlass(elements: HTMLElement[]): () => void {
     if (target.dataset.lgSize === key) return;
     target.dataset.lgSize = key;
 
-    const id = `liquid-glass-${index}`;
+    const id = `${prefix}-${index}`;
     defs.querySelector(`#${id}`)?.remove();
     const radius = parseFloat(getComputedStyle(target).borderTopLeftRadius) || 0;
     // strength scales with the element: small tags bend less than the big nav pill
@@ -116,20 +126,24 @@ export function initSvgLiquidGlass(elements: HTMLElement[]): () => void {
     filter.appendChild(
       el('feImage', { href: displacementMap(w, h, radius), x: 0, y: 0, width: w, height: h, result: 'map', preserveAspectRatio: 'none' }),
     );
-    filter.appendChild(el('feGaussianBlur', { in: 'SourceGraphic', stdDeviation: 0.8, edgeMode: 'duplicate', result: 'soft' }));
-    const parts: [keyof typeof channel, number][] = [
-      ['r', scale * 1.07],
-      ['g', scale],
-      ['b', scale * 0.93],
-    ];
-    for (const [c, sc] of parts) {
-      filter.appendChild(
-        el('feDisplacementMap', { in: 'soft', in2: 'map', scale: sc.toFixed(1), xChannelSelector: 'R', yChannelSelector: 'G', result: `d${c}` }),
-      );
-      filter.appendChild(el('feColorMatrix', { in: `d${c}`, type: 'matrix', values: channel[c], result: c }));
+    filter.appendChild(el('feGaussianBlur', { in: 'SourceGraphic', stdDeviation: blur, edgeMode: 'duplicate', result: 'soft' }));
+    if (chromatic) {
+      const parts: [keyof typeof channel, number][] = [
+        ['r', scale * 1.07],
+        ['g', scale],
+        ['b', scale * 0.93],
+      ];
+      for (const [c, sc] of parts) {
+        filter.appendChild(
+          el('feDisplacementMap', { in: 'soft', in2: 'map', scale: sc.toFixed(1), xChannelSelector: 'R', yChannelSelector: 'G', result: `d${c}` }),
+        );
+        filter.appendChild(el('feColorMatrix', { in: `d${c}`, type: 'matrix', values: channel[c], result: c }));
+      }
+      filter.appendChild(el('feBlend', { in: 'r', in2: 'g', mode: 'screen', result: 'rg' }));
+      filter.appendChild(el('feBlend', { in: 'rg', in2: 'b', mode: 'screen' }));
+    } else {
+      filter.appendChild(el('feDisplacementMap', { in: 'soft', in2: 'map', scale, xChannelSelector: 'R', yChannelSelector: 'G' }));
     }
-    filter.appendChild(el('feBlend', { in: 'r', in2: 'g', mode: 'screen', result: 'rg' }));
-    filter.appendChild(el('feBlend', { in: 'rg', in2: 'b', mode: 'screen' }));
     defs.appendChild(filter);
 
     target.style.setProperty('--lg-filter', `url(#${id})`);

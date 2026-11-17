@@ -3,6 +3,7 @@
  * pointer light on glass, liquid glass on the nav.
  */
 import { SIGNUP_URL } from './config';
+import { initSvgLiquidGlass } from './liquidGlass';
 
 const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -39,4 +40,11 @@ export function initShine(root: ParentNode = document): void {
       el.style.setProperty('--my', `${e.clientY - r.top}px`);
     });
   });
+}
+
+/** Header: real liquid glass (refraction at the rim, slight blur, no colour fringe).
+    Chromium only; other browsers keep the frosted glass from sections.css. */
+export function initNavGlass(): void {
+  const nav = document.querySelector<HTMLElement>('.nav');
+  if (nav) initSvgLiquidGlass([nav], { prefix: 'nav-glass', blur: 5, chromatic: false });
 }
