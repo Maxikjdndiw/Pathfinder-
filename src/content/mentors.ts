@@ -47,7 +47,7 @@ export const MENTORS: Mentor[] = [
     tips: [
       'Hab keine Angst, die Richtung zu ändern.',
       'Ein unerwarteter Job kann dir Selbstvertrauen und den Umgang mit Menschen beibringen.',
-      'Du musst nicht schon alles herausgefunden haben.',
+      'Du musst noch nicht alles wissen.',
     ],
   },
 ];
