@@ -40,14 +40,14 @@ export const MENTORS: Mentor[] = [
     ],
   },
   {
-    field: 'Fashion',
+    field: 'Mode',
     name: 'Xiao Lan',
-    role: 'Studied fashion design, now working in luxury retail',
+    role: 'Hat Modedesign studiert, arbeitet jetzt im Luxuseinzelhandel',
     accent: 'ink',
     tips: [
-      "Don't be afraid to change direction.",
-      'An unexpected job can teach you confidence and people skills.',
-      "You don't need to have everything figured out.",
+      'Hab keine Angst, die Richtung zu ändern.',
+      'Ein unerwarteter Job kann dir Selbstvertrauen und den Umgang mit Menschen beibringen.',
+      'Du musst nicht schon alles herausgefunden haben.',
     ],
   },
 ];
