@@ -5,7 +5,7 @@
  *
  * - Trail shape: TRAIL_POINTS below (x and y as shares of the trail box, 0 to 1).
  * - Pills alternate sides of the line, so neighbours never sit next to each other.
- * - Below 1100px wide the trail is hidden and the stops wrap in a row (CSS only).
+ * - Below 1100px wide the trail and its stops are hidden (CSS only).
  * - Drawing and fade in are CSS animations; prefers-reduced-motion turns them off.
  */
 import './hero-trail.css';

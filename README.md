@@ -43,7 +43,7 @@ npm run preview
 ## How the page is built
 
 - `src/main.ts`: sign-up links, scroll reveals, the hero trail and its scroll transition (GSAP ScrollTrigger), lazy loading of the heavier parts.
-- `src/components/hero-trail.ts`: the hero trail. Builds the line from `TRAIL_POINTS`, spaces the 12 stops evenly along it and places each pill on alternating sides where it has the most clear space. Below 1100px the stops wrap in a row instead.
+- `src/components/hero-trail.ts`: the hero trail. Builds the line from `TRAIL_POINTS`, spaces the 12 stops evenly along it and places each pill on alternating sides where it has the most clear space. Below 1100px the trail and stops are hidden.
 - `src/components/topography.ts`: the contour map behind the hero and "Für wen" (React Bits Topography, rebuilt as one small WebGL shader, no Three.js). Rises gently under the mouse, slow drift on touch, max pixel ratio 1.5, pauses off screen. Without WebGL or with reduced motion the static `public/images/topography.svg` is shown.
 - `src/liquidGlass.ts`: liquid glass for the field tags: an SVG displacement filter used through `backdrop-filter`. Chromium only; Safari and Firefox keep the frosted glass. Switches back to frosted glass if the frame rate drops on phones.
 - `src/cardSwap.ts` – the swapping card stack in Insider-Tipps (React Bits CardSwap, ported to TypeScript). Drag or fling the front card, click a card behind, use the arrow buttons or arrow keys; it swaps on its own every 5 s and pauses on hover.
