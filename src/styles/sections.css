@@ -155,7 +155,7 @@
   text-wrap: balance;
   color: var(--ink);
 }
-.hero__accent { color: var(--oxblood); }
+.hero__accent { color: var(--ink); }
 .hero__sub {
   margin-top: 32px;
   font-size: 20px;
