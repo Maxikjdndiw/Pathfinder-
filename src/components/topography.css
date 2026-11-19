@@ -1,9 +1,8 @@
-/* Topography background (see topography.ts). The canvas is fixed behind all content. */
+/* Topography background (see topography.ts). The canvas sits in the surface and scrolls
+   with it; size set by a ResizeObserver. */
 .topo-canvas {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
   z-index: -1;
   pointer-events: none;
   opacity: 0;

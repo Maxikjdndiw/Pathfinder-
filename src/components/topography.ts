@@ -5,9 +5,10 @@
  * the light stone theme: no glow, no click pulse. Used as part of this website only.
  *
  * One small fragment shader on plain WebGL (no Three.js, so the first screen stays light).
- * The canvas is fixed to the viewport; the field is drawn in page coordinates, so the lines
- * scroll with the content. It covers the "surface" element (hero + "Für wen") and fades out
- * at its end. Lines are stronger on the right and fade towards the left.
+ * The canvas sits inside the "surface" element (hero + "Für wen") and has its size, so it
+ * scrolls with the page like any other element and is never redrawn on scroll. It is drawn
+ * once, on resize, and while the cursor lift eases out. The lines fade out at the end of the
+ * surface and are stronger on the right.
  *
  * Returns null without WebGL; the caller then shows the static SVG.
  */
@@ -34,8 +35,6 @@ const FRAG = `
 precision highp float;
 uniform vec2 uRes;      // canvas size in device px
 uniform float uDpr;
-uniform float uScroll;  // viewport top in surface coordinates (css px)
-uniform float uTime;
 uniform vec3 uMouse;    // x, y in surface coordinates (css px), strength 0..1
 uniform float uStrength;
 uniform vec2 uFade;     // vertical fade from, to (surface css px)
@@ -64,12 +63,11 @@ float fbm(vec2 p) {
 }
 
 void main() {
-  // css px, page coordinates relative to the surface
+  // css px, relative to the surface (the canvas covers it exactly)
   vec2 css = vec2(gl_FragCoord.x, uRes.y - gl_FragCoord.y) / uDpr;
-  vec2 page = vec2(css.x, css.y + uScroll);
+  vec2 page = css;
   vec2 p = page / 460.0;
-  float t = uTime * 0.012;
-  float h = fbm(p + vec2(t, t * 0.6));
+  float h = fbm(p);
   // the land rises gently under the cursor
   vec2 d = (page - uMouse.xy) / 260.0;
   h += uMouse.z * 0.11 * exp(-dot(d, d));
@@ -127,33 +125,71 @@ export function createTopography(options: TopographyOptions): TopographyHandle |
   const U = {
     res: u('uRes'),
     dpr: u('uDpr'),
-    scroll: u('uScroll'),
-    time: u('uTime'),
     mouse: u('uMouse'),
     strength: u('uStrength'),
     fade: u('uFade'),
     small: u('uSmall'),
   };
   gl.clearColor(0, 0, 0, 0);
-  document.body.prepend(canvas);
 
   const coarse = window.matchMedia('(hover: none), (pointer: coarse)');
   const small = window.matchMedia('(max-width: 899px)');
   const lowPower = () => coarse.matches || small.matches;
+  surface.prepend(canvas);
+
   let dpr = 1;
+  let visible = true;
   const resize = () => {
-    // max 1.5; phones render at 1 (the lines are very faint there, so it costs nothing visible)
-    dpr = lowPower() ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
-    canvas.width = Math.round(window.innerWidth * dpr);
-    canvas.height = Math.round(window.innerHeight * dpr);
+    const w = surface.clientWidth;
+    const h = surface.clientHeight;
+    // desktop max 1.25, touch 1; never taller than 4096 device px
+    dpr = Math.min(lowPower() ? 1 : Math.min(window.devicePixelRatio || 1, 1.25), 4096 / Math.max(1, h));
+    canvas.width = Math.max(1, Math.round(w * dpr));
+    canvas.height = Math.max(1, Math.round(h * dpr));
+    canvas.style.width = `${w}px`;
+    canvas.style.height = `${h}px`;
     gl.viewport(0, 0, canvas.width, canvas.height);
-    dirty = true;
+    draw();
+  };
+
+  const draw = () => {
+    if (!visible) return;
+    const h = canvas.height / dpr;
+    gl.uniform2f(U.res, canvas.width, canvas.height);
+    gl.uniform1f(U.dpr, dpr);
+    gl.uniform3f(U.mouse, mouse.x, mouse.y, mouse.s);
+    // overall visibility: about 25 % on desktop, 15 % on phones
+    gl.uniform1f(U.strength, small.matches ? 0.3 : 0.55);
+    gl.uniform2f(U.fade, h * fadeFrom, h);
+    gl.uniform1f(U.small, small.matches ? 1 : 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
 
   // cursor: very gentle, slow easing; none on touch devices
   const mouse = { x: -9999, y: -9999, tx: -9999, ty: -9999, s: 0, ts: 0 };
+  let raf = 0;
+  let last = 0;
+  const ease = (now: number) => {
+    raf = 0;
+    const dt = last ? Math.min(0.1, (now - last) / 1000) : 1 / 60;
+    last = now;
+    const k = 1 - Math.exp(-dt * 1.6); // slow easing
+    mouse.x += (mouse.tx - mouse.x) * k;
+    mouse.y += (mouse.ty - mouse.y) * k;
+    mouse.s += (mouse.ts - mouse.s) * k;
+    draw();
+    const moving = Math.abs(mouse.tx - mouse.x) + Math.abs(mouse.ty - mouse.y) > 0.5 || Math.abs(mouse.ts - mouse.s) > 0.01;
+    if (moving && visible && !document.hidden) raf = requestAnimationFrame(ease);
+  };
+  const wake = () => {
+    if (!raf && visible && !document.hidden) {
+      last = 0;
+      raf = requestAnimationFrame(ease);
+    }
+  };
   const onMove = (e: PointerEvent) => {
-    if (e.pointerType !== 'mouse' || lowPower()) return;
+    if (e.pointerType !== 'mouse' || lowPower() || !visible) return;
     const r = surface.getBoundingClientRect();
     mouse.tx = e.clientX - r.left;
     mouse.ty = e.clientY - r.top;
@@ -169,76 +205,28 @@ export function createTopography(options: TopographyOptions): TopographyHandle |
     wake();
   };
 
-  // Redraw only when something changed: scroll, size, the eased cursor, or the slow drift.
-  // The drift is so slow that a few frames a second look continuous.
-  let raf = 0;
-  let last = 0;
-  let drawnAt = -1e9;
-  let lastScroll = NaN;
-  let time = 0;
-  let visible = true;
-  let dirty = true;
-  const frame = (now: number) => {
-    raf = 0;
-    if (!visible || document.hidden) return;
-    const dt = last ? Math.min(0.1, (now - last) / 1000) : 1 / 60;
-    last = now;
-    time += dt;
-    const k = 1 - Math.exp(-dt * 1.6); // slow easing
-    mouse.x += (mouse.tx - mouse.x) * k;
-    mouse.y += (mouse.ty - mouse.y) * k;
-    mouse.s += (mouse.ts - mouse.s) * k;
-    const easing = Math.abs(mouse.tx - mouse.x) + Math.abs(mouse.ty - mouse.y) > 0.5 || Math.abs(mouse.ts - mouse.s) > 0.01;
-    const r = surface.getBoundingClientRect();
-    const scrolled = r.top !== lastScroll;
-    const driftEvery = lowPower() ? 250 : 100;
-    if (dirty || scrolled || (easing && now - drawnAt > 16) || now - drawnAt > driftEvery) {
-      dirty = false;
-      lastScroll = r.top;
-      drawnAt = now;
-      gl.uniform2f(U.res, canvas.width, canvas.height);
-      gl.uniform1f(U.dpr, dpr);
-      gl.uniform1f(U.scroll, -r.top);
-      gl.uniform1f(U.time, time);
-      gl.uniform3f(U.mouse, mouse.x, mouse.y, mouse.s);
-      // overall visibility: about 25 % on desktop, 15 % on phones
-      gl.uniform1f(U.strength, small.matches ? 0.3 : 0.55);
-      gl.uniform2f(U.fade, r.height * fadeFrom, r.height);
-      gl.uniform1f(U.small, small.matches ? 1 : 0);
-      gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
-    }
-    raf = requestAnimationFrame(frame);
-  };
-  function wake() {
-    if (!raf && visible && !document.hidden) {
-      last = 0;
-      raf = requestAnimationFrame(frame);
-    }
-  }
-  resize();
-  window.addEventListener('resize', resize);
   window.addEventListener('pointermove', onMove, { passive: true });
   document.documentElement.addEventListener('pointerleave', onOut);
+  const ro = new ResizeObserver(resize);
+  ro.observe(surface);
   const io = new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;
-    canvas.style.visibility = visible ? 'visible' : 'hidden';
-    if (visible) wake();
+    if (!visible) {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    }
   });
   io.observe(surface);
-  const onVis = () => wake();
-  document.addEventListener('visibilitychange', onVis);
+  resize();
   canvas.classList.add('is-on');
-  wake();
 
   return {
     destroy() {
       cancelAnimationFrame(raf);
       io.disconnect();
-      window.removeEventListener('resize', resize);
+      ro.disconnect();
       window.removeEventListener('pointermove', onMove);
       document.documentElement.removeEventListener('pointerleave', onOut);
-      document.removeEventListener('visibilitychange', onVis);
       canvas.remove();
     },
   };

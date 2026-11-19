@@ -59,13 +59,13 @@ if (heroTrail) initHeroTrail(heroTrail);
 /* 6. Scroll transition into "Für wen": the trail and the text fade a little. */
 if (!reduceMotion) {
   const mm = gsap.matchMedia();
-  const scrub = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 };
+  const scrub = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
   mm.add('(min-width: 900px)', () => {
     gsap.to('[data-hero-trail]', { autoAlpha: 0.35, ease: 'none', scrollTrigger: scrub });
     gsap.to('[data-hero-text]', { autoAlpha: 0.35, ease: 'none', scrollTrigger: scrub });
   });
   mm.add('(max-width: 899px)', () => {
-    gsap.to('[data-hero-text]', { autoAlpha: 0.5, ease: 'none', scrollTrigger: { trigger: '[data-hero-text]', start: 'top top', end: 'bottom top', scrub: 0.6 } });
+    gsap.to('[data-hero-text]', { autoAlpha: 0.5, ease: 'none', scrollTrigger: { trigger: '[data-hero-text]', start: 'top top', end: 'bottom top', scrub: true } });
   });
 }
 
