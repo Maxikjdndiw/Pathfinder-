@@ -462,6 +462,7 @@
 }
 .insiders__title { font-size: clamp(36px, 4.4vw, 60px); max-width: 14ch; margin-bottom: var(--s-3); }
 .insiders__controls { display: flex; align-items: center; gap: 10px; margin: var(--s-3) 0 var(--s-2); }
+.insiders__controls[hidden] { display: none; }
 .insiders__btn { width: 48px; height: 48px; padding: 0; font-size: 18px; }
 .insiders__count { margin-left: 6px; font-size: var(--fs-label); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
 .insiders__stack { height: clamp(420px, 38vw, 520px); }

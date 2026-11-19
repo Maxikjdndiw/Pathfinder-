@@ -158,18 +158,18 @@ if (lanyardBox) {
 }
 
 /* 9. Insider tips as a swapping card stack (React Bits CardSwap, ported).
-   The real cards (src/content/mentors.ts) come first, placeholders fill up to 6.
-   All cards share one size, taken from the tallest real card, so nothing is cut. */
+   Only real cards from src/content/mentors.ts. Counter and arrows follow their number;
+   with a single card there are no arrows. All cards share the height of the tallest one. */
 const insiderStack = document.getElementById('insider-stack');
 if (insiderStack) {
-  Promise.all([import('./cardSwap'), import('./content/insiders'), import('./content/mentors')]).then(([{ createCardSwap, stackBounds }, { INSIDERS: ALL_PLACEHOLDERS }, { MENTORS }]) => {
+  Promise.all([import('./cardSwap'), import('./content/mentors')]).then(([{ createCardSwap, stackBounds }, { MENTORS }]) => {
     const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
-    const base = import.meta.env.BASE_URL;
-    const INSIDERS = ALL_PLACEHOLDERS.slice(0, Math.max(0, 6 - MENTORS.length));
-    const total = String(MENTORS.length + INSIDERS.length).padStart(2, '0');
+    const total = String(MENTORS.length).padStart(2, '0');
     const compact = window.matchMedia('(max-width: 560px)').matches;
     const num = (i: number) => `${String(i + 1).padStart(2, '0')} / ${total}`;
-    const initials = (name: string) => name.split(/\s+/).map((w) => w[0]).slice(0, 2).join('');
+    // neutral default profile picture: light grey circle, grey head and shoulders
+    const avatar =
+      '<span class="insider__avatar" aria-hidden="true"><svg viewBox="0 0 56 56" width="56" height="56"><circle cx="28" cy="21" r="10" fill="#B0B0B0"/><ellipse cx="28" cy="52" rx="19" ry="15" fill="#B0B0B0"/></svg></span>';
 
     const real = MENTORS.map((m, i) => {
       const el = document.createElement('article');
@@ -177,7 +177,7 @@ if (insiderStack) {
       el.innerHTML = `
         <div class="insider__top"><span class="insider__field">${esc(m.field)}</span><span class="insider__num">${num(i)}</span></div>
         <div class="insider__who">
-          <span class="insider__mono" aria-hidden="true">${esc(initials(m.name))}</span>
+          ${avatar}
           <div>
             <p class="insider__name">${esc(m.name)}</p>
             <p class="insider__role">${esc(m.role)}</p>
@@ -187,32 +187,11 @@ if (insiderStack) {
         <a class="insider__more" href="#signup">Mehr erfahren <span aria-hidden="true">→</span></a>`;
       return el;
     });
-
-    const placeholders = INSIDERS.map((p, i) => {
-      const el = document.createElement('article');
-      el.className = `insider insider--${p.accent}${compact ? ' insider--compact' : ''}`;
-      el.innerHTML = `
-        <div class="insider__photo">
-          ${p.photo ? `<img src="${base}${esc(p.photo)}" alt="${esc(p.name)}" draggable="false">` : `
-          <svg class="insider__silhouette" viewBox="0 0 100 110" aria-hidden="true"><circle cx="50" cy="38" r="22" fill="currentColor"/><path d="M8 110c0-26 19-42 42-42s42 16 42 42z" fill="currentColor"/></svg>
-          <span class="insider__photo-tag">Foto folgt</span>`}
-        </div>
-        <div class="insider__body">
-          <div class="insider__top"><span class="insider__field">${esc(p.field)}</span><span class="insider__num">${num(i + MENTORS.length)}</span></div>
-          <h3 class="insider__title">${esc(p.title)}</h3>
-          <p class="insider__text">${esc(p.text)}</p>
-          <div class="insider__person">
-            <p class="insider__name">${esc(p.name)}</p>
-            <dl class="insider__meta"><dt>Job</dt><dd>${esc(p.job)}</dd><dt>Studium</dt><dd>${esc(p.education)}</dd></dl>
-          </div>
-        </div>`;
-      return el;
-    });
-    const cards = [...real, ...placeholders];
+    const cards = real;
 
     const geo = compact
-      ? { cardDistance: 12, verticalDistance: 18, depth: 50, skewAmount: 2, visibleCards: 3, pad: 10 }
-      : { cardDistance: 40, verticalDistance: 46, depth: 80, skewAmount: 3, visibleCards: 4, pad: 28 };
+      ? { cardDistance: 12, verticalDistance: 18, depth: 50, skewAmount: 2, visibleCards: Math.min(3, cards.length), pad: 10 }
+      : { cardDistance: 40, verticalDistance: 46, depth: 80, skewAmount: 3, visibleCards: Math.min(4, cards.length), pad: 28 };
     // card width: as wide as the column allows (max 560), so the stage is never scaled down
     const avail = insiderStack.clientWidth || insiderStack.parentElement!.clientWidth;
     const boundsFor = (width: number, height: number) =>
@@ -238,24 +217,24 @@ if (insiderStack) {
 
     const count = document.querySelector('[data-swap-count]');
     const totalEl = document.querySelector('[data-swap-total]');
-    const note = document.querySelector<HTMLElement>('[data-insider-note]');
     if (totalEl) totalEl.textContent = total;
+    const several = cards.length > 1;
+    // one card: no arrows, no counter, nothing to swap
+    document.querySelector<HTMLElement>('.insiders__controls')?.toggleAttribute('hidden', !several);
     const swap = createCardSwap(insiderStack, cards, {
       ...geo,
       width,
       height,
       delay: 5000,
-      autoplay: !reduceMotion,
+      autoplay: several && !reduceMotion,
+      draggable: several,
       cardRadius: 24, // --radius-card
       dim: 0.45,
-      label: 'Tipps von Studierenden',
+      label: 'Insider-Tipps',
       onChange: (i) => {
         if (count) count.textContent = String(i + 1).padStart(2, '0');
-        // the placeholder note belongs to the placeholder cards only
-        if (note) note.hidden = i < MENTORS.length;
       },
     });
-    if (note) note.hidden = true;
     insiderStack.classList.add('is-sized');
     document.querySelector('[data-swap-prev]')?.addEventListener('click', () => swap.prev());
     document.querySelector('[data-swap-next]')?.addEventListener('click', () => swap.next());

@@ -35,7 +35,7 @@ npm run preview
 | Hero contour map | Live version: `src/components/topography.ts`. Static fallback: `npm run topography-svg` writes `public/images/topography.svg` |
 | Brand colours, fonts, spacing | `src/styles/tokens.css` |
 | Founder badge (lanyard) | Card texts and artwork: `src/lanyard/founderCard.ts`. Look and physics (colours, metal, swing): the `createLanyard(...)` options in `src/main.ts`. To use a real photo or design, pass image URLs as `frontImage` / `backImage` instead. |
-| Insider-Tipps cards | Real cards first: `src/content/mentors.ts` (name, role, field, short tips, accent). Placeholders fill up to 6: `src/content/insiders.ts`. |
+| Insider-Tipps cards | `src/content/mentors.ts` (name, role, field, short tips, accent). Only real cards; counter and arrows follow their number, one card shows no arrows. |
 | Social preview image | `public/og-image.png` (1200 × 630) |
 | Logo | `public/pathfinder-mark.svg` (light backgrounds), `public/pathfinder-mark-dark.svg` (dark backgrounds). The nav inlines `pathfinder-mark.svg` at build time, so replacing that file updates the nav too. |
 | Favicon / app icons | `public/pathfinder-app-icon.svg`; the PNGs (`favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) are rendered from it – regenerate them if the icon changes |
