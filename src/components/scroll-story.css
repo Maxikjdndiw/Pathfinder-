@@ -1,0 +1,119 @@
+/* "Wie es funktioniert" as a scroll story (see scroll-story.ts).
+   Default (phones, reduced motion, no JS): steps stacked, each with its own card.
+   .is-story (desktop): steps on the left, one card on the right, pinned while scrolling. */
+.story { margin-top: var(--s-5); position: relative; }
+.story__steps { display: flex; flex-direction: column; gap: var(--s-5); }
+.story__step { display: flex; flex-direction: column; gap: var(--s-3); }
+.story__num { display: block; font: 700 15px / 1 var(--font-display); color: var(--ink-muted); margin-bottom: 10px; }
+.story__text h3 { font-size: var(--fs-h1); line-height: 1.05; }
+.story__q { margin-top: 6px; font-weight: 500; color: var(--ink); }
+.story__p { margin-top: 6px; color: var(--ink-muted); max-width: 44ch; }
+.story__progress, .story__stage { display: none; }
+
+/* ---------- the card and its scenes (HTML and CSS only, no text that claims anything) ---------- */
+.story__visual { max-width: 560px; }
+.story__visual,
+.story__card {
+  position: relative;
+  border-radius: var(--radius-card);
+  background: var(--card);
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+}
+.sc {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(24px, 6%, 44px);
+  gap: 12px;
+}
+/* skeleton lines: <i class="w60"> is a line 60 % wide */
+.sc i { display: block; height: 7px; border-radius: 4px; background: var(--line); }
+.sc i.h8 { height: 9px; }
+.sc i.h10 { height: 12px; }
+.sc i.dark { background: var(--ink-muted); }
+.sc .w22 { width: 22%; } .sc .w30 { width: 30%; } .sc .w35 { width: 35%; } .sc .w40 { width: 40%; }
+.sc .w45 { width: 45%; } .sc .w50 { width: 50%; } .sc .w55 { width: 55%; } .sc .w60 { width: 60%; }
+.sc .w70 { width: 70%; } .sc .w75 { width: 75%; } .sc .w80 { width: 80%; } .sc .w85 { width: 85%; }
+.sc .w90 { width: 90%; } .sc .w95 { width: 95%; }
+
+/* 01: example result card */
+.sc-result { align-items: center; }
+.sc-result > * { width: min(100%, 300px); }
+.sc-result__kicker { font: 500 12px / 1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.sc-result__name { font: 700 clamp(34px, 3.4vw, 48px) / 1 var(--font-display); letter-spacing: -0.03em; color: var(--ink); }
+.sc-result__line { height: 1px; background: var(--line); margin: 4px 0; }
+.sc-bars { display: grid; gap: 12px; }
+.sc-bar { display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; font-size: 13px; line-height: 1.2; color: var(--ink); }
+.sc-bar em { font-style: normal; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.sc-bar b { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--ink) calc(var(--w) * 100%), var(--line) 0); }
+
+/* 02: CV */
+.sc-cv { gap: 18px; padding-inline: clamp(32px, 10%, 72px); }
+.sc-cv__head { display: flex; align-items: center; gap: 14px; }
+.sc-dot { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--line); }
+.sc-stack { flex: 1; display: grid; gap: 8px; }
+.sc-cv__block { display: grid; gap: 8px; background: var(--stone); border-radius: 12px; padding: 14px 16px; }
+.sc-cv__tags { display: flex; gap: 8px; }
+.sc i.pill { width: 18%; height: 18px; border-radius: 9px; background: var(--stone); border: 1px solid var(--line); }
+
+/* 03: three opportunities */
+.sc-finds { gap: 12px; }
+.sc-find { display: grid; gap: 8px; background: var(--stone); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.sc-find:nth-child(2) { margin-left: 8%; }
+.sc-find:nth-child(3) { margin-left: 16%; }
+.sc-find__label { font: 600 14px / 1.2 var(--font-body); color: var(--ink); margin-bottom: 2px; }
+
+/* 04: cover letter with checks */
+.sc-letter { flex-direction: row; align-items: center; gap: 20px; }
+.sc-letter__paper { flex: 1.3; display: grid; gap: 9px; background: var(--stone); border-radius: 12px; padding: 20px 18px; box-shadow: 0 10px 24px -18px rgba(29, 29, 31, 0.35); }
+.sc-letter__checks { flex: 1; display: grid; gap: 14px; }
+.sc-letter__checks li { display: flex; align-items: center; gap: 10px; }
+.sc-letter__checks li i { flex: 1; }
+.sc-letter__checks svg { flex: none; width: 22px; height: 22px; }
+.sc-letter__checks circle { fill: var(--ink); }
+.sc-letter__checks path { fill: none; stroke: var(--stone); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- desktop scroll story ---------- */
+@media (min-width: 900px) {
+  .story.is-story {
+    display: grid;
+    grid-template-columns: 2px minmax(0, 5fr) minmax(0, 6fr);
+    column-gap: clamp(24px, 3vw, 40px);
+    align-items: center;
+  }
+  .is-story .story__progress {
+    display: block;
+    align-self: stretch;
+    border-radius: 1px;
+    background: var(--line);
+    overflow: hidden;
+  }
+  .is-story .story__progress span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+  .is-story .story__steps { gap: clamp(20px, 3.4vh, 36px); }
+  .is-story .story__visual { display: none; }
+  /* inactive steps: muted grey at full opacity (5.1:1 on white), so they stay readable */
+  .is-story .story__step .story__text * { color: var(--ink-muted); transition: color 0.35s ease; }
+  .is-story .story__step.is-active .story__text :is(h3, .story__q) { color: var(--ink); }
+  .is-story .story__step.is-active .story__link,
+  .is-story .story__step.is-active .step__link { color: var(--accent); }
+  .is-story .story__text h3 { font-size: clamp(24px, 2.2vw, 30px); }
+  .is-story .story__num { margin-bottom: 6px; }
+  /* only the active step shows its text; it fades in, nothing else is animated */
+  .is-story .story__step:not(.is-active) .story__more { display: none; }
+  .is-story .story__step.is-active .story__more { animation: story-in 0.4s ease both; }
+  .is-story .story__p { font-size: 15px; line-height: 22px; }
+  .is-story .story__stage { display: block; }
+  /* scenes: fade and move 16 px when the step changes */
+  .is-story .story__card .sc { opacity: 0; transform: translateY(16px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .is-story .story__card .sc.is-active { opacity: 1; transform: none; }
+}
+@keyframes story-in { from { opacity: 0; transform: translateY(8px); } }

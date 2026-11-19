@@ -3,6 +3,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initNavGlass, initNavWave, initSignupLinks } from './common';
 import { initHeroTrail } from './components/hero-trail';
+import { initScrollStory } from './components/scroll-story';
+import { initFaq } from './components/faq';
 import './components/topography.css'; // the static map fallback needs it before the WebGL chunk loads
 import { initSvgLiquidGlass } from './liquidGlass';
 import { mountResultCard } from './quiz/card';
@@ -36,6 +38,14 @@ if (!reduceMotion) {
    serves "Für wen"; the hero has its own CSS map on top of it. */
 const heroTrail = document.querySelector<HTMLElement>('[data-hero-trail]');
 if (heroTrail) initHeroTrail(heroTrail);
+
+/* "Wie es funktioniert": pinned scroll story on desktop (src/components/scroll-story.ts) */
+const story = document.querySelector<HTMLElement>('[data-story]');
+if (story) initScrollStory(story);
+
+/* FAQ accordion */
+const faq = document.querySelector<HTMLElement>('[data-faq]');
+if (faq) initFaq(faq);
 
 {
   const surface = document.getElementById('topo-surface');
@@ -292,6 +302,9 @@ if (exampleHost) {
           grain: 0.04,
           clickEffect: 'wave',
           fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace',
+          // calm, slow flow: 24 frames a second are enough; phones render at pixel ratio 1
+          maxFps: 24,
+          ...(window.matchMedia('(max-width: 899px), (pointer: coarse)').matches ? { dpr: 1 } : {}),
           ...presets[host.dataset.ascii ?? ''],
         });
         if (handle) host.classList.add('is-on');
@@ -314,7 +327,8 @@ if (exampleHost) {
           new ResizeObserver(fit).observe(host.parentElement!);
         }
       },
-      { rootMargin: '300px 0px' },
+      // starts only once the section is really on screen: it animates every frame
+      { rootMargin: '0px', threshold: 0.15 },
     );
     io.observe(host);
   });

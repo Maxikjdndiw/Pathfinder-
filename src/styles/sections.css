@@ -223,6 +223,18 @@
   position: relative;
   padding-block: var(--s-section) 0;
 }
+/* Rhythm: sections alternate white and #F5F5F7 with straight edges.
+   White: hero + "Für wen", Wie es funktioniert, Netzwerk, FAQ. The Warum and pilot
+   panels keep their own gradients. */
+.section--alt {
+  background: var(--card);
+  padding-bottom: var(--s-section);
+  overflow: hidden; /* glows stay inside the band, so the edge stays straight */
+}
+.section--alt + .section { margin-top: 0; }
+/* surfaces inside a grey band are white, so they still stand out */
+.section--alt .founder__mentor { background: var(--stone); }
+.section--alt .card-swap { --swap-tile: var(--stone); }
 .section > .container { z-index: 1; }
 
 /* ---------- Fields ---------- */
@@ -286,10 +298,6 @@
 @media (max-width: 560px) {
   .nav__cta-long { display: none; }
   .nav__cta-short { display: inline; }
-  /* steps: title and question are enough on a phone */
-  .step p:not(.step__q) { display: none; }
-  .step { gap: 4px; padding: var(--s-2) var(--s-3); }
-  .step__num { padding-bottom: var(--s-1); }
   /* swiping works, so no arrow buttons */
   .insiders__btn { display: none; }
   .insiders__controls { margin: var(--s-2) 0 var(--s-1); }
@@ -297,40 +305,8 @@
   .network__go { display: none; }
 }
 
-/* ---------- How it works ---------- */
+/* ---------- How it works: see src/components/scroll-story.css ---------- */
 .how .display-2 { max-width: 20ch; }
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--s-2);
-  margin-top: var(--s-5);
-  counter-reset: step;
-}
-.step {
-  border-radius: var(--r-glass);
-  padding: var(--s-3);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-height: 320px;
-}
-.step__num {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--ink-muted);
-  padding-bottom: var(--s-5);
-}
-.step h3 { font-size: var(--fs-h1); line-height: 1.05; }
-.step__q { font-weight: 500; color: var(--ink); }
-.step p:last-child { color: var(--ink-muted); font-size: 15px; line-height: 22px; }
-
-@media (max-width: 1024px) { .steps { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) {
-  .steps { grid-template-columns: 1fr; }
-  .step { min-height: 0; }
-  .step__num { padding-bottom: var(--s-3); }
-}
 
 /* ---------- Why ---------- */
 .why__panel {

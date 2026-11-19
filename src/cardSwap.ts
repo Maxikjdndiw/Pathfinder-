@@ -267,6 +267,8 @@ export function createCardSwap(root: HTMLElement, cards: HTMLElement[], options:
     else el.removeAttribute('data-front');
     // only the front card is read out / focusable
     el.setAttribute('aria-hidden', card.pos === 0 ? 'false' : 'true');
+    // cards behind the front one are not focusable either
+    el.inert = card.pos !== 0;
   };
 
   const writeStage = () => {

@@ -452,7 +452,8 @@ const normalizeSettings = ({
   intro = true,
   lightMode = false,
   fontFamily = DEFAULT_FONT,
-  dpr
+  dpr,
+  maxFps = 0
 } = {}) => {
   const palette = (Array.isArray(colors) && colors.length ? colors : DEFAULT_COLORS).slice(0, MAX_COLORS);
   return {
@@ -478,7 +479,8 @@ const normalizeSettings = ({
     intro,
     lightMode,
     fontFamily: fontFamily || DEFAULT_FONT,
-    dpr
+    dpr,
+    maxFps
   };
 };
 
@@ -736,9 +738,16 @@ export function createGradientAscii(container, options = {}) {
     }
   };
 
+  let lastDraw = 0;
   const frame = now => {
     raf = 0;
     if (disposed || !visible || document.hidden) return;
+    // Pathfinder addition: optional frame cap, the slow flow looks the same at fewer frames
+    if (s.maxFps > 0 && ready && now - lastDraw < 1000 / s.maxFps - 2) {
+      raf = requestAnimationFrame(frame);
+      return;
+    }
+    lastDraw = now;
     if (!ready) {
       if (!gl.isContextLost() && !linked()) {
         raf = requestAnimationFrame(frame);

@@ -22,5 +22,7 @@ export interface GradientAsciiOptions {
   lightMode?: boolean;
   fontFamily?: string;
   dpr?: number;
+  /** cap the frame rate (0 = every frame) */
+  maxFps?: number;
 }
 export function createGradientAscii(container: HTMLElement, options?: GradientAsciiOptions): { destroy(): void } | null;
