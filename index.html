@@ -155,13 +155,13 @@
             </div>
             <div class="story__visual" aria-hidden="true">
               <div class="sc sc-result">
-                <span class="sc-result__kicker">Dein Typ</span>
-                <span class="sc-result__name">Dealmaker</span>
-                <span class="sc-result__line"></span>
+                <span class="sc-result__kicker" data-k="0">Dein Typ</span>
+                <span class="sc-result__name" data-k="1">Dealmaker</span>
+                <span class="sc-result__line" data-k="2"></span>
                 <div class="sc-bars">
-                  <div class="sc-bar"><span>Finance &amp; Investment</span><em>92 %</em><b style="--w: 0.92"></b></div>
-                  <div class="sc-bar"><span>Consulting &amp; Strategie</span><em>86 %</em><b style="--w: 0.86"></b></div>
-                  <div class="sc-bar"><span>Gründen &amp; Startups</span><em>81 %</em><b style="--w: 0.81"></b></div>
+                  <div class="sc-bar" data-k="3"><span>Finance &amp; Investment</span><em>92 %</em><b><s style="--w: 0.92; --d: 0"></s></b></div>
+                  <div class="sc-bar" data-k="4"><span>Consulting &amp; Strategie</span><em>86 %</em><b><s style="--w: 0.86; --d: 1"></s></b></div>
+                  <div class="sc-bar" data-k="5"><span>Gründen &amp; Startups</span><em>81 %</em><b><s style="--w: 0.81; --d: 2"></s></b></div>
                 </div>
               </div>
             </div>
@@ -176,11 +176,26 @@
               </div>
             </div>
             <div class="story__visual" aria-hidden="true">
-              <div class="sc sc-cv">
-                <div class="sc-cv__head"><span class="sc-dot sc-dot--lg"></span><span class="sc-stack"><i class="w60 h10"></i><i class="w40"></i></span></div>
-                <div class="sc-cv__block"><i class="w30 h8 dark"></i><i class="w90"></i><i class="w80"></i><i class="w55"></i></div>
-                <div class="sc-cv__block"><i class="w30 h8 dark"></i><i class="w85"></i><i class="w70"></i></div>
-                <div class="sc-cv__tags"><i class="pill"></i><i class="pill w22"></i><i class="pill"></i></div>
+              <div class="sc sc-build">
+                <div class="cv" data-k="0">
+                  <div class="cv__head"><span class="avatar avatar--sm"><svg viewBox="0 0 56 56"><circle cx="28" cy="21" r="10" fill="#B0B0B0"/><ellipse cx="28" cy="52" rx="19" ry="15" fill="#B0B0B0"/></svg></span><div><p class="cv__name">Lena, 16</p><p class="cv__meta">Klasse 11, Schleswig</p></div></div>
+                  <ul class="cv__list">
+                    <li data-k="1"><b>Praktikum:</b> 2 Wochen in einer Steuerkanzlei</li>
+                    <li class="is-better" data-k="2"><span><b>Ehrenamt:</b> Nachhilfe für Jüngere</span><span class="cv__better">Verbessert</span></li>
+                    <li data-k="3"><b>Sprachen:</b> Deutsch, Englisch, Spanisch</li>
+                  </ul>
+                </div>
+                <div class="pf" data-k="5">
+                  <div class="pf__banner"><img src="/images/network/city-london.webp" alt="" width="1024" height="1024" loading="lazy" decoding="async" /></div>
+                  <span class="avatar avatar--pf"><svg viewBox="0 0 56 56"><circle cx="28" cy="21" r="10" fill="#B0B0B0"/><ellipse cx="28" cy="52" rx="19" ry="15" fill="#B0B0B0"/></svg></span>
+                  <div class="pf__body">
+                    <p class="pf__name">Lena M.</p>
+                    <p class="pf__headline">Schülerin, Klasse 11 | Interessiert an Marketing und Wirtschaft</p>
+                    <p class="pf__loc">Schleswig, Schleswig-Holstein, Deutschland</p>
+                    <p class="pf__contacts">120 Kontakte</p>
+                    <div class="pf__btns"><span class="pf__btn pf__btn--fill">Vernetzen</span><span class="pf__btn">Nachricht</span></div>
+                  </div>
+                </div>
               </div>
             </div>
           </li>
@@ -195,9 +210,9 @@
             </div>
             <div class="story__visual" aria-hidden="true">
               <div class="sc sc-finds">
-                <div class="sc-find"><span class="sc-find__label">Praktikum</span><i class="w70"></i><i class="w45"></i></div>
-                <div class="sc-find"><span class="sc-find__label">Summer School</span><i class="w80"></i><i class="w50"></i></div>
-                <div class="sc-find"><span class="sc-find__label">Stipendium</span><i class="w60"></i><i class="w40"></i></div>
+                <div class="op" data-k="0"><div class="op__top"><span class="op__type">Praktikum</span><span class="op__fit">Passt zu dir</span></div><p class="op__title">Marketing in einer Agentur</p><p class="op__meta">Schleswig · Bewerbung bis 15. März</p></div>
+                <div class="op" data-k="1"><div class="op__top"><span class="op__type">Summer School</span><span class="op__fit">Passt zu dir</span></div><p class="op__title">Wirtschaft und Gründen</p><p class="op__meta">Online · Bewerbung bis 1. April</p></div>
+                <div class="op" data-k="2"><div class="op__top"><span class="op__type">Stipendium</span><span class="op__fit">Passt zu dir</span></div><p class="op__title">Förderung für Schülerinnen und Schüler</p><p class="op__meta">Deutschlandweit · Bewerbung bis 30. April</p></div>
               </div>
             </div>
           </li>
@@ -211,13 +226,16 @@
               </div>
             </div>
             <div class="story__visual" aria-hidden="true">
-              <div class="sc sc-letter">
-                <div class="sc-letter__paper"><i class="w35 h8 dark"></i><i class="w95"></i><i class="w90"></i><i class="w70"></i><i class="w85"></i><i class="w40"></i></div>
-                <ul class="sc-letter__checks">
-                  <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg><i class="w60"></i></li>
-                  <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg><i class="w75"></i></li>
-                  <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg><i class="w50"></i></li>
-                </ul>
+              <div class="sc sc-apply">
+                <div class="todo" data-k="0">
+                  <div class="todo__head"><p class="todo__title">Deine Bewerbung</p><p class="todo__count">2 von 3</p></div>
+                  <span class="todo__bar"><s></s></span>
+                  <ul class="todo__list">
+                    <li class="chk is-done" data-k="1" style="--c: 0"><svg class="chk__icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg><span>Lebenslauf geprüft</span></li>
+                    <li class="chk is-done" data-k="2" style="--c: 1"><svg class="chk__icon" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg><span>Anschreiben fertig</span></li>
+                    <li class="chk" data-k="3"><span class="chk__open"></span><span>Interview geübt</span></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </li>

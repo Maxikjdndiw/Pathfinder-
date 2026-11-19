@@ -19,6 +19,25 @@ export function initScrollStory(root: HTMLElement): void {
   const bar = root.querySelector<HTMLElement>('.story__progress span');
   if (!steps.length || !card || !bar) return;
 
+  // stagger index for the CSS animations (data-k is the order elements appear in)
+  root.querySelectorAll<HTMLElement>('[data-k]').forEach((el) => el.style.setProperty('--k', el.dataset.k!));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) root.classList.add('js-anim');
+
+  // stacked layout (phones): each card plays its animation once when it scrolls into view
+  if (!reduce) {
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.querySelector('.sc')?.classList.add('is-active');
+          io.unobserve(e.target);
+        }),
+      { threshold: 0.35 },
+    );
+    root.querySelectorAll('.story__visual').forEach((v) => io.observe(v));
+  }
+
   // the card on the right gets a copy of each step's scene (decorative, hidden from screen readers)
   const scenes = steps.map((step) => {
     const scene = step.querySelector<HTMLElement>('.story__visual .sc')!.cloneNode(true) as HTMLElement;
