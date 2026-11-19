@@ -9,8 +9,6 @@ export interface Mentor {
   name: string;
   role: string;
   tips: string[];
-  /** card accent from the brand palette */
-  accent: 'oxblood' | 'ocean' | 'ink';
 }
 
 export const MENTORS: Mentor[] = [
@@ -18,7 +16,6 @@ export const MENTORS: Mentor[] = [
     field: 'Finance',
     name: 'Simone Simoncelli',
     role: 'Associate bei BlackRock',
-    accent: 'oxblood',
     tips: [
       'In Networking investieren',
       'Diszipliniert und konstant lernen',
@@ -31,7 +28,6 @@ export const MENTORS: Mentor[] = [
     field: 'Deep Tech',
     name: 'Axel Thierauf',
     role: 'Venture Capital Deep Tech Investor, QAI Ventures',
-    accent: 'ocean',
     tips: [
       'Gute Grundlagen schaffen (Mathe, Informatik, Physik)',
       'Selbst etwas ausprobieren',
@@ -43,7 +39,6 @@ export const MENTORS: Mentor[] = [
     field: 'Mode',
     name: 'Xiao Lan',
     role: 'Hat Modedesign studiert, arbeitet jetzt im Luxuseinzelhandel',
-    accent: 'ink',
     tips: [
       'Hab keine Angst, die Richtung zu ändern.',
       'Ein unerwarteter Job kann dir Selbstvertrauen und den Umgang mit Menschen beibringen.',

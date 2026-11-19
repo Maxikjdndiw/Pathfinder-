@@ -5,13 +5,12 @@
  */
 const C = {
   stone: '#FFFFFF',
-  card: '#FFFFFF',
-  line: '#CFCDC7',
-  ink: '#141517',
-  inkMuted: '#5E5F63',
-  oxblood: '#7A1F2E',
-  oxbloodDark: '#6B1A27',
-  oxbloodLight: '#8A2636',
+  card: '#F5F5F7',
+  line: '#D2D2D7',
+  ink: '#1D1D1F',
+  inkMuted: '#6E6E73',
+  accent: '#0066CC',
+  accentHover: '#004F9E',
 };
 const DISPLAY = '"Bricolage Grotesque Variable", "Bricolage Grotesque", system-ui, sans-serif';
 const BODY = 'Inter, system-ui, sans-serif';
@@ -124,8 +123,8 @@ function front(photo: HTMLImageElement | null): string {
 function back(markDark: HTMLImageElement | null): string {
   const [c, ctx] = canvas(W, H);
   const g = ctx.createLinearGradient(0, 0, 0, H);
-  g.addColorStop(0, C.oxbloodDark);
-  g.addColorStop(1, C.oxbloodLight);
+  g.addColorStop(0, '#2C2C2E');
+  g.addColorStop(1, C.ink);
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, W, H);
 
@@ -157,8 +156,8 @@ function strap(markDark: HTMLImageElement | null): string {
   const unit = 760;
   const [c, ctx] = canvas(unit, h);
   const g = ctx.createLinearGradient(0, 0, 0, h);
-  g.addColorStop(0, C.oxbloodDark);
-  g.addColorStop(1, C.oxbloodLight);
+  g.addColorStop(0, '#2C2C2E');
+  g.addColorStop(1, C.ink);
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, unit, h);
   if (markDark) ctx.drawImage(markDark, 60, h / 2 - 40, 80, 80);

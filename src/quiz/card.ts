@@ -17,7 +17,7 @@ const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 
 const ROTATE_ICON = `<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
-const BAR_COLORS = ['var(--oxblood)', 'var(--ocean)', 'var(--ink)'];
+const BAR_COLORS = ['var(--accent)', 'var(--accent)', 'var(--ink)'];
 
 export function resultCardHTML(d: CardData): string {
   const r = COPY.result;

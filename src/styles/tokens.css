@@ -1,20 +1,17 @@
-/* Pathfinder brand tokens. Change brand values here only. */
+/* Pathfinder DE brand tokens. Change brand values here only. */
 :root {
-  /* Colour */
-  --stone: #FFFFFF;
-  --card: #FFFFFF;
-  --line: #CFCDC7;
-  --ink: #141517;
-  --ink-muted: #5E5F63;
-  --oxblood: #7A1F2E;
-  --oxblood-dark: #6B1A27;
-  --oxblood-light: #8A2636;
-  --ocean: #1B2F52;
-  --ocean-light: #6F84A8; /* shapes only, never text */
+  /* Colour: calm palette, one blue accent */
+  --stone: #FFFFFF;        /* page background */
+  --card: #F5F5F7;         /* surfaces: cards, sections, tiles */
+  --line: #D2D2D7;         /* lines and borders */
+  --ink: #1D1D1F;          /* text */
+  --ink-muted: #6E6E73;    /* muted text */
+  --accent: #0066CC;       /* buttons, links, highlights */
+  --accent-hover: #004F9E; /* hover of the accent */
+  --accent-light: #E8F1FB; /* light accent surfaces */
 
   /* Gradients */
-  --grad-oxblood: linear-gradient(180deg, var(--oxblood-dark), var(--oxblood-light));
-  --grad-ocean: linear-gradient(180deg, var(--ocean), var(--ocean-light));
+  --grad-accent: linear-gradient(180deg, var(--accent-hover), var(--accent));
 
   /* Liquid glass */
   --glass-bg: rgba(255, 255, 255, 0.55);

@@ -112,8 +112,8 @@ for (let lv = 1; lv < LEVELS; lv++) {
 }
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" fill="none" stroke-linecap="round" stroke-linejoin="round">
-<path stroke="#CFCDC7" stroke-width="1" d="${paths.minor.join('')}"/>
-<path stroke="#B9B7B1" stroke-width="1" d="${paths.major.join('')}"/>
+<path stroke="#D2D2D7" stroke-width="1" d="${paths.minor.join('')}"/>
+<path stroke="#D2D2D7" stroke-width="1" d="${paths.major.join('')}"/>
 </svg>
 `;
 writeFileSync('public/images/topography.svg', svg);

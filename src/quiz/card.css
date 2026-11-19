@@ -108,8 +108,8 @@
   gap: calc(6 * var(--u)) calc(8 * var(--u));
   padding: calc(9 * var(--u)) calc(10 * var(--u));
   border-radius: 12px;
-  border: 1px dashed var(--ocean);
-  background: rgba(27, 47, 82, 0.06);
+  border: 1px dashed var(--accent);
+  background: rgba(0, 102, 204, 0.06);
   font-size: calc(13 * var(--u));
   line-height: 1.25;
 }
@@ -120,7 +120,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--card);
-  background: var(--ocean);
+  background: var(--accent);
   padding: 4px 6px;
   border-radius: var(--r-tag);
 }

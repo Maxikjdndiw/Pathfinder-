@@ -161,11 +161,11 @@ export const C4 = {
   total: 100_000,
   step: 5_000,
   categories: [
-    { key: 'produkt', label: 'Produkt', color: 'var(--oxblood)' },
-    { key: 'marketing', label: 'Marketing', color: 'var(--ocean)' },
-    { key: 'team', label: 'Team', color: 'var(--ink)' },
-    { key: 'design', label: 'Design', color: 'var(--ocean-light)' },
-    { key: 'ruecklage', label: 'Rücklage', color: 'var(--ink-muted)' },
+    { key: 'produkt', label: 'Produkt', color: 'var(--accent)' },
+    { key: 'marketing', label: 'Marketing', color: 'var(--ink)' },
+    { key: 'team', label: 'Team', color: 'var(--ink-muted)' },
+    { key: 'design', label: 'Design', color: '#8DB8E8' }, // light tint of the accent
+    { key: 'ruecklage', label: 'Rücklage', color: 'var(--line)' },
   ],
   left: 'Noch übrig',
 };

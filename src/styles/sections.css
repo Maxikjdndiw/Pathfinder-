@@ -222,7 +222,7 @@
   border-radius: var(--radius-min);
 }
 .hero__link-arrow { transition: transform 0.25s ease; }
-.hero__link:hover { color: var(--oxblood); }
+.hero__link:hover { color: var(--accent); }
 .hero__link:hover .hero__link-arrow { transform: translateX(3px); }
 .hero__note { margin-top: 20px; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
 
@@ -290,12 +290,12 @@
   align-self: flex-start;
   font-size: var(--fs-label);
   font-weight: 500;
-  color: var(--oxblood);
+  color: var(--accent);
   text-decoration: none;
   border-bottom: 1px solid currentColor;
   padding: 6px 0 2px;
 }
-.step__link:hover { color: var(--oxblood-dark); }
+.step__link:hover { color: var(--accent-hover); }
 
 .nav__cta-short { display: none; }
 
@@ -335,7 +335,7 @@
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 15px;
-  color: var(--oxblood);
+  color: var(--accent);
   padding-bottom: var(--s-5);
 }
 .step h3 { font-size: var(--fs-h1); line-height: 1.05; }
@@ -349,7 +349,7 @@
   .step__num { padding-bottom: var(--s-3); }
 }
 
-/* ---------- Why (ocean) ---------- */
+/* ---------- Why ---------- */
 .why__panel {
   position: relative;
   overflow: hidden;
@@ -358,7 +358,7 @@
   border-radius: 28px;
   padding: clamp(64px, 10vw, 128px) clamp(24px, 6vw, 80px);
   color: var(--ink);
-  background: linear-gradient(150deg, #D3DBE8 0%, #DEE4EE 35%, #E8ECF3 70%, #F2F4F8 100%);
+  background: linear-gradient(150deg, var(--card) 0%, var(--accent-light) 100%);
 }
 .why__grain,
 .why__grain.grainient-container { position: absolute; inset: 0; z-index: 0; width: auto; height: auto; }
@@ -385,7 +385,7 @@
   gap: var(--s-2);
 }
 .why__point {
-  background: var(--card);
+  background: var(--stone); /* white on the light panel */
   color: var(--ink);
   border-radius: var(--r-card);
   padding: var(--s-3);
@@ -408,7 +408,7 @@
 .tip-card__media {
   border-radius: 14px;
   min-height: 280px;
-  background: var(--grad-ocean);
+  background: var(--grad-accent);
   display: flex;
   align-items: flex-start;
   padding: var(--s-2);
@@ -429,7 +429,7 @@
   justify-content: center;
   gap: var(--s-2);
 }
-.tip-card__kicker { font-size: var(--fs-label); font-weight: 500; color: var(--oxblood); }
+.tip-card__kicker { font-size: var(--fs-label); font-weight: 500; color: var(--accent); }
 .tip-card h3 { font-size: clamp(26px, 3vw, 36px); line-height: 1.05; }
 .tip-card__body p:last-child { color: var(--ink-muted); }
 @media (max-width: 720px) {
@@ -526,7 +526,7 @@
   padding: clamp(64px, 10vw, 128px) clamp(24px, 6vw, 80px);
   color: var(--card);
   /* fallback and first paint, in the same colours as the Grainient */
-  background: linear-gradient(150deg, #0A1220 0%, #111E36 35%, #162746 70%, var(--ocean) 100%);
+  background: linear-gradient(150deg, var(--accent) 0%, var(--accent-hover) 100%);
 }
 .cta__grain,
 .cta__grain.grainient-container { position: absolute; inset: 0; z-index: 0; width: auto; height: auto; }
@@ -634,7 +634,7 @@
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--oxblood);
+  color: var(--accent);
   margin-bottom: 6px;
 }
 .founder__quote { margin-top: var(--s-5); }

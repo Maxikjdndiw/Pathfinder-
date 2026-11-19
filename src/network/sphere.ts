@@ -73,7 +73,7 @@ function tileTexture(url: string, onReady: () => void): CanvasTexture {
   };
   ctx.save();
   clip();
-  ctx.fillStyle = '#CFCDC7';
+  ctx.fillStyle = '#D2D2D7';
   ctx.fillRect(0, 0, TEX, TEX);
   ctx.restore();
   const tex = new CanvasTexture(canvas);

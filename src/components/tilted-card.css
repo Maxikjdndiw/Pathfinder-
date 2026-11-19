@@ -16,7 +16,7 @@
   -webkit-user-select: none;
 }
 .tc:focus-visible .tc__card {
-  outline: 3px solid var(--ocean);
+  outline: 3px solid var(--accent);
   outline-offset: 6px;
   border-radius: var(--tc-radius);
 }

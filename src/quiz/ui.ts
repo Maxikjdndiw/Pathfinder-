@@ -706,7 +706,7 @@ export class QuizApp {
       const blob = await toBlob(front, {
         pixelRatio: 2,
         cacheBust: true,
-        backgroundColor: '#141517',
+        backgroundColor: '#1D1D1F',
         filter: (n) => !(n instanceof HTMLElement && (n.classList.contains('tc__glare') || n.classList.contains('tc__edge') || n.classList.contains('rc-hint'))),
         style: { transform: 'none', borderRadius: '24px' },
       });

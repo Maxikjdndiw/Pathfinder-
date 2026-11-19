@@ -1,18 +1,14 @@
 /**
- * Brand duotone, shared by the hero cards (scripts/hero-cards.mjs) and the network tiles
+ * Photo tone, shared by the hero cards (scripts/hero-cards.mjs) and the network tiles
  * (scripts/network-images.mjs) so both look like one world.
- * Shadows in the variant colour, highlights in --card (#FFFFFF).
+ * Neutral black and white: shadows in --ink, highlights white.
  */
 import sharp from 'sharp';
 
-export const HIGHLIGHT = [0xff, 0xff, 0xff]; // --card
-export const SHADOWS = {
-  oxblood: [0x6b, 0x1a, 0x27], // --oxblood-dark (burgundy)
-  ocean: [0x1b, 0x2f, 0x52], // --ocean (navy)
-  ink: [0x14, 0x15, 0x17], // --ink
-  // light cards: ink with a very light navy tint
-  card: [0x14, 0x15, 0x17].map((c, i) => Math.round(c * 0.84 + [0x1b, 0x2f, 0x52][i] * 0.16)),
-};
+export const HIGHLIGHT = [0xff, 0xff, 0xff];
+const INK = [0x1d, 0x1d, 0x1f]; // --ink
+// neutral black and white for every photo; the variant names stay for the callers
+export const SHADOWS = { oxblood: INK, ocean: INK, ink: INK, card: INK };
 
 /** Duotone a sharp pipeline (already resized/cropped) and return raw RGB + size */
 export async function duotone(pipeline, variant) {

@@ -31,7 +31,7 @@ main, .footer { overflow-x: clip; }
 .warp-text { position: relative; display: block; overflow: hidden; isolation: isolate; }
 .warp-text canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
-a { color: var(--ocean); text-underline-offset: 3px; }
+a { color: var(--accent); text-underline-offset: 3px; }
 
 h1, h2, h3, .display, .display-2 {
   font-family: var(--font-display);
@@ -65,7 +65,7 @@ h1, h2, h3, .display, .display-2 {
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--oxblood);
+  color: var(--accent);
   margin-bottom: var(--s-3);
   display: flex;
   align-items: center;
@@ -87,11 +87,11 @@ h1, h2, h3, .display, .display-2 {
 }
 
 .grad-text {
-  color: var(--oxblood);
+  color: var(--accent);
 }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .grad-text {
-    background: var(--grad-oxblood);
+    background: var(--grad-accent);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -103,7 +103,7 @@ h1, h2, h3, .display, .display-2 {
 
 /* Focus: always visible for keyboard users */
 :focus-visible {
-  outline: 2px solid var(--ocean);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -143,18 +143,18 @@ h1, h2, h3, .display, .display-2 {
 
 .btn--primary {
   color: var(--card);
-  background: var(--grad-oxblood);
+  background: var(--grad-accent);
   border-color: rgba(255, 255, 255, 0.12);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 10px 24px -10px rgba(122, 31, 46, 0.6);
+    0 10px 24px -10px rgba(0, 102, 204, 0.6);
 }
 .btn--primary:hover {
-  background: var(--oxblood-dark);
+  background: var(--accent-hover);
   transform: translateY(-1px);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 14px 30px -10px rgba(122, 31, 46, 0.7);
+    0 14px 30px -10px rgba(0, 102, 204, 0.7);
 }
 .btn__arrow { transition: transform 0.25s ease; }
 .btn:hover .btn__arrow { transform: translateX(3px); }
@@ -169,8 +169,7 @@ h1, h2, h3, .display, .display-2 {
   will-change: transform;
   animation: drift 22s ease-in-out infinite alternate;
 }
-.glow--oxblood { background: radial-gradient(closest-side, rgba(122, 31, 46, 0.20), rgba(122, 31, 46, 0)); }
-.glow--ocean   { background: radial-gradient(closest-side, rgba(27, 47, 82, 0.16), rgba(27, 47, 82, 0)); }
+.glow--accent { background: radial-gradient(closest-side, rgba(0, 102, 204, 0.14), rgba(0, 102, 204, 0)); }
 
 @keyframes drift {
   0%   { transform: translate3d(0, 0, 0) scale(1); }

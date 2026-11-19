@@ -108,8 +108,8 @@ if (lanyardBox) {
         const { createLanyard } = await import('./lanyard/lanyard.js');
         lanyard = createLanyard(lanyardBox, {
           ...art,
-          cardColor: '#FFFFFF',
-          strapColor: '#7A1F2E',
+          cardColor: '#F5F5F7',
+          strapColor: '#1D1D1F',
           finish: 'glossy',
           metal: 'graphite',
           cornerRadius: 0.35,
@@ -159,7 +159,7 @@ if (insiderStack) {
 
     const real = MENTORS.map((m, i) => {
       const el = document.createElement('article');
-      el.className = `insider insider--featured insider--${m.accent}${compact ? ' insider--compact' : ''}`;
+      el.className = `insider insider--featured${compact ? ' insider--compact' : ''}`;
       el.innerHTML = `
         <div class="insider__top"><span class="insider__field">${esc(m.field)}</span><span class="insider__num">${num(i)}</span></div>
         <div class="insider__who">
@@ -264,8 +264,8 @@ if (exampleHost) {
    ported). WebGL2 only; created when the section comes near, the CSS glow stays as fallback. */
 {
   // light mode: from the edge of the light to its brightest point
-  // blue only: ocean-light at the edge of the light, ocean at its core
-  const BRAND_RAMP = ['#6F84A8', '#3E5680', '#1B2F52'];
+  // accent only: a light tint at the edge of the light, the accent at its core
+  const BRAND_RAMP = ['#8DB8E8', '#3D8BDB', '#0066CC'];
   const presets: Record<string, import('./gradientAscii/gradientAscii').GradientAsciiOptions> = {
     // a radial glow rising from the section's lower edge (cropped by it), behind the tags
     fields: { shape: 'rise', scale: 1.1, variation: 2, gradientOpacity: 0.8, glyphOpacity: 0.7 },
@@ -324,10 +324,10 @@ if (exampleHost) {
    Grainient, ported). WebGL2 only; each panel's CSS gradient stays underneath as the fallback. */
 {
   const panels: [string, Record<string, unknown>][] = [
-    // our blues, dark: light text stays readable on every colour
-    ['cta-grain', { colors: ['#0A1220', '#111E36', '#162746', '#1B2F52', '#2B4572'], grainAmount: 0.16 }],
-    // the same flow in very light blue grey: dark text reads above 4.5:1 everywhere
-    ['why-grain', { colors: ['#D3DBE8', '#DEE4EE', '#E8ECF3', '#F2F4F8', '#F8F9FB'], grainAmount: 0.08 }],
+    // accent to its hover blue, never lighter than the accent: white text stays above 4.5:1
+    ['cta-grain', { colors: ['#004F9E', '#00559F', '#005AB4', '#0060C0', '#0066CC'], grainAmount: 0.12, contrast: 1 }],
+    // the same flow, light: surface grey to light accent, dark text reads above 4.5:1
+    ['why-grain', { colors: ['#F5F5F7', '#F1F3F8', '#EDF1F9', '#EAF1FA', '#E8F1FB'], grainAmount: 0.06 }],
   ];
   for (const [id, preset] of panels) {
     const host = document.getElementById(id);

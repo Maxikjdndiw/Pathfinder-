@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Pathfinder">
-  <g fill="#1B2F52">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Pathfinder DE">
+  <g fill="#6E6E73">
     <path d="M32 14 L35 32 L29 32 Z" transform="rotate(45 32 32)"></path>
     <path d="M32 14 L35 32 L29 32 Z" transform="rotate(135 32 32)"></path>
     <path d="M32 14 L35 32 L29 32 Z" transform="rotate(225 32 32)"></path>
     <path d="M32 14 L35 32 L29 32 Z" transform="rotate(315 32 32)"></path>
   </g>
-  <path d="M32 3 L37 32 L27 32 Z" fill="#E8735F"></path>
-  <path d="M32 61 L37 32 L27 32 Z" fill="#FFFFFF"></path>
-  <path d="M61 32 L32 27 L32 37 Z" fill="#FFFFFF"></path>
-  <path d="M3 32 L32 27 L32 37 Z" fill="#FFFFFF"></path>
-  <circle cx="32" cy="32" r="3" fill="#141517"></circle>
+  <path d="M32 3 L37 32 L27 32 Z" fill="#0066CC"></path>
+  <path d="M32 61 L37 32 L27 32 Z" fill="#F5F5F7"></path>
+  <path d="M61 32 L32 27 L32 37 Z" fill="#F5F5F7"></path>
+  <path d="M3 32 L32 27 L32 37 Z" fill="#F5F5F7"></path>
+  <circle cx="32" cy="32" r="3" fill="#1D1D1F"></circle>
 </svg>

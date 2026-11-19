@@ -77,10 +77,7 @@ void main() {
   float fw = max(fwidth(v), 1e-4);
   float dist = abs(fract(v - 0.5) - 0.5) / fw;          // distance to the nearest line in px-ish units
   float line = 1.0 - smoothstep(0.35 * uDpr, 1.1 * uDpr, dist);
-  float major = 1.0 - step(0.5, mod(floor(v + 0.5), 5.0));  // every fifth line slightly darker
-  vec3 light = vec3(0.812, 0.804, 0.780);   // #CFCDC7
-  vec3 dark = vec3(0.725, 0.718, 0.694);    // #B9B7B1
-  vec3 col = mix(light, dark, major);
+  vec3 col = vec3(0.824, 0.824, 0.843);     // #D2D2D7, every line the same colour
 
   // stronger on the right (behind the cards), fading towards the left
   float x = css.x / (uRes.x / uDpr);
