@@ -66,7 +66,7 @@ void main() {
   // css px, relative to the surface (the canvas covers it exactly)
   vec2 css = vec2(gl_FragCoord.x, uRes.y - gl_FragCoord.y) / uDpr;
   vec2 page = css;
-  vec2 p = page / 460.0;
+  vec2 p = page / (uSmall > 0.5 ? 400.0 : 620.0);  // calm, large lines; a bit denser on phones
   float h = fbm(p);
   // the land rises gently under the cursor
   vec2 d = (page - uMouse.xy) / 260.0;
@@ -156,7 +156,7 @@ export function createTopography(options: TopographyOptions): TopographyHandle |
     gl.uniform1f(U.dpr, dpr);
     gl.uniform3f(U.mouse, mouse.x, mouse.y, mouse.s);
     // overall visibility: about 25 % on desktop, 15 % on phones
-    gl.uniform1f(U.strength, small.matches ? 0.3 : 0.55);
+    gl.uniform1f(U.strength, small.matches ? 0.45 : 0.55);
     gl.uniform2f(U.fade, h * fadeFrom, h);
     gl.uniform1f(U.small, small.matches ? 1 : 0);
     gl.clear(gl.COLOR_BUFFER_BIT);

@@ -22,7 +22,8 @@
   z-index: -1;
   pointer-events: none;
   display: none;
-  background: url('/images/topography.svg') right top / 1600px auto repeat;
+  /* one big map, never repeated, so there is no tile edge */
+  background: url('/images/topography.svg') center top / cover no-repeat;
   -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.02) 30%, #000 88%), linear-gradient(180deg, #000 60%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.02) 30%, #000 88%), linear-gradient(180deg, #000 60%, transparent 100%);
@@ -34,7 +35,6 @@
 
 @media (max-width: 899px) {
   .topo-surface::before {
-    background-size: 1100px auto;
     -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
     opacity: 0.35;
