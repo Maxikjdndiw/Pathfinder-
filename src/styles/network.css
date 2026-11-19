@@ -31,7 +31,7 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .network__sphere.is-moving .network__caption { opacity: 0; transform: translateY(8px); }
-.network__group { font-size: var(--fs-label); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.network__group { font-size: var(--fs-label); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 .network__tile-title { margin-top: 6px; font: 700 clamp(28px, 3.4vw, 44px) / 1.02 var(--font-display); letter-spacing: -0.02em; color: var(--ink); }
 .network__tile-text { margin-top: 8px; color: var(--ink); font-size: var(--fs-body-lg); line-height: var(--lh-body-lg); }
 .network__controls { display: flex; gap: 10px; flex: none; pointer-events: auto; }
@@ -95,7 +95,7 @@
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 .network__item-link img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 12px; margin-bottom: 6px; }
-.network__item-group { padding: 0 4px; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.network__item-group { padding: 0 4px; font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 .network__item-title { padding: 0 4px; font: 700 19px / 1.1 var(--font-display); letter-spacing: -0.01em; }
 .network__item-text { padding: 0 4px; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
 @media (max-width: 480px) { .network__grid { grid-template-columns: 1fr 1fr; gap: 10px; } .network__item-text { font-size: 13px; line-height: 18px; } }

@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   gap: calc(8 * var(--u));
-  font: 500 calc(12 * var(--u)) / 1 var(--font-body);
+  font: 500 max(12px, calc(12 * var(--u))) / 1 var(--font-body);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--stone);
@@ -38,7 +38,7 @@
   gap: calc(6 * var(--u));
 }
 .rc-label {
-  font: 500 calc(12 * var(--u)) / 1 var(--font-body);
+  font: 500 max(12px, calc(12 * var(--u))) / 1 var(--font-body);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.85;
@@ -59,7 +59,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: calc(11 * var(--u));
+  font-size: max(12px, calc(11 * var(--u)));
   line-height: 1;
   color: var(--card);
   opacity: 0.85;
@@ -115,10 +115,8 @@
 }
 .rc-wild > span:nth-child(2) { flex: 1; min-width: 0; }
 .rc-wild__tag {
-  font-size: calc(10.5 * var(--u));
+  font-size: max(12.5px, calc(12 * var(--u)));
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--card);
   background: var(--accent);
   padding: 4px 6px;

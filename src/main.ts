@@ -170,7 +170,7 @@ if (insiderStack) {
           </div>
         </div>
         <ul class="insider__bullets">${m.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-        <a class="insider__more" href="#signup">Mehr erfahren <span aria-hidden="true">→</span></a>`;
+        <a class="insider__more" href="#signup">Kostenlos mitmachen <span aria-hidden="true">→</span></a>`;
       return el;
     });
     const cards = real;
