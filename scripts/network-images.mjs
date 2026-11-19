@@ -21,8 +21,8 @@ const PHOTOS = {
   design: ['design.jpg', 'ocean'],
   mode: ['mode.jpg', 'card'],
   tech: ['tech.jpg', 'ocean'],
-  bocconi: ['bocconi.jpg', 'card'],
-  'kings-college': ['kings-college.jpg', 'card'],
+  'city-mailand': ['bocconi.jpg', 'card'],
+  'city-london': ['kings-college.jpg', 'card'],
 };
 
 // tile photos supplied for the Netzwerk only (assets/network-photos/<slug>.jpg)
