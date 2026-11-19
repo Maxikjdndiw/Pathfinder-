@@ -56,7 +56,7 @@ export function resultCardHTML(d: CardData): string {
             ${d.top.map((f) => `<li><span>${esc(f.name)}</span><span class="rc-pct">${f.percent} %</span></li>`).join('')}
           </ul>
           <span class="rc-wild"><span class="rc-wild__tag">${r.wildcard}</span><span>${esc(d.wildcard.name)}</span><span class="rc-pct">${d.wildcard.percent} %</span></span>
-          <span class="rc-foot"><img class="rc-mark" src="/pathfinder-mark.svg" alt="" width="64" height="64"><span>Pathfinder</span></span>
+          <span class="rc-foot"><img class="rc-mark" src="/pathfinder-mark.svg" alt="" width="64" height="64"><span>Pathfinder DE</span></span>
           <span class="tc__glare"></span><span class="tc__edge"></span>
         </div>
       </div>

@@ -166,7 +166,7 @@ function strap(markDark: HTMLImageElement | null): string {
   ctx.font = `700 64px ${DISPLAY}`;
   spaced(ctx, 1);
   ctx.textBaseline = 'middle';
-  ctx.fillText('PATHFINDER', 170, h / 2 + 3);
+  ctx.fillText('PATHFINDER DE', 170, h / 2 + 3);
   return c.toDataURL('image/png');
 }
 
