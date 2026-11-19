@@ -94,7 +94,6 @@
   text-decoration: none;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
-.network__item-link:hover { transform: translateY(-2px); border-color: var(--ink-muted); }
 .network__item-link img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 12px; margin-bottom: 6px; }
 .network__item-group { padding: 0 4px; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--oxblood); }
 .network__item-title { padding: 0 4px; font: 700 19px / 1.1 var(--font-display); letter-spacing: -0.01em; }

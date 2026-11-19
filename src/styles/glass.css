@@ -22,25 +22,6 @@
   }
 }
 
-/* Light that follows the pointer (set by JS through --mx / --my) */
-[data-shine] { isolation: isolate; } /* no overflow:hidden – the border glow reaches past the edge */
-[data-shine]::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  background: radial-gradient(
-    320px circle at var(--mx, 50%) var(--my, 0%),
-    rgba(255, 255, 255, 0.55),
-    rgba(255, 255, 255, 0) 60%
-  );
-}
-[data-shine]:hover::after,
-[data-shine].is-lit::after { opacity: 1; }
 
 .btn--glass {
   color: var(--ink);

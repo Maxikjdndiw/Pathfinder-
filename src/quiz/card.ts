@@ -72,13 +72,15 @@ export function resultCardSummary(d: CardData): string {
 }
 
 /** Renders the card into `host` and makes it tilt and flip */
-export function mountResultCard(host: HTMLElement, d: CardData, opts: { intro?: boolean } = {}): TiltedCard {
+export function mountResultCard(host: HTMLElement, d: CardData, opts: { intro?: boolean; still?: boolean } = {}): TiltedCard {
   host.innerHTML = `${resultCardHTML(d)}<p class="sr-only">${esc(resultCardSummary(d))}</p>`;
   const el = host.querySelector<HTMLElement>('.result-card')!;
   return new TiltedCard(el, {
     rotateAmplitude: 12,
     scaleOnHover: 1.04,
     glare: 0.35,
+    // still: no hover effect at all (the example card on the homepage)
+    hover: !opts.still,
     glareColor: '#FFFFFF',
     shadow: 0.5,
     radius: 24,

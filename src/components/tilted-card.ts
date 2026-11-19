@@ -29,6 +29,8 @@ export interface TiltedCardOptions {
   intro?: boolean;
   floating?: boolean;
   flippable?: boolean;
+  /** false: no tilt, lift, glare or edge light on hover (click to flip still works) */
+  hover?: boolean;
   /** accessible name; gets ", Rückseite" / ", Vorderseite" appended */
   label?: string;
   onFlip?: (showingBack: boolean) => void;
@@ -83,6 +85,7 @@ export class TiltedCard {
       intro: true,
       floating: true,
       flippable: true,
+      hover: true,
       ...options,
     };
     this.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -122,7 +125,7 @@ export class TiltedCard {
       });
     }
 
-    if (!this.reduce) {
+    if (!this.reduce && this.o.hover) {
       this.on(root, 'pointermove', (e) => this.onMove(e as PointerEvent));
       this.on(root, 'pointerleave', () => this.onLeave());
       this.on(root, 'pointerenter', (e) => {

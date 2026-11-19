@@ -268,16 +268,6 @@
   line-height: var(--lh-label);
   font-weight: 500;
 }
-.tag--start span {
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 4px 6px;
-  border-radius: var(--r-tag);
-  background: var(--grad-oxblood);
-  color: var(--card);
-}
 .fields .note { margin-top: var(--s-3); max-width: 56ch; }
 
 /* ---------- Pathfinder Run teaser ---------- */
@@ -363,24 +353,18 @@
 .why__panel {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
+  /* same shape, spacing and gradient direction as the pilot panel (.cta__panel), much lighter */
   border-radius: 28px;
-  padding: clamp(32px, 6vw, 88px);
-  color: var(--card);
-  /* the ocean gradient, kept dark behind text and light only at the very bottom */
-  background: linear-gradient(180deg, var(--ocean) 0%, var(--ocean) 55%, var(--ocean-light) 100%);
+  padding: clamp(64px, 10vw, 128px) clamp(24px, 6vw, 80px);
+  color: var(--ink);
+  background: linear-gradient(150deg, #D3DBE8 0%, #DEE4EE 35%, #E8ECF3 70%, #F2F4F8 100%);
 }
-.why__panel::before {
-  content: '';
-  position: absolute;
-  width: 70%;
-  aspect-ratio: 1;
-  right: -20%;
-  top: -35%;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0));
-  pointer-events: none;
-}
-.eyebrow--light { color: var(--card); }
+.why__grain,
+.why__grain.grainient-container { position: absolute; inset: 0; z-index: 0; width: auto; height: auto; }
+.why__grain canvas { opacity: 0; transition: opacity 0.8s ease; }
+.why__grain.is-on canvas { opacity: 1; }
+.why__panel > :not(.why__grain) { position: relative; z-index: 1; }
 .why__quote {
   font-size: clamp(34px, 5.4vw, 76px);
   line-height: 1.02;
@@ -392,7 +376,7 @@
   font-size: var(--fs-body-lg);
   line-height: var(--lh-body-lg);
   max-width: 56ch;
-  color: var(--card);
+  color: var(--ink);
 }
 .why__points {
   margin-top: var(--s-5);

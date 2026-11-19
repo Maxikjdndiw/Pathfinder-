@@ -1,11 +1,10 @@
 import './styles/index.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { initNavGlass, initNavWave, initShine, initSignupLinks } from './common';
+import { initNavGlass, initNavWave, initSignupLinks } from './common';
 import { initHeroTrail } from './components/hero-trail';
 import './components/topography.css'; // the static map fallback needs it before the WebGL chunk loads
 import { initSvgLiquidGlass } from './liquidGlass';
-import { initBorderGlow } from './borderGlow';
 import { mountResultCard } from './quiz/card';
 import { ARCHETYPES } from './quiz/content';
 
@@ -20,9 +19,6 @@ initNavGlass();
 
 /* Nav links: letter wave on hover/focus (src/common.ts) */
 initNavWave();
-
-/* 3. Light that follows the pointer on glass elements (the steps) */
-initShine();
 
 /* 4. Scroll animations */
 if (!reduceMotion) {
@@ -147,16 +143,6 @@ if (lanyardBox) {
   io.observe(lanyardBox);
 }
 
-/* 8. Border glow (React Bits BorderGlow, adapted) on the regular cards.
-   The liquid glass tags keep their own effect. */
-// Mouse/trackpad only (touch is ignored inside); no (hover: hover) gate, which some
-// touchscreen laptops report as false even when a mouse is used.
-{
-  initBorderGlow(document.querySelectorAll<HTMLElement>('.step'));
-  // cards on the ocean panel: glow in the light card colour so it shows on blue
-  initBorderGlow(document.querySelectorAll<HTMLElement>('.why__point'), { glowColor: '0 0 100', colors: ['#7A1F2E', '#6F84A8', '#FFFFFF'] });
-}
-
 /* 9. Insider tips as a swapping card stack (React Bits CardSwap, ported).
    Only real cards from src/content/mentors.ts. Counter and arrows follow their number;
    with a single card there are no arrows. All cards share the height of the tallest one. */
@@ -195,7 +181,7 @@ if (insiderStack) {
     // card width: as wide as the column allows (max 560), so the stage is never scaled down
     const avail = insiderStack.clientWidth || insiderStack.parentElement!.clientWidth;
     const boundsFor = (width: number, height: number) =>
-      stackBounds({ width, height, cardDistance: geo.cardDistance, verticalDistance: geo.verticalDistance, depth: geo.depth, skewAmount: geo.skewAmount, visible: geo.visibleCards, hoverSpread: 0.12, pad: geo.pad });
+      stackBounds({ width, height, cardDistance: geo.cardDistance, verticalDistance: geo.verticalDistance, depth: geo.depth, skewAmount: geo.skewAmount, visible: geo.visibleCards, hoverSpread: 0, pad: geo.pad });
     let width = compact ? 340 : 560;
     for (let k = 0; k < 4; k++) width = Math.floor(width - Math.max(0, boundsFor(width, 400).width - avail));
     width = Math.max(240, width);
@@ -230,6 +216,8 @@ if (insiderStack) {
       draggable: several,
       cardRadius: 24, // --radius-card
       dim: 0.45,
+      hoverSpread: 0, // no fan out on hover
+      parallax: 0, // no tilt towards the pointer
       label: 'Insider-Tipps',
       onChange: (i) => {
         if (count) count.textContent = String(i + 1).padStart(2, '0');
@@ -260,7 +248,7 @@ if (exampleHost) {
       ],
       wildcard: { name: 'Gründen & Startups', percent: 81 },
     },
-    { intro: false },
+    { intro: false, still: true },
   );
 }
 
@@ -332,32 +320,35 @@ if (exampleHost) {
   });
 }
 
-/* 13. Grainient in the final call to action panel (React Bits Grainient, ported). WebGL2 only;
-   the panel's CSS gradient stays underneath as the fallback. */
+/* 13. Grainient in the pilot panel and, much lighter, in "Warum Pathfinder DE" (React Bits
+   Grainient, ported). WebGL2 only; each panel's CSS gradient stays underneath as the fallback. */
 {
-  const host = document.getElementById('cta-grain');
-  if (host) {
+  const panels: [string, Record<string, unknown>][] = [
+    // our blues, dark: light text stays readable on every colour
+    ['cta-grain', { colors: ['#0A1220', '#111E36', '#162746', '#1B2F52', '#2B4572'], grainAmount: 0.16 }],
+    // the same flow in very light blue grey: dark text reads above 4.5:1 everywhere
+    ['why-grain', { colors: ['#D3DBE8', '#DEE4EE', '#E8ECF3', '#F2F4F8', '#F8F9FB'], grainAmount: 0.08 }],
+  ];
+  for (const [id, preset] of panels) {
+    const host = document.getElementById(id);
+    if (!host) continue;
     const io = new IntersectionObserver(
       async ([entry]) => {
         if (!entry.isIntersecting) return;
         io.disconnect();
         const { createGrainient } = await import('./grainient/grainient.js');
         const handle = createGrainient(host, {
-          // dark brand ramp: light text stays readable on every colour
-          // our blues only; the lightest stays dark enough for the light text
-          colors: ['#0A1220', '#111E36', '#162746', '#1B2F52', '#2B4572'],
           type: 'linear',
           angle: 150,
-          // a soft fold of light like the reference, not a flat field
+          // a soft fold of light, not a flat field
           flow: 1.6,
           scale: 1.4,
           silk: 0.8,
           contrast: 1.15,
           speed: 0.6,
-          // dense, fine film grain like the reference
-          grainAmount: 0.16,
           grainSize: 1,
           variation: 3,
+          ...preset,
         });
         if (handle) host.classList.add('is-on');
       },

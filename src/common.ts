@@ -1,11 +1,9 @@
 /**
  * Shared by every page with the site header: sign-up links, nav letter wave,
- * pointer light on glass, liquid glass on the nav.
+ * liquid glass on the nav.
  */
 import { SIGNUP_URL } from './config';
 import { initSvgLiquidGlass } from './liquidGlass';
-
-const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /** Every "Kostenlos mitmachen" button uses the one link from src/config.ts, in a new tab */
 export function initSignupLinks(root: ParentNode = document): void {
@@ -27,18 +25,6 @@ export function initNavWave(): void {
     link.innerHTML = `<span class="wave" aria-hidden="true">${chars
       .map((c, i) => `<span style="--d:${(i * step).toFixed(0)}ms">${c === ' ' ? '&nbsp;' : c}</span>`)
       .join('')}</span>`;
-  });
-}
-
-/** Light that follows the pointer on glass elements */
-export function initShine(root: ParentNode = document): void {
-  if (reduceMotion() || !window.matchMedia('(hover: hover)').matches) return;
-  root.querySelectorAll<HTMLElement>('[data-shine]').forEach((el) => {
-    el.addEventListener('pointermove', (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      el.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
   });
 }
 
