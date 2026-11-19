@@ -324,10 +324,10 @@ if (exampleHost) {
    Grainient, ported). WebGL2 only; each panel's CSS gradient stays underneath as the fallback. */
 {
   const panels: [string, Record<string, unknown>][] = [
-    // accent to its hover blue, never lighter than the accent: white text stays above 4.5:1
-    ['cta-grain', { colors: ['#004F9E', '#00559F', '#005AB4', '#0060C0', '#0066CC'], grainAmount: 0.12, contrast: 1 }],
+    // accent to its hover blue with the original grain (0.16, contrast 1.15)
+    ['cta-grain', { colors: ['#004F9E', '#00559F', '#005AB4', '#0060C0', '#0066CC'], grainAmount: 0.16 }],
     // the same flow, light: surface grey to light accent, dark text reads above 4.5:1
-    ['why-grain', { colors: ['#F5F5F7', '#F1F3F8', '#EDF1F9', '#EAF1FA', '#E8F1FB'], grainAmount: 0.06 }],
+    ['why-grain', { colors: ['#F5F5F7', '#F1F3F8', '#EDF1F9', '#EAF1FA', '#E8F1FB'], grainAmount: 0.14 }],
   ];
   for (const [id, preset] of panels) {
     const host = document.getElementById(id);
