@@ -157,6 +157,9 @@ h1, h2, h3, .display, .display-2 {
     0 14px 30px -10px rgba(0, 102, 204, 0.7);
 }
 .btn__arrow { transition: transform 0.25s ease; }
+/* secondary, outlined: quieter than the primary button */
+.btn--outline { color: var(--ink); background: transparent; border: 1px solid var(--line); }
+.btn--outline:hover { border-color: var(--accent); color: var(--ink); }
 .btn:hover .btn__arrow { transform: translateX(3px); }
 
 /* Ambient glows: big, soft, slowly drifting colour so the glass has something to blur */

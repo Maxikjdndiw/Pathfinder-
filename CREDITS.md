@@ -35,3 +35,7 @@ one square and applies the brand duotone, into `public/images/network/`.
   Photographer names: add here.
 - Five of these are also used on path cards: Marketing (mood board), Jura (court house),
   IE Madrid (Madrid city view, not the university), Stipendium (planner), Journalismus (book page).
+
+## Example profile photo
+
+`public/images/example-profile.jpg` / `.webp` (example profile card in "Wie es funktioniert", step 02): Unsplash photo, Unsplash License, no credit required. Square crop, 400 x 400.

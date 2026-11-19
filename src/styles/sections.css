@@ -580,6 +580,8 @@
 /* ---------- Founder story ---------- */
 .founder__intro { margin-top: var(--s-3); font-size: var(--fs-body-lg); line-height: var(--lh-body-lg); max-width: 56ch; }
 .founder__text { color: var(--ink-muted); }
+.founder__linkedin { margin-top: var(--s-3); }
+@media (max-width: 560px) { .founder__linkedin { width: 100%; white-space: normal; text-align: center; } }
 .founder__mentor {
   margin-top: var(--s-4);
   padding: var(--s-3);
