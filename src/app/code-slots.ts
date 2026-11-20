@@ -65,10 +65,12 @@ export function createCodeSlots(group: HTMLElement, hidden: HTMLInputElement, on
     }
     return k;
   };
-  const after = () => {
+  /** check right away only when this change finished the code: the last slot was just filled,
+   *  or a whole code arrived at once. Editing one slot of a full code waits for the button. */
+  const after = (finished: boolean) => {
     sync();
     if (group.dataset.state === 'error') setState('idle');
-    if (raw().length === CODE_SLOTS) onComplete();
+    if (finished && raw().length === CODE_SLOTS) onComplete();
   };
 
   inputs.forEach((input, i) => {
@@ -79,10 +81,12 @@ export function createCodeSlots(group: HTMLElement, hidden: HTMLInputElement, on
         sync();
         return;
       }
+      // after a wrong code, typing in the first slot starts a fresh code
+      if (i === 0 && group.dataset.state === 'error') inputs.slice(1).forEach((x) => (x.value = ''));
       // several characters at once: autofill or a fast keyboard
-      const next = chars.length > 1 ? fill(i, chars) : (input.value = chars, i + 1);
+      const next = chars.length > 1 ? fill(i, chars) : (input.value = chars.slice(-1), i + 1);
       inputs[Math.min(next, CODE_SLOTS - 1)].focus();
-      after();
+      after(next >= CODE_SLOTS);
     });
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Backspace' && !input.value && i > 0) {
@@ -105,7 +109,7 @@ export function createCodeSlots(group: HTMLElement, hidden: HTMLInputElement, on
       // a whole code fills from the start, a piece from here
       const next = fill(chars.length >= CODE_SLOTS ? 0 : i, chars);
       inputs[Math.min(next, CODE_SLOTS - 1)].focus();
-      after();
+      after(next >= CODE_SLOTS);
     });
     input.addEventListener('focus', () => input.select());
   });
