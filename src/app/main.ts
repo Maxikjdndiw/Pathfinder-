@@ -10,6 +10,9 @@ import '../styles/tokens.css';
 import '../styles/base.css';
 import './app.css';
 import { parseMarkers, visibleText, type ModeButton, type Recommendation } from './markers';
+import { createSlideConfirm, type SlideResult } from './slide-confirm';
+import { createCodeSlots } from './code-slots';
+import { createLatticeLoader } from '../components/lattice-loader';
 import {
   COST_STEPS,
   defaultFilters,
@@ -39,9 +42,10 @@ interface State {
   profile: Record<string, unknown>;
   messages: Msg[];
   saved: string[];
+  /** a mentor request was sent from this browser */
+  mentorSent?: boolean;
 }
 
-const START = '[[SYSTEM: START]]';
 const MENTOR = '[[SYSTEM: MENTOR_ANFRAGE]]';
 const $ = <T extends Element>(sel: string, root: ParentNode = document) => root.querySelector<T>(sel)!;
 const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
@@ -85,8 +89,13 @@ function setMode(mode: Mode) {
     if (li.dataset.step === mode) li.setAttribute('aria-current', 'step');
     else li.removeAttribute('aria-current');
   });
-  // the mentor button belongs to the CV and internship parts, not to orientation
-  $<HTMLElement>('[data-mentor-bar]').hidden = mode === 'orientierung';
+  updateMentorSlot();
+}
+
+/** The mentor slider belongs to the CV and internship parts, not to orientation. */
+function updateMentorSlot() {
+  const slot = $<HTMLElement>('[data-mentor-slot]');
+  slot.hidden = state.mode === 'orientierung' || !state.messages.some((m) => m.role === 'assistant');
 }
 
 // ---------- rendering of messages ----------
@@ -147,9 +156,10 @@ function renderActions(after: HTMLElement, options: string[], buttons: ModeButto
   const box = document.createElement('div');
   box.className = 'actions';
   if (options.length) {
-    box.innerHTML = `<div class="chips" role="group" aria-label="Auswahl">${options
-      .map((o) => `<button type="button" class="chip" aria-pressed="false" data-option="${esc(o)}">${esc(o)}</button>`)
-      .join('')}</div><button type="button" class="btn btn--primary btn--small" data-send-options disabled>Auswahl senden</button>`;
+    const check = '<span class="opt__check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.4 6.6 11.4 12.5 5"/></svg></span>';
+    box.innerHTML = `<div class="opts" role="group" aria-label="Auswahl, mehrere möglich">${options
+      .map((o) => `<button type="button" class="opt chip" aria-pressed="false" data-option="${esc(o)}">${check}<span>${esc(o)}</span></button>`)
+      .join('')}</div><button type="button" class="btn btn--solid btn--small" data-send-options disabled>Weiter</button>`;
     const sendBtn = box.querySelector<HTMLButtonElement>('[data-send-options]')!;
     box.querySelectorAll<HTMLButtonElement>('.chip').forEach((chip) =>
       chip.addEventListener('click', () => {
@@ -169,10 +179,10 @@ function renderActions(after: HTMLElement, options: string[], buttons: ModeButto
   if (buttons.length) {
     const row = document.createElement('div');
     row.className = 'mode-buttons';
-    buttons.forEach((b, i) => {
+    buttons.forEach((b) => {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = `btn ${i === 0 ? 'btn--primary' : 'btn--outline'} btn--small`;
+      btn.className = 'btn btn--quiet btn--small';
       btn.textContent = b.label;
       btn.addEventListener('click', () => {
         setMode(b.mode);
@@ -199,7 +209,7 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation) {
   box.setAttribute('aria-labelledby', `${id}-title`);
   box.innerHTML = `
     <h3 class="recs__title" id="${id}-title">Angebote für dich</h3>
-    <p class="recs__note">Aus unserer geprüften Liste. Fristen und Kosten ändern sich: Prüfe sie immer auf der offiziellen Seite.</p>
+    <p class="recs__note">Fristen und Kosten immer beim Anbieter prüfen.</p>
     <details class="recs__filters">
       <summary>Filter</summary>
       <div class="filter-grid">
@@ -288,8 +298,8 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation) {
     box.querySelector('[data-count]')!.textContent = list.length
       ? `${list.length} ${list.length === 1 ? 'Angebot' : 'Angebote'}`
       : known.length
-        ? 'Keine Angebote mit diesen Filtern. Lockere die Filter etwas.'
-        : 'Für diese Felder haben wir noch keine geprüften Angebote. Wir ergänzen die Liste laufend.';
+        ? 'Keine Treffer.'
+        : 'Noch keine geprüften Angebote für diese Felder.';
     box.querySelector('[data-cards]')!.innerHTML = list.map(card).join('');
     box.querySelectorAll<HTMLButtonElement>('[data-save]').forEach((b) =>
       b.addEventListener('click', () => {
@@ -310,24 +320,30 @@ function card(o: Offer): string {
       ? 'Kosten unbekannt'
       : o.kosten_pro_jahr_eur === 0
         ? study ? 'Nur Semesterbeitrag' : 'Kostenlos'
-        : `${formatEuro(o.kosten_pro_jahr_eur)} pro Jahr${o.kosten_label ? ` (${o.kosten_label})` : ''}`;
+        : `${formatEuro(o.kosten_pro_jahr_eur)} pro Jahr`;
   const place = [o.ort, o.online ? 'online' : ''].filter(Boolean).join(', ');
-  const frist = o.frist ? `${isPast(o.frist) ? 'Frist war' : 'Frist'}: ${formatDate(o.frist)}` : 'Frist: noch nicht bekannt';
+  const past = isPast(o.frist);
+  const frist = o.frist ? `${formatDate(o.frist)}${past ? ' (abgelaufen)' : ''}` : 'noch nicht bekannt';
   const saved = state.saved.includes(o.id);
   return `<article class="offer">
-    <div class="offer__top"><span class="offer__typ">${TYP_LABEL[o.typ] ?? esc(o.typ)}</span>
+    <div class="offer__top">
+      <span class="offer__typ">${TYP_LABEL[o.typ] ?? esc(o.typ)}</span>
+      ${o.kosten_label ? `<span class="offer__label offer__label--${esc(o.kosten_label.replace(/\s+/g, '-'))}">${esc(o.kosten_label)}</span>` : ''}
       <button type="button" class="offer__save" data-save="${o.id}" aria-pressed="${saved}" aria-label="Merken: ${esc(o.name)}">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.6 3.9 4.5 7.2 4.5c2 0 3.4 1.1 4.8 2.9 1.4-1.8 2.8-2.9 4.8-2.9 3.3 0 5.6 3.1 4.4 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg></button></div>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.6 3.9 4.5 7.2 4.5c2 0 3.4 1.1 4.8 2.9 1.4-1.8 2.8-2.9 4.8-2.9 3.3 0 5.6 3.1 4.4 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg></button>
+    </div>
     <h4 class="offer__name">${esc(o.name)}</h4>
-    <p class="offer__by">${esc(o.anbieter)}${place ? ` · ${esc(place)}` : ''}</p>
-    <p class="offer__text">${esc(o.kurzbeschreibung)}</p>
+    <p class="offer__by">${esc(o.anbieter)}</p>
     <dl class="offer__meta">
+      ${place ? `<div><dt>Ort</dt><dd>${esc(place)}</dd></div>` : ''}
       <div><dt>Kosten</dt><dd>${esc(cost)}</dd></div>
-      ${o.zeitraum ? `<div><dt>Zeitraum</dt><dd>${esc(o.zeitraum)}</dd></div>` : ''}
-      <div><dt>Frist</dt><dd class="${isPast(o.frist) ? 'is-past' : ''}">${esc(frist.replace(/^Frist( war)?: /, ''))}${isPast(o.frist) ? ' (abgelaufen)' : ''}</dd></div>
+      <div><dt>Frist</dt><dd class="${past ? 'is-past' : ''}">${esc(frist)}</dd></div>
     </dl>
-    <p class="offer__foot"><span>Zuletzt geprüft am ${esc(formatDate(o.zuletzt_geprueft))}</span>
-      <a href="${esc(o.link)}" target="_blank" rel="noopener noreferrer">Offizielle Seite<span aria-hidden="true"> →</span></a></p>
+    <p class="offer__text">${esc(o.kurzbeschreibung)}</p>
+    <div class="offer__foot">
+      <span>Zuletzt geprüft am ${esc(formatDate(o.zuletzt_geprueft))}</span>
+      <a class="btn btn--quiet btn--small" href="${esc(o.link)}" target="_blank" rel="noopener noreferrer">Mehr erfahren<span class="btn__arrow" aria-hidden="true">→</span></a>
+    </div>
   </article>`;
 }
 
@@ -373,11 +389,34 @@ async function send(text: string, opts: { hidden?: boolean } = {}) {
   log.querySelectorAll('.actions').forEach((a) => a.remove());
   state.messages.push({ role: 'user', content: text, hidden: opts.hidden });
   if (!opts.hidden) bubble('user', format(text));
-  const el = bubble('assistant', '<p class="msg__typing" aria-label="Der Coach schreibt"><span></span><span></span><span></span></p>');
+  const el = bubble('assistant', '');
+  const body = el.querySelector<HTMLElement>('.msg__body')!;
+  // LatticeLoader where the reply will appear; it stays above the text while it streams
+  const loader = createLatticeLoader({
+    label: 'Denkt nach',
+    doneLabel: 'Fertig in',
+    errorLabel: 'Fehlgeschlagen nach',
+    pattern: 'orbit',
+    grid: 3,
+    shape: 'round',
+    cellSize: 6,
+    gap: 2,
+    fontSize: 14,
+    showTimer: true,
+    color: '#0066CC',
+    doneColor: '#22C55E',
+    errorColor: '#C4321F',
+  });
+  const status = document.createElement('div');
+  status.className = 'msg__status';
+  status.append(loader.el);
+  el.prepend(status);
+  el.classList.add('is-streaming');
   scrollDown();
   try {
     const raw = await ask(state.messages, (r) => {
-      el.querySelector('.msg__body')!.innerHTML = format(visibleText(r)) || el.querySelector('.msg__body')!.innerHTML;
+      const html = format(visibleText(r));
+      if (html) body.innerHTML = html;
     });
     state.messages.push({ role: 'assistant', content: raw });
     const parsed = parseMarkers(raw);
@@ -387,14 +426,33 @@ async function send(text: string, opts: { hidden?: boolean } = {}) {
       if (parsed.recommendation.stufe) state.profile.stufe = parsed.recommendation.stufe;
     }
     save();
-    el.querySelector('.msg__body')!.innerHTML = format(parsed.text);
+    body.innerHTML = format(parsed.text);
+    el.classList.remove('is-streaming');
+    loader.setStatus('done');
+    // stays a moment, then folds away softly; older replies never show it again
+    window.setTimeout(() => {
+      status.classList.add('is-leaving');
+      window.setTimeout(() => {
+        loader.destroy();
+        status.remove();
+      }, 450);
+    }, 1600);
     if (parsed.recommendation) renderRecommendations(el, parsed.recommendation);
     renderActions(el, parsed.options, parsed.buttons);
+    updateMentorSlot();
   } catch (e) {
     state.messages.pop(); // the student can send it again
+    el.classList.remove('is-streaming');
     el.classList.add('msg--error');
-    el.querySelector('.msg__body')!.innerHTML = `<p>${esc((e as Error).message)}</p>`;
-    if (!opts.hidden) input.value = text;
+    loader.setStatus('error');
+    body.innerHTML = `<p>${esc((e as Error).message)}</p><button class="btn btn--quiet btn--small msg__retry" type="button">Erneut versuchen</button>`;
+    body.querySelector('.msg__retry')!.addEventListener('click', () => {
+      if (busy) return;
+      loader.destroy();
+      el.remove();
+      // the student's message is still on screen: send it again without a second copy
+      retry(text, opts);
+    });
   } finally {
     busy = false;
     chatForm.classList.remove('is-busy');
@@ -402,10 +460,17 @@ async function send(text: string, opts: { hidden?: boolean } = {}) {
   }
 }
 
+function retry(text: string, opts: { hidden?: boolean }) {
+  const mine = log.querySelectorAll('.msg--me');
+  if (!opts.hidden) mine[mine.length - 1]?.remove();
+  send(text, opts);
+}
+
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const text = input.value.trim();
   if (!text) return;
+  showWelcome(false);
   input.value = '';
   autosize();
   send(text);
@@ -423,43 +488,73 @@ const autosize = () => {
 input.addEventListener('input', autosize);
 
 // ---------- mentor request ----------
+/* Slide to confirm: sliding starts the same path as before (summary via the marker
+   protocol, then the Netlify form). "Angefragt" only shows once the form was sent. */
 const dialog = $<HTMLDialogElement>('[data-mentor]');
 const mentorForm = $<HTMLFormElement>('[data-form="mentor"]');
-$<HTMLButtonElement>('[data-action="mentor"]').addEventListener('click', async (e) => {
-  const btn = e.currentTarget as HTMLButtonElement;
-  if (busy) return;
-  busy = true;
-  btn.disabled = true;
-  btn.textContent = 'Zusammenfassung wird erstellt';
-  let summary = '';
-  try {
-    const raw = await ask([...state.messages, { role: 'user', content: MENTOR }], () => {});
-    summary = parseMarkers(raw).summary ?? visibleText(raw);
-  } catch {
-    summary = '';
-  }
-  busy = false;
-  btn.disabled = false;
-  btn.textContent = 'Mentor kontaktieren';
-  mentorForm.reset();
-  (mentorForm.elements.namedItem('zusammenfassung') as HTMLTextAreaElement).value = summary;
-  (mentorForm.elements.namedItem('zugangscode') as HTMLInputElement).value = code;
-  $<HTMLElement>('[data-mentor-error]').textContent = '';
-  dialog.showModal();
+const MENTOR_ERROR = 'Das hat nicht geklappt. Bitte versuche es noch einmal.';
+let mentorOutcome: { resolve(r: SlideResult): void; reject(e: Error): void } | null = null;
+let mentorFailed = false;
+
+const slider = createSlideConfirm({
+  label: 'Zum Anfragen ziehen',
+  pendingLabel: 'Einen Moment',
+  doneLabel: 'Angefragt',
+  errorText: MENTOR_ERROR,
+  keyHint: 'Zum Bestätigen noch einmal drücken.',
+  async onConfirm() {
+    if (busy || state.mentorSent) return 'cancel';
+    busy = true;
+    let summary = '';
+    try {
+      const raw = await ask([...state.messages, { role: 'user', content: MENTOR }], () => {});
+      summary = parseMarkers(raw).summary ?? visibleText(raw);
+    } catch {
+      summary = '';
+    } finally {
+      busy = false;
+    }
+    mentorForm.reset();
+    (mentorForm.elements.namedItem('zusammenfassung') as HTMLTextAreaElement).value = summary;
+    (mentorForm.elements.namedItem('zugangscode') as HTMLInputElement).value = code;
+    $<HTMLElement>('[data-mentor-error]').textContent = '';
+    mentorFailed = false;
+    dialog.showModal();
+    return new Promise<SlideResult>((resolve, reject) => (mentorOutcome = { resolve, reject }));
+  },
+});
+$<HTMLElement>('[data-mentor-slider]').append(slider.el);
+
+dialog.addEventListener('close', () => {
+  const outcome = mentorOutcome;
+  mentorOutcome = null;
+  if (!outcome) return;
+  if (state.mentorSent) outcome.resolve('done');
+  else if (mentorFailed) outcome.reject(new Error(MENTOR_ERROR));
+  else outcome.resolve('cancel');
 });
 $<HTMLButtonElement>('[data-action="mentor-close"]').addEventListener('click', () => dialog.close());
+let mentorSending = false;
 mentorForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  if (mentorSending || state.mentorSent) return;
   if (!mentorForm.reportValidity()) return;
   const body = new URLSearchParams(new FormData(mentorForm) as unknown as Record<string, string>).toString();
+  const submit = mentorForm.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+  mentorSending = true;
+  submit.disabled = true;
   try {
     const res = await fetch('/', { method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body });
     if (!res.ok) throw new Error();
+    state.mentorSent = true;
+    save();
     dialog.close();
-    bubble('assistant', '<p>Deine Anfrage ist angekommen. Eine Mentorin oder ein Mentor meldet sich per E-Mail bei dir.</p>');
-    scrollDown();
   } catch {
-    $<HTMLElement>('[data-mentor-error]').textContent = 'Das hat nicht geklappt. Versuch es bitte noch einmal.';
+    mentorFailed = true;
+    $<HTMLElement>('[data-mentor-error]').textContent = MENTOR_ERROR;
+  } finally {
+    mentorSending = false;
+    submit.disabled = false;
   }
 });
 
@@ -471,20 +566,34 @@ loginForm.addEventListener('change', () => {
   parentsBox.hidden = !under16;
   (loginForm.elements.namedItem('eltern') as HTMLInputElement).required = under16;
 });
+const CODE_WRONG = 'Dieser Code passt nicht. Bitte prüfe ihn noch einmal.';
+const codeStatus = $<HTMLElement>('[data-code-status]');
+let checking = false;
+const slots = createCodeSlots($<HTMLElement>('[data-code-slots]'), loginForm.elements.namedItem('code') as HTMLInputElement, () => {
+  // all slots filled: check right away if the rest of the form is ready, else wait for the button
+  if (!checking && loginForm.checkValidity()) loginForm.requestSubmit();
+});
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  if (checking) return;
   const err = $<HTMLElement>('[data-error]');
   err.textContent = '';
-  if (!loginForm.checkValidity()) {
+  if (!slots.complete() || !loginForm.checkValidity()) {
     err.textContent = 'Bitte gib deinen Code ein und bestätige die Hinweise.';
-    loginForm.reportValidity();
+    if (!slots.complete()) slots.focus();
+    else loginForm.reportValidity();
     return;
   }
-  const value = (loginForm.elements.namedItem('code') as HTMLInputElement).value.trim().toUpperCase();
+  const value = slots.value();
   const btn = loginForm.querySelector<HTMLButtonElement>('button[type="submit"]')!;
   btn.disabled = true;
+  checking = true;
+  slots.setState('checking');
+  const loader = createLatticeLoader({ label: 'Code wird geprüft', showTimer: false, cellSize: 4, gap: 2, fontSize: 12, color: '#0066CC' });
+  codeStatus.replaceChildren(loader.el);
   try {
     const res = await fetch('/api/login', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ code: value }) });
+    if (res.status === 401) throw new Error(CODE_WRONG);
     if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error ?? 'Das hat nicht geklappt.');
     code = value;
     try {
@@ -492,10 +601,17 @@ loginForm.addEventListener('submit', async (e) => {
     } catch {
       /* stays logged in for this visit only */
     }
+    loader.destroy();
+    slots.setState('success');
+    await new Promise((r) => setTimeout(r, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 150 : 650));
     enterChat();
   } catch (x) {
+    loader.destroy();
+    slots.setState('error');
     err.textContent = (x as Error).message;
+    slots.focus();
   } finally {
+    checking = false;
     btn.disabled = false;
   }
 });
@@ -506,12 +622,50 @@ function enterChat() {
   show('chat');
   setMode(state.mode);
   renderAll();
+  if (state.mentorSent) slider.markDone(false);
+  else slider.reset();
   if (!state.messages.some((m) => m.role === 'assistant')) {
     state.messages = [];
-    send(START, { hidden: true });
-  }
+    showWelcome(true);
+  } else showWelcome(false);
   input.focus();
 }
+
+/* ---------- empty state: greeting, start suggestions, a very quiet PatternWaves layer ---------- */
+const welcome = $<HTMLElement>('[data-welcome]');
+let welcomeWaves: { destroy(): void } | null = null;
+function showWelcome(on: boolean) {
+  welcome.hidden = !on;
+  document.querySelector('.chat')?.classList.toggle('is-empty', on);
+  if (on) $<HTMLElement>('[data-mentor-slot]').hidden = true;
+  if (on && !welcomeWaves) {
+    const host = $<HTMLElement>('[data-welcome-waves]');
+    import('../components/pattern-waves').then(({ mountPatternWaves }) => {
+      if (welcome.hidden || welcomeWaves) return;
+      welcomeWaves = mountPatternWaves(host, {
+        preset: 'lines',
+        color: '#0066CC',
+        backgroundColor: 'transparent',
+        fade: 'center',
+        fadeSize: 0.7,
+        opacity: 0.28,
+        interactive: false,
+        intro: true,
+      });
+    });
+  }
+  if (!on && welcomeWaves) {
+    welcomeWaves.destroy();
+    welcomeWaves = null;
+  }
+}
+document.querySelectorAll<HTMLButtonElement>('[data-start]').forEach((b) =>
+  b.addEventListener('click', () => {
+    setMode(b.dataset.start as Mode);
+    showWelcome(false);
+    send(b.querySelector('.start__title')!.textContent!.trim());
+  }),
+);
 
 function logout() {
   try {
@@ -522,6 +676,7 @@ function logout() {
   code = '';
   log.innerHTML = '';
   loginForm.reset();
+  slots.clear();
   parentsBox.hidden = true;
   show('login');
 }

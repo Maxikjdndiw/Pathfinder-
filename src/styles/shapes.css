@@ -24,11 +24,14 @@
   border-radius: var(--radius-nav);
   padding: var(--nav-pad) var(--nav-pad) var(--nav-pad) 22px;
   --inner-r: max(var(--radius-min), calc(var(--radius-nav) - var(--nav-pad)));
+  /* same height as before, when the header still had a 44px button */
+  min-height: calc(44px + 2 * var(--nav-pad));
 }
 .nav .btn { height: 44px; padding: 0 20px; border-radius: var(--inner-r); }
 /* header button is secondary: one filled blue button per view (the hero's) */
-.nav .btn--primary { background: var(--stone); color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
-.nav .btn--primary:hover { background: var(--card); color: var(--ink); }
+.nav .btn--primary { color: var(--ink); background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFC 100%); border: 1px solid var(--line); box-shadow: var(--btn2-shadow); }
+.nav .btn--primary:hover { color: var(--ink); background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFC 100%); border-color: #B9C9DE; box-shadow: var(--btn2-shadow-hover); }
+.nav .btn--primary:active { box-shadow: var(--btn2-shadow-active); }
 .nav__links a { border-radius: var(--inner-r); }
 
 /* ---------- cards and boxed sections ---------- */

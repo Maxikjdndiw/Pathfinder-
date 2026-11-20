@@ -136,31 +136,61 @@ h1, h2, h3, .display, .display-2 {
   white-space: nowrap;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
 }
 .btn--small { --btn-pad-y: 11px; --btn-pad-x: 18px; font-size: var(--fs-label); }
 .btn--large { --btn-pad-y: 18px; --btn-pad-x: 32px; font-size: var(--fs-body-lg); }
 
 .btn--primary {
-  color: var(--card);
-  background: var(--grad-accent);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 10px 24px -10px rgba(0, 102, 204, 0.6);
+  color: #fff;
+  background: linear-gradient(180deg, var(--btn-top) 0%, var(--btn-base) 100%);
+  border-color: var(--btn-edge);
+  box-shadow: var(--btn-shadow);
 }
 .btn--primary:hover {
-  background: var(--accent-hover);
+  background: linear-gradient(180deg, var(--btn-top-hover) 0%, var(--btn-base-hover) 100%);
   transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 14px 30px -10px rgba(0, 102, 204, 0.7);
+  box-shadow: var(--btn-shadow-hover);
 }
-.btn__arrow { transition: transform 0.25s ease; }
-/* secondary, outlined: quieter than the primary button */
-.btn--outline { color: var(--ink); background: transparent; border: 1px solid var(--line); }
-.btn--outline:hover { border-color: var(--accent); color: var(--ink); }
+.btn--primary:active {
+  transform: translateY(1px);
+  box-shadow: var(--btn-shadow-active);
+}
+.btn__arrow { transition: transform 0.18s ease; }
 .btn:hover .btn__arrow { transform: translateX(3px); }
+
+/* Secondary buttons: the same shape, light surface, a fine 3D edge and a quiet lift */
+.btn--outline,
+.btn--glass,
+.btn--light {
+  color: var(--ink);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFC 100%);
+  border: 1px solid var(--line);
+  box-shadow: var(--btn2-shadow);
+}
+.btn--outline:hover,
+.btn--glass:hover,
+.btn--light:hover {
+  color: var(--ink);
+  border-color: #B9C9DE;
+  transform: translateY(-1px);
+  box-shadow: var(--btn2-shadow-hover);
+}
+.btn--outline:active,
+.btn--glass:active,
+.btn--light:active { transform: translateY(1px); box-shadow: var(--btn2-shadow-active); }
+
+/* Visible focus ring on every button, also on the blue ones */
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.btn--primary:focus-visible { outline-color: var(--btn-base); box-shadow: var(--btn-shadow), 0 0 0 1px #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn__arrow { transition: none; }
+  .btn:hover,
+  .btn:active,
+  .btn:hover .btn__arrow { transform: none; }
+}
 
 /* Ambient glows: big, soft, slowly drifting colour so the glass has something to blur */
 .glow {

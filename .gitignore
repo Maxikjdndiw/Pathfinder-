@@ -13,3 +13,7 @@ shots/
 
 # generated from app-data/ by npm run app-data
 netlify/functions/_shared/data.generated.ts
+
+# local secrets (API key, access codes): never commit
+.env
+.env.*

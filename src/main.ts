@@ -5,7 +5,7 @@ import { initNavGlass, initNavWave, initSignupLinks } from './common';
 import { initHeroTrail } from './components/hero-trail';
 import { initScrollStory } from './components/scroll-story';
 import { initFaq } from './components/faq';
-import './components/topography.css'; // the static map fallback needs it before the WebGL chunk loads
+import './components/topography.css'; // the hero fallback gradient needs it before the WebGL chunk loads
 import { initSvgLiquidGlass } from './liquidGlass';
 import { mountResultCard } from './quiz/card';
 import { ARCHETYPES } from './quiz/content';
@@ -34,8 +34,7 @@ if (!reduceMotion) {
   });
 }
 
-/* 5. Hero: trail with 12 stops (src/components/hero-trail.ts). The contour canvas below
-   serves "Für wen"; the hero has its own CSS map on top of it. */
+/* 5. Hero: trail with 12 stops (src/components/hero-trail.ts) */
 const heroTrail = document.querySelector<HTMLElement>('[data-hero-trail]');
 if (heroTrail) initHeroTrail(heroTrail);
 
@@ -47,18 +46,52 @@ if (story) initScrollStory(story);
 const faq = document.querySelector<HTMLElement>('[data-faq]');
 if (faq) initFaq(faq);
 
+/* Hero: Topography contour lines (React Bits, ported). Ink mode on the white page, accent
+   blue. Without WebGL2 the CSS gradient of .hero__topo stays as the fallback. */
 {
-  const surface = document.getElementById('topo-surface');
-  if (surface && root.classList.contains('has-3d')) {
-    // the static map is never shown when WebGL works
+  const host = document.querySelector<HTMLElement>('[data-hero-topo]');
+  if (host) {
+    const small = window.matchMedia('(max-width: 899px)').matches;
     const start = () =>
-      import('./components/topography').then(({ createTopography }) => {
-        if (!createTopography({ surface, fadeFrom: 0.62 })) root.classList.add('topo-static');
+      import('./components/topography').then(({ mountTopography }) => {
+        const topo = mountTopography(host, {
+          lightMode: true,
+          color: '#0066CC',
+          // tuned on the page: fewer lines and more fog than the start values read calmer;
+          // phones look down more steeply so the lines reach the heading
+          lineCount: small ? 16 : 18,
+          lineWidth: 1.1,
+          elevation: 1,
+          foreground: 0.2,
+          tilt: small ? 50 : 32,
+          speed: 0.2,
+          direction: 'forward',
+          glow: 0,
+          depthOfField: 0.3,
+          fog: 0.55,
+          hoverEffect: 'lift',
+          clickEffect: 'pulse',
+          markers: 'none',
+          intro: true,
+        });
+        if (topo) requestAnimationFrame(() => host.classList.add('is-on'));
       });
     // after load, when the page is idle: the first screen never waits for it
     const idle = (cb: () => void) => ('requestIdleCallback' in window ? window.requestIdleCallback(cb, { timeout: 2000 }) : setTimeout(cb, 300));
     if (document.readyState === 'complete') idle(start);
     else window.addEventListener('load', () => idle(start), { once: true });
+  }
+}
+
+/* "Test starten" in metal: the blue glint follows the pointer (CSS does the rest) */
+{
+  const metal = document.querySelector<HTMLElement>('[data-metal]');
+  if (metal) {
+    metal.addEventListener('pointermove', (e) => {
+      const r = metal.getBoundingClientRect();
+      metal.style.setProperty('--mx', `${((e.clientX - r.left) / r.width) * 100}%`);
+    });
+    metal.addEventListener('pointerleave', () => metal.style.removeProperty('--mx'));
   }
 }
 
@@ -130,17 +163,10 @@ if (lanyardBox) {
           damping: 0.55,
         });
       }
-      if (lanyard) {
-        if (!window.matchMedia('(hover: hover)').matches) {
-          const hint = badge.querySelector('.founder__hint');
-          if (hint) hint.textContent = 'Zieh an der Karte. Tippen dreht sie um.';
-        }
-        badge.classList.add('is-live');
-      }
+      if (lanyard) badge.classList.add('is-live');
       else {
         // no WebGL: a still image of the same card
         lanyardBox.remove();
-        badge.querySelector('.founder__hint')?.remove();
         const img = new Image();
         img.className = 'founder__still';
         img.src = art.frontImage;

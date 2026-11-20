@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import { readFileSync } from 'node:fs';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { SIGNUP_URL } from './src/config';
@@ -42,6 +42,9 @@ const localFunctions = {
     ssrLoadModule: (id: string) => Promise<Record<string, unknown>>;
     middlewares: { use: (fn: (req: IncomingMessage, res: ServerResponse, next: () => void) => void) => void };
   }) {
+    // the functions read their settings from process.env, as on Netlify: take them from a
+    // local .env file too (server side only, never sent to the browser)
+    for (const [k, v] of Object.entries(loadEnv('development', process.cwd(), ''))) process.env[k] ??= v;
     server.middlewares.use(async (req, res, next) => {
       const file = FUNCTIONS[(req.url ?? '').split('?')[0]];
       if (!file) return next();

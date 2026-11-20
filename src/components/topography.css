@@ -1,42 +1,58 @@
-/* Topography background (see topography.ts). The canvas sits in the surface and scrolls
-   with it; size set by a ResizeObserver. */
-.topo-canvas {
+/* Topography (React Bits, ported, see topography.ts) */
+.topography-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.topography-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hero layer: behind the heading, never catches clicks (the component listens on window).
+   The fallback is a calm light grey to white gradient; the canvas fades in over it. */
+.hero__topo,
+.hero__topo.topography-container {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
+  width: auto;
+  height: auto;
   pointer-events: none;
+  background: radial-gradient(120% 90% at 80% 20%, #F5F5F7 0%, #FFFFFF 70%);
+}
+.hero__topo .topography-canvas {
   opacity: 0;
   transition: opacity 1.2s ease;
 }
-.topo-canvas.is-on { opacity: 1; }
+.hero__topo.is-on .topography-canvas { opacity: 0.75; }
 
-/* The surface the lines cover: hero + "Für wen". */
-.topo-surface { position: relative; isolation: auto; }
+/* desktop: quieter behind the heading on the left, full strength on the right */
+@media (min-width: 900px) {
+  .hero__topo {
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.35) 38%, #000 72%);
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.35) 38%, #000 72%);
+  }
+}
 
-/* Static contour map: no WebGL or reduced motion. Same masks as the shader:
-   stronger on the right, fading to the left and towards the end of "Für wen". */
-.topo-surface::before {
+/* soft white fade at the bottom into the next section */
+.hero__topo::after {
   content: '';
   position: absolute;
-  inset: 0;
-  z-index: -1;
+  inset: auto 0 0 0;
+  height: 28%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), #FFFFFF);
   pointer-events: none;
-  display: none;
-  /* one big map, never repeated, so there is no tile edge */
-  background: url('/images/topography.svg') center top / cover no-repeat;
-  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.02) 30%, #000 88%), linear-gradient(180deg, #000 60%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.02) 30%, #000 88%), linear-gradient(180deg, #000 60%, transparent 100%);
-  mask-composite: intersect;
-  opacity: 0.6;
 }
-.no-3d .topo-surface::before,
-.topo-static .topo-surface::before { display: block; }
 
+/* phones: the heading covers most of the screen, keep the lines quieter */
 @media (max-width: 899px) {
-  .topo-surface::before {
-    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
-    opacity: 0.35;
-  }
+  .hero__topo.is-on .topography-canvas { opacity: 0.55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__topo .topography-canvas { transition: none; }
 }

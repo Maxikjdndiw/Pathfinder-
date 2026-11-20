@@ -12,9 +12,10 @@
   pointer-events: auto;
   width: var(--page-w);
   margin-inline: auto;
-  display: flex;
+  /* logo left, links in the middle, the signup button right */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: var(--s-3);
   /* simple frosted glass: stone at 75 %, blur, one line colour border */
   background: rgba(255, 255, 255, 0.92);
@@ -81,6 +82,9 @@
   .brand:focus-visible .brand__needle { animation: none; }
 }
 
+.nav .brand { justify-self: start; }
+.nav > .btn { grid-column: 3; justify-self: end; }
+.nav__cta-short { display: none; }
 .nav__links {
   display: flex;
   gap: 4px;
@@ -117,7 +121,9 @@
 
 @media (max-width: 899px) {
   .nav__links { display: none; }
-  .nav { padding-left: 20px; }
+  /* no links on phones: logo left, button right */
+  .nav { padding-left: 20px; grid-template-columns: minmax(0, 1fr) auto; }
+  .nav > .btn { grid-column: 2; }
 }
 
 /* ---------- Hero ---------- */
@@ -125,7 +131,7 @@
    48px side margin (20px below 900px). */
 .hero {
   position: relative;
-  z-index: 0; /* own layer above the fixed contour canvas of "Für wen" */
+  z-index: 0;
   isolation: isolate;
   min-height: max(640px, 100vh);
   min-height: max(640px, 100svh);
@@ -148,8 +154,7 @@
   .hero__trail { grid-column: 1 / -1; }
 }
 
-/* The contour lines come from one source only: the canvas (or the static map) of the
-   whole surface, hero + "Für wen" (src/components/topography.*). The hero adds the grain. */
+/* Grain over the hero; the contour lines come from .hero__topo (src/components/topography.*). */
 .hero::after {
   content: '';
   position: absolute;
@@ -271,6 +276,81 @@
   align-items: center;
 }
 .test__actions { margin-top: var(--s-4); }
+
+/* "Test starten" in metal: a dark pill with a silver rim, a slow sheen and a soft blue
+   glint that follows the pointer (--mx, set in src/main.ts). The only metal button. */
+@property --metal-turn { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.btn--metal {
+  --mx: 50%;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #F5F5F7;
+  border: 0;
+  background:
+    radial-gradient(120px 60px at var(--mx) 0%, rgba(0, 102, 204, 0.35), transparent 70%),
+    linear-gradient(180deg, #45474C 0%, #26272A 48%, #161618 52%, #1D1D1F 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 12px 28px -12px rgba(0, 40, 90, 0.55);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+/* silver rim, slowly turning */
+.btn--metal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--metal-turn), #8E9196, #F7F8FA, #6E7178, #DCE3EB, #9AA0A8, #FFFFFF, #7C8088, #E8EEF4, #8E9196);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: metal-turn 9s linear infinite;
+  pointer-events: none;
+}
+/* a soft band of light that wanders across */
+.btn--metal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.16) 48%, rgba(190, 215, 245, 0.1) 52%, transparent 62%) 0 0 / 260% 100% no-repeat;
+  animation: metal-sheen 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes metal-turn { to { --metal-turn: 360deg; } }
+@keyframes metal-sheen { 0%, 20% { background-position: 120% 0; } 80%, 100% { background-position: -20% 0; } }
+.btn--metal > * { position: relative; z-index: 2; }
+.btn--metal:hover {
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 18px 36px -14px rgba(0, 50, 110, 0.6);
+}
+.btn--metal:active { transform: translateY(1px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 14px -8px rgba(0, 40, 90, 0.5); }
+.btn--metal:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* label: brushed silver text */
+.metal__label {
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, #E6E9EE 45%, #A9AFB8 55%, #F2F4F7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.btn--metal .btn__arrow { color: #DCE1E8; }
+@media (prefers-reduced-motion: reduce) {
+  .btn--metal::before, .btn--metal::after { animation: none; }
+  .btn--metal::after { background-position: 50% 0; opacity: 0.6; }
+  .btn--metal:hover, .btn--metal:active { transform: none; }
+}
 .test__card { margin: 0; display: flex; flex-direction: column; align-items: center; gap: var(--s-2); }
 .test__card figcaption { text-align: center; }
 .glow--test { width: 60vw; height: 60vw; right: -16vw; top: 0; animation-delay: -9s; }
@@ -291,8 +371,6 @@
   text-underline-offset: 4px;
 }
 .step__link:hover { color: var(--accent-hover); }
-
-.nav__cta-short { display: none; }
 
 /* ---------- phones: fewer buttons, less text ---------- */
 @media (max-width: 560px) {
@@ -494,13 +572,8 @@
 .cta__panel .cta__inner { position: relative; z-index: 1; }
 .cta .display-2 { color: var(--card); }
 .cta .lead { color: rgba(255, 255, 255, 0.86); }
-.btn--light {
-  color: var(--ink);
-  background: var(--card);
-  border-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 12px 30px -12px rgba(20, 21, 23, 0.55);
-}
-.btn--light:hover { background: #fff; transform: translateY(-1px); }
+/* .btn--light: see the secondary buttons in base.css; on the blue panel it keeps a deeper shadow */
+.cta .btn--light { box-shadow: inset 0 1px 0 #fff, 0 12px 30px -12px rgba(0, 20, 50, 0.55); }
 .cta__inner {
   display: flex;
   flex-direction: column;

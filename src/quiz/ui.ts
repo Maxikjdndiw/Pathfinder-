@@ -630,7 +630,6 @@ export class QuizApp {
             <a class="btn btn--primary btn--large" href="${SIGNUP_URL}" target="_blank" rel="noopener">${R.cta}${ARROW}</a>
             <button class="btn btn--glass" type="button" data-share>${R.share}</button>
           </div>
-          <p class="q-note">${R.ctaNote}</p>
           <p class="q-note q-share-status" role="status" data-share-status></p>
         </div>
 

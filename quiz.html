@@ -36,6 +36,8 @@
   </header>
 
   <main id="inhalt" class="quiz">
+    <!-- animated pattern behind the questions (src/components/pattern-waves.ts); the glows are the fallback -->
+    <div class="quiz__waves" data-quiz-waves aria-hidden="true"></div>
     <div class="quiz__glow quiz__glow--a" aria-hidden="true"></div>
     <div class="quiz__glow quiz__glow--b" aria-hidden="true"></div>
     <div class="quiz__progress" role="progressbar" aria-label="Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden>

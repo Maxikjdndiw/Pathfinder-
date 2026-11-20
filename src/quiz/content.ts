@@ -482,7 +482,7 @@ export const TRAIT_SENTENCES: Record<Trait, { plus: string; minus: string }> = {
 export const COPY = {
   start: {
     heading: 'Pathfinder Run',
-    text: '4 Challenges. 8 Entscheidungen. Am Ende weißt du, welche Wege zu dir passen, auch welche, an die du nie gedacht hättest.',
+    text: '4 Challenges. 8 Entscheidungen.',
     button: "Los geht's",
     last: (name: string) => `Dein letztes Ergebnis: ${name}`,
     view: 'Ansehen',
@@ -497,13 +497,11 @@ export const COPY = {
   result: {
     yourType: 'Dein Typ',
     brand: 'Pathfinder Run',
-    flipHint: 'Tippen zum Umdrehen',
     cardLabel: (name: string) => `Ergebniskarte ${name}. Zum Umdrehen Enter drücken.`,
     mixHeading: 'Deine Mischung',
     pathsHeading: 'Deine Wege',
     wildcard: 'Wildcard',
     cta: 'Kostenlos mitmachen',
-    ctaNote: 'Kostenlos in der Pilotphase. Wir melden uns, sobald es losgeht.',
     share: 'Ergebnis teilen',
     shareTitle: 'Mein Pathfinder Run Ergebnis',
     radarHeading: 'Dein Profil',

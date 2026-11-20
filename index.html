@@ -49,9 +49,9 @@
   </header>
 
   <main id="inhalt">
-    <!-- HERO + "Für wen": one surface with the contour map behind it (src/components/topography.ts) -->
-    <div class="topo-surface" id="topo-surface">
+    <!-- HERO: Topography contour lines behind the heading (src/components/topography.ts) -->
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__topo" data-hero-topo aria-hidden="true"></div>
       <div class="hero__grid">
         <div class="hero__text" data-hero-text>
           <p class="hero__kicker">Für Schülerinnen und Schüler ab 15</p>
@@ -61,7 +61,6 @@
             <a class="btn btn--primary" data-signup href="%SIGNUP_URL%" target="_blank" rel="noopener">Kostenlos mitmachen<span class="btn__arrow" aria-hidden="true">→</span></a>
             <a class="hero__link" href="/quiz">Test starten (2 Min.)<span class="hero__link-arrow" aria-hidden="true">→</span></a>
           </div>
-          <p class="hero__note">Kostenlos in der Pilotphase. Kein Login für den Test.</p>
         </div>
 
         <!-- Trail with 12 stops (src/components/hero-trail.ts places the stops along the path) -->
@@ -112,7 +111,6 @@
         </div>
       </div>
     </section>
-    </div>
 
     <!-- PATHFINDER RUN TEASER -->
     <section class="section section--alt test" id="test" aria-labelledby="test-title">
@@ -121,9 +119,10 @@
         <div class="test__text">
           <p class="eyebrow">Pathfinder Run</p>
           <h2 class="display-2" id="test-title" data-reveal>Welcher Weg passt zu dir?</h2>
-          <p class="lead" data-reveal>2 Minuten. Kein Login. Keine Daten. Nur du und ein paar Entscheidungen.</p>
+          <p class="lead" data-reveal>2 Minuten. Kein Login. Keine Daten.</p>
           <div class="test__actions" data-reveal>
-            <a class="btn btn--primary btn--large" href="/quiz">Test starten<span class="btn__arrow" aria-hidden="true">→</span></a>
+            <!-- metal look in CSS only (the WebGL MetallicPaint label looked scratchy at this size) -->
+            <a class="btn btn--large btn--metal" href="/quiz" data-metal><span class="metal__label">Test starten</span><span class="btn__arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
         <figure class="test__card">
@@ -186,7 +185,6 @@
                   </ul>
                 </div>
                 <div class="pf-wrap" data-k="5">
-                  <p class="pf-label">Beispielprofil</p>
                   <div class="pf">
                   <div class="pf__banner"><img src="/images/network/city-london.webp" alt="" width="1024" height="1024" loading="lazy" decoding="async" /></div>
                   <picture class="pf__photo"><source srcset="/images/example-profile.webp" type="image/webp" /><img src="/images/example-profile.jpg" alt="Beispielprofil einer Schülerin" width="400" height="400" loading="lazy" decoding="async" /></picture>
@@ -198,6 +196,7 @@
                     <div class="pf__btns"><span class="pf__btn pf__btn--fill">Vernetzen</span><span class="pf__btn">Nachricht</span></div>
                   </div>
                   </div>
+                  <p class="pf-label">Beispielprofil</p>
                 </div>
               </div>
             </div>
@@ -282,7 +281,6 @@
           <div class="insiders__intro" data-reveal>
             <p class="eyebrow">Insider-Tipps</p>
             <h2 class="display-2 insiders__title" id="tips-title">Wusstest du, was andere auf ihrem Weg gelernt haben?</h2>
-            <p class="lead">Echte Tipps von Menschen, die ihren Weg schon gegangen sind, zum Beispiel in Finance, Deep Tech und Mode.</p>
             <div class="insiders__controls">
               <button class="btn btn--glass insiders__btn" type="button" data-swap-prev aria-label="Vorherige Karte">←</button>
               <button class="btn btn--glass insiders__btn" type="button" data-swap-next aria-label="Nächste Karte">→</button>
@@ -323,7 +321,6 @@
 
 
         <div class="network__footer" data-reveal>
-          <p class="network__note">Das Netzwerk wächst mit den ersten Jahrgängen. Im Pilot baust du es mit uns auf.</p>
           <p class="network__access">Geplant: Im Coaching ist der Zugang inklusive, danach kostet er einen kleinen Monatsbeitrag. Den genauen Preis legen wir fest, sobald die ersten Jahrgänge dabei sind.</p>
           <a class="btn btn--primary btn--large" id="netzwerk-anmelden" data-signup href="%SIGNUP_URL%" target="_blank" rel="noopener">Kostenlos mitmachen<span class="btn__arrow" aria-hidden="true">→</span></a>
         </div>
@@ -351,7 +348,6 @@
         <!-- Founder badge on a lanyard (3D, lazy loaded). Decorative: everything on it is also in the text. -->
         <figure class="founder__badge" aria-hidden="true">
           <div class="founder__lanyard" id="founder-lanyard"></div>
-          <figcaption class="founder__hint">Zieh an der Karte. Ein Klick dreht sie um.</figcaption>
         </figure>
         <picture class="founder__photo">
           <source srcset="/images/founder.webp" type="image/webp" />
@@ -370,7 +366,6 @@
       <div class="container faq__inner">
         <div class="faq__intro">
           <h2 class="display-2" id="faq-title" data-reveal>Häufige Fragen</h2>
-          <p class="lead">Für Schülerinnen, Schüler und Eltern.</p>
         </div>
         <div class="faq__list" data-faq>
           <div class="faq__item">
@@ -445,7 +440,7 @@
           <div class="cta__grain" id="cta-grain" aria-hidden="true"></div>
           <div class="cta__inner">
             <h2 class="display-2" id="cta-title" data-reveal>Sei bei der kostenlosen Pilotphase dabei.</h2>
-            <p class="lead" data-reveal>Melde dich in zwei Minuten an. Wir melden uns, sobald es losgeht.</p>
+            <p class="lead" data-reveal>Wir melden uns, sobald es losgeht.</p>
             <a class="btn btn--light btn--large" data-signup data-reveal href="%SIGNUP_URL%" target="_blank" rel="noopener">Kostenlos mitmachen<span class="btn__arrow" aria-hidden="true">→</span></a>
           </div>
         </div>

@@ -23,22 +23,7 @@
 }
 
 
-.btn--glass {
-  color: var(--ink);
-  background: var(--card);
-  border: 1px solid var(--line);
-}
-@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .btn--glass {
-    background: var(--glass-bg-strong);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-    border-color: var(--glass-border);
-    border-bottom-color: var(--glass-border-bottom);
-    box-shadow: var(--glass-highlight), 0 8px 20px -12px rgba(20, 21, 23, 0.25);
-  }
-}
-.btn--glass:hover { transform: translateY(-1px); }
+/* .btn--glass: see the secondary buttons in base.css */
 
 /* ------------------------------------------------------------------
    Real liquid glass

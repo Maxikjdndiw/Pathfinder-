@@ -37,7 +37,7 @@ export function resultCardHTML(d: CardData): string {
             <span class="rc-name">${esc(d.archetype.name)}</span>
             <span class="rc-line">${esc(d.archetype.line)}</span>
           </div>
-          <span class="rc-hint">${ROTATE_ICON}${r.flipHint}</span>
+          <span class="rc-hint" aria-hidden="true">${ROTATE_ICON}</span>
           <span class="tc__glare"></span><span class="tc__edge"></span>
         </div>
         <div class="tc__face tc__face--back rc-back">

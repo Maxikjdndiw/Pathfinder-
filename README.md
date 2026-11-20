@@ -67,7 +67,7 @@ A chat coach for pilot participants at `/app` (file `app.html`, code in `src/app
 - **Models:** Claude Haiku 5.5 for the chat, Claude Sonnet 5.5 only for CV reviews (Lebenslauf mode with a long pasted text). The static part of the prompt is cached.
 - **Netlify environment variables** (Site configuration, Environment variables):
   - `ANTHROPIC_API_KEY`: the API key.
-  - `PATHFINDER_ACCESS_CODES`: comma separated access codes, for example `LENA-4821,PILOT-0193`.
+  - `PATHFINDER_ACCESS_CODES`: comma separated access codes in the form `ABCD-1234` (the login has 8 slots, see `src/app/code-slots.ts`), for example `LENA-4821,PILO-0193`.
   - `PATHFINDER_DAILY_LIMIT`: messages per code and day (default 60).
 - **Local test without cost:** `PATHFINDER_MOCK=1 PATHFINDER_ACCESS_CODES=TEST-1234 npm run dev`, then open `/app` and use the code `TEST-1234`. The coach answers with fixed test replies and makes no API calls. Without `PATHFINDER_MOCK` and with `ANTHROPIC_API_KEY` set, the same command talks to the real API.
 - **Memory:** profile, history and saved offers stay in the student's browser. The server only counts messages per code and day (Netlify Blobs).

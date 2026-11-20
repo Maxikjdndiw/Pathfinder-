@@ -1,0 +1,13 @@
+/* MetallicPaint (React Bits, ported, see metallic-paint.ts). Styles unchanged. */
+.metallic-paint {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.metallic-paint-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+

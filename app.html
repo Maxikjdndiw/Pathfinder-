@@ -16,9 +16,19 @@
   <a class="skip-link" href="#app-main">Zum Inhalt springen</a>
   <header class="app-head">
     <a class="app-brand" href="/" aria-label="Pathfinder DE, zur Startseite"><!--brand-mark--><span>Pathfinder DE</span></a>
+    <ol class="modes" data-when="chat" aria-label="Abschnitte" hidden>
+      <li data-step="orientierung">Orientierung</li>
+      <li data-step="cv_linkedin">CV und LinkedIn</li>
+      <li data-step="praktika">Praktika</li>
+    </ol>
     <div class="app-head__actions" data-when="chat" hidden>
-      <button class="app-link" type="button" data-action="delete">Daten löschen</button>
-      <button class="app-link" type="button" data-action="logout">Abmelden</button>
+      <details class="menu">
+        <summary class="menu__btn" aria-label="Weitere Optionen"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></summary>
+        <div class="menu__list">
+          <button type="button" data-action="delete">Meine Daten löschen</button>
+          <button type="button" data-action="logout">Abmelden</button>
+        </div>
+      </details>
     </div>
   </header>
 
@@ -26,12 +36,17 @@
     <!-- 1. Login with access code and consent -->
     <section class="login" data-screen="login" aria-labelledby="login-title">
       <h1 id="login-title">Dein Coach</h1>
-      <p class="login__lead">Für Teilnehmende der Pilotphase. Gib deinen Zugangscode ein.</p>
+      <p class="login__lead">Für Teilnehmende der Pilotphase.</p>
       <form class="login__form" data-form="login" novalidate>
-        <label class="field">
-          <span class="field__label">Zugangscode</span>
-          <input class="input" name="code" autocomplete="off" autocapitalize="characters" spellcheck="false" required />
-        </label>
+        <div class="field">
+          <span class="field__label" aria-hidden="true">Zugangscode</span>
+          <!-- one slot per character (src/app/code-slots.ts); the joined code goes into the hidden field -->
+          <div class="code-row">
+            <div data-code-slots></div>
+            <span class="code-status" data-code-status></span>
+          </div>
+          <input type="hidden" name="code" />
+        </div>
 
         <fieldset class="field">
           <legend class="field__label">Wie alt bist du?</legend>
@@ -46,8 +61,8 @@
         <details class="notice">
           <summary>Datenschutzhinweis lesen</summary>
           <p>Pathfinder DE ist ein Beratungswerkzeug für Schülerinnen und Schüler. Wir speichern so wenig wie möglich.</p>
-          <p>Was wir speichern: einen Zugangscode, eine kurze Zusammenfassung deines Profils (Klasse, Interessen, Felder) und deine gemerkten Angebote. Profil, Verlauf und gemerkte Angebote liegen nur in deinem Browser. Auf dem Server zählen wir pro Zugangscode, wie viele Nachrichten am Tag geschickt werden. Bitte gib keine sensiblen Daten ein, zum Beispiel Gesundheitsdaten, Adresse oder Telefonnummer.</p>
-          <p>Wer die Daten verarbeitet: Deine Chatnachrichten werden zur Beantwortung an einen KI-Dienst (Anthropic) übermittelt. Die Seite wird bei Netlify gehostet. Anfragen an eine Mentorin oder einen Mentor laufen über Netlify Forms.</p>
+          <p>Was wir speichern: einen Zugangscode, eine kurze Zusammenfassung deines Profils (Klasse, Interessen, Felder) und deine gemerkten Angebote. Profil, Verlauf und gemerkte Angebote liegen nur in deinem Browser. Auf dem Server zählen wir pro Zugangscode, wie viele Nachrichten am Tag geschickt werden. Bitte gib keine sensiblen Daten ein, zum Beispiel Namen, Gesundheitsdaten, Adresse oder Telefonnummer.</p>
+          <p>Wer die Daten verarbeitet: Deine Chatnachrichten werden zur Beantwortung an einen KI-Dienst (Anthropic) übermittelt. Die Seite wird bei Netlify gehostet. Anfragen an eine Mentorin oder einen Mentor laufen über Netlify Forms: Dabei geht eine kurze Zusammenfassung deines Gesprächs an die Mentorin oder den Mentor, die Antwort kommt per E-Mail.</p>
           <p>Rechtsgrundlage: deine Einwilligung. Du kannst sie jederzeit widerrufen und die Löschung deiner Daten verlangen: <a href="mailto:benedict.velazquez@mail.louisenlund.de">benedict.velazquez@mail.louisenlund.de</a>.</p>
           <p>Die KI kann Fehler machen. Prüfe wichtige Angaben (Fristen, Kosten) immer auf der offiziellen Seite des Anbieters.</p>
         </details>
@@ -63,22 +78,48 @@
     </section>
 
     <!-- 2. Chat -->
-    <section class="chat" data-screen="chat" aria-label="Gespräch mit dem Coach" hidden>
-      <ol class="steps-nav" aria-label="Abschnitte">
-        <li data-step="orientierung">Orientierung</li>
-        <li data-step="cv_linkedin">Lebenslauf und LinkedIn</li>
-        <li data-step="praktika">Praktika und Sommerkurse</li>
-      </ol>
-      <div class="chat__log" data-log aria-live="polite"></div>
-      <div class="chat__mentor" data-mentor-bar hidden>
-        <button class="btn btn--outline btn--small" type="button" data-action="mentor">Mentor kontaktieren</button>
+    <section class="chat" data-screen="chat" aria-label="Gespräch mit Pathfinder" hidden>
+      <!-- empty state: greeting and start suggestions (a quiet PatternWaves layer behind it) -->
+      <div class="welcome" data-welcome hidden>
+        <div class="welcome__waves" data-welcome-waves aria-hidden="true"></div>
+        <h1 class="welcome__title">Hi, schön, dass du da bist.</h1>
+        <p class="welcome__lead">Womit willst du anfangen?</p>
+        <p class="welcome__privacy">Bitte keine Namen, Adressen oder Telefonnummern.</p>
+        <div class="starts">
+          <button type="button" class="start" data-start="orientierung">
+            <span class="start__title">Ich weiß noch nicht, was ich werden will</span>
+          </button>
+          <button type="button" class="start" data-start="orientierung">
+            <span class="start__title">Ich habe schon eine Idee</span>
+          </button>
+          <button type="button" class="start" data-start="cv_linkedin">
+            <span class="start__title">Lebenslauf verbessern</span>
+          </button>
+          <button type="button" class="start" data-start="praktika">
+            <span class="start__title">Praktikum oder Sommerkurs finden</span>
+          </button>
+        </div>
       </div>
-      <form class="chat__form" data-form="chat">
-        <label class="sr-only" for="chat-input">Deine Nachricht</label>
-        <textarea id="chat-input" class="input chat__input" name="text" rows="1" maxlength="6000" placeholder="Schreib deine Antwort" required></textarea>
-        <button class="btn btn--primary chat__send" type="submit" aria-label="Senden"><span aria-hidden="true">→</span></button>
-      </form>
-      <p class="chat__note">Keine Namen, Adressen oder Telefonnummern in den Chat schreiben. Die KI kann Fehler machen.</p>
+
+      <div class="chat__log" data-log aria-live="polite"></div>
+
+      <!-- mentor request: slide to confirm (src/app/slide-confirm.ts), from the CV part on -->
+      <section class="mentor-slot" data-mentor-slot aria-labelledby="mentor-slot-title" hidden>
+        <h2 class="mentor-slot__title" id="mentor-slot-title">Mit einer echten Person sprechen</h2>
+        <div data-mentor-slider></div>
+      </section>
+
+      <div class="composer-wrap">
+        <form class="composer" data-form="chat">
+          <label class="sr-only" for="chat-input">Deine Nachricht</label>
+          <textarea id="chat-input" aria-describedby="composer-hint" class="composer__input" name="text" rows="1" maxlength="6000" placeholder="Schreib Pathfinder eine Nachricht" required></textarea>
+          <button class="btn btn--primary composer__send" type="submit" aria-label="Senden">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
+          </button>
+        </form>
+        <p class="sr-only" id="composer-hint">Enter sendet, Shift und Enter macht eine neue Zeile.</p>
+        <p class="composer__note">Pathfinder kann Fehler machen.</p>
+      </div>
     </section>
   </main>
 
@@ -86,7 +127,6 @@
   <dialog class="mentor" data-mentor aria-labelledby="mentor-title">
     <form name="mentor-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-form="mentor">
       <h2 id="mentor-title">Mentor kontaktieren</h2>
-      <p>Diese Zusammenfassung geht an eine Mentorin oder einen Mentor. Du kannst sie ändern.</p>
       <input type="hidden" name="form-name" value="mentor-anfrage" />
       <p class="sr-only"><label>Nicht ausfüllen: <input name="bot-field" /></label></p>
       <input type="hidden" name="zugangscode" />
@@ -95,7 +135,7 @@
         <textarea class="input" name="zusammenfassung" rows="6" maxlength="1200" required></textarea>
       </label>
       <label class="field">
-        <span class="field__label">Wie können wir dich erreichen? (E-Mail)</span>
+        <span class="field__label">E-Mail</span>
         <input class="input" type="email" name="email" autocomplete="email" required />
       </label>
       <label class="check">
@@ -104,8 +144,8 @@
       </label>
       <p class="form-error" data-mentor-error role="alert"></p>
       <div class="mentor__actions">
-        <button class="btn btn--outline" type="button" data-action="mentor-close">Abbrechen</button>
-        <button class="btn btn--primary" type="submit">Anfrage senden</button>
+        <button class="btn btn--quiet" type="button" data-action="mentor-close">Abbrechen</button>
+        <button class="btn btn--solid" type="submit">Anfragen</button>
       </div>
     </form>
   </dialog>
