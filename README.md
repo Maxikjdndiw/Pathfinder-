@@ -57,3 +57,18 @@ See the deployment notes in the project hand-over, or in short:
 
 - **Netlify** (works with a private repo, free): connect the repo, build command `npm run build`, publish directory `dist`. `netlify.toml` already sets this.
 - **GitHub Pages**: the build uses relative paths (`base: './'`), so `dist/` works in a sub-path. Note that Pages for a *private* repo needs a paid GitHub plan.
+
+## Coach (/app)
+
+A chat coach for pilot participants at `/app` (file `app.html`, code in `src/app/` and `netlify/functions/`).
+
+- **Content:** everything the coach knows comes from `app-data/` (prompt, knowledge block, field profiles, templates, offers list). After editing those files, run `npm run app-data` (the build does it too). It writes `netlify/functions/_shared/data.generated.ts`; never edit that file by hand.
+- **Offers:** the coach never invents offers. It sends a marker with fields and stage, and the page filters `app-data/angebote.json` into cards.
+- **Models:** Claude Haiku 5.5 for the chat, Claude Sonnet 5.5 only for CV reviews (Lebenslauf mode with a long pasted text). The static part of the prompt is cached.
+- **Netlify environment variables** (Site configuration, Environment variables):
+  - `ANTHROPIC_API_KEY`: the API key.
+  - `PATHFINDER_ACCESS_CODES`: comma separated access codes, for example `LENA-4821,PILOT-0193`.
+  - `PATHFINDER_DAILY_LIMIT`: messages per code and day (default 60).
+- **Local test without cost:** `PATHFINDER_MOCK=1 PATHFINDER_ACCESS_CODES=TEST-1234 npm run dev`, then open `/app` and use the code `TEST-1234`. The coach answers with fixed test replies and makes no API calls. Without `PATHFINDER_MOCK` and with `ANTHROPIC_API_KEY` set, the same command talks to the real API.
+- **Memory:** profile, history and saved offers stay in the student's browser. The server only counts messages per code and day (Netlify Blobs).
+- **Mentor requests** arrive as Netlify Forms submissions (form `mentor-anfrage`).

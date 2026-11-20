@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { readFileSync } from 'node:fs';
+import type { IncomingMessage, ServerResponse } from 'node:http';
 import { SIGNUP_URL } from './src/config';
 
 /**
@@ -20,19 +21,46 @@ function brandMark(): string {
     .replace('<svg ', '<svg class="brand__mark" aria-hidden="true" focusable="false" ');
 }
 
-/** /quiz serves quiz.html in dev and preview too (Netlify does it with a rewrite, see netlify.toml) */
-const quizRoute = {
-  name: 'quiz-route',
-  configureServer(server: { middlewares: { use: (fn: (req: { url?: string }, res: unknown, next: () => void) => void) => void } }) {
-    server.middlewares.use((req, _res, next) => {
-      if (req.url && /^\/quiz\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/quiz\/?/, '/quiz.html');
-      next();
-    });
-  },
-  configurePreviewServer(server: { middlewares: { use: (fn: (req: { url?: string }, res: unknown, next: () => void) => void) => void } }) {
-    server.middlewares.use((req, _res, next) => {
-      if (req.url && /^\/quiz\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/quiz\/?/, '/quiz.html');
-      next();
+/** /quiz and /app serve their HTML files in dev and preview too (Netlify does it with rewrites, see netlify.toml) */
+type Mw = { middlewares: { use: (fn: (req: { url?: string }, res: unknown, next: () => void) => void) => void } };
+const pageRoutes = (server: Mw) => {
+  server.middlewares.use((req, _res, next) => {
+    if (req.url) req.url = req.url.replace(/^\/(quiz|app)\/?(?=\?|$)/, '/$1.html');
+    next();
+  });
+};
+const quizRoute = { name: 'page-routes', configureServer: pageRoutes, configurePreviewServer: pageRoutes };
+
+/**
+ * npm run dev: /api/chat and /api/login run the Netlify Functions in-process, so the coach
+ * works without the Netlify CLI. Env vars come from the shell (for example PATHFINDER_MOCK=1).
+ */
+const FUNCTIONS: Record<string, string> = { '/api/chat': '/netlify/functions/chat.mts', '/api/login': '/netlify/functions/login.mts' };
+const localFunctions = {
+  name: 'local-functions',
+  configureServer(server: {
+    ssrLoadModule: (id: string) => Promise<Record<string, unknown>>;
+    middlewares: { use: (fn: (req: IncomingMessage, res: ServerResponse, next: () => void) => void) => void };
+  }) {
+    server.middlewares.use(async (req, res, next) => {
+      const file = FUNCTIONS[(req.url ?? '').split('?')[0]];
+      if (!file) return next();
+      const chunks: Buffer[] = [];
+      for await (const c of req) chunks.push(c as Buffer);
+      const handler = (await server.ssrLoadModule(file)).default as (r: Request) => Promise<Response>;
+      const response = await handler(
+        new Request(`http://localhost${req.url}`, { method: req.method, headers: req.headers as Record<string, string>, body: req.method === 'POST' ? Buffer.concat(chunks) : undefined }),
+      );
+      res.statusCode = response.status;
+      response.headers.forEach((v, k) => res.setHeader(k, v));
+      if (!response.body) return res.end();
+      const reader = response.body.getReader();
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        res.write(value);
+      }
+      res.end();
     });
   },
 };
@@ -43,6 +71,7 @@ export default defineConfig({
   // Writes SIGNUP_URL from src/config.ts into the HTML, so the buttons work even before JS loads.
   plugins: [
     quizRoute,
+    localFunctions,
     {
       name: 'signup-url',
       transformIndexHtml: (html) => html.replaceAll('%SIGNUP_URL%', SIGNUP_URL).replaceAll('<!--brand-mark-->', brandMark()),
@@ -58,6 +87,7 @@ export default defineConfig({
         impressum: 'impressum.html',
         datenschutz: 'datenschutz.html',
         quiz: 'quiz.html',
+        app: 'app.html',
       },
     },
   },

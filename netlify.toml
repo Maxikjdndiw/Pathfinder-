@@ -15,3 +15,17 @@
   from = "/quiz/"
   to = "/quiz.html"
   status = 200
+
+# The coach lives at /app (the file is app.html); its API runs as Netlify Functions
+[[redirects]]
+  from = "/app"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/app/"
+  to = "/app.html"
+  status = 200
+
+[functions]
+  node_bundler = "esbuild"

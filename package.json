@@ -5,22 +5,28 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "node scripts/build-app-data.mjs && tsc --noEmit && tsc --noEmit -p netlify/functions && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "network-images": "node scripts/network-images.mjs",
     "hero-cards": "node scripts/hero-cards.mjs",
-    "topography-svg": "node scripts/topography-svg.mjs"
+    "topography-svg": "node scripts/topography-svg.mjs",
+    "app-data": "node scripts/build-app-data.mjs",
+    "pretest": "node scripts/build-app-data.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.11.0",
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
     "@fontsource/inter": "^5.3.0",
+    "@netlify/blobs": "^11.1.9",
     "gsap": "^3.15.1",
     "html-to-image": "1.11.11",
     "ogl": "^1.0.11",
     "three": "^0.187.0"
   },
   "devDependencies": {
+    "@netlify/functions": "^6.1.1",
+    "@types/node": "^26.6.6",
     "@types/three": "^0.187.0",
     "sharp": "^0.35.5",
     "typescript": "^7.0.2",

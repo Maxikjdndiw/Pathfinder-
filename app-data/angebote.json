@@ -1,0 +1,702 @@
+[
+  {
+    "id": "jugend-forscht-2027",
+    "typ": "wettbewerb",
+    "name": "Jugend forscht 2027",
+    "anbieter": "Stiftung Jugend forscht e. V.",
+    "felder": [
+      "ki",
+      "informatik",
+      "ingenieur",
+      "naturwiss"
+    ],
+    "stufen": [
+      "jung",
+      "mittel",
+      "abschluss"
+    ],
+    "land": "DE",
+    "ort": "bundesweit",
+    "online": false,
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "Regionalwettbewerbe Februar und März 2027, Bundesfinale 27. bis 30. Mai 2027",
+    "frist": "2026-11-30",
+    "mindestalter": 15,
+    "klasse_min": 4,
+    "link": "https://www.jugend-forscht.de",
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Bundesweiter MINT-Nachwuchswettbewerb bis 21 Jahre, allein oder im Team, eigene Fragestellung, Anmeldung online bis 30. November, Nachmeldungen sind nicht möglich.",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "bwinf-bundeswettbewerb-informatik-45",
+    "typ": "wettbewerb",
+    "name": "Bundeswettbewerb Informatik, 1. Runde",
+    "anbieter": "BWINF (Gesellschaft für Informatik, Fraunhofer IuK, Max-Planck-Institut für Informatik)",
+    "felder": [
+      "informatik",
+      "ki"
+    ],
+    "stufen": [
+      "jung",
+      "mittel",
+      "abschluss"
+    ],
+    "land": "DE",
+    "ort": "bundesweit",
+    "online": true,
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "1. Runde im Herbst 2026, Anmeldung über login.bwinf.de",
+    "frist": "2026-11-23",
+    "mindestalter": null,
+    "link": "https://bwinf.de",
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Programmieraufgaben für Schülerinnen und Schüler, Teilnahme einzeln, die Einreichung der 1. Runde ist bis 23. November 2026 möglich.",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "informatik-biber",
+    "typ": "wettbewerb",
+    "name": "Informatik-Biber",
+    "anbieter": "BWINF",
+    "felder": [
+      "informatik",
+      "ki"
+    ],
+    "stufen": [
+      "jung",
+      "mittel"
+    ],
+    "land": "DE",
+    "ort": "bundesweit",
+    "online": true,
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "Biber-Wochen 9. bis 20. November 2026 (jährlich im Herbst)",
+    "frist": null,
+    "klasse_min": 3,
+    "link": "https://bwinf.de",
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Einstiegswettbewerb für informatisches Denken, Teilnahme ab Klasse 3 bis zum Abitur, Anmeldung läuft über die Schule.",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "bundeswettbewerb-mathematik",
+    "typ": "wettbewerb",
+    "name": "Bundeswettbewerb Mathematik",
+    "anbieter": "Bundeswettbewerb Mathematik, Bonn",
+    "felder": [
+      "naturwiss",
+      "informatik",
+      "ki",
+      "finanzen"
+    ],
+    "stufen": [
+      "jung",
+      "mittel",
+      "abschluss"
+    ],
+    "land": "DE",
+    "ort": "bundesweit",
+    "online": true,
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "Aufgaben ab Anfang Dezember 2026, Einsendeschluss 1. Runde am ersten Montag im März (voraussichtlich 1. März 2027)",
+    "frist": "2027-03-01",
+    "klasse_min": 9,
+    "link": "https://www.bundeswettbewerb-mathematik.de",
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "B",
+    "kurzbeschreibung": "Schülerwettbewerb für Mathematikbegeisterte aller Klassenstufen an Schulen, die zur Hochschulreife führen, Aufgaben orientieren sich an den Klassen 9 bis 13, in der ersten Runde ist Gruppenarbeit bis drei Personen erlaubt. Bundessieger kommen in die Studienstiftung.",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "deutsche-schuelerakademie-2027",
+    "typ": "sommerkurs",
+    "name": "Deutsche SchülerAkademie",
+    "anbieter": "Bildung & Begabung gGmbH",
+    "felder": [
+      "naturwiss",
+      "informatik",
+      "ki",
+      "politik",
+      "sprachen"
+    ],
+    "stufen": [
+      "jung",
+      "mittel"
+    ],
+    "land": "DE",
+    "ort": "Internate in ganz Deutschland",
+    "online": false,
+    "kosten_pro_jahr_eur": 650,
+    "kosten_label": "kostenpflichtig",
+    "zeitraum": "Sommerferien, etwa 16 Tage",
+    "frist": null,
+    "klasse_min": 10,
+    "link": "https://www.schuelerakademien.de/deutsche-schuelerakademie",
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "B",
+    "kurzbeschreibung": "Zweiwöchige Kursakademie für leistungsbereite Oberstufenschüler, die Schule schlägt vor. Eigenanteil in der Regel etwa 650 Euro, Ermäßigung bei geringem Einkommen möglich. Die Frist 2027 steht noch nicht fest (2026 war Kurswahl bis 31. März, Ausschreibung im Januar).",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "tu-dresden-sommeruniversitaet",
+    "typ": "sommerkurs",
+    "name": "Sommeruniversität TU Dresden",
+    "anbieter": "Technische Universität Dresden",
+    "felder": [
+      "ingenieur",
+      "informatik",
+      "naturwiss"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "land": "DE",
+    "ort": "Dresden",
+    "online": false,
+    "kosten_pro_jahr_eur": 75,
+    "kosten_label": "gering",
+    "zeitraum": "Eine Woche im Juli, Termine 2027 noch nicht veröffentlicht (2026: 6. bis 24. Juli, Anmeldung bis 22. Juni)",
+    "frist": null,
+    "link": "https://tu-dresden.de/tu-dresden/newsportal/news/anmeldestart-fuer-die-sommeruniversitaet-2026",
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Einwöchige MINT-Sommeruniversität der TU Dresden mit Einblicken in Institute, Labore und Unternehmen, Teilnahmebeitrag 75 Euro (Stand 2026). Anmeldung öffnet jeweils im Frühjahr.",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "frankfurt-school-bachelor-summer-school-2027",
+    "typ": "sommerkurs",
+    "name": "Bachelor Summer School Frankfurt School",
+    "anbieter": "Frankfurt School of Finance & Management",
+    "felder": [
+      "finanzen",
+      "wirtschaft",
+      "beratung",
+      "intl-business"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "land": "DE",
+    "ort": "Frankfurt am Main",
+    "online": false,
+    "kosten_pro_jahr_eur": 950,
+    "kosten_label": "kostenpflichtig",
+    "zeitraum": "5. bis 9. Juli 2027, Frankfurt",
+    "frist": null,
+    "link": "https://www.frankfurt-school.de/events/bachelor-summer-school",
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Einwöchige Pre-Bachelor Summer School auf Englisch, ab 16 Jahren, Motivationsschreiben auf Englisch nötig, unter 18 mit Einverständniserklärung der Eltern. Gebühr 950 Euro inkl. ÖPNV-Ticket und Mittagessen, Unterkunft nicht enthalten. Bewerbungsfrist auf der Seite nicht genannt.",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "bocconi-bsc",
+    "typ": "hochschule",
+    "name": "Bocconi University, Bachelor of Science",
+    "anbieter": "Università Bocconi",
+    "felder": [
+      "wirtschaft",
+      "finanzen",
+      "intl-business"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "land": "IT",
+    "ort": "Mailand",
+    "online": false,
+    "kosten_pro_jahr_eur": 17000,
+    "kosten_label": "kostenintensiv",
+    "zeitraum": "Studienstart im Herbst, Studienjahr 2026/27 als Referenz",
+    "frist": null,
+    "link": "https://www.unibocconi.it/en/fees",
+    "lat": 45.4506,
+    "lng": 9.1889,
+    "lebenshaltung_pro_monat_eur": null,
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Private Wirtschaftsuniversität, 17.000 Euro pro Jahr im ersten Bachelorjahr 2026/27, Teilerlass ab 20 Prozent möglich.",
+    "link_im_browser_geprueft": "2026-11-20",
+    "wg_miete_pro_monat_eur": null
+  },
+  {
+    "id": "ie-university-bba",
+    "typ": "hochschule",
+    "name": "IE University, Bachelor in Business Administration",
+    "anbieter": "IE University",
+    "felder": [
+      "wirtschaft",
+      "intl-business",
+      "beratung"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "land": "ES",
+    "ort": "Madrid und Segovia",
+    "online": false,
+    "kosten_pro_jahr_eur": 29880,
+    "kosten_label": "sehr kostenintensiv",
+    "zeitraum": "Studienstart September, Bewerbungsrunden für 2027 unter anderem 15. Januar und 5. März 2027",
+    "frist": "2027-03-05",
+    "link": "https://www.ie.edu/university/admission/fees-scholarships/",
+    "lat": 40.4168,
+    "lng": -3.7038,
+    "lebenshaltung_pro_monat_eur": null,
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Internationale Privatuniversität, Gebühr laut IE 29.880 Euro pro Jahr für den Start 2027/28 und jährlich angepasst, Spanischkurse im ersten und zweiten Jahr inklusive.",
+    "link_im_browser_geprueft": "2026-11-20",
+    "wg_miete_pro_monat_eur": null
+  },
+  {
+    "id": "maastricht-bachelor",
+    "typ": "hochschule",
+    "name": "Maastricht University, Bachelor (EU-Gebühr)",
+    "anbieter": "Maastricht University",
+    "felder": [
+      "wirtschaft",
+      "intl-business",
+      "eu",
+      "politik",
+      "internationale-orgs"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "land": "NL",
+    "ort": "Maastricht",
+    "online": false,
+    "kosten_pro_jahr_eur": 2771,
+    "kosten_label": "kostenpflichtig",
+    "zeitraum": "Studienstart September 2027, Gebühr laut Anbieterseite",
+    "frist": null,
+    "link": "https://www.maastrichtuniversity.nl/study/admission-enrolment/tuition-fees",
+    "lat": 50.8514,
+    "lng": 5.691,
+    "lebenshaltung_pro_monat_eur": null,
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Staatliche niederländische Universität, gesetzliche Gebühr für EU-Studierende 2.771 Euro im Studienjahr 2027/28 (2026/27: 2.694 Euro), University College Maastricht und einige weitere Programme kosten mehr (4.595 Euro).",
+    "link_im_browser_geprueft": "2026-11-20",
+    "wg_miete_pro_monat_eur": null
+  },
+  {
+    "id": "whu-bachelor",
+    "typ": "hochschule",
+    "name": "WHU, Bachelor Internationale BWL",
+    "anbieter": "WHU Otto Beisheim School of Management",
+    "felder": [
+      "wirtschaft",
+      "finanzen",
+      "beratung",
+      "intl-business"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "land": "DE",
+    "ort": "Vallendar",
+    "online": false,
+    "kosten_pro_jahr_eur": 18200,
+    "kosten_label": "kostenintensiv",
+    "zeitraum": "Studienstart Anfang September, vierstufiges Auswahlverfahren",
+    "frist": "2027-05-15",
+    "link": "https://www.whu.edu",
+    "lat": 50.398,
+    "lng": 7.613,
+    "lebenshaltung_pro_monat_eur": null,
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "B",
+    "kurzbeschreibung": "Private Business School, laut Vergleichsportal 9.100 Euro pro Semester und Bewerbungsfrist 15. Mai, für BAföG-Berechtigte gibt es Freiplätze oder Teilerlass. Zahlen vor dem Livegang auf whu.edu prüfen.",
+    "link_im_browser_geprueft": "2026-11-20",
+    "wg_miete_pro_monat_eur": null
+  },
+  {
+    "id": "frankfurt-school-bachelor",
+    "typ": "hochschule",
+    "name": "Frankfurt School, Bachelor",
+    "anbieter": "Frankfurt School of Finance & Management",
+    "felder": [
+      "finanzen",
+      "wirtschaft",
+      "beratung"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "land": "DE",
+    "ort": "Frankfurt am Main",
+    "online": false,
+    "kosten_pro_jahr_eur": 15400,
+    "kosten_label": "kostenintensiv",
+    "zeitraum": "Studienstart im Herbst",
+    "frist": "2027-06-30",
+    "link": "https://www.frankfurt-school.de/de/home/study/bachelor/bachelor-science",
+    "lat": 50.1109,
+    "lng": 8.6821,
+    "lebenshaltung_pro_monat_eur": null,
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "C",
+    "kurzbeschreibung": "Private Hochschule mit 7-semestrigem Bachelor of Science (Business Administration, Computational Business Analytics, Management Philosophy and Economics), Auslandssemester mit Praktikum Pflicht, Eignungsverfahren. Semestergebühr laut Portalen etwa 7.700 bis 8.600 Euro (also etwa 15.400 bis 17.200 Euro pro Jahr), Frist laut Portal 30. Juni, bitte offiziell prüfen.",
+    "link_im_browser_geprueft": null,
+    "wg_miete_pro_monat_eur": 681
+  },
+  {
+    "id": "uni-mannheim-bwl",
+    "typ": "hochschule",
+    "name": "Universität Mannheim, Bachelor BWL",
+    "anbieter": "Universität Mannheim",
+    "felder": [
+      "wirtschaft",
+      "finanzen",
+      "beratung"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "land": "DE",
+    "ort": "Mannheim",
+    "online": false,
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "Bewerbung 1. Juni bis 15. Juli bzw. 31. August 2027 je nach Studiengang, Zulassung über hochschulstart.de",
+    "frist": "2027-07-15",
+    "link": "https://www.uni-mannheim.de/studium/vor-dem-studium/studienangebot/bachelor-bwl/",
+    "lat": 49.4875,
+    "lng": 8.466,
+    "lebenshaltung_pro_monat_eur": null,
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Staatliche Universität mit zulassungsbeschränktem BWL-Bachelor (NC), 6 Semester, Veranstaltungen auf Deutsch und Englisch, nur Semesterbeitrag. Der Studiengang hat ein Pflichtauslandssemester im 5. Semester.",
+    "link_im_browser_geprueft": "2026-11-20",
+    "wg_miete_pro_monat_eur": null
+  },
+  {
+    "id": "jgu-germersheim-translation",
+    "typ": "studiengang",
+    "name": "Sprache, Kultur, Translation (Bachelor), Germersheim",
+    "anbieter": "Johannes Gutenberg-Universität Mainz, Campus Germersheim",
+    "felder": [
+      "sprachen",
+      "diplomatie",
+      "eu"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "land": "DE",
+    "ort": "Germersheim",
+    "online": false,
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "6 Semester, mit Eignungsprüfung",
+    "frist": null,
+    "link": "https://sl.uni-mainz.de/sprache-kultur-translation",
+    "lat": 49.2217,
+    "lng": 8.3646,
+    "lebenshaltung_pro_monat_eur": null,
+    "zuletzt_geprueft": "2026-11-20",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Eine der größten Ausbildungsstätten für Übersetzen und Dolmetschen weltweit. Bei Studiengängen mit Eignungsprüfung endet die Bewerbungsfrist laut DAAD am 15.01. bzw. 15.07., die Anmeldung zur Eignungsprüfung kann früher enden.",
+    "link_im_browser_geprueft": null,
+    "wg_miete_pro_monat_eur": null
+  },
+  {
+    "id": "mun-sh",
+    "typ": "wettbewerb",
+    "name": "MUN-SH (Model United Nations Schleswig-Holstein)",
+    "anbieter": "Deutsche Model United Nations e.V.",
+    "felder": [
+      "politik",
+      "diplomatie",
+      "internationale-orgs",
+      "eu"
+    ],
+    "stufen": [
+      "jung",
+      "mittel"
+    ],
+    "ort": "Schleswig-Holstein",
+    "kosten_pro_jahr_eur": null,
+    "kosten_label": null,
+    "zeitraum": "Frühjahr 2027 in Kiel, Termin und Anmeldefrist noch nicht genannt",
+    "frist": null,
+    "link": "http://www.mun-sh.de",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Größtes deutschsprachiges UN-Planspiel mit rund 400 Jugendlichen im Landtag in Kiel, für 15 bis 21 Jahre, einzeln oder als Gruppe, als Delegierte, NGO oder Journalist.",
+    "zuletzt_geprueft": "2026-11-20",
+    "online": false,
+    "land": "DE",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "jlgmun-2027",
+    "typ": "wettbewerb",
+    "name": "jlgMUN 2027 (Johann x Lennon Gymnasien MUN)",
+    "anbieter": "John-Lennon-Gymnasium und Johann-Gottfried-Herder-Gymnasium, Berlin",
+    "felder": [
+      "politik",
+      "diplomatie",
+      "internationale-orgs",
+      "eu"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "ort": "Berlin",
+    "kosten_pro_jahr_eur": 50,
+    "kosten_label": null,
+    "zeitraum": "3. bis 6. Juni 2027, Berlin, Anmeldung öffnet Mitte Dezember 2026",
+    "frist": null,
+    "link": "https://mymun.com/conferences/johannxlennon-gymnasien-model-united-nations-2027",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "MUN für Schüler von 13 bis 18 Jahren (Klassen 8 bis 12), nur als Schuldelegation von 5 bis 15 Personen mit betreuender Lehrkraft, Gebühr 45 bis 50 Euro pro Person.",
+    "zuletzt_geprueft": "2026-11-20",
+    "online": false,
+    "land": "DE",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "bermun",
+    "typ": "wettbewerb",
+    "name": "BERMUN (Berlin Model United Nations)",
+    "anbieter": "John-F.-Kennedy-Schule Berlin und Friedrich-Ebert-Stiftung",
+    "felder": [
+      "politik",
+      "diplomatie",
+      "internationale-orgs",
+      "eu"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "ort": "Berlin",
+    "kosten_pro_jahr_eur": null,
+    "kosten_label": null,
+    "zeitraum": "Herbstkonferenz im November (2026: 18. bis 21. November), Frühjahrskonferenz BERMUN2 im Frühjahr, Berlin",
+    "frist": null,
+    "link": "https://www.bermun.de",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Internationale UN-Simulation der John F. Kennedy School in Berlin auf Englisch, über 600 Teilnehmende im Herbst und rund 200 im Frühjahr, Anmeldung über die Schule. Gebühren und Fristen stehen nicht auf der Startseite.",
+    "zuletzt_geprueft": "2026-11-20",
+    "online": false,
+    "land": "DE",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "bayernmun",
+    "typ": "wettbewerb",
+    "name": "BayernMUN",
+    "anbieter": "BayernMUN",
+    "felder": [
+      "politik",
+      "diplomatie",
+      "internationale-orgs",
+      "eu"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "ort": "Nürnberg",
+    "kosten_pro_jahr_eur": null,
+    "kosten_label": null,
+    "zeitraum": "22. bis 24. Januar 2027, Kaiserburg Nürnberg",
+    "frist": "2026-11-30",
+    "link": "https://bayernmun.org/",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Studentisch organisierte UN-Simulation mit etwa 250 bis 300 ausgewählten Teilnehmenden, fünf Gremien, Bewerbung bis 30. November 2026, Stipendien für finanziell schwächere Teilnehmende.",
+    "zuletzt_geprueft": "2026-11-20",
+    "online": false,
+    "land": "DE",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "jugend-hackt",
+    "typ": "wettbewerb",
+    "name": "Jugend hackt",
+    "anbieter": "Open Knowledge Foundation Deutschland e. V. und mediale pfade.org e. V.",
+    "felder": [
+      "informatik",
+      "ki",
+      "gruendung"
+    ],
+    "stufen": [
+      "jung",
+      "mittel"
+    ],
+    "ort": "mehrere Städte (zum Beispiel Hamburg, Frankfurt, Berlin)",
+    "kosten_pro_jahr_eur": null,
+    "kosten_label": null,
+    "zeitraum": "Hackathon-Wochenende, Termine je Standort",
+    "frist": null,
+    "mindestalter": 12,
+    "link": "https://jugendhackt.org/events/hamburg/",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Kostenloses Hackathon-Wochenende für 12 bis 18 Jahre in mehreren Städten, ohne Vorkenntnisse, Verpflegung und Übernachtung inklusive, Reisekosten werden bei Bedarf erstattet. Hamburg 2026 war am 2. bis 4. Oktober, Termine 2027 noch offen.",
+    "zuletzt_geprueft": "2026-11-20",
+    "online": false,
+    "land": "DE",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "hagener-hacker-camp",
+    "typ": "kurs",
+    "name": "Hagener Hacker Camp",
+    "anbieter": "FernUniversität in Hagen, Jugenduni",
+    "felder": [
+      "informatik",
+      "ki"
+    ],
+    "stufen": [
+      "jung",
+      "mittel"
+    ],
+    "ort": "Hagen",
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "Oster- und Herbstferien, nächste Termine noch nicht veröffentlicht",
+    "frist": null,
+    "mindestalter": 14,
+    "link": "https://www.fernuni-hagen.de/universitaet/transfer/jugenduni/hagener-hacker-camp.shtml",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Kostenloses Coding-Camp der FernUniversität Hagen für 14 bis 18 Jahre in den Oster- und Herbstferien.",
+    "zuletzt_geprueft": "2026-11-20",
+    "online": false,
+    "land": "DE",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "deutsche-bank-schuelerpraktikum",
+    "typ": "praktikum",
+    "name": "Schülerpraktikum Deutsche Bank (Filiale)",
+    "anbieter": "Deutsche Bank",
+    "felder": [
+      "finanzen",
+      "wirtschaft"
+    ],
+    "stufen": [
+      "jung",
+      "mittel"
+    ],
+    "ort": "Filialen deutschlandweit",
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "1 Tag bis 6 Wochen, jederzeit",
+    "frist": null,
+    "link": "https://careers.db.com/Schuelerinnen/dein-schul-fos-und-berufsorientierungs-praktikum/in-der-filiale",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Praktikum für Schüler allgemeinbildender Schulen, Bewerbung jederzeit direkt vor Ort in der Wunschfiliale. Nötig sind Lebenslauf, letztes Zeugnis und Bewerbungsbogen, Bewerbung 4 bis 6 Wochen vor dem Wunschtermin.",
+    "zuletzt_geprueft": "2026-11-20",
+    "online": false,
+    "land": "DE",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "deutsche-bank-it-schuelerpraktikum",
+    "typ": "praktikum",
+    "name": "Schülerpraktikum Technology, Data and Innovation (Deutsche Bank)",
+    "anbieter": "Deutsche Bank",
+    "felder": [
+      "informatik",
+      "ki",
+      "finanzen"
+    ],
+    "stufen": [
+      "jung",
+      "mittel"
+    ],
+    "ort": "Frankfurt am Main",
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "2 Wochen, Termin individuell, Durchführung ab einer Gruppe von mindestens 8 Schülern",
+    "frist": null,
+    "klasse_min": 10,
+    "link": "https://careers.db.com/ausbildung-studium/schuelerpraktikum/it/?language_id=3",
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Zweiwöchiges IT-Schülerpraktikum der Deutschen Bank in Frankfurt (KI, Agilität, App-Entwicklung, eigenes Projekt), ab Klasse 10, gute Noten, Gruppe von mindestens 8 Schülern nötig. Bewerbung jederzeit per E-Mail mit Lebenslauf, Zeugnis und Bewerbungsbogen, Wunschzeitraum in den Betreff.",
+    "zuletzt_geprueft": "2026-11-20",
+    "online": false,
+    "land": "DE",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "fsj-inland",
+    "typ": "freiwilligendienst",
+    "name": "Freiwilliges Soziales Jahr (FSJ)",
+    "anbieter": "Träger und Einsatzstellen bundesweit",
+    "felder": [
+      "gesundheit",
+      "lehramt",
+      "sport",
+      "politik"
+    ],
+    "stufen": [
+      "abschluss"
+    ],
+    "ort": "bundesweit",
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "in der Regel 12 Monate, Bewerbung direkt bei Einsatzstelle oder Träger",
+    "frist": null,
+    "mindestalter": 16,
+    "link": "https://www.bundes-freiwilligendienst.de/fsj-freiwilliges-soziales-jahr/",
+    "quelle_qualitaet": "B",
+    "kurzbeschreibung": "Freiwilliges Soziales Jahr nach der Vollzeitschulpflicht bis zum 27. Geburtstag, Einsatz meist sozial, auch Sport, Kultur, Politik und Denkmalpflege, Taschengeld je nach Träger verschieden.",
+    "zuletzt_geprueft": "2026-11-20",
+    "online": false,
+    "land": "DE",
+    "link_im_browser_geprueft": "2026-11-20"
+  },
+  {
+    "id": "tum-informatik",
+    "typ": "hochschule",
+    "name": "TU München, Bachelor Informatik",
+    "anbieter": "Technische Universität München",
+    "felder": [
+      "informatik",
+      "ki"
+    ],
+    "stufen": [
+      "mittel",
+      "abschluss"
+    ],
+    "ort": "Garching bei München",
+    "kosten_pro_jahr_eur": 0,
+    "kosten_label": "staatlich",
+    "zeitraum": "Studienstart Wintersemester, mit Eignungsverfahren",
+    "frist": "2027-07-15",
+    "link": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/",
+    "lat": 48.2627,
+    "lng": 11.668,
+    "lebenshaltung_pro_monat_eur": null,
+    "quelle_qualitaet": "A",
+    "kurzbeschreibung": "Bachelor Informatik an der TUM mit zweistufigem Eignungsfeststellungsverfahren (Unterlagen, dann Präsenztest in Garching). Bewerbung zum Wintersemester vom 15. Mai bis 15. Juli.",
+    "zuletzt_geprueft": "2026-11-20",
+    "online": false,
+    "land": "DE",
+    "link_im_browser_geprueft": "2026-11-20",
+    "wg_miete_pro_monat_eur": 850
+  }
+]

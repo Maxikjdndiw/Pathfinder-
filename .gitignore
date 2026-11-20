@@ -7,3 +7,9 @@ dist
 .agents/
 .claude/
 skills-lock.json
+
+# local screenshots
+shots/
+
+# generated from app-data/ by npm run app-data
+netlify/functions/_shared/data.generated.ts
