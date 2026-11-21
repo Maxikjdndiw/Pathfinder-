@@ -36,8 +36,6 @@
 .network__tile-text { margin-top: 8px; color: var(--ink); font-size: var(--fs-body-lg); line-height: var(--lh-body-lg); }
 .network__controls { display: flex; gap: 10px; flex: none; pointer-events: auto; }
 .network__btn { width: 52px; height: 52px; padding: 0; font-size: 20px; }
-.network__go { width: 64px; height: 64px; }
-.network__sphere.is-moving .network__go { opacity: 0.4; }
 @media (max-width: 760px) {
   /* phone: sphere, then one card with the topic and the controls, overlapping the sphere a little */
   .network .lead { margin-top: var(--s-2); }
@@ -62,7 +60,6 @@
   .network__tile-text { font-size: var(--fs-body); line-height: var(--lh-body); }
   .network__controls { justify-content: space-between; align-items: center; }
   .network__btn { width: 48px; height: 48px; }
-  .network__go { width: 56px; height: 56px; }
 }
 
 /* topic list: a grid without 3D, a visually hidden list with the sphere */
@@ -126,6 +123,5 @@
   }
   .network__note { font-size: 21px; }
   .network__access { font-size: var(--fs-body); line-height: var(--lh-body); margin-bottom: var(--s-1); }
-  .network__footer .btn { width: 100%; }
   .network__grid { margin-top: var(--s-2); }
 }

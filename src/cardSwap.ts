@@ -565,7 +565,10 @@ export function createCardSwap(root: HTMLElement, cards: HTMLElement[], options:
     const index = Number(target.getAttribute('data-swap-index'));
     o.onCardClick?.(index);
     const position = state.order.indexOf(index);
+    // a tap on the front card shows the next one (phones have no arrows), a tap on a card
+    // behind brings that card to the front
     if (position > 0) goTo(position);
+    else if (position === 0 && state.order.length > 1) shift(1);
   };
 
   const onKeyDown = (event: KeyboardEvent) => {

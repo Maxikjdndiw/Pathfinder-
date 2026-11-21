@@ -42,7 +42,6 @@ export function initNetwork(): void {
     group: sphereBox.querySelector<HTMLElement>('[data-tile-group]')!,
     title: sphereBox.querySelector<HTMLElement>('[data-tile-title]')!,
     text: sphereBox.querySelector<HTMLElement>('[data-tile-text]')!,
-    link: sphereBox.querySelector<HTMLAnchorElement>('[data-tile-link]')!,
   };
   const show = (t: NetworkTile, moving: boolean) => {
     sphereBox.classList.toggle('is-moving', moving);
@@ -50,8 +49,6 @@ export function initNetwork(): void {
     caption.group.textContent = NETWORK_GROUP_LABELS[t.group];
     caption.title.textContent = t.title;
     caption.text.textContent = t.description;
-    caption.link.href = t.href;
-    caption.link.setAttribute('aria-label', `Zur Anmeldung: ${t.title}`);
   };
   show(NETWORK_TILES[0], false);
 

@@ -9,8 +9,9 @@
  *
  * Interaction:
  * - mouse: drag in any direction, inertia, then the nearest tile snaps forward
- * - touch: only horizontal drags turn the sphere; vertical swipes scroll the page
- *   (touch-action: pan-y), so the page is never trapped
+ * - touch: a swipe that starts vertically scrolls the page (touch-action: pan-y), so the
+ *   page is never trapped; once a drag has started sideways, the finger turns the sphere
+ *   in every direction, up and down too
  * - prev / next buttons and the arrow keys step through the 14 topics
  * - renders only while something moves and the sphere is on screen
  */
@@ -108,6 +109,7 @@ export function createSphere(host: HTMLElement, opts: SphereOptions): SphereHand
   renderer.outputColorSpace = LinearSRGBColorSpace;
   const canvas = renderer.domElement;
   canvas.style.touchAction = 'pan-y';
+  host.style.touchAction = 'pan-y';
   canvas.style.cursor = 'grab';
   host.appendChild(canvas);
 
@@ -304,7 +306,7 @@ export function createSphere(host: HTMLElement, opts: SphereOptions): SphereHand
     const now = performance.now();
     const dtm = Math.max(0.008, (now - drag.t) / 1000);
     const dYaw = dx * speed();
-    const dPitch = drag.touch ? 0 : dy * speed();
+    const dPitch = dy * speed();
     yaw += dYaw;
     pitch = MathUtils.clamp(pitch + dPitch, -PITCH_LIMIT, PITCH_LIMIT);
     vYaw = MathUtils.lerp(vYaw, dYaw / dtm, 0.5);

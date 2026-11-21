@@ -19,7 +19,8 @@ export interface NetworkTile {
   href: string;
 }
 
-const SIGNUP_ANCHOR = '#netzwerk-anmelden';
+// the tiles lead to the sign-up section at the end of the page
+const SIGNUP_ANCHOR = '#signup';
 
 export const NETWORK_GROUP_LABELS: Record<NetworkGroup, string> = {
   field: 'Bereich',

@@ -23,9 +23,10 @@
 }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .nav {
-    background: rgba(255, 255, 255, 0.75);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
+    /* browsers without the SVG refraction (Safari, Firefox): clearer glass, still tinted */
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(10px) saturate(170%);
+    backdrop-filter: blur(10px) saturate(170%);
   }
 }
 .wordmark {
@@ -380,7 +381,6 @@
   .insiders__btn { display: none; }
   .insiders__controls { margin: var(--s-2) 0 var(--s-1); }
   /* the sign-up button follows right below, no second arrow */
-  .network__go { display: none; }
 }
 
 /* ---------- How it works: see src/components/scroll-story.css ---------- */

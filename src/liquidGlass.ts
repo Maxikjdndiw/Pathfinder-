@@ -87,10 +87,12 @@ export interface LiquidGlassOptions {
   blur?: number;
   /** red/blue fringe at the rim; off = one clean refraction */
   chromatic?: boolean;
+  /** how strongly the rim bends the page behind (1 = default) */
+  strength?: number;
 }
 
 export function initSvgLiquidGlass(elements: HTMLElement[], options: LiquidGlassOptions = {}): () => void {
-  const { prefix = 'liquid-glass', blur = 0.8, chromatic = true } = options;
+  const { prefix = 'liquid-glass', blur = 0.8, chromatic = true, strength = 1 } = options;
   if (!elements.length || !supportsSvgBackdrop()) return () => {};
   document.documentElement.classList.add('has-svg-glass');
 
@@ -111,7 +113,7 @@ export function initSvgLiquidGlass(elements: HTMLElement[], options: LiquidGlass
     defs.querySelector(`#${id}`)?.remove();
     const radius = parseFloat(getComputedStyle(target).borderTopLeftRadius) || 0;
     // strength scales with the element: small tags bend less than the big nav pill
-    const scale = Math.round(Math.min(28, Math.max(14, Math.min(w, h) * 0.45)));
+    const scale = Math.round(Math.min(28, Math.max(14, Math.min(w, h) * 0.45)) * strength);
 
     const filter = el('filter', {
       id,

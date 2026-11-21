@@ -32,5 +32,6 @@ export function initNavWave(): void {
     Chromium only; other browsers keep the frosted glass from sections.css. */
 export function initNavGlass(): void {
   const nav = document.querySelector<HTMLElement>('.nav');
-  if (nav) initSvgLiquidGlass([nav], { prefix: 'nav-glass', blur: 5, chromatic: false });
+  // more liquid: less frost, a stronger bend at the rim (the tint in glass.css keeps it from being fully clear)
+  if (nav) initSvgLiquidGlass([nav], { prefix: 'nav-glass', blur: 2.5, chromatic: false, strength: 1.45 });
 }
