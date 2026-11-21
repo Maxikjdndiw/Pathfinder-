@@ -19,6 +19,8 @@ export interface CodeSlots {
   setState(state: SlotState): void;
   clear(): void;
   focus(): void;
+  /** fills the slots, for example with a code that was just requested */
+  setValue(code: string): void;
 }
 
 const clean = (t: string) => t.toUpperCase().replace(/[^A-Z0-9]/g, '');
@@ -134,6 +136,12 @@ export function createCodeSlots(group: HTMLElement, hidden: HTMLInputElement, on
     focus() {
       const first = inputs.find((i) => !i.value) ?? inputs[CODE_SLOTS - 1];
       first.focus();
+    },
+    setValue(code: string) {
+      inputs.forEach((i) => (i.value = ''));
+      fill(0, clean(code));
+      sync();
+      setState('idle');
     },
   };
 }

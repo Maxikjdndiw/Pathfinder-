@@ -22,20 +22,47 @@ function brandMark(): string {
 }
 
 /** /quiz and /app serve their HTML files in dev and preview too (Netlify does it with rewrites, see netlify.toml) */
-type Mw = { middlewares: { use: (fn: (req: { url?: string }, res: unknown, next: () => void) => void) => void } };
+type Mw = { middlewares: { use: (fn: (req: { url?: string }, res: ServerResponse, next: () => void) => void) => void } };
 const pageRoutes = (server: Mw) => {
-  server.middlewares.use((req, _res, next) => {
-    if (req.url) req.url = req.url.replace(/^\/(quiz|app)\/?(?=\?|$)/, '/$1.html');
+  server.middlewares.use((req, res, next) => {
+    if (!req.url) return next();
+    // like on Netlify: the mentor page has no public address, only /m/<MENTOR_PFAD>
+    const path = req.url.split('?')[0];
+    const secret = process.env.MENTOR_PFAD ?? '';
+    if (/^\/m\//.test(path)) {
+      if (/^[A-Za-z0-9-]{16,}$/.test(secret) && path.replace(/^\/m\//, '').replace(/\/$/, '') === secret) {
+        req.url = '/mentor.html';
+        (req as { mentorOk?: boolean }).mentorOk = true;
+        return next();
+      }
+      res.statusCode = 404;
+      return res.end('Diese Seite gibt es nicht.');
+    }
+    if (/^\/mentor(\.html)?\/?$/.test(path) && !(req as { mentorOk?: boolean }).mentorOk) {
+      res.statusCode = 404;
+      return res.end('Diese Seite gibt es nicht.');
+    }
+    req.url = req.url.replace(/^\/(quiz|app|impressum|datenschutz)\/?(?=\?|$)/, '/$1.html');
     next();
   });
 };
 const quizRoute = { name: 'page-routes', configureServer: pageRoutes, configurePreviewServer: pageRoutes };
 
 /**
- * npm run dev: /api/chat and /api/login run the Netlify Functions in-process, so the coach
+ * npm run dev: the /api/* routes run the Netlify Functions in-process, so the coach
  * works without the Netlify CLI. Env vars come from the shell (for example PATHFINDER_MOCK=1).
  */
-const FUNCTIONS: Record<string, string> = { '/api/chat': '/netlify/functions/chat.mts', '/api/login': '/netlify/functions/login.mts' };
+const FUNCTIONS: Record<string, string> = {
+  '/api/chat': '/netlify/functions/chat.mts',
+  '/api/login': '/netlify/functions/login.mts',
+  '/api/zugang': '/netlify/functions/zugang.mts',
+  '/api/mentor-anfrage': '/netlify/functions/mentor-anfrage.mts',
+  '/api/mentor-nachrichten': '/netlify/functions/mentor-nachrichten.mts',
+  '/api/mentor-admin': '/netlify/functions/mentor-admin.mts',
+  '/api/upload': '/netlify/functions/upload.mts',
+  '/api/datei': '/netlify/functions/datei.mts',
+  '/api/vorlage': '/netlify/functions/vorlage.mts',
+};
 const localFunctions = {
   name: 'local-functions',
   configureServer(server: {
@@ -50,9 +77,11 @@ const localFunctions = {
       if (!file) return next();
       const chunks: Buffer[] = [];
       for await (const c of req) chunks.push(c as Buffer);
-      const handler = (await server.ssrLoadModule(file)).default as (r: Request) => Promise<Response>;
+      const handler = (await server.ssrLoadModule(file)).default as (r: Request, c: { ip: string }) => Promise<Response>;
       const response = await handler(
         new Request(`http://localhost${req.url}`, { method: req.method, headers: req.headers as Record<string, string>, body: req.method === 'POST' ? Buffer.concat(chunks) : undefined }),
+        // like the context on Netlify: the client address for the limit per IP
+        { ip: req.socket.remoteAddress ?? 'local' },
       );
       res.statusCode = response.status;
       response.headers.forEach((v, k) => res.setHeader(k, v));
@@ -91,6 +120,7 @@ export default defineConfig({
         datenschutz: 'datenschutz.html',
         quiz: 'quiz.html',
         app: 'app.html',
+        mentor: 'mentor.html',
       },
     },
   },

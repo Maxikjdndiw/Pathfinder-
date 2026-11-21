@@ -1,8 +1,9 @@
 /** Canned coach answers for local tests (PATHFINDER_MOCK=1): no API calls, no cost. */
 import type { Mode } from './prompt';
 
-export function mockReply(mode: Mode, messages: { role: string; content: string }[]): string[] {
+export function mockReply(mode: Mode, messages: { role: string; content: string; dateien?: { name: string }[] }[]): string[] {
   const last = messages[messages.length - 1].content;
+  const files = messages[messages.length - 1].dateien ?? [];
   const turn = messages.filter((m) => m.role === 'user').length;
   let text: string;
   if (last.includes('[[SYSTEM: MENTOR_ANFRAGE]]')) {
@@ -20,5 +21,6 @@ export function mockReply(mode: Mode, messages: { role: string; content: string 
   } else {
     text = 'Wenn du magst, machen wir als Nächstes mit deinem Lebenslauf weiter.\n[[PROFIL: {"klasse":"10","felder":["informatik","wirtschaft"],"naechster_schritt":"Lebenslauf"}]]\n[[BUTTONS: cv_linkedin:Weiter mit Lebenslauf und LinkedIn | praktika:Überspringen: Praktika und Sommerkurse]]';
   }
+  if (files.length) text = `Testmodus: Ich habe ${files.map((f) => f.name).join(', ')} bekommen. ${text}`;
   return text.match(/.{1,12}/gs) ?? [text];
 }

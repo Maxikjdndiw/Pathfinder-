@@ -34,7 +34,6 @@ export function createSlideConfirm(o: SlideOptions): SlideHandle {
   wrap.innerHTML = `
     <div class="slide" data-state="idle" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
          aria-label="${o.label}" aria-valuetext="${o.label}">
-      <span class="slide__sheen" aria-hidden="true"></span>
       <span class="slide__fill" aria-hidden="true"></span>
       <span class="slide__text" aria-hidden="true">${o.label}</span>
       <span class="slide__pending" aria-hidden="true">${o.pendingLabel}</span>
@@ -123,12 +122,6 @@ export function createSlideConfirm(o: SlideOptions): SlideHandle {
     msg.textContent = '';
     delete msg.dataset.tone;
   });
-  // the blue glint follows the pointer, like on the metal button of the homepage
-  track.addEventListener('pointermove', (e) => {
-    const r = track.getBoundingClientRect();
-    track.style.setProperty('--mx', `${((e.clientX - r.left) / r.width) * 100}%`);
-  });
-  track.addEventListener('pointerleave', () => track.style.removeProperty('--mx'));
   track.addEventListener('pointermove', (e) => {
     if (state !== 'dragging' || e.pointerId !== pointerId) return;
     setX(e.clientX - startX);

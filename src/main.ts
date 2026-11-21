@@ -284,7 +284,9 @@ if (exampleHost) {
       ],
       wildcard: { name: 'Gründen & Startups', percent: 81 },
     },
-    { intro: false, still: true },
+    // tilt, lift and glare on hover only on laptops and desktops (mouse or trackpad, wide
+    // screen); phones and tablets keep the card still. Reduced motion is handled in the card.
+    { intro: false, still: !window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 900px)').matches },
   );
 }
 

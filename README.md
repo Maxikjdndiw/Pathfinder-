@@ -69,6 +69,12 @@ A chat coach for pilot participants at `/app` (file `app.html`, code in `src/app
   - `ANTHROPIC_API_KEY`: the API key.
   - `PATHFINDER_ACCESS_CODES`: comma separated access codes in the form `ABCD-1234` (the login has 8 slots, see `src/app/code-slots.ts`), for example `LENA-4821,PILO-0193`.
   - `PATHFINDER_DAILY_LIMIT`: messages per code and day (default 60).
+  - `MENTOR_PASSWORT`: password for the mentor area, checked on the server (10 wrong tries per address and 15 minutes, then a pause). Without it the mentor area stays closed.
+  - `MENTOR_PFAD`: secret address of the mentor area (at least 16 characters). The page exists only at `/m/<MENTOR_PFAD>` (function `mentor-seite`); the build removes `mentor.html` from `dist/`, so `/mentor` does not exist.
+  - Optional mail via Resend: `MAIL_API_KEY`, `MENTOR_MAIL_AN` (where new requests go), `MAIL_ABSENDER` (verified sender).
+  - `MAX_NEUE_CODES_PRO_TAG`: new self-requested codes per day (default 30), then a waiting list.
 - **Local test without cost:** `PATHFINDER_MOCK=1 PATHFINDER_ACCESS_CODES=TEST-1234 npm run dev`, then open `/app` and use the code `TEST-1234`. The coach answers with fixed test replies and makes no API calls. Without `PATHFINDER_MOCK` and with `ANTHROPIC_API_KEY` set, the same command talks to the real API.
-- **Memory:** profile, history and saved offers stay in the student's browser. The server only counts messages per code and day (Netlify Blobs).
-- **Mentor requests** arrive as Netlify Forms submissions (form `mentor-anfrage`).
+- **Memory:** profile, AI chat history and saved offers stay in the student's browser. In Netlify Blobs: message counts per code and day, self-requested codes (first name, e-mail, dates), and mentor threads.
+- **Access codes:** anyone can request a code at `/app#zugang` (function `zugang`: honeypot, 3 per IP and hour, one per e-mail, daily cap). Valid are env codes plus stored codes that are not blocked (`netlify/functions/_shared/codes.ts`).
+- **Mentor chat:** the slider "Mit einem Menschen sprechen" sends the AI summary to `mentor-anfrage`; this opens a direct thread (student and mentor only, the AI never writes there). The chat polls `mentor-nachrichten` every 6 seconds. The mentor answers on the mentor page at `/m/<MENTOR_PFAD>` (`mentor-admin`). If the function fails, the request goes silently to the hidden Netlify form `mentor-anfrage` as a backup.
+- **Without Blobs** (plain `npm run dev`) the store falls back to memory, so data is lost on restart. `netlify dev` uses a local Blobs sandbox.

@@ -350,3 +350,25 @@ Alle 25 Felder haben eine Faktenbasis. Vertiefen: Mappenvorgaben je Hochschule, 
 - bildungsserver.de: Lehrkräfteausbildung in den Ländern
 - studienstiftung.de: Vorabitur-Auswahl (Flyer 2026), Selbstbewerbung
 - profiling-institut.de und mystipendium.de (Beratungsportale, nur als Orientierung)
+
+
+## Praktika, Simulationen und Onlinekurse (Stand 21.11.2026)
+
+- Schüler haben bei großen Beratungen meist keinen Zugang zu regulären Praktika. Deloitte bietet ein Schul- und Orientierungspraktikum (mindestens zwei Wochen). PwC und Grant Thornton bieten Schülerpraktika in der Prüfung, laut Jobportalen (Quelle C, prüfen).
+- Accenture ist aktuell nicht bei Forage gelistet. Deloitte ist bei Forage nur mit einer australischen Cyber-Simulation vertreten. Die KI darf Accenture nicht als Forage-Simulation empfehlen.
+- Banken: Deutsche Bundesbank (ab 15, Job Experience für Oberstufe 17 bis 20), Commerzbank, LBBW, Sparkassen und Sparda-Bank im Norden, Munich Re (Sommerpraktikum).
+- Industrie und Technik: SAP, Siemens, Bosch, BSH, Mercedes-Benz, Audi, BMW, Airbus, Lufthansa, Flughafen München, EnBW, Bayer, BASF, DLR, Fraunhofer, Max-Planck-Institute.
+- Hochschulen: TU Dresden "Uni testen" (Wirtschaft, Informatik, Chemie), Uni Bremen go4IT, Uni Halle, Chemie-Praktika in Hamburg und Göttingen.
+- Politik, Verwaltung, Medien: Bundestag, Land und Polizei Schleswig-Holstein, ZDF, ZDF logo!, NDR. Medizin: Pflegepraktika an Kliniken.
+- Forage: kostenlose Simulationen mit echten Aufgaben, auf Englisch, mit Zertifikat. Sie ersetzen kein Praktikum, zeigen aber Interesse im Lebenslauf. Gut für Finanzen, Beratung, Recht, Informatik und Ingenieurwesen. Die Liste enthält die geprüften Links.
+- Coursera: Preise laufen über Abos, Zertifikate kosten laut Coursera meist 49 bis 79 US-Dollar pro Monat, viele Kurse lassen sich kostenlos ansehen. Gut für Excel, Finanzmärkte, Daten, KI und Projektmanagement. Aktuellen Preis immer auf der Kursseite prüfen.
+- Lücken: Für Mode, Design, Lehramt, Architektur, Sport, Psychologie und Sprachen gibt es noch wenige Einträge. Die KI sagt ehrlich, dass dort die Auswahl dünn ist, und empfiehlt Eigeninitiative (Büros, Schulen, Vereine direkt anfragen).
+
+
+## Tetr College of Business (Stand 21.11.2026)
+
+- Internationales Wirtschaftscollege mit Bachelor in Management und Technologie (UK-Abschluss), Finance und KI (UK-Abschluss) und Künstliche Intelligenz (US-Abschluss). Die Studienorte wechseln zwischen Dubai, Indien, China, Ghana, den USA, Argentinien und Europa, am Ende steht eine Praktikumsphase (Quelle B, Webseite des Colleges).
+- Stipendien: laut Tetr bis zur vollen Studiengebühr. Ein Portal nennt als Beispiele das Outliers-Stipendium (Top 1 Prozent in einem Feld), Gründerstipendium, Community-Leaders-Stipendium und SAT-Stipendium (Quelle C, prüfen).
+- Frist Runde 1: 14. Dezember 2026.
+- Die KI sagt ehrlich: Gebühren stehen nicht auf der Startseite, die Anerkennung der Abschlüsse in Deutschland ist vor einer Bewerbung selbst zu prüfen. Die KI vergleicht nicht mit Bocconi oder IE, solange keine geprüften Daten vorliegen.
+- Hinweis: Tetr bietet auch Sommerprogramme unter dem Namen "Pathfinder" an. Das ist nur eine Namensähnlichkeit, kein Bezug zu Pathfinder DE.

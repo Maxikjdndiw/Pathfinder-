@@ -1,702 +1,3898 @@
 [
-  {
-    "id": "jugend-forscht-2027",
-    "typ": "wettbewerb",
-    "name": "Jugend forscht 2027",
-    "anbieter": "Stiftung Jugend forscht e. V.",
-    "felder": [
-      "ki",
-      "informatik",
-      "ingenieur",
-      "naturwiss"
-    ],
-    "stufen": [
-      "jung",
-      "mittel",
-      "abschluss"
-    ],
-    "land": "DE",
-    "ort": "bundesweit",
-    "online": false,
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "Regionalwettbewerbe Februar und März 2027, Bundesfinale 27. bis 30. Mai 2027",
-    "frist": "2026-11-30",
-    "mindestalter": 15,
-    "klasse_min": 4,
-    "link": "https://www.jugend-forscht.de",
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Bundesweiter MINT-Nachwuchswettbewerb bis 21 Jahre, allein oder im Team, eigene Fragestellung, Anmeldung online bis 30. November, Nachmeldungen sind nicht möglich.",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "bwinf-bundeswettbewerb-informatik-45",
-    "typ": "wettbewerb",
-    "name": "Bundeswettbewerb Informatik, 1. Runde",
-    "anbieter": "BWINF (Gesellschaft für Informatik, Fraunhofer IuK, Max-Planck-Institut für Informatik)",
-    "felder": [
-      "informatik",
-      "ki"
-    ],
-    "stufen": [
-      "jung",
-      "mittel",
-      "abschluss"
-    ],
-    "land": "DE",
-    "ort": "bundesweit",
-    "online": true,
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "1. Runde im Herbst 2026, Anmeldung über login.bwinf.de",
-    "frist": "2026-11-23",
-    "mindestalter": null,
-    "link": "https://bwinf.de",
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Programmieraufgaben für Schülerinnen und Schüler, Teilnahme einzeln, die Einreichung der 1. Runde ist bis 23. November 2026 möglich.",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "informatik-biber",
-    "typ": "wettbewerb",
-    "name": "Informatik-Biber",
-    "anbieter": "BWINF",
-    "felder": [
-      "informatik",
-      "ki"
-    ],
-    "stufen": [
-      "jung",
-      "mittel"
-    ],
-    "land": "DE",
-    "ort": "bundesweit",
-    "online": true,
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "Biber-Wochen 9. bis 20. November 2026 (jährlich im Herbst)",
-    "frist": null,
-    "klasse_min": 3,
-    "link": "https://bwinf.de",
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Einstiegswettbewerb für informatisches Denken, Teilnahme ab Klasse 3 bis zum Abitur, Anmeldung läuft über die Schule.",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "bundeswettbewerb-mathematik",
-    "typ": "wettbewerb",
-    "name": "Bundeswettbewerb Mathematik",
-    "anbieter": "Bundeswettbewerb Mathematik, Bonn",
-    "felder": [
-      "naturwiss",
-      "informatik",
-      "ki",
-      "finanzen"
-    ],
-    "stufen": [
-      "jung",
-      "mittel",
-      "abschluss"
-    ],
-    "land": "DE",
-    "ort": "bundesweit",
-    "online": true,
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "Aufgaben ab Anfang Dezember 2026, Einsendeschluss 1. Runde am ersten Montag im März (voraussichtlich 1. März 2027)",
-    "frist": "2027-03-01",
-    "klasse_min": 9,
-    "link": "https://www.bundeswettbewerb-mathematik.de",
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "B",
-    "kurzbeschreibung": "Schülerwettbewerb für Mathematikbegeisterte aller Klassenstufen an Schulen, die zur Hochschulreife führen, Aufgaben orientieren sich an den Klassen 9 bis 13, in der ersten Runde ist Gruppenarbeit bis drei Personen erlaubt. Bundessieger kommen in die Studienstiftung.",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "deutsche-schuelerakademie-2027",
-    "typ": "sommerkurs",
-    "name": "Deutsche SchülerAkademie",
-    "anbieter": "Bildung & Begabung gGmbH",
-    "felder": [
-      "naturwiss",
-      "informatik",
-      "ki",
-      "politik",
-      "sprachen"
-    ],
-    "stufen": [
-      "jung",
-      "mittel"
-    ],
-    "land": "DE",
-    "ort": "Internate in ganz Deutschland",
-    "online": false,
-    "kosten_pro_jahr_eur": 650,
-    "kosten_label": "kostenpflichtig",
-    "zeitraum": "Sommerferien, etwa 16 Tage",
-    "frist": null,
-    "klasse_min": 10,
-    "link": "https://www.schuelerakademien.de/deutsche-schuelerakademie",
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "B",
-    "kurzbeschreibung": "Zweiwöchige Kursakademie für leistungsbereite Oberstufenschüler, die Schule schlägt vor. Eigenanteil in der Regel etwa 650 Euro, Ermäßigung bei geringem Einkommen möglich. Die Frist 2027 steht noch nicht fest (2026 war Kurswahl bis 31. März, Ausschreibung im Januar).",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "tu-dresden-sommeruniversitaet",
-    "typ": "sommerkurs",
-    "name": "Sommeruniversität TU Dresden",
-    "anbieter": "Technische Universität Dresden",
-    "felder": [
-      "ingenieur",
-      "informatik",
-      "naturwiss"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "land": "DE",
-    "ort": "Dresden",
-    "online": false,
-    "kosten_pro_jahr_eur": 75,
-    "kosten_label": "gering",
-    "zeitraum": "Eine Woche im Juli, Termine 2027 noch nicht veröffentlicht (2026: 6. bis 24. Juli, Anmeldung bis 22. Juni)",
-    "frist": null,
-    "link": "https://tu-dresden.de/tu-dresden/newsportal/news/anmeldestart-fuer-die-sommeruniversitaet-2026",
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Einwöchige MINT-Sommeruniversität der TU Dresden mit Einblicken in Institute, Labore und Unternehmen, Teilnahmebeitrag 75 Euro (Stand 2026). Anmeldung öffnet jeweils im Frühjahr.",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "frankfurt-school-bachelor-summer-school-2027",
-    "typ": "sommerkurs",
-    "name": "Bachelor Summer School Frankfurt School",
-    "anbieter": "Frankfurt School of Finance & Management",
-    "felder": [
-      "finanzen",
-      "wirtschaft",
-      "beratung",
-      "intl-business"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "land": "DE",
-    "ort": "Frankfurt am Main",
-    "online": false,
-    "kosten_pro_jahr_eur": 950,
-    "kosten_label": "kostenpflichtig",
-    "zeitraum": "5. bis 9. Juli 2027, Frankfurt",
-    "frist": null,
-    "link": "https://www.frankfurt-school.de/events/bachelor-summer-school",
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Einwöchige Pre-Bachelor Summer School auf Englisch, ab 16 Jahren, Motivationsschreiben auf Englisch nötig, unter 18 mit Einverständniserklärung der Eltern. Gebühr 950 Euro inkl. ÖPNV-Ticket und Mittagessen, Unterkunft nicht enthalten. Bewerbungsfrist auf der Seite nicht genannt.",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "bocconi-bsc",
-    "typ": "hochschule",
-    "name": "Bocconi University, Bachelor of Science",
-    "anbieter": "Università Bocconi",
-    "felder": [
-      "wirtschaft",
-      "finanzen",
-      "intl-business"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "land": "IT",
-    "ort": "Mailand",
-    "online": false,
-    "kosten_pro_jahr_eur": 17000,
-    "kosten_label": "kostenintensiv",
-    "zeitraum": "Studienstart im Herbst, Studienjahr 2026/27 als Referenz",
-    "frist": null,
-    "link": "https://www.unibocconi.it/en/fees",
-    "lat": 45.4506,
-    "lng": 9.1889,
-    "lebenshaltung_pro_monat_eur": null,
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Private Wirtschaftsuniversität, 17.000 Euro pro Jahr im ersten Bachelorjahr 2026/27, Teilerlass ab 20 Prozent möglich.",
-    "link_im_browser_geprueft": "2026-11-20",
-    "wg_miete_pro_monat_eur": null
-  },
-  {
-    "id": "ie-university-bba",
-    "typ": "hochschule",
-    "name": "IE University, Bachelor in Business Administration",
-    "anbieter": "IE University",
-    "felder": [
-      "wirtschaft",
-      "intl-business",
-      "beratung"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "land": "ES",
-    "ort": "Madrid und Segovia",
-    "online": false,
-    "kosten_pro_jahr_eur": 29880,
-    "kosten_label": "sehr kostenintensiv",
-    "zeitraum": "Studienstart September, Bewerbungsrunden für 2027 unter anderem 15. Januar und 5. März 2027",
-    "frist": "2027-03-05",
-    "link": "https://www.ie.edu/university/admission/fees-scholarships/",
-    "lat": 40.4168,
-    "lng": -3.7038,
-    "lebenshaltung_pro_monat_eur": null,
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Internationale Privatuniversität, Gebühr laut IE 29.880 Euro pro Jahr für den Start 2027/28 und jährlich angepasst, Spanischkurse im ersten und zweiten Jahr inklusive.",
-    "link_im_browser_geprueft": "2026-11-20",
-    "wg_miete_pro_monat_eur": null
-  },
-  {
-    "id": "maastricht-bachelor",
-    "typ": "hochschule",
-    "name": "Maastricht University, Bachelor (EU-Gebühr)",
-    "anbieter": "Maastricht University",
-    "felder": [
-      "wirtschaft",
-      "intl-business",
-      "eu",
-      "politik",
-      "internationale-orgs"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "land": "NL",
-    "ort": "Maastricht",
-    "online": false,
-    "kosten_pro_jahr_eur": 2771,
-    "kosten_label": "kostenpflichtig",
-    "zeitraum": "Studienstart September 2027, Gebühr laut Anbieterseite",
-    "frist": null,
-    "link": "https://www.maastrichtuniversity.nl/study/admission-enrolment/tuition-fees",
-    "lat": 50.8514,
-    "lng": 5.691,
-    "lebenshaltung_pro_monat_eur": null,
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Staatliche niederländische Universität, gesetzliche Gebühr für EU-Studierende 2.771 Euro im Studienjahr 2027/28 (2026/27: 2.694 Euro), University College Maastricht und einige weitere Programme kosten mehr (4.595 Euro).",
-    "link_im_browser_geprueft": "2026-11-20",
-    "wg_miete_pro_monat_eur": null
-  },
-  {
-    "id": "whu-bachelor",
-    "typ": "hochschule",
-    "name": "WHU, Bachelor Internationale BWL",
-    "anbieter": "WHU Otto Beisheim School of Management",
-    "felder": [
-      "wirtschaft",
-      "finanzen",
-      "beratung",
-      "intl-business"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "land": "DE",
-    "ort": "Vallendar",
-    "online": false,
-    "kosten_pro_jahr_eur": 18200,
-    "kosten_label": "kostenintensiv",
-    "zeitraum": "Studienstart Anfang September, vierstufiges Auswahlverfahren",
-    "frist": "2027-05-15",
-    "link": "https://www.whu.edu",
-    "lat": 50.398,
-    "lng": 7.613,
-    "lebenshaltung_pro_monat_eur": null,
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "B",
-    "kurzbeschreibung": "Private Business School, laut Vergleichsportal 9.100 Euro pro Semester und Bewerbungsfrist 15. Mai, für BAföG-Berechtigte gibt es Freiplätze oder Teilerlass. Zahlen vor dem Livegang auf whu.edu prüfen.",
-    "link_im_browser_geprueft": "2026-11-20",
-    "wg_miete_pro_monat_eur": null
-  },
-  {
-    "id": "frankfurt-school-bachelor",
-    "typ": "hochschule",
-    "name": "Frankfurt School, Bachelor",
-    "anbieter": "Frankfurt School of Finance & Management",
-    "felder": [
-      "finanzen",
-      "wirtschaft",
-      "beratung"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "land": "DE",
-    "ort": "Frankfurt am Main",
-    "online": false,
-    "kosten_pro_jahr_eur": 15400,
-    "kosten_label": "kostenintensiv",
-    "zeitraum": "Studienstart im Herbst",
-    "frist": "2027-06-30",
-    "link": "https://www.frankfurt-school.de/de/home/study/bachelor/bachelor-science",
-    "lat": 50.1109,
-    "lng": 8.6821,
-    "lebenshaltung_pro_monat_eur": null,
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "C",
-    "kurzbeschreibung": "Private Hochschule mit 7-semestrigem Bachelor of Science (Business Administration, Computational Business Analytics, Management Philosophy and Economics), Auslandssemester mit Praktikum Pflicht, Eignungsverfahren. Semestergebühr laut Portalen etwa 7.700 bis 8.600 Euro (also etwa 15.400 bis 17.200 Euro pro Jahr), Frist laut Portal 30. Juni, bitte offiziell prüfen.",
-    "link_im_browser_geprueft": null,
-    "wg_miete_pro_monat_eur": 681
-  },
-  {
-    "id": "uni-mannheim-bwl",
-    "typ": "hochschule",
-    "name": "Universität Mannheim, Bachelor BWL",
-    "anbieter": "Universität Mannheim",
-    "felder": [
-      "wirtschaft",
-      "finanzen",
-      "beratung"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "land": "DE",
-    "ort": "Mannheim",
-    "online": false,
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "Bewerbung 1. Juni bis 15. Juli bzw. 31. August 2027 je nach Studiengang, Zulassung über hochschulstart.de",
-    "frist": "2027-07-15",
-    "link": "https://www.uni-mannheim.de/studium/vor-dem-studium/studienangebot/bachelor-bwl/",
-    "lat": 49.4875,
-    "lng": 8.466,
-    "lebenshaltung_pro_monat_eur": null,
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Staatliche Universität mit zulassungsbeschränktem BWL-Bachelor (NC), 6 Semester, Veranstaltungen auf Deutsch und Englisch, nur Semesterbeitrag. Der Studiengang hat ein Pflichtauslandssemester im 5. Semester.",
-    "link_im_browser_geprueft": "2026-11-20",
-    "wg_miete_pro_monat_eur": null
-  },
-  {
-    "id": "jgu-germersheim-translation",
-    "typ": "studiengang",
-    "name": "Sprache, Kultur, Translation (Bachelor), Germersheim",
-    "anbieter": "Johannes Gutenberg-Universität Mainz, Campus Germersheim",
-    "felder": [
-      "sprachen",
-      "diplomatie",
-      "eu"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "land": "DE",
-    "ort": "Germersheim",
-    "online": false,
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "6 Semester, mit Eignungsprüfung",
-    "frist": null,
-    "link": "https://sl.uni-mainz.de/sprache-kultur-translation",
-    "lat": 49.2217,
-    "lng": 8.3646,
-    "lebenshaltung_pro_monat_eur": null,
-    "zuletzt_geprueft": "2026-11-20",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Eine der größten Ausbildungsstätten für Übersetzen und Dolmetschen weltweit. Bei Studiengängen mit Eignungsprüfung endet die Bewerbungsfrist laut DAAD am 15.01. bzw. 15.07., die Anmeldung zur Eignungsprüfung kann früher enden.",
-    "link_im_browser_geprueft": null,
-    "wg_miete_pro_monat_eur": null
-  },
-  {
-    "id": "mun-sh",
-    "typ": "wettbewerb",
-    "name": "MUN-SH (Model United Nations Schleswig-Holstein)",
-    "anbieter": "Deutsche Model United Nations e.V.",
-    "felder": [
-      "politik",
-      "diplomatie",
-      "internationale-orgs",
-      "eu"
-    ],
-    "stufen": [
-      "jung",
-      "mittel"
-    ],
-    "ort": "Schleswig-Holstein",
-    "kosten_pro_jahr_eur": null,
-    "kosten_label": null,
-    "zeitraum": "Frühjahr 2027 in Kiel, Termin und Anmeldefrist noch nicht genannt",
-    "frist": null,
-    "link": "http://www.mun-sh.de",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Größtes deutschsprachiges UN-Planspiel mit rund 400 Jugendlichen im Landtag in Kiel, für 15 bis 21 Jahre, einzeln oder als Gruppe, als Delegierte, NGO oder Journalist.",
-    "zuletzt_geprueft": "2026-11-20",
-    "online": false,
-    "land": "DE",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "jlgmun-2027",
-    "typ": "wettbewerb",
-    "name": "jlgMUN 2027 (Johann x Lennon Gymnasien MUN)",
-    "anbieter": "John-Lennon-Gymnasium und Johann-Gottfried-Herder-Gymnasium, Berlin",
-    "felder": [
-      "politik",
-      "diplomatie",
-      "internationale-orgs",
-      "eu"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "ort": "Berlin",
-    "kosten_pro_jahr_eur": 50,
-    "kosten_label": null,
-    "zeitraum": "3. bis 6. Juni 2027, Berlin, Anmeldung öffnet Mitte Dezember 2026",
-    "frist": null,
-    "link": "https://mymun.com/conferences/johannxlennon-gymnasien-model-united-nations-2027",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "MUN für Schüler von 13 bis 18 Jahren (Klassen 8 bis 12), nur als Schuldelegation von 5 bis 15 Personen mit betreuender Lehrkraft, Gebühr 45 bis 50 Euro pro Person.",
-    "zuletzt_geprueft": "2026-11-20",
-    "online": false,
-    "land": "DE",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "bermun",
-    "typ": "wettbewerb",
-    "name": "BERMUN (Berlin Model United Nations)",
-    "anbieter": "John-F.-Kennedy-Schule Berlin und Friedrich-Ebert-Stiftung",
-    "felder": [
-      "politik",
-      "diplomatie",
-      "internationale-orgs",
-      "eu"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "ort": "Berlin",
-    "kosten_pro_jahr_eur": null,
-    "kosten_label": null,
-    "zeitraum": "Herbstkonferenz im November (2026: 18. bis 21. November), Frühjahrskonferenz BERMUN2 im Frühjahr, Berlin",
-    "frist": null,
-    "link": "https://www.bermun.de",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Internationale UN-Simulation der John F. Kennedy School in Berlin auf Englisch, über 600 Teilnehmende im Herbst und rund 200 im Frühjahr, Anmeldung über die Schule. Gebühren und Fristen stehen nicht auf der Startseite.",
-    "zuletzt_geprueft": "2026-11-20",
-    "online": false,
-    "land": "DE",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "bayernmun",
-    "typ": "wettbewerb",
-    "name": "BayernMUN",
-    "anbieter": "BayernMUN",
-    "felder": [
-      "politik",
-      "diplomatie",
-      "internationale-orgs",
-      "eu"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "ort": "Nürnberg",
-    "kosten_pro_jahr_eur": null,
-    "kosten_label": null,
-    "zeitraum": "22. bis 24. Januar 2027, Kaiserburg Nürnberg",
-    "frist": "2026-11-30",
-    "link": "https://bayernmun.org/",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Studentisch organisierte UN-Simulation mit etwa 250 bis 300 ausgewählten Teilnehmenden, fünf Gremien, Bewerbung bis 30. November 2026, Stipendien für finanziell schwächere Teilnehmende.",
-    "zuletzt_geprueft": "2026-11-20",
-    "online": false,
-    "land": "DE",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "jugend-hackt",
-    "typ": "wettbewerb",
-    "name": "Jugend hackt",
-    "anbieter": "Open Knowledge Foundation Deutschland e. V. und mediale pfade.org e. V.",
-    "felder": [
-      "informatik",
-      "ki",
-      "gruendung"
-    ],
-    "stufen": [
-      "jung",
-      "mittel"
-    ],
-    "ort": "mehrere Städte (zum Beispiel Hamburg, Frankfurt, Berlin)",
-    "kosten_pro_jahr_eur": null,
-    "kosten_label": null,
-    "zeitraum": "Hackathon-Wochenende, Termine je Standort",
-    "frist": null,
-    "mindestalter": 12,
-    "link": "https://jugendhackt.org/events/hamburg/",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Kostenloses Hackathon-Wochenende für 12 bis 18 Jahre in mehreren Städten, ohne Vorkenntnisse, Verpflegung und Übernachtung inklusive, Reisekosten werden bei Bedarf erstattet. Hamburg 2026 war am 2. bis 4. Oktober, Termine 2027 noch offen.",
-    "zuletzt_geprueft": "2026-11-20",
-    "online": false,
-    "land": "DE",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "hagener-hacker-camp",
-    "typ": "kurs",
-    "name": "Hagener Hacker Camp",
-    "anbieter": "FernUniversität in Hagen, Jugenduni",
-    "felder": [
-      "informatik",
-      "ki"
-    ],
-    "stufen": [
-      "jung",
-      "mittel"
-    ],
-    "ort": "Hagen",
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "Oster- und Herbstferien, nächste Termine noch nicht veröffentlicht",
-    "frist": null,
-    "mindestalter": 14,
-    "link": "https://www.fernuni-hagen.de/universitaet/transfer/jugenduni/hagener-hacker-camp.shtml",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Kostenloses Coding-Camp der FernUniversität Hagen für 14 bis 18 Jahre in den Oster- und Herbstferien.",
-    "zuletzt_geprueft": "2026-11-20",
-    "online": false,
-    "land": "DE",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "deutsche-bank-schuelerpraktikum",
-    "typ": "praktikum",
-    "name": "Schülerpraktikum Deutsche Bank (Filiale)",
-    "anbieter": "Deutsche Bank",
-    "felder": [
-      "finanzen",
-      "wirtschaft"
-    ],
-    "stufen": [
-      "jung",
-      "mittel"
-    ],
-    "ort": "Filialen deutschlandweit",
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "1 Tag bis 6 Wochen, jederzeit",
-    "frist": null,
-    "link": "https://careers.db.com/Schuelerinnen/dein-schul-fos-und-berufsorientierungs-praktikum/in-der-filiale",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Praktikum für Schüler allgemeinbildender Schulen, Bewerbung jederzeit direkt vor Ort in der Wunschfiliale. Nötig sind Lebenslauf, letztes Zeugnis und Bewerbungsbogen, Bewerbung 4 bis 6 Wochen vor dem Wunschtermin.",
-    "zuletzt_geprueft": "2026-11-20",
-    "online": false,
-    "land": "DE",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "deutsche-bank-it-schuelerpraktikum",
-    "typ": "praktikum",
-    "name": "Schülerpraktikum Technology, Data and Innovation (Deutsche Bank)",
-    "anbieter": "Deutsche Bank",
-    "felder": [
-      "informatik",
-      "ki",
-      "finanzen"
-    ],
-    "stufen": [
-      "jung",
-      "mittel"
-    ],
-    "ort": "Frankfurt am Main",
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "2 Wochen, Termin individuell, Durchführung ab einer Gruppe von mindestens 8 Schülern",
-    "frist": null,
-    "klasse_min": 10,
-    "link": "https://careers.db.com/ausbildung-studium/schuelerpraktikum/it/?language_id=3",
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Zweiwöchiges IT-Schülerpraktikum der Deutschen Bank in Frankfurt (KI, Agilität, App-Entwicklung, eigenes Projekt), ab Klasse 10, gute Noten, Gruppe von mindestens 8 Schülern nötig. Bewerbung jederzeit per E-Mail mit Lebenslauf, Zeugnis und Bewerbungsbogen, Wunschzeitraum in den Betreff.",
-    "zuletzt_geprueft": "2026-11-20",
-    "online": false,
-    "land": "DE",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "fsj-inland",
-    "typ": "freiwilligendienst",
-    "name": "Freiwilliges Soziales Jahr (FSJ)",
-    "anbieter": "Träger und Einsatzstellen bundesweit",
-    "felder": [
-      "gesundheit",
-      "lehramt",
-      "sport",
-      "politik"
-    ],
-    "stufen": [
-      "abschluss"
-    ],
-    "ort": "bundesweit",
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "in der Regel 12 Monate, Bewerbung direkt bei Einsatzstelle oder Träger",
-    "frist": null,
-    "mindestalter": 16,
-    "link": "https://www.bundes-freiwilligendienst.de/fsj-freiwilliges-soziales-jahr/",
-    "quelle_qualitaet": "B",
-    "kurzbeschreibung": "Freiwilliges Soziales Jahr nach der Vollzeitschulpflicht bis zum 27. Geburtstag, Einsatz meist sozial, auch Sport, Kultur, Politik und Denkmalpflege, Taschengeld je nach Träger verschieden.",
-    "zuletzt_geprueft": "2026-11-20",
-    "online": false,
-    "land": "DE",
-    "link_im_browser_geprueft": "2026-11-20"
-  },
-  {
-    "id": "tum-informatik",
-    "typ": "hochschule",
-    "name": "TU München, Bachelor Informatik",
-    "anbieter": "Technische Universität München",
-    "felder": [
-      "informatik",
-      "ki"
-    ],
-    "stufen": [
-      "mittel",
-      "abschluss"
-    ],
-    "ort": "Garching bei München",
-    "kosten_pro_jahr_eur": 0,
-    "kosten_label": "staatlich",
-    "zeitraum": "Studienstart Wintersemester, mit Eignungsverfahren",
-    "frist": "2027-07-15",
-    "link": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/",
-    "lat": 48.2627,
-    "lng": 11.668,
-    "lebenshaltung_pro_monat_eur": null,
-    "quelle_qualitaet": "A",
-    "kurzbeschreibung": "Bachelor Informatik an der TUM mit zweistufigem Eignungsfeststellungsverfahren (Unterlagen, dann Präsenztest in Garching). Bewerbung zum Wintersemester vom 15. Mai bis 15. Juli.",
-    "zuletzt_geprueft": "2026-11-20",
-    "online": false,
-    "land": "DE",
-    "link_im_browser_geprueft": "2026-11-20",
-    "wg_miete_pro_monat_eur": 850
-  }
+ {
+  "id": "jugend-forscht-2027",
+  "typ": "wettbewerb",
+  "name": "Jugend forscht 2027",
+  "anbieter": "Stiftung Jugend forscht e. V.",
+  "felder": [
+   "ki",
+   "informatik",
+   "ingenieur",
+   "naturwiss"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "bundesweit",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Regionalwettbewerbe Februar und März 2027, Bundesfinale 27. bis 30. Mai 2027",
+  "frist": "2026-11-30",
+  "mindestalter": 15,
+  "klasse_min": 4,
+  "link": "https://www.jugend-forscht.de",
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Bundesweiter MINT-Nachwuchswettbewerb bis 21 Jahre, allein oder im Team, eigene Fragestellung, Anmeldung online bis 30. November, Nachmeldungen sind nicht möglich.",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "bwinf-bundeswettbewerb-informatik-45",
+  "typ": "wettbewerb",
+  "name": "Bundeswettbewerb Informatik, 1. Runde",
+  "anbieter": "BWINF (Gesellschaft für Informatik, Fraunhofer IuK, Max-Planck-Institut für Informatik)",
+  "felder": [
+   "informatik",
+   "ki"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "bundesweit",
+  "online": true,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "1. Runde im Herbst 2026, Anmeldung über login.bwinf.de",
+  "frist": "2026-11-23",
+  "mindestalter": null,
+  "link": "https://bwinf.de",
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Programmieraufgaben für Schülerinnen und Schüler, Teilnahme einzeln, die Einreichung der 1. Runde ist bis 23. November 2026 möglich.",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "informatik-biber",
+  "typ": "wettbewerb",
+  "name": "Informatik-Biber",
+  "anbieter": "BWINF",
+  "felder": [
+   "informatik",
+   "ki"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "land": "DE",
+  "ort": "bundesweit",
+  "online": true,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Biber-Wochen 9. bis 20. November 2026 (jährlich im Herbst)",
+  "frist": null,
+  "klasse_min": 3,
+  "link": "https://bwinf.de",
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einstiegswettbewerb für informatisches Denken, Teilnahme ab Klasse 3 bis zum Abitur, Anmeldung läuft über die Schule.",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "bundeswettbewerb-mathematik",
+  "typ": "wettbewerb",
+  "name": "Bundeswettbewerb Mathematik",
+  "anbieter": "Bundeswettbewerb Mathematik, Bonn",
+  "felder": [
+   "naturwiss",
+   "informatik",
+   "ki",
+   "finanzen"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "bundesweit",
+  "online": true,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Aufgaben ab Anfang Dezember 2026, Einsendeschluss 1. Runde am ersten Montag im März (voraussichtlich 1. März 2027)",
+  "frist": "2027-03-01",
+  "klasse_min": 9,
+  "link": "https://www.bundeswettbewerb-mathematik.de",
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Schülerwettbewerb für Mathematikbegeisterte aller Klassenstufen an Schulen, die zur Hochschulreife führen, Aufgaben orientieren sich an den Klassen 9 bis 13, in der ersten Runde ist Gruppenarbeit bis drei Personen erlaubt. Bundessieger kommen in die Studienstiftung.",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "deutsche-schuelerakademie-2027",
+  "typ": "sommerkurs",
+  "name": "Deutsche SchülerAkademie",
+  "anbieter": "Bildung & Begabung gGmbH",
+  "felder": [
+   "naturwiss",
+   "informatik",
+   "ki",
+   "politik",
+   "sprachen"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "land": "DE",
+  "ort": "Internate in ganz Deutschland",
+  "online": false,
+  "kosten_pro_jahr_eur": 650,
+  "kosten_label": "kostenpflichtig",
+  "zeitraum": "Sommerferien, etwa 16 Tage",
+  "frist": null,
+  "klasse_min": 10,
+  "link": "https://www.schuelerakademien.de/deutsche-schuelerakademie",
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Zweiwöchige Kursakademie für leistungsbereite Oberstufenschüler, die Schule schlägt vor. Eigenanteil in der Regel etwa 650 Euro, Ermäßigung bei geringem Einkommen möglich. Die Frist 2027 steht noch nicht fest (2026 war Kurswahl bis 31. März, Ausschreibung im Januar).",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "tu-dresden-sommeruniversitaet",
+  "typ": "sommerkurs",
+  "name": "Sommeruniversität TU Dresden",
+  "anbieter": "Technische Universität Dresden",
+  "felder": [
+   "ingenieur",
+   "informatik",
+   "naturwiss"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Dresden",
+  "online": false,
+  "kosten_pro_jahr_eur": 75,
+  "kosten_label": "gering",
+  "zeitraum": "Eine Woche im Juli, Termine 2027 noch nicht veröffentlicht (2026: 6. bis 24. Juli, Anmeldung bis 22. Juni)",
+  "frist": null,
+  "link": "https://tu-dresden.de/tu-dresden/newsportal/news/anmeldestart-fuer-die-sommeruniversitaet-2026",
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einwöchige MINT-Sommeruniversität der TU Dresden mit Einblicken in Institute, Labore und Unternehmen, Teilnahmebeitrag 75 Euro (Stand 2026). Anmeldung öffnet jeweils im Frühjahr.",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "frankfurt-school-bachelor-summer-school-2027",
+  "typ": "sommerkurs",
+  "name": "Bachelor Summer School Frankfurt School",
+  "anbieter": "Frankfurt School of Finance & Management",
+  "felder": [
+   "finanzen",
+   "wirtschaft",
+   "beratung",
+   "intl-business"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Frankfurt am Main",
+  "online": false,
+  "kosten_pro_jahr_eur": 950,
+  "kosten_label": "kostenpflichtig",
+  "zeitraum": "5. bis 9. Juli 2027, Frankfurt",
+  "frist": null,
+  "link": "https://www.frankfurt-school.de/events/bachelor-summer-school",
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einwöchige Pre-Bachelor Summer School auf Englisch, ab 16 Jahren, Motivationsschreiben auf Englisch nötig, unter 18 mit Einverständniserklärung der Eltern. Gebühr 950 Euro inkl. ÖPNV-Ticket und Mittagessen, Unterkunft nicht enthalten. Bewerbungsfrist auf der Seite nicht genannt.",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "bocconi-bsc",
+  "typ": "hochschule",
+  "name": "Bocconi University, Bachelor of Science",
+  "anbieter": "Università Bocconi",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "intl-business"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "IT",
+  "ort": "Mailand",
+  "online": false,
+  "kosten_pro_jahr_eur": 17000,
+  "kosten_label": "kostenintensiv",
+  "zeitraum": "Studienstart im Herbst, Studienjahr 2026/27 als Referenz",
+  "frist": null,
+  "link": "https://www.unibocconi.it/en/fees",
+  "lat": 45.4506,
+  "lng": 9.1889,
+  "lebenshaltung_pro_monat_eur": null,
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Private Wirtschaftsuniversität, 17.000 Euro pro Jahr im ersten Bachelorjahr 2026/27, Teilerlass ab 20 Prozent möglich.",
+  "link_im_browser_geprueft": "2026-11-20",
+  "wg_miete_pro_monat_eur": null
+ },
+ {
+  "id": "ie-university-bba",
+  "typ": "hochschule",
+  "name": "IE University, Bachelor in Business Administration",
+  "anbieter": "IE University",
+  "felder": [
+   "wirtschaft",
+   "intl-business",
+   "beratung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "ES",
+  "ort": "Madrid und Segovia",
+  "online": false,
+  "kosten_pro_jahr_eur": 29880,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Studienstart September, Bewerbungsrunden für 2027 unter anderem 15. Januar und 5. März 2027",
+  "frist": "2027-03-05",
+  "link": "https://www.ie.edu/university/admission/fees-scholarships/",
+  "lat": 40.4168,
+  "lng": -3.7038,
+  "lebenshaltung_pro_monat_eur": null,
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Internationale Privatuniversität, Gebühr laut IE 29.880 Euro pro Jahr für den Start 2027/28 und jährlich angepasst, Spanischkurse im ersten und zweiten Jahr inklusive.",
+  "link_im_browser_geprueft": "2026-11-20",
+  "wg_miete_pro_monat_eur": null
+ },
+ {
+  "id": "maastricht-bachelor",
+  "typ": "hochschule",
+  "name": "Maastricht University, Bachelor (EU-Gebühr)",
+  "anbieter": "Maastricht University",
+  "felder": [
+   "wirtschaft",
+   "intl-business",
+   "eu",
+   "politik",
+   "internationale-orgs"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "NL",
+  "ort": "Maastricht",
+  "online": false,
+  "kosten_pro_jahr_eur": 2771,
+  "kosten_label": "kostenpflichtig",
+  "zeitraum": "Studienstart September 2027, Gebühr laut Anbieterseite",
+  "frist": null,
+  "link": "https://www.maastrichtuniversity.nl/study/admission-enrolment/tuition-fees",
+  "lat": 50.8514,
+  "lng": 5.691,
+  "lebenshaltung_pro_monat_eur": null,
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Staatliche niederländische Universität, gesetzliche Gebühr für EU-Studierende 2.771 Euro im Studienjahr 2027/28 (2026/27: 2.694 Euro), University College Maastricht und einige weitere Programme kosten mehr (4.595 Euro).",
+  "link_im_browser_geprueft": "2026-11-20",
+  "wg_miete_pro_monat_eur": null
+ },
+ {
+  "id": "whu-bachelor",
+  "typ": "hochschule",
+  "name": "WHU, Bachelor Internationale BWL",
+  "anbieter": "WHU Otto Beisheim School of Management",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "beratung",
+   "intl-business"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Vallendar",
+  "online": false,
+  "kosten_pro_jahr_eur": 18200,
+  "kosten_label": "kostenintensiv",
+  "zeitraum": "Studienstart Anfang September, vierstufiges Auswahlverfahren",
+  "frist": "2027-05-15",
+  "link": "https://www.whu.edu",
+  "lat": 50.398,
+  "lng": 7.613,
+  "lebenshaltung_pro_monat_eur": null,
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Private Business School, laut Vergleichsportal 9.100 Euro pro Semester und Bewerbungsfrist 15. Mai, für BAföG-Berechtigte gibt es Freiplätze oder Teilerlass. Zahlen vor dem Livegang auf whu.edu prüfen.",
+  "link_im_browser_geprueft": "2026-11-20",
+  "wg_miete_pro_monat_eur": null
+ },
+ {
+  "id": "frankfurt-school-bachelor",
+  "typ": "hochschule",
+  "name": "Frankfurt School, Bachelor",
+  "anbieter": "Frankfurt School of Finance & Management",
+  "felder": [
+   "finanzen",
+   "wirtschaft",
+   "beratung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Frankfurt am Main",
+  "online": false,
+  "kosten_pro_jahr_eur": 15400,
+  "kosten_label": "kostenintensiv",
+  "zeitraum": "Studienstart im Herbst",
+  "frist": "2027-06-30",
+  "link": "https://www.frankfurt-school.de/de/home/study/bachelor/bachelor-science",
+  "lat": 50.1109,
+  "lng": 8.6821,
+  "lebenshaltung_pro_monat_eur": null,
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Private Hochschule mit 7-semestrigem Bachelor of Science (Business Administration, Computational Business Analytics, Management Philosophy and Economics), Auslandssemester mit Praktikum Pflicht, Eignungsverfahren. Semestergebühr laut Portalen etwa 7.700 bis 8.600 Euro (also etwa 15.400 bis 17.200 Euro pro Jahr), Frist laut Portal 30. Juni, bitte offiziell prüfen.",
+  "link_im_browser_geprueft": null,
+  "wg_miete_pro_monat_eur": 681
+ },
+ {
+  "id": "uni-mannheim-bwl",
+  "typ": "hochschule",
+  "name": "Universität Mannheim, Bachelor BWL",
+  "anbieter": "Universität Mannheim",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "beratung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Mannheim",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Bewerbung 1. Juni bis 15. Juli bzw. 31. August 2027 je nach Studiengang, Zulassung über hochschulstart.de",
+  "frist": "2027-07-15",
+  "link": "https://www.uni-mannheim.de/studium/vor-dem-studium/studienangebot/bachelor-bwl/",
+  "lat": 49.4875,
+  "lng": 8.466,
+  "lebenshaltung_pro_monat_eur": null,
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Staatliche Universität mit zulassungsbeschränktem BWL-Bachelor (NC), 6 Semester, Veranstaltungen auf Deutsch und Englisch, nur Semesterbeitrag. Der Studiengang hat ein Pflichtauslandssemester im 5. Semester.",
+  "link_im_browser_geprueft": "2026-11-20",
+  "wg_miete_pro_monat_eur": null
+ },
+ {
+  "id": "jgu-germersheim-translation",
+  "typ": "studiengang",
+  "name": "Sprache, Kultur, Translation (Bachelor), Germersheim",
+  "anbieter": "Johannes Gutenberg-Universität Mainz, Campus Germersheim",
+  "felder": [
+   "sprachen",
+   "diplomatie",
+   "eu"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Germersheim",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "6 Semester, mit Eignungsprüfung",
+  "frist": null,
+  "link": "https://sl.uni-mainz.de/sprache-kultur-translation",
+  "lat": 49.2217,
+  "lng": 8.3646,
+  "lebenshaltung_pro_monat_eur": null,
+  "zuletzt_geprueft": "2026-11-20",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Eine der größten Ausbildungsstätten für Übersetzen und Dolmetschen weltweit. Bei Studiengängen mit Eignungsprüfung endet die Bewerbungsfrist laut DAAD am 15.01. bzw. 15.07., die Anmeldung zur Eignungsprüfung kann früher enden.",
+  "link_im_browser_geprueft": null,
+  "wg_miete_pro_monat_eur": null
+ },
+ {
+  "id": "mun-sh",
+  "typ": "wettbewerb",
+  "name": "MUN-SH (Model United Nations Schleswig-Holstein)",
+  "anbieter": "Deutsche Model United Nations e.V.",
+  "felder": [
+   "politik",
+   "diplomatie",
+   "internationale-orgs",
+   "eu"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Schleswig-Holstein",
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": null,
+  "zeitraum": "Frühjahr 2027 in Kiel, Termin und Anmeldefrist noch nicht genannt",
+  "frist": null,
+  "link": "http://www.mun-sh.de",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Größtes deutschsprachiges UN-Planspiel mit rund 400 Jugendlichen im Landtag in Kiel, für 15 bis 21 Jahre, einzeln oder als Gruppe, als Delegierte, NGO oder Journalist.",
+  "zuletzt_geprueft": "2026-11-20",
+  "online": false,
+  "land": "DE",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "jlgmun-2027",
+  "typ": "wettbewerb",
+  "name": "jlgMUN 2027 (Johann x Lennon Gymnasien MUN)",
+  "anbieter": "John-Lennon-Gymnasium und Johann-Gottfried-Herder-Gymnasium, Berlin",
+  "felder": [
+   "politik",
+   "diplomatie",
+   "internationale-orgs",
+   "eu"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Berlin",
+  "kosten_pro_jahr_eur": 50,
+  "kosten_label": null,
+  "zeitraum": "3. bis 6. Juni 2027, Berlin, Anmeldung öffnet Mitte Dezember 2026",
+  "frist": null,
+  "link": "https://mymun.com/conferences/johannxlennon-gymnasien-model-united-nations-2027",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "MUN für Schüler von 13 bis 18 Jahren (Klassen 8 bis 12), nur als Schuldelegation von 5 bis 15 Personen mit betreuender Lehrkraft, Gebühr 45 bis 50 Euro pro Person.",
+  "zuletzt_geprueft": "2026-11-20",
+  "online": false,
+  "land": "DE",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "bermun",
+  "typ": "wettbewerb",
+  "name": "BERMUN (Berlin Model United Nations)",
+  "anbieter": "John-F.-Kennedy-Schule Berlin und Friedrich-Ebert-Stiftung",
+  "felder": [
+   "politik",
+   "diplomatie",
+   "internationale-orgs",
+   "eu"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Berlin",
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": null,
+  "zeitraum": "Herbstkonferenz im November (2026: 18. bis 21. November), Frühjahrskonferenz BERMUN2 im Frühjahr, Berlin",
+  "frist": null,
+  "link": "https://www.bermun.de",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Internationale UN-Simulation der John F. Kennedy School in Berlin auf Englisch, über 600 Teilnehmende im Herbst und rund 200 im Frühjahr, Anmeldung über die Schule. Gebühren und Fristen stehen nicht auf der Startseite.",
+  "zuletzt_geprueft": "2026-11-20",
+  "online": false,
+  "land": "DE",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "bayernmun",
+  "typ": "wettbewerb",
+  "name": "BayernMUN",
+  "anbieter": "BayernMUN",
+  "felder": [
+   "politik",
+   "diplomatie",
+   "internationale-orgs",
+   "eu"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Nürnberg",
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": null,
+  "zeitraum": "22. bis 24. Januar 2027, Kaiserburg Nürnberg",
+  "frist": "2026-11-30",
+  "link": "https://bayernmun.org/",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Studentisch organisierte UN-Simulation mit etwa 250 bis 300 ausgewählten Teilnehmenden, fünf Gremien, Bewerbung bis 30. November 2026, Stipendien für finanziell schwächere Teilnehmende.",
+  "zuletzt_geprueft": "2026-11-20",
+  "online": false,
+  "land": "DE",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "jugend-hackt",
+  "typ": "wettbewerb",
+  "name": "Jugend hackt",
+  "anbieter": "Open Knowledge Foundation Deutschland e. V. und mediale pfade.org e. V.",
+  "felder": [
+   "informatik",
+   "ki",
+   "gruendung"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "mehrere Städte (zum Beispiel Hamburg, Frankfurt, Berlin)",
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": null,
+  "zeitraum": "Hackathon-Wochenende, Termine je Standort",
+  "frist": null,
+  "mindestalter": 12,
+  "link": "https://jugendhackt.org/events/hamburg/",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Kostenloses Hackathon-Wochenende für 12 bis 18 Jahre in mehreren Städten, ohne Vorkenntnisse, Verpflegung und Übernachtung inklusive, Reisekosten werden bei Bedarf erstattet. Hamburg 2026 war am 2. bis 4. Oktober, Termine 2027 noch offen.",
+  "zuletzt_geprueft": "2026-11-20",
+  "online": false,
+  "land": "DE",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "hagener-hacker-camp",
+  "typ": "kurs",
+  "name": "Hagener Hacker Camp",
+  "anbieter": "FernUniversität in Hagen, Jugenduni",
+  "felder": [
+   "informatik",
+   "ki"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Hagen",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Oster- und Herbstferien, nächste Termine noch nicht veröffentlicht",
+  "frist": null,
+  "mindestalter": 14,
+  "link": "https://www.fernuni-hagen.de/universitaet/transfer/jugenduni/hagener-hacker-camp.shtml",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Kostenloses Coding-Camp der FernUniversität Hagen für 14 bis 18 Jahre in den Oster- und Herbstferien.",
+  "zuletzt_geprueft": "2026-11-20",
+  "online": false,
+  "land": "DE",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "deutsche-bank-schuelerpraktikum",
+  "typ": "praktikum",
+  "name": "Schülerpraktikum Deutsche Bank (Filiale)",
+  "anbieter": "Deutsche Bank",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Filialen deutschlandweit",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "1 Tag bis 6 Wochen, jederzeit",
+  "frist": null,
+  "link": "https://careers.db.com/Schuelerinnen/dein-schul-fos-und-berufsorientierungs-praktikum/in-der-filiale",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum für Schüler allgemeinbildender Schulen, Bewerbung jederzeit direkt vor Ort in der Wunschfiliale. Nötig sind Lebenslauf, letztes Zeugnis und Bewerbungsbogen, Bewerbung 4 bis 6 Wochen vor dem Wunschtermin.",
+  "zuletzt_geprueft": "2026-11-20",
+  "online": false,
+  "land": "DE",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "deutsche-bank-it-schuelerpraktikum",
+  "typ": "praktikum",
+  "name": "Schülerpraktikum Technology, Data and Innovation (Deutsche Bank)",
+  "anbieter": "Deutsche Bank",
+  "felder": [
+   "informatik",
+   "ki",
+   "finanzen"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Frankfurt am Main",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "2 Wochen, Termin individuell, Durchführung ab einer Gruppe von mindestens 8 Schülern",
+  "frist": null,
+  "klasse_min": 10,
+  "link": "https://careers.db.com/ausbildung-studium/schuelerpraktikum/it/?language_id=3",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Zweiwöchiges IT-Schülerpraktikum der Deutschen Bank in Frankfurt (KI, Agilität, App-Entwicklung, eigenes Projekt), ab Klasse 10, gute Noten, Gruppe von mindestens 8 Schülern nötig. Bewerbung jederzeit per E-Mail mit Lebenslauf, Zeugnis und Bewerbungsbogen, Wunschzeitraum in den Betreff.",
+  "zuletzt_geprueft": "2026-11-20",
+  "online": false,
+  "land": "DE",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "fsj-inland",
+  "typ": "freiwilligendienst",
+  "name": "Freiwilliges Soziales Jahr (FSJ)",
+  "anbieter": "Träger und Einsatzstellen bundesweit",
+  "felder": [
+   "gesundheit",
+   "lehramt",
+   "sport",
+   "politik"
+  ],
+  "stufen": [
+   "abschluss"
+  ],
+  "ort": "bundesweit",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "in der Regel 12 Monate, Bewerbung direkt bei Einsatzstelle oder Träger",
+  "frist": null,
+  "mindestalter": 16,
+  "link": "https://www.bundes-freiwilligendienst.de/fsj-freiwilliges-soziales-jahr/",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Freiwilliges Soziales Jahr nach der Vollzeitschulpflicht bis zum 27. Geburtstag, Einsatz meist sozial, auch Sport, Kultur, Politik und Denkmalpflege, Taschengeld je nach Träger verschieden.",
+  "zuletzt_geprueft": "2026-11-20",
+  "online": false,
+  "land": "DE",
+  "link_im_browser_geprueft": "2026-11-20"
+ },
+ {
+  "id": "tum-informatik",
+  "typ": "hochschule",
+  "name": "TU München, Bachelor Informatik",
+  "anbieter": "Technische Universität München",
+  "felder": [
+   "informatik",
+   "ki"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Garching bei München",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart Wintersemester, mit Eignungsverfahren",
+  "frist": "2027-07-15",
+  "link": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/",
+  "lat": 48.2627,
+  "lng": 11.668,
+  "lebenshaltung_pro_monat_eur": null,
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Bachelor Informatik an der TUM mit zweistufigem Eignungsfeststellungsverfahren (Unterlagen, dann Präsenztest in Garching). Bewerbung zum Wintersemester vom 15. Mai bis 15. Juli.",
+  "zuletzt_geprueft": "2026-11-20",
+  "online": false,
+  "land": "DE",
+  "link_im_browser_geprueft": "2026-11-20",
+  "wg_miete_pro_monat_eur": 850
+ },
+ {
+  "id": "deloitte-schulpraktikum",
+  "name": "Schul- und Orientierungspraktikum Deloitte",
+  "anbieter": "Deloitte",
+  "felder": [
+   "beratung",
+   "finanzen",
+   "wirtschaft",
+   "jura"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Berlin, Düsseldorf, Frankfurt, Hamburg, Hannover, Mannheim, München, Stuttgart",
+  "zeitraum": "Schulpraktikum mindestens 2 Wochen, Orientierungspraktikum nach dem Abschluss 1 bis 3 Monate",
+  "link": "https://job.deloitte.com/job-schulpraktikum-orientierungspraktikum-mwd-_49353",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum für Schüler in Prüfung, Steuern, Recht und Beratung, Bewerbung mit Lebenslauf, Zeugnissen und Anschreiben mit Wunschzeitraum und Fachbereich.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "pwc-schuelerpraktikum-audit",
+  "name": "Schülerpraktikum Audit PwC Deutschland",
+  "anbieter": "PwC Deutschland",
+  "felder": [
+   "finanzen",
+   "wirtschaft",
+   "beratung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Berlin, Düsseldorf, München",
+  "zeitraum": "Sommerferien",
+  "mindestalter": 16,
+  "link": "https://www.jobteaser.com/de/companies/pricewaterhousecoopers-gmbh/newsfeed",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Praktikum in der Wirtschaftsprüfung mit Workshops für Schüler ab 16 Jahren auf dem Weg zur Hochschulreife, Termin und Bewerbung bitte auf der PwC Karriereseite prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "grant-thornton-schueler-praktikum",
+  "name": "Schüler- und Orientierungspraktikum Grant Thornton",
+  "anbieter": "Grant Thornton",
+  "felder": [
+   "finanzen",
+   "wirtschaft",
+   "beratung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "deutschlandweit",
+  "zeitraum": "nach Absprache",
+  "link": "https://www.jobteaser.com/de/job-offers/d82083a3-e416-4950-8b59-d56bf63e0105-grant-thornton-ag-wirtschaftsprufungsgesellschaft-schuler-und-orientierungspraktikum-m-w-d-deutschlandweit",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Praktikum in einer Wirtschaftsprüfungs- und Beratungsgesellschaft, Anzeige läuft über ein Jobportal, bitte aktuellen Stand prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "commerzbank-schuelerpraktikum",
+  "name": "Schülerpraktikum Commerzbank",
+  "anbieter": "Commerzbank",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Filialen und Zentrale, bundesweit",
+  "zeitraum": "1 bis 4 Wochen, flexibel",
+  "link": "https://www.commerzbank.de/konzern/karriere/schueler/praktikum/",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum in einer Filiale oder in der Zentrale, nötig sind Lebenslauf und die beiden letzten Zeugnisse, ein Anschreiben ist möglich.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "munich-re-sommerpraktikum",
+  "name": "Sommerpraktikum für Schüler Munich Re",
+  "anbieter": "Munich Re",
+  "felder": [
+   "finanzen",
+   "wirtschaft",
+   "beratung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "München",
+  "zeitraum": "zwei Wochen in den Sommerferien (2026: 4. bis 14. August)",
+  "link": "https://careers.munichre.com/en/job/munich/sommerpraktikum-fur-schulerinnen-und-schuler-2026-m-w-d/3342/31012228416",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Zwei Wochen Rückversicherung kennenlernen, die Ausschreibung für 2026 ist bekannt, den Termin 2027 bitte auf der Karriereseite prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "bundesbank-schulpraktikum",
+  "name": "Schulpraktikum Deutsche Bundesbank",
+  "anbieter": "Deutsche Bundesbank",
+  "felder": [
+   "finanzen",
+   "wirtschaft",
+   "politik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Frankfurt am Main und Hauptverwaltungen",
+  "zeitraum": "1 bis 3 Wochen, sechs Stunden pro Tag",
+  "mindestalter": 15,
+  "link": "https://www.bundesbank.de/de/karriere/einstiegsoptionen/praktika/schulpraktika",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einblick in Bankenaufsicht, Märkte, IT oder Personal einer Zentralbank, Bewerbung sobald Stellen in der Jobbörse ausgeschrieben sind, Mindestalter für freiwillige Praktika 15 Jahre.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "bundesbank-job-experience",
+  "name": "Bundesbank Job Experience",
+  "anbieter": "Deutsche Bundesbank",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Frankfurt am Main",
+  "zeitraum": "Woche in den Sommerferien (2026: 29. Juni bis 3. Juli)",
+  "mindestalter": 17,
+  "link": "https://www.bundesbank.de/de/service/termine/bundesbank-job-experience--885556",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Programmwoche für Oberstufenschüler von 17 bis 20 Jahren mit Gruppenaufgaben, Handelsraum und Einblick in das Zahlungssystem TARGET, Termin 2027 bitte prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "lbbw-schuelerpraktikum",
+  "name": "Schülerpraktikum LBBW und BW-Bank",
+  "anbieter": "LBBW",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Baden-Württemberg, Filialen und Zentrale",
+  "zeitraum": "in der Regel eine Woche",
+  "link": "https://www.lbbw.de/menschen/karriere/schueler-und-schulabsolventen/praktikum/schuelerpraktikum_7wo43sd4z_d.html",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum in jeder BW-Bank Filiale und in zentralen Abteilungen, freie Plätze stehen im Stellenmarkt.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "foerde-sparkasse-schuelerpraktikum",
+  "name": "Praktikum für Schüler Förde Sparkasse",
+  "anbieter": "Förde Sparkasse",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Kiel und Umgebung",
+  "zeitraum": "Herbst und Winter 2026, weitere Zeiträume laufend",
+  "link": "https://www.sparkasse.de/jobboerse/jobangebot/praktikum-fuer-schueler-innen-im-herbst-winter-2026-foerde-sparkasse-210277.html",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Praktikum bei einer Sparkasse in Schleswig-Holstein, gut für Schüler aus Schleswig und Umgebung.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "sparkasse-luebeck-schuelerpraktikum",
+  "name": "Praktikum für Schüler Sparkasse zu Lübeck",
+  "anbieter": "Sparkasse zu Lübeck",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Lübeck",
+  "zeitraum": "nach Absprache",
+  "link": "https://www.sparkasse.de/jobboerse/jobangebot/praktikum-fuer-schueler-innen-sparkasse-zu-luebeck-ag-189788.html",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Praktikum bei einem Unternehmen mit rund 450 Mitarbeitenden, Einblick in Geldanlage, Produkte und Karrierewege einer Sparkasse.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "sparda-bank-hamburg-schuelerpraktikum",
+  "name": "Schülerpraktikum Sparda-Bank Hamburg",
+  "anbieter": "Sparda-Bank Hamburg",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Hamburg, Kiel, Flensburg, Lübeck, Lüneburg",
+  "zeitraum": "1 bis 3 Wochen",
+  "link": "https://www.ausbildung.de/schuelerpraktikum/stellen/schuelerpraktikum-bei-sparda-bank-hamburg-eg-in-luebeck-205c805f-87f0-4f04-a3c0-6c9599db5856/",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Praktikum in Beratung und Verkauf in allen Filialen im Norden.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "sap-sommerpraktikum-schueler",
+  "name": "Sommerferienpraktikum für Schüler SAP",
+  "anbieter": "SAP",
+  "felder": [
+   "informatik",
+   "wirtschaft",
+   "ki"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Walldorf, Dresden, Markdorf",
+  "zeitraum": "eine Woche im Sommer (2026: Walldorf 28. bis 31. Juli, Dresden 10. bis 14. August)",
+  "klasse_min": 10,
+  "link": "https://www.aubi-plus.de/schuelerpraktikum/sap-se-wirtschaftsinformatik-walldorf-34769/",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Gruppenpraktikum mit Workshops, Programmieren und Einblick in Ausbildung und Studium bei SAP, ab Klasse 10, begrenzte Plätze mit Auswahlverfahren, Termin 2027 bitte prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "siemens-schuelerpraktikum-leipzig",
+  "name": "Schülerpraktikum technisch Siemens Leipzig",
+  "anbieter": "Siemens",
+  "felder": [
+   "ingenieur",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Leipzig",
+  "zeitraum": "10. bis 14. Mai 2027",
+  "link": "https://www.workingstudentjobs.de/jobs/siemens-schuelerpraktikum-leipzig-technisch-10-05-bis-14-05-638a3a45",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Gruppenpraktikum im technischen Bereich mit Einführung in Siemens und Austausch mit Auszubildenden und dual Studierenden, Anzeige über ein Jobportal, bitte auf jobs.siemens.com prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "bsh-praktikum-entwicklung-osterferien-2027",
+  "name": "Praktikum duale Studiengänge Entwicklung BSH",
+  "anbieter": "BSH Hausgeräte",
+  "felder": [
+   "ingenieur",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "BSH Standorte in Deutschland",
+  "zeitraum": "Osterferien 2027",
+  "klasse_min": 10,
+  "link": "https://jobs.bsh-group.de/45474-praktikum-duale-studiengaenge-entwicklung-osterferien-2027/job.pdf",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum für Gymnasiasten ab Klasse 10, in den Laboren Geräteentwicklung und Prüfung kennenlernen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "mercedes-benz-schuelerpraktikum",
+  "name": "Schülerpraktikum Mercedes-Benz",
+  "anbieter": "Mercedes-Benz",
+  "felder": [
+   "ingenieur",
+   "wirtschaft",
+   "informatik"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Werke und Niederlassungen, mehrere Standorte",
+  "zeitraum": "ganzjährig, 4 bis 6 Monate im Voraus bewerben",
+  "klasse_min": 9,
+  "link": "https://group.mercedes-benz.com/karriere/schueler/schuelerpraktikum/",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Schülerpraktikum für Klassen 9 und 10 in technischen und kaufmännischen Bereichen, Bewerbung per Bewerbungsbogen und Zeugnis an den jeweiligen Standort.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "audi-schulpraktikum",
+  "name": "Schulpraktikum Audi",
+  "anbieter": "Audi",
+  "felder": [
+   "ingenieur",
+   "informatik",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Ingolstadt, Neckarsulm",
+  "zeitraum": "5 Tage, Schuljahr 2026/2027",
+  "frist": null,
+  "link": "https://www.audi.com/de/careers/pupils/internship-for-school-students/ingolstadt/",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einwöchiges Praktikum mit Einblick in Entwicklung, IT, Werkzeugbau und Logistik, die Bewerbungsphase für 2026/2027 startete Mitte September 2026, pro Schüler nur ein Praktikum möglich.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "bmw-schuelerpraktikum",
+  "name": "Schülerpraktikum BMW Group",
+  "anbieter": "BMW Group",
+  "felder": [
+   "ingenieur",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Werke und Niederlassungen, mehrere Standorte",
+  "zeitraum": "nach Ausschreibung",
+  "link": "https://fluidjobs.com/jobs/179767734-schulerpraktikant-wirtschaft-und-service-m-w-x-in-der-niederlassung",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Schülerpraktikum in Wirtschaft und Service einer BMW Niederlassung, Anzeige über ein Jobportal, aktuelle Plätze bitte auf bmwgroup.jobs prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "airbus-schuelerpraktikum-deutschland",
+  "name": "Schülerpraktikum Airbus Deutschland",
+  "anbieter": "Airbus",
+  "felder": [
+   "ingenieur",
+   "informatik",
+   "naturwiss"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Standorte in Deutschland, zum Beispiel Friedrichshafen",
+  "zeitraum": "eine Woche",
+  "link": "https://www.airbus.com/de/careers/students-and-graduates/interns/pupils-internship-at-airbus-germany",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einwöchiges luftfahrttechnisches Praktikum mit Schwerpunkten wie Mechatronik oder Informatik, Bewerbung mit Schulbescheinigung.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "lufthansa-schuelerpraktikum",
+  "name": "Schülerpraktikum Lufthansa Group",
+  "anbieter": "Lufthansa Group",
+  "felder": [
+   "ingenieur",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Frankfurt, München und weitere Standorte",
+  "zeitraum": "1 bis 3 Wochen, nur Pflichtpraktikum",
+  "mindestalter": 14,
+  "link": "https://innovation-runway.lufthansagroup.com/en/career/job-offers/offer/schulpraktikum-m-w-d-115540.html",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Pflichtpraktikum für Schüler von 14 bis 18 Jahren, zum Beispiel in Flugzeugwartung oder Verwaltung, nur für von der Schule vorgeschriebene Zeiträume.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "flughafen-muenchen-schuelerpraktikum",
+  "name": "Schülerpraktikum Flughafen München",
+  "anbieter": "Flughafen München",
+  "felder": [
+   "wirtschaft",
+   "ingenieur"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "München",
+  "zeitraum": "Schuljahr 2026/2027, Ausschreibung ab September 2026",
+  "link": "https://www.munich-airport.com/schuelerpraktikum-94980",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktika zur Berufsorientierung am Flughafen, Stellen für 2026/2027 werden im September 2026 veröffentlicht.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "enbw-schuelerpraktikum-technik",
+  "name": "Schülerpraktikum technische Ausbildung EnBW",
+  "anbieter": "EnBW",
+  "felder": [
+   "ingenieur",
+   "naturwiss"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Baden-Württemberg",
+  "zeitraum": "nach Absprache",
+  "link": "https://www.enbw.com/unternehmen/karriere/einstiege-aufstiege/schuelerinnen-und-schueler/schuelerpraktikum/bewerbung-schuelerpraktikum-ausbildung.html",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum im Energiekonzern mit Einblick in technische Ausbildungsberufe, Bewerbung online.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "bosch-schuelerpraktikum-buehl",
+  "name": "Schülerpraktikum Bosch Bühl",
+  "anbieter": "Bosch",
+  "felder": [
+   "ingenieur",
+   "informatik"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Bühl",
+  "zeitraum": "variabel, Bewerbung jederzeit",
+  "link": "https://bosch.de/media/career/ausbildungsstandorte/buehl/pdf_9/schuelerpraktikum.pdf",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum im Ausbildungszentrum mit Einblick in Mechatronik, Elektrotechnik und Fachinformatik, Bewerbung online über die Bosch Karriereseite.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "bayer-schuelerpraktikum",
+  "name": "Schülerpraktikum Bayer",
+  "anbieter": "Bayer",
+  "felder": [
+   "naturwiss",
+   "medizin",
+   "ingenieur"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "mehrere Standorte in Deutschland",
+  "zeitraum": "Termine 2027 in Planung, ab Januar 2027 prüfen",
+  "klasse_min": 8,
+  "link": "https://www.bayer.com/de-de/deutschland/karriere/dein-einstieg/ausbildung-und-duales-studium/dein-schuelerpraktikum",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum im Life-Science-Konzern mit Standort und Berufsbild nach Wahl, Bewerbung nur über das Online-Formular.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "bayer-baylab",
+  "name": "BayLab Schülerlabore",
+  "anbieter": "Bayer",
+  "felder": [
+   "naturwiss",
+   "medizin"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Monheim, Dormagen und weitere Standorte",
+  "zeitraum": "nach Angebot",
+  "mindestalter": 14,
+  "link": "https://www.bayer.com/de/node/26226",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Kostenlose Experimentierprojekte in Chemie, Biologie und Physik mit professioneller Laborausstattung für Schüler ab 14 Jahren.",
+  "typ": "kurs",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "basf-schuelerpraktikum",
+  "name": "Schülerpraktikum BASF",
+  "anbieter": "BASF",
+  "felder": [
+   "naturwiss",
+   "ingenieur"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "unter anderem Schwarzheide",
+  "zeitraum": "nach Absprache",
+  "link": "https://www.basf.com/global/de/documents/career/ausbildung/Anmeldung%20-%20Sch%C3%BClerpraktikum%20Schwarzheide.pdf.assetdownload.pdf",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Freiwilliges oder schulisches Praktikum bei BASF, die Anmeldung erfolgt über ein Formular, bitte Standort und Termine beim Anbieter erfragen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "dlr-schulpraktikum",
+  "name": "Schülerpraktika am DLR",
+  "anbieter": "Deutsches Zentrum für Luft- und Raumfahrt",
+  "felder": [
+   "naturwiss",
+   "ingenieur",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "DLR Standorte, zum Beispiel Bremen, Oberpfaffenhofen",
+  "zeitraum": "nach Standort, Herbstpraktikum ab Klasse 10",
+  "klasse_min": 10,
+  "link": "https://www.dlr.de/de/schoollab/praktikum",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Berufsorientierende Praktika in Luft- und Raumfahrt, Energie und Verkehr, die Bewerbung läuft über die Ansprechpersonen des jeweiligen Standorts.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "fraunhofer-ise-schuelerpraktikum",
+  "name": "BOGY und BORS Praktika Fraunhofer ISE",
+  "anbieter": "Fraunhofer ISE",
+  "felder": [
+   "naturwiss",
+   "ingenieur"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Freiburg",
+  "zeitraum": "feste Termine im Schuljahr, Termine 2026/27 prüfen",
+  "link": "https://www.ise.fraunhofer.de/de/studium-jobs-und-karriere/schueler/schuelerpraktikum.html",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Berufsorientierende Praktika im Forschungsinstitut für Solarenergie und Energiesysteme.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "fraunhofer-iee-schuelerpraktikum",
+  "name": "Initiativpraktikum für Schüler Fraunhofer IEE",
+  "anbieter": "Fraunhofer IEE",
+  "felder": [
+   "ingenieur",
+   "informatik",
+   "naturwiss"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Kassel",
+  "zeitraum": "nach Absprache",
+  "link": "https://studyflix.de/jobs/angebote/412580",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Praktikum rund um erneuerbare Energien und Energiesysteme in Technik, IT oder Verwaltung, die Ausschreibung nennt eine Frist von Ende 2025, aktuellen Stand bitte prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "max-planck-magdeburg-schuelerpraktikum",
+  "name": "Schülerpraktika Max-Planck-Institut Magdeburg",
+  "anbieter": "Max-Planck-Institut für Dynamik komplexer technischer Systeme",
+  "felder": [
+   "naturwiss",
+   "ingenieur"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Magdeburg",
+  "zeitraum": "nach Voranmeldung",
+  "link": "https://www.mystipendium.de/node/44529",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Praktika für Oberstufenschüler mit naturwissenschaftlichem Schwerpunkt, Voranmeldung per PDF-Formular, die Frist 23. Februar steht auf dem Portal, Jahr bitte prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "max-planck-bremen-pflichtpraktikum",
+  "name": "Pflichtpraktikum Max-Planck-Institut für Marine Mikrobiologie",
+  "anbieter": "Max-Planck-Institut für Marine Mikrobiologie",
+  "felder": [
+   "naturwiss"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Bremen",
+  "zeitraum": "jederzeit möglich",
+  "link": "https://www.mystipendium.de/node/44530",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Pflichtpraktikum für Schüler aller Schulformen, Bewerbung über das Online-Portal des Instituts.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "uni-hamburg-chemie-ferienpraktikum",
+  "name": "Ferienpraktikum Chemie für Schüler Universität Hamburg",
+  "anbieter": "Universität Hamburg",
+  "felder": [
+   "naturwiss"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Hamburg",
+  "zeitraum": "zweitägig im Oktober (2026: 19. und 20. Oktober, 22. Ausgabe)",
+  "link": "https://www.chemie.uni-hamburg.de/studium/ferienkurse/ferienkurs-chemie-2026-programminfo.pdf",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Experimentieren in den Laboren der Chemie, Termin 2027 bitte beim Fachbereich prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "uni-goettingen-chemie-schnupperpraktikum",
+  "name": "Schnupperpraktikum Chemie Universität Göttingen",
+  "anbieter": "Universität Göttingen",
+  "felder": [
+   "naturwiss"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Göttingen",
+  "zeitraum": "drei Tage im Oktober (2026: 12. bis 14. Oktober)",
+  "klasse_min": 11,
+  "link": "https://uni-goettingen.de/en/627350.html",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Für Schüler der Klassen 11 und 12, Termin 2027 bitte prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "tu-dresden-uni-testen-wirtschaft",
+  "name": "Schülerpraktikum Wirtschaftswissenschaften TU Dresden",
+  "anbieter": "TU Dresden",
+  "felder": [
+   "wirtschaft",
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Dresden",
+  "zeitraum": "Schuljahr 2025/2026, neue Plätze jährlich",
+  "link": "https://tu-dresden.de/studium/vor-dem-studium/uni-testen/schuelerpraktikum/praktikum_wirtschaftswissenschaften",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikumsplätze an den Instituten, zum Beispiel Mitarbeit an einem Forschungsprojekt, Kontakt direkt mit der Ansprechperson des Instituts.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "tu-dresden-uni-testen-informatik",
+  "name": "Schülerpraktikum Informatik TU Dresden",
+  "anbieter": "TU Dresden",
+  "felder": [
+   "informatik",
+   "ki"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Dresden",
+  "zeitraum": "Schuljahr 2025/2026, neue Plätze jährlich",
+  "link": "https://tu-dresden.de/studium/vor-dem-studium/uni-testen/schuelerpraktikum/praktikum_informatik",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikumsplätze an den Instituten der Fakultät Informatik, einige Plätze sind laut Seite bereits vergeben.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "tu-dresden-uni-testen-chemie",
+  "name": "Schülerpraktikum Chemie TU Dresden",
+  "anbieter": "TU Dresden",
+  "felder": [
+   "naturwiss"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Dresden",
+  "zeitraum": "Schuljahr 2026/2027",
+  "link": "https://tu-dresden.de/studium/vor-dem-studium/uni-testen/schuelerpraktikum/praktikum_chemie",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikumsplätze an der Fakultät Chemie und Lebensmittelchemie.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "uni-bremen-go4it-praktikum",
+  "name": "Berufsorientierendes Praktikum Informatik go4IT Uni Bremen",
+  "anbieter": "Universität Bremen",
+  "felder": [
+   "informatik"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Bremen",
+  "zeitraum": "2 bis 3 Wochen",
+  "klasse_min": 8,
+  "link": "https://www.go4it.uni-bremen.de/go4it.uni-bremen.de/events/berufsorientierendes-praktikum-3/index.html",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Mit Java kleine Programme schreiben und einen Roboter programmieren.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "uni-halle-schuelerpraktikum",
+  "name": "Schülerpraktikum an der Universität Halle",
+  "anbieter": "Universität Halle",
+  "felder": [
+   "naturwiss",
+   "wirtschaft",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Halle (Saale)",
+  "zeitraum": "bis zu 3 Monate",
+  "klasse_min": 9,
+  "link": "https://schulbuero2.studienangebot.uni-halle.de/schuelerpraktikum-12/pdf",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Betreute Praktika an vielen Instituten für Schüler der Klassen 9 bis 12, Bewerbung mit Lebenslauf und Zeugnis über das Schulbüro.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "bundestag-schuelerpraktikum",
+  "name": "Schülerpraktikum Deutscher Bundestag",
+  "anbieter": "Deutscher Bundestag",
+  "felder": [
+   "politik",
+   "jura"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Berlin",
+  "zeitraum": "Etagendienst und Kita, dazu zweimal jährlich ein zweiwöchiges Praktikantenprogramm",
+  "link": "https://www.bundestag.de/praktikum",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Bewerbung frühestens neun Monate vor Beginn gebündelt in einer PDF per E-Mail an die Praktikumsstelle.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "land-schleswig-holstein-praktikum",
+  "name": "Praktikum beim Land Schleswig-Holstein",
+  "anbieter": "Land Schleswig-Holstein",
+  "felder": [
+   "politik",
+   "jura",
+   "naturwiss",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Kiel und weitere Behörden in Schleswig-Holstein",
+  "zeitraum": "nach Absprache",
+  "link": "https://www.schleswig-holstein.de/DE/landesportal/karriere/praktikum",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Unentgeltliches Praktikum in Ministerien und Landesbehörden, zum Beispiel Landeslabor oder Ministerium für Justiz, mit Ansprechpersonen pro Haus.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "lbv-sh-praktikum",
+  "name": "Praktikum beim Landesbetrieb LBV.SH",
+  "anbieter": "Land Schleswig-Holstein",
+  "felder": [
+   "politik",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Flensburg, Rendsburg, Itzehoe, Lübeck",
+  "zeitraum": "nach Absprache",
+  "link": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/LBVSH/JobsUndKarriere/Praktika/praktikum_node",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum in der Landesverwaltung, Bewerbung per E-Mail mit Grund, Bereich und Zeitraum.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "polizei-sh-schuelerpraktikum",
+  "name": "Schülerpraktikum Polizei Schleswig-Holstein",
+  "anbieter": "Landespolizei Schleswig-Holstein",
+  "felder": [
+   "politik",
+   "jura"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Flensburg, Kiel, Lübeck und weitere Direktionen",
+  "zeitraum": "nach Absprache",
+  "link": "https://www.schleswig-holstein.de/moin-polizei/DE/06praktikum/praktikum_node",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum bei einer Polizeidirektion, Bewerbung ausschließlich per E-Mail an die Ansprechperson der Direktion.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "zdf-schuelerpraktikum",
+  "name": "Schülerpraktikum ZDF",
+  "anbieter": "ZDF",
+  "felder": [
+   "medien"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Mainz und weitere Standorte",
+  "zeitraum": "nach Ausschreibung",
+  "link": "https://www.zdf.de/unternehmen/karriere/praktika/schuelerpraktikum-100.html",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einblick in Journalismus, Kamera, Technik, IT und Verwaltung eines großen öffentlich-rechtlichen Senders.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "zdf-logo-schuelerpraktikum",
+  "name": "Schülerpraktikum bei logo! (ZDF)",
+  "anbieter": "ZDF",
+  "felder": [
+   "medien"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Mainz",
+  "zeitraum": "ein oder zwei Wochen, 5. April bis 25. Juni 2027",
+  "mindestalter": 14,
+  "link": "https://studyflix.de/ausbildung/angebote/493542",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Praktikum bei den ZDF-Kindernachrichten für Schüler von 14 bis 17 Jahren, Ausschreibung läuft über ein Jobportal.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "ndr-schulpraktikum",
+  "name": "Schulpraktikum NDR",
+  "anbieter": "NDR",
+  "felder": [
+   "medien"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Norddeutschland",
+  "zeitraum": "nach Ausschreibung",
+  "mindestalter": 14,
+  "link": "https://studyflix.de/jobs/angebote/516026",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Praktikum für Schüler ab 14 Jahren mit Einführung in den NDR und Überblick über Ausbildungsmöglichkeiten, Ausschreibung über ein Jobportal, gut erreichbar für Schüler im Norden.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "lmu-klinikum-pflegepraktikum",
+  "name": "Praktikum im Pflegedienst LMU Klinikum",
+  "anbieter": "LMU Klinikum München",
+  "felder": [
+   "medizin",
+   "gesundheit"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "München",
+  "zeitraum": "nach Absprache",
+  "link": "https://lmu-klinikum.de/medizin-pflege/bereiche/pflege/faq-zum-pflegepraktikum-am-lmu-klinikum/78c43f31eddc4241",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praktikum und Hospitation im Pflegedienst, für Schüler sind Schulbestätigung und bei Minderjährigen eine Einverständniserklärung der Eltern nötig.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "drk-kliniken-berlin-schuelerpraktikum",
+  "name": "Schülerpraktikum Pflege DRK Kliniken Berlin",
+  "anbieter": "DRK Kliniken Berlin",
+  "felder": [
+   "medizin",
+   "gesundheit"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Berlin Mitte",
+  "zeitraum": "Pflichtpraktikum in Klasse 9 bis 11",
+  "link": "https://jobs.drk-kliniken-berlin.de/stellenangebote/86148",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Initiativbewerbung für ein Schülerpraktikum in der Pflege.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "uni-rostock-medizin-schuelerpraktikum",
+  "name": "Schülerpraktikum Pflegebereiche Universitätsmedizin Rostock",
+  "anbieter": "Universitätsmedizin Rostock",
+  "felder": [
+   "medizin",
+   "gesundheit"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Rostock",
+  "zeitraum": "nach Absprache",
+  "link": "https://www.med.uni-rostock.de/fileadmin/UEber_uns/zentrale_dienste/bildungsakademie/Flyer_Schuelerpraktikum.pdf",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Einblick in Strahlentherapie, OP, Kinderklinik und weitere Bereiche, mit Kontakt über das Kompetenzzentrum Ausbildung.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "adidas-schuelerpraktikum",
+  "name": "Schülerpraktikum adidas",
+  "anbieter": "adidas",
+  "felder": [
+   "sport",
+   "marketing",
+   "mode"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "Herzogenaurach",
+  "zeitraum": "eine Woche im Sommer (2026: 3. bis 7. August)",
+  "klasse_min": 8,
+  "link": "https://careers.adidas-group.com/teams/pupils/pupil-internship?locale=en",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Praktikum für sportbegeisterte Schüler der Jahrgangsstufen 8 bis 13, die Bewerbung für 2026 endete am 7. Juni, Termin 2027 bitte prüfen.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "architekturbuero-praktikum-eigeninitiative",
+  "name": "Schulpraktikum im Architekturbüro (Eigeninitiative)",
+  "anbieter": "Architektenkammern und Architekturbüros",
+  "felder": [
+   "architektur",
+   "design"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "ort": "deutschlandweit",
+  "zeitraum": "nach Absprache mit dem Büro",
+  "link": "https://www.aknw.de/fileadmin/user_upload/AKNW-Broschueren/2026_AKNW-Praktikumsmappe-final.pdf",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Es gibt kein zentrales Programm, die Praktikumsmappe der Architektenkammer NRW zeigt, was man im Büro tut, und hilft bei der Eigeninitiative.",
+  "typ": "praktikum",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "roland-berger-stiftung-schuelerstipendium",
+  "name": "Deutsches Schülerstipendium Roland Berger Stiftung",
+  "anbieter": "Roland Berger Stiftung",
+  "felder": [
+   "wirtschaft",
+   "beratung"
+  ],
+  "stufen": [
+   "jung",
+   "mittel"
+  ],
+  "ort": "Partnerschulen bundesweit",
+  "zeitraum": "Förderung bis zum Abitur",
+  "link": "https://www.mystipendium.de/node/46961",
+  "quelle_qualitaet": "C",
+  "kurzbeschreibung": "Persönlicher Mentor und Förderplan, aber nur für Schüler der rund 70 Partnerschulen der Stiftung, nicht frei bewerbbar.",
+  "typ": "wettbewerb",
+  "land": "DE",
+  "online": false,
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "de"
+ },
+ {
+  "id": "forage-bofa-sales-trading",
+  "typ": "simulation",
+  "name": "Global Markets Sales and Trading Analyst (Bank of America)",
+  "anbieter": "Bank of America über Forage",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 3 bis 4 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/bank-of-america/sales-and-trading-analyst-i5jo",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Aufgaben eines Analysten im Handel mit Wertpapieren. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-bofa-investment-banking",
+  "typ": "simulation",
+  "name": "Investment Banking (Bank of America)",
+  "anbieter": "Bank of America über Forage",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 4 bis 5 Stunden, Niveau Advanced",
+  "link": "https://www.theforage.com/simulations/bank-of-america/investment-banking-bwp7",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praxisaufgaben aus dem Investmentbanking. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-bofa-private-bank",
+  "typ": "simulation",
+  "name": "The Private Bank (Bank of America)",
+  "anbieter": "Bank of America über Forage",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 1 bis 2 Stunden, Niveau Intermediate",
+  "link": "https://www.theforage.com/simulations/bank-of-america/private-bank-vblo",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einblick in die Vermögensverwaltung für wohlhabende Kunden. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-vista-private-equity",
+  "typ": "simulation",
+  "name": "Demystifying Private Equity (Vista Equity Partners)",
+  "anbieter": "Vista Equity Partners über Forage",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 2 bis 3 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/vista-equity-partners/demystifying-private-equity-xzrs",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einstieg in Private Equity. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-pgim-credit",
+  "typ": "simulation",
+  "name": "Public and Private Credit (PGIM)",
+  "anbieter": "PGIM über Forage",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 6 bis 7 Stunden, Niveau Intermediate",
+  "link": "https://www.theforage.com/simulations/pgim/fixed-income-fqv9",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Anleihen und Kredite im Vermögensmanagement. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-goldman-risk",
+  "typ": "simulation",
+  "name": "Risk (Goldman Sachs)",
+  "anbieter": "Goldman Sachs über Forage",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 30 bis 60 Minuten, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/goldman-sachs/risk-ljdz",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Kurzer Einblick in das Risikomanagement einer Investmentbank. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-goldman-internal-audit",
+  "typ": "simulation",
+  "name": "Internal Audit (Goldman Sachs)",
+  "anbieter": "Goldman Sachs über Forage",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 30 bis 60 Minuten, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/goldman-sachs/internal-audit-j8c6",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Kurzer Einblick in die interne Revision. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-commbank-banking",
+  "typ": "simulation",
+  "name": "You x CommBank (Commonwealth Bank)",
+  "anbieter": "Commonwealth Bank über Forage",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 5 bis 6 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/commonwealth-bank/career-in-banking-3kh5",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Verschiedene Berufe im Bankwesen ausprobieren. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-fidelity-investment",
+  "typ": "simulation",
+  "name": "Investment Management (Fidelity International)",
+  "anbieter": "Fidelity International über Forage",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 4 bis 5 Stunden, Niveau Intermediate",
+  "link": "https://www.theforage.com/simulations/fidelity-international/investment-management-bqoj",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Aufgaben im Fondsmanagement. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-stanchart-credit",
+  "typ": "simulation",
+  "name": "Credit Analyst (Standard Chartered)",
+  "anbieter": "Standard Chartered über Forage",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 3 bis 4 Stunden, Niveau Intermediate",
+  "link": "https://www.theforage.com/simulations/standardchartered/banking-coverage-kr4i",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Kreditwürdigkeit von Unternehmen einschätzen. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-bloomberg-client-service",
+  "typ": "simulation",
+  "name": "Client Service (Bloomberg)",
+  "anbieter": "Bloomberg über Forage",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 3 bis 4 Stunden, Niveau Intermediate",
+  "link": "https://www.theforage.com/simulations/bloomberg/client-service-l3u2",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Kundenbetreuung bei einem Finanzdatenanbieter. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-acca-sustainability-banking",
+  "typ": "simulation",
+  "name": "Sustainability in Banking (ACCA)",
+  "anbieter": "ACCA über Forage",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa nach Angabe von Forage, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/acca-apac/sustainability-banking-4sca",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Nachhaltigkeit im Bankwesen. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-kpmg-audit",
+  "typ": "simulation",
+  "name": "Career Catalyst: Audit (KPMG U.S.)",
+  "anbieter": "KPMG U.S. über Forage",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa nach Angabe von Forage, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/kpmg-us/audit-gsyv",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einblick in die Wirtschaftsprüfung. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-kpmg-advisory",
+  "typ": "simulation",
+  "name": "Career Catalyst: Advisory (KPMG U.S.)",
+  "anbieter": "KPMG U.S. über Forage",
+  "felder": [
+   "beratung",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa nach Angabe von Forage, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/kpmg-us/advisory-f7ke",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einblick in die Beratung. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-bcg-strategy",
+  "typ": "simulation",
+  "name": "Introduction to Strategy Consulting (BCG)",
+  "anbieter": "BCG über Forage",
+  "felder": [
+   "beratung",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 1 bis 2 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/bcg/intro-strategy-consulting-ubsq",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Strategieberatung kennenlernen. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-bcg-it-architecture",
+  "typ": "simulation",
+  "name": "IT Architecture (BCG)",
+  "anbieter": "BCG über Forage",
+  "felder": [
+   "beratung",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 1 bis 2 Stunden, Niveau Intermediate",
+  "link": "https://www.theforage.com/simulations/bcg/it-architect-wjf1",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "IT-Architektur in einem Beratungsprojekt. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-bcg-data-science",
+  "typ": "simulation",
+  "name": "Data Science (BCG)",
+  "anbieter": "BCG über Forage",
+  "felder": [
+   "beratung",
+   "ki",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 8 bis 9 Stunden, Niveau Advanced",
+  "link": "https://www.theforage.com/simulations/bcg/data-science-ccdz",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Datenanalyse und Modellierung in einem Beratungsfall. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-oliver-wyman-iacg",
+  "typ": "simulation",
+  "name": "Insurance and Actuarial Consulting Group (Oliver Wyman)",
+  "anbieter": "Oliver Wyman über Forage",
+  "felder": [
+   "beratung",
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 3 bis 4 Stunden, Niveau Intermediate",
+  "link": "https://www.theforage.com/simulations/oliver-wyman/integrated-consulting-group-tvnj",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Beratung für Versicherer. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-mastercard-consulting",
+  "typ": "simulation",
+  "name": "Advisors and Consulting Services (Mastercard)",
+  "anbieter": "Mastercard über Forage",
+  "felder": [
+   "beratung",
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 1 bis 2 Stunden, Niveau Intermediate",
+  "link": "https://www.theforage.com/simulations/mastercard/advisors-client-services-xvlw",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Beratungsaufgaben bei einem Zahlungsdienstleister. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-newton-evidence-to-impact",
+  "typ": "simulation",
+  "name": "Evidence to Impact (Newton Consulting)",
+  "anbieter": "Newton Consulting über Forage",
+  "felder": [
+   "beratung"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa nach Angabe von Forage, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/newton-consulting/evidence-to-impact-5vy0",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Beratung mit Datenbasis. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-mastercard-cyber",
+  "typ": "simulation",
+  "name": "Cybersecurity (Mastercard)",
+  "anbieter": "Mastercard über Forage",
+  "felder": [
+   "informatik"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 1 bis 2 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/mastercard/cybersecurity-t8ye",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Phishing erkennen und Sicherheitsrisiken melden. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-deloitte-cyber",
+  "typ": "simulation",
+  "name": "Cyber (Deloitte Australia)",
+  "anbieter": "Deloitte Australia über Forage",
+  "felder": [
+   "informatik",
+   "beratung"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa nach Angabe von Forage, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/deloitte-au/cyber-c1e3",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Cybersicherheit in der Beratung. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-cba-data-science",
+  "typ": "simulation",
+  "name": "Introduction to Data Science (Commonwealth Bank)",
+  "anbieter": "Commonwealth Bank über Forage",
+  "felder": [
+   "ki",
+   "informatik"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 3 bis 4 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/commonwealth-bank/intro-data-science-sd7t",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Erste Datenanalyse mit realen Fragestellungen. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-datacom-software",
+  "typ": "simulation",
+  "name": "Software Development (Datacom)",
+  "anbieter": "Datacom über Forage",
+  "felder": [
+   "informatik"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 1 bis 2 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/datacom/software-development-l47g",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Softwareentwicklung im Team. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-yc-startup-engineer",
+  "typ": "simulation",
+  "name": "Working as a Software Engineer at a Start Up (Y Combinator)",
+  "anbieter": "Y Combinator über Forage",
+  "felder": [
+   "informatik",
+   "gruendung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 5 bis 6 Stunden, Niveau Advanced",
+  "link": "https://www.theforage.com/simulations/y-combinator/working-start-up-nhsg",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Entwickeln in einem Start-up. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-hpe-software",
+  "typ": "simulation",
+  "name": "Software Engineering (Hewlett Packard Enterprise)",
+  "anbieter": "Hewlett Packard Enterprise über Forage",
+  "felder": [
+   "informatik"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa nach Angabe von Forage, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/hewlett-packard-enterprise/software-engineering-pcij",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Softwareentwicklung in einem Technologiekonzern. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-forage-solutions-architecture",
+  "typ": "simulation",
+  "name": "Solutions Architecture (Forage)",
+  "anbieter": "Forage über Forage",
+  "felder": [
+   "informatik"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 3 bis 4 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/forage/solutions-architecture-ts4o-fg-acad",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Lösungen für Kunden technisch entwerfen. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-forage-data-labeling",
+  "typ": "simulation",
+  "name": "Data Labeling (Forage)",
+  "anbieter": "Forage über Forage",
+  "felder": [
+   "ki",
+   "informatik"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 3 bis 4 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/forage/data-labeling-c1t0",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Daten für KI-Modelle aufbereiten. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-forage-omnichannel-marketing",
+  "typ": "simulation",
+  "name": "Omnichannel Marketing (Forage)",
+  "anbieter": "Forage über Forage",
+  "felder": [
+   "marketing"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 5 bis 6 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/forage/sponsored-content-omnichannel-marketing-5iep",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Marketing über mehrere Kanäle planen. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-forage-excel-finance",
+  "typ": "simulation",
+  "name": "Excel Skills for Business Finance (Forage)",
+  "anbieter": "Forage über Forage",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 6 bis 7 Stunden, Niveau Intermediate",
+  "link": "https://www.theforage.com/simulations/forage/sponsored-content-excel-skills-for-busi-xue7",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Excel für Finanzaufgaben im Unternehmen. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-forage-excel",
+  "typ": "simulation",
+  "name": "Excel Skills (Forage)",
+  "anbieter": "Forage über Forage",
+  "felder": [
+   "wirtschaft",
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 6 bis 7 Stunden, Niveau Intermediate",
+  "link": "https://www.theforage.com/simulations/forage/sponsored-content-excel-skills-jf8r",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Excel für Auswertungen im Beruf. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-hogan-lovells-intro-law",
+  "typ": "simulation",
+  "name": "Introduction to Law (Hogan Lovells Cadwalader)",
+  "anbieter": "Hogan Lovells Cadwalader über Forage",
+  "felder": [
+   "jura"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 2 bis 3 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/hogan-lovells-cadwalader/introduction-to-law-q5oo",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Erste Rechtsfälle aus der Kanzleiarbeit. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-hogan-lovells-commercial-law",
+  "typ": "simulation",
+  "name": "Commercial Law (Hogan Lovells Cadwalader)",
+  "anbieter": "Hogan Lovells Cadwalader über Forage",
+  "felder": [
+   "jura",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 2 bis 3 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/hogan-lovells-cadwalader/commercial-law-at-hogan-lovells-cadwal-y6yv",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Wirtschaftsrecht in der Kanzlei. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-hsf-global-litigation",
+  "typ": "simulation",
+  "name": "Global Litigation (Herbert Smith Freehills Kramer)",
+  "anbieter": "Herbert Smith Freehills Kramer über Forage",
+  "felder": [
+   "jura"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 3 bis 4 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/herbert-smith-freehills-kramer/global-litigation-gqmm",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Internationale Streitfälle. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-white-case-de-ma",
+  "typ": "simulation",
+  "name": "DE Mergers and Acquisitions (White and Case)",
+  "anbieter": "White and Case über Forage",
+  "felder": [
+   "jura",
+   "finanzen"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 1 bis 2 Stunden, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/white-case/de-mergers-acquisitions-gw7a",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Unternehmenskäufe nach deutschem Recht. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-freshfields-capital-markets",
+  "typ": "simulation",
+  "name": "US Capital Markets (Freshfields)",
+  "anbieter": "Freshfields über Forage",
+  "felder": [
+   "jura",
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa 3 bis 4 Stunden, Niveau Advanced",
+  "link": "https://www.theforage.com/simulations/freshfields/us-capital-markets-kes8",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Kapitalmarktrecht bei einer Großkanzlei. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-ge-manufacturing",
+  "typ": "simulation",
+  "name": "Explore Manufacturing Engineering (GE Aerospace)",
+  "anbieter": "GE Aerospace über Forage",
+  "felder": [
+   "ingenieur"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa nach Angabe von Forage, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/ge-aerospace/supply-chain-n0yr",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Fertigung in der Luftfahrt. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-ba-engineering",
+  "typ": "simulation",
+  "name": "Engineering (British Airways)",
+  "anbieter": "British Airways über Forage",
+  "felder": [
+   "ingenieur"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa nach Angabe von Forage, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/british-airways/engineering-y2tt",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Flugzeugtechnik. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "forage-lifearc-chemistry",
+  "typ": "simulation",
+  "name": "Chemistry (LifeArc)",
+  "anbieter": "LifeArc über Forage",
+  "felder": [
+   "naturwiss",
+   "medizin"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "zeitraum": "selbstbestimmt, etwa nach Angabe von Forage, Niveau Introductory",
+  "link": "https://www.theforage.com/simulations/life-arc/chemistry-w0ox",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Chemie in der Medikamentenforschung. Kostenlos, Englisch, Zertifikat zum Anhängen an den Lebenslauf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-yale-financial-markets",
+  "typ": "onlinekurs",
+  "name": "Financial Markets",
+  "anbieter": "Yale University über Coursera",
+  "felder": [
+   "finanzen",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/learn/financial-markets-global",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Märkte, Banken, Versicherungen und Finanzkrisen verstehen, laut Coursera eine der beliebtesten Finanzkurse.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-wharton-business-foundations",
+  "typ": "onlinekurs",
+  "name": "Business Foundations",
+  "anbieter": "Wharton über Coursera",
+  "felder": [
+   "wirtschaft",
+   "beratung",
+   "marketing"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/specializations/wharton-business-foundations",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Grundlagen in Marketing, Rechnungswesen, Finanzen und Betriebsführung.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-investment-management",
+  "typ": "onlinekurs",
+  "name": "Investment Management",
+  "anbieter": "University of Geneva über Coursera",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/specializations/investment-management",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Portfolios aufbauen und Anlagestrategien bewerten.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-excel-skills-business",
+  "typ": "onlinekurs",
+  "name": "Excel Skills for Business",
+  "anbieter": "Macquarie University über Coursera",
+  "felder": [
+   "wirtschaft",
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/specializations/excel",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Excel von den Grundlagen bis zu Auswertungen für den Beruf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-financial-analyst-excel-powerbi",
+  "typ": "onlinekurs",
+  "name": "Financial Analyst: AI, Excel and Power BI Skills",
+  "anbieter": "Coursera über Coursera",
+  "felder": [
+   "finanzen",
+   "wirtschaft",
+   "ki"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/professional-certificates/financial-analyst-ai-excel-and-power-bi-skills",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Praxisorientiertes Zertifikat mit Excel, Power BI und KI für Finanzaufgaben.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-excel-financial-modeling",
+  "typ": "onlinekurs",
+  "name": "Excel Financial Modeling Mastery",
+  "anbieter": "Coursera über Coursera",
+  "felder": [
+   "finanzen"
+  ],
+  "stufen": [
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/professional-certificates/excel-financial-modeling-mastery-in-depth-training",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Finanzmodelle und Bewertungen in Excel bauen, laut Seite zuletzt im April 2026 aktualisiert.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-business-strategy",
+  "typ": "onlinekurs",
+  "name": "Business Strategy",
+  "anbieter": "Coursera über Coursera",
+  "felder": [
+   "wirtschaft",
+   "beratung"
+  ],
+  "stufen": [
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/specializations/business-strategy",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Strategie und Wettbewerbsvorteile von Unternehmen.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-entrepreneurship-launching",
+  "typ": "onlinekurs",
+  "name": "Entrepreneurship: Launching an Innovative Business",
+  "anbieter": "Coursera über Coursera",
+  "felder": [
+   "gruendung",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/specializations/entrepreneurship",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Geschäftsidee entwickeln, testen und ein Unternehmen starten.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-negotiation-yale",
+  "typ": "onlinekurs",
+  "name": "Introduction to Negotiation",
+  "anbieter": "Yale University über Coursera",
+  "felder": [
+   "beratung",
+   "wirtschaft",
+   "diplomatie",
+   "politik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/learn/negotiation",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Verhandeln mit einem strategischen Rahmen, nützlich für Beruf und Model UN.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-google-data-analytics",
+  "typ": "onlinekurs",
+  "name": "Google Data Analytics Certificate",
+  "anbieter": "Google über Coursera",
+  "felder": [
+   "informatik",
+   "ki",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/professional-certificates/google-data-analytics",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Datenanalyse mit Tabellen, SQL und Visualisierung, Einstieg ohne Vorkenntnisse.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-ibm-data-science",
+  "typ": "onlinekurs",
+  "name": "IBM Data Science Certificate",
+  "anbieter": "IBM über Coursera",
+  "felder": [
+   "ki",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/professional-certificates/ibm-data-science",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Datenwissenschaft mit Python und Machine Learning.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-machine-learning-ng",
+  "typ": "onlinekurs",
+  "name": "Machine Learning Specialization",
+  "anbieter": "Stanford und DeepLearning.AI über Coursera",
+  "felder": [
+   "ki",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/specializations/machine-learning-introduction",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Standardeinstieg in Machine Learning.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-python-everybody",
+  "typ": "onlinekurs",
+  "name": "Python for Everybody",
+  "anbieter": "University of Michigan über Coursera",
+  "felder": [
+   "informatik",
+   "ki"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/specializations/python",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Programmieren mit Python von Grund auf.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-google-ai-essentials",
+  "typ": "onlinekurs",
+  "name": "Google AI Essentials",
+  "anbieter": "Google über Coursera",
+  "felder": [
+   "ki",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/learn/google-ai-essentials",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "KI im Alltag und Beruf sinnvoll einsetzen.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-ai-for-everyone",
+  "typ": "onlinekurs",
+  "name": "AI For Everyone",
+  "anbieter": "DeepLearning.AI über Coursera",
+  "felder": [
+   "ki",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/learn/ai-for-everyone",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "KI verstehen ohne Programmierkenntnisse.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-google-cybersecurity",
+  "typ": "onlinekurs",
+  "name": "Google Cybersecurity Certificate",
+  "anbieter": "Google über Coursera",
+  "felder": [
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/professional-certificates/google-cybersecurity",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Einstieg in IT-Sicherheit.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-google-it-support",
+  "typ": "onlinekurs",
+  "name": "Google IT Support Certificate",
+  "anbieter": "Google über Coursera",
+  "felder": [
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/professional-certificates/google-it-support",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Grundlagen von Netzwerken, Betriebssystemen und IT-Betrieb.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-google-project-management",
+  "typ": "onlinekurs",
+  "name": "Google Project Management Certificate",
+  "anbieter": "Google über Coursera",
+  "felder": [
+   "wirtschaft",
+   "beratung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/professional-certificates/google-project-management",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Projekte planen, steuern und abschließen.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-google-ux-design",
+  "typ": "onlinekurs",
+  "name": "Google UX Design Certificate",
+  "anbieter": "Google über Coursera",
+  "felder": [
+   "design",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/professional-certificates/google-ux-design",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Nutzerfreundliche Apps und Webseiten entwerfen.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-google-digital-marketing",
+  "typ": "onlinekurs",
+  "name": "Google Digital Marketing and E-commerce Certificate",
+  "anbieter": "Google über Coursera",
+  "felder": [
+   "marketing",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/professional-certificates/google-digital-marketing-ecommerce",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Online-Marketing, Werbung und Onlinehandel.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-global-politics",
+  "typ": "onlinekurs",
+  "name": "Global Politics",
+  "anbieter": "Coursera über Coursera",
+  "felder": [
+   "politik",
+   "diplomatie",
+   "internationale-orgs"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/learn/global-politics",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Internationale Politik verstehen, gut für Politik und Model UN.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-learning-how-to-learn",
+  "typ": "onlinekurs",
+  "name": "Learning How to Learn",
+  "anbieter": "Coursera über Coursera",
+  "felder": [
+   "psychologie",
+   "lehramt"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/learn/learning-how-to-learn",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Lerntechniken für Schule und Studium.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "coursera-science-of-well-being",
+  "typ": "onlinekurs",
+  "name": "The Science of Well-Being",
+  "anbieter": "Yale University über Coursera",
+  "felder": [
+   "psychologie"
+  ],
+  "stufen": [
+   "jung",
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "online",
+  "online": true,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Zertifikat kostet laut Coursera meist 49 bis 79 US-Dollar pro Monat über ein Abo, Kursinhalte lassen sich oft kostenlos ansehen. Aktuellen Preis auf der Kursseite prüfen.",
+  "zeitraum": "selbstbestimmt",
+  "link": "https://www.coursera.org/learn/the-science-of-well-being",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Wissenschaft von Wohlbefinden und Gewohnheiten.",
+  "sprache": "en",
+  "zielgruppe": "alle",
+  "link_im_browser_geprueft": "2026-11-21",
+  "frist": null,
+  "zuletzt_geprueft": "2026-11-21"
+ },
+ {
+  "id": "tetr-college-of-business",
+  "typ": "hochschule",
+  "name": "Tetr College of Business (Bachelor Management and Technology, Finance and AI, AI)",
+  "anbieter": "Tetr College of Business",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "ki",
+   "informatik",
+   "gruendung",
+   "intl-business"
+  ],
+  "stufen": [
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "wechselnde Standorte (Dubai, Indien, China, Ghana, USA, Argentinien, Europa)",
+  "online": false,
+  "kosten_pro_jahr_eur": null,
+  "kosten_label": "Stipendium bis 100 Prozent möglich",
+  "kosten_hinweis": "Studiengebühren stehen nicht auf der Startseite, bitte bei Tetr erfragen. Laut Tetr decken Stipendien bis zur vollen Studiengebühr.",
+  "zeitraum": "vierjähriges Bachelorstudium mit Praktikumsphase am Ende, Ausland in mehreren Ländern",
+  "frist": "Runde 1: 14. Dezember 2026 (Gap Year Programm 30. November 2026)",
+  "link": "https://www.tetr.com/",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Internationales Wirtschaftscollege mit Bachelor in Management und Technologie (britischer Abschluss), Finance und KI (britischer Abschluss) sowie Künstliche Intelligenz (US-Abschluss), mit Studienorten in sieben Ländern. Stipendien laut Tetr bis zur vollen Gebühr, zum Beispiel für Leistungsstarke, Gründer und Menschen mit Führungserfahrung. Es ist noch unklar, wie anerkannt die Abschlüsse sind, bitte Akkreditierung und Anerkennung in Deutschland vor einer Bewerbung selbst prüfen.",
+  "zuletzt_geprueft": "2026-11-21",
+  "zielgruppe": "schueler",
+  "sprache": "en",
+  "link_im_browser_geprueft": null
+ }
 ]

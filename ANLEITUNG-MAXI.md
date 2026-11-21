@@ -1,89 +1,81 @@
-# Anleitung für Maxi: Coach starten und testen
+# Anleitung für Maxi: Coach, Zugangscodes und Mentorenbereich
 
-Der Coach unter `/app` ist fertig gebaut. Damit er mit der echten KI antwortet, fehlen nur drei Dinge, die nur du machen kannst: ein API-Schlüssel, Zugangscodes und die Einträge bei Netlify.
+## 1. Umgebungsvariablen bei Netlify
 
-## 1. Was du tun musst
+Eintragen unter https://app.netlify.com, Seite "pathfinderde", dann "Site configuration", "Environment variables", "Add a variable". Schlüssel und Passwörter trägst nur du dort ein, nie in eine Datei im Projekt.
 
-**Schritt 1: API-Schlüssel holen**
-1. Öffne https://console.anthropic.com und melde dich an.
-2. Klicke auf "Settings", dann "API Keys", dann "Create Key". Name zum Beispiel `pathfinder`.
-3. Kopiere den Schlüssel (er beginnt mit `sk-ant-`). Er wird nur einmal angezeigt.
-4. Unter "Settings", "Billing" prüfen, ob Guthaben da ist. Ohne Guthaben antwortet die KI nicht. Tipp: ein kleines Limit setzen.
+| Variable | Pflicht | Wofür |
+| --- | --- | --- |
+| `ANTHROPIC_API_KEY` | ja | Der Schlüssel für die KI (console.anthropic.com, "API Keys"). |
+| `PATHFINDER_ACCESS_CODES` | ja | Feste Codes, kommagetrennt, Form `ABCD-1234`. Bleiben immer gültig, auch neben den selbst angeforderten Codes. |
+| `MENTOR_PASSWORT` | ja | Passwort für den Mentorenbereich. Lang und zufällig wählen. Ohne diese Variable bleibt der Mentorenbereich zu. Nach 10 falschen Versuchen in 15 Minuten ist die Anmeldung von dieser Adresse aus 15 Minuten gesperrt. |
+| `MENTOR_PFAD` | ja | Geheime Adresse des Mentorenbereichs, mindestens 16 Zeichen aus Buchstaben, Zahlen und Bindestrichen, zum Beispiel aus einem Passwortgenerator. Die Seite gibt es dann nur unter `/m/` plus diesem Wert. `/mentor` existiert nicht. |
+| `MAIL_API_KEY` | nein | Schlüssel von Resend (resend.com). Ohne ihn werden keine E-Mails verschickt, alles andere läuft weiter. |
+| `MENTOR_MAIL_AN` | nein | Deine Adresse für neue Anfragen. |
+| `MAIL_ABSENDER` | nein | Absender, zum Beispiel `Pathfinder DE <hallo@deine-domain.de>`. Die Domain muss in Resend bestätigt sein. Ohne eigene Domain schickt Resend nur an deine eigene Adresse. |
+| `MAX_NEUE_CODES_PRO_TAG` | nein | Höchstzahl neuer Codes pro Tag, Standard 30. Danach kommen Leute auf die Warteliste. |
+| `PATHFINDER_DAILY_LIMIT` | nein | Nachrichten pro Code und Tag, Standard 60. |
 
-**Schritt 2: Zugangscodes festlegen**
-- Jeder Code hat 8 Zeichen in der Form `ABCD-1234` (4 Zeichen, Bindestrich, 4 Zeichen, Buchstaben und Zahlen). So sind die Eingabefelder auf der Login-Seite gebaut.
-- Beispiel: `LENA-4821,PILOT-0193` passt nicht, weil `PILOT` 5 Zeichen hat. Richtig wäre `PILO-0193`.
-- Schreib dir die Codes auf. Jede Schülerin und jeder Schüler bekommt einen eigenen Code.
-- Andere Länge gewünscht? In `src/app/code-slots.ts` oben `CODE_SLOTS` und `CODE_SPLIT` ändern.
+Nicht bei Netlify eintragen: `PATHFINDER_MOCK` (nur für lokale Tests ohne KI).
 
-**Schritt 3: Lokale Datei `.env` anlegen** (im Projektordner, gleiche Ebene wie `package.json`)
+Nach dem Eintragen einmal neu bauen lassen: "Deploys", "Trigger deploy", "Deploy site".
 
-```
-ANTHROPIC_API_KEY=sk-ant-dein-schlüssel
-PATHFINDER_ACCESS_CODES=LENA-4821,TEST-1234
-PATHFINDER_DAILY_LIMIT=60
-```
+## 2. So nutzt du den Mentorenbereich
 
-Die Datei steht in `.gitignore` und wird nicht hochgeladen.
+1. Öffne `https://pathfinderde.netlify.app/m/DEIN-MENTOR-PFAD` (dein Wert aus `MENTOR_PFAD`) und gib dein Passwort ein. Speichere die Adresse als Lesezeichen und gib sie niemandem. Neue Anfragen per E-Mail enthalten den Link auch.
+2. "Anfragen": Links stehen alle Anfragen, offene oben. Ein blauer Punkt heißt: neue Nachricht vom Schüler.
+3. Anfrage antippen: Du siehst Zusammenfassung, Kurzprofil und den Verlauf. Unten schreibst du deine Antwort ("Antworten", oder Strg/Cmd und Enter).
+4. Der Schüler sieht deine Antwort im Coach unter "Mentor", spätestens nach etwa 6 Sekunden. Hat er eine E-Mail-Benachrichtigung gewählt, bekommt er zusätzlich eine kurze E-Mail (ohne den Inhalt deiner Nachricht).
+5. "Als erledigt markieren" sortiert die Anfrage nach unten. Schreibt der Schüler wieder, ist sie automatisch wieder offen.
+6. "Zugänge": alle selbst angeforderten Codes mit Vorname, Datum und letzter Anmeldung. "Sperren" macht einen Code sofort ungültig, "Entsperren" hebt das wieder auf. Codes aus `PATHFINDER_ACCESS_CODES` stehen nicht in der Liste; die änderst du in der Variable.
 
-**Schritt 4: Lokal starten**
-- Einmal installieren: `npm install -g netlify-cli`, danach `netlify login` und `netlify link` (die Seite "pathfinderde" auswählen).
-- Starten: `netlify dev`. Dann im Browser http://localhost:8888/app öffnen.
-- Ohne Netlify CLI geht auch `npm run dev` (dann http://localhost:5173/app). Beide lesen die `.env`.
-- Kostenlos testen ohne KI: in die `.env` zusätzlich `PATHFINDER_MOCK=1` schreiben. Dann kommen feste Testantworten. Vor dem echten Test die Zeile wieder löschen.
+Wenn eine Anfrage nicht im Mentorenbereich auftaucht: Unter "Forms" bei Netlify nachsehen. Fällt die Funktion aus, geht die Anfrage still über das Formular `mentor-anfrage` dorthin.
 
-**Schritt 5: Einträge bei Netlify** (erst, wenn lokal alles geht)
-1. https://app.netlify.com öffnen, Seite "pathfinderde" anklicken.
-2. "Site configuration", dann "Environment variables", dann "Add a variable".
-3. Die drei Werte aus der `.env` einzeln eintragen: `ANTHROPIC_API_KEY`, `PATHFINDER_ACCESS_CODES`, `PATHFINDER_DAILY_LIMIT`. `PATHFINDER_MOCK` NICHT eintragen.
+## 3. Lokal testen (kostenlos, ohne KI)
 
-## 2. So prüfst du, ob alles geht
-
-1. `/app` öffnen, einen falschen Code eingeben: Die Felder wackeln, werden rot, Text "Dieser Code passt nicht. Bitte prüfe ihn noch einmal."
-2. Richtigen Code eingeben (oder einfügen), Alter wählen, Datenschutz ankreuzen: Die Felder werden grün, der Chat öffnet sich.
-3. Eine Startkarte antippen: Die Denk-Anzeige erscheint, dann kommt eine Antwort, darüber kurz "Fertig in ...".
-4. Bis zu "CV und LinkedIn" weitermachen: Unten erscheint "Mit einer echten Person sprechen". Den Regler nach rechts ziehen, Formular ausfüllen: Der Regler wird grün, "Angefragt".
-5. Startseite öffnen: "Kostenlos mitmachen" steht oben im Header (weiß) und im Hero (blau). "Test starten" im Bereich "Pathfinder Run" ist metallisch, ebenso der Regler für die Mentor-Anfrage im Coach.
-
-Die Mentor-Anfrage kommt erst auf der echten Seite an (Netlify Forms). Lokal wird sie nur simuliert. Nach dem Push in Netlify unter "Forms" nachsehen.
-
-## 3. Was du NICHT tun sollst
-
-- Den API-Schlüssel nie in den Code, in Chats oder Screenshots schreiben.
-- Die `.env` nie hochladen. Vor jedem Commit mit `git status` prüfen, dass `.env` NICHT in der Liste steht.
-- Nicht pushen, bevor die Testschritte oben funktionieren. Jeder Push kostet Netlify-Build-Minuten.
-- Die Rechtstexte (Datenschutzhinweis im Coach) vor dem Start von einer Anwältin oder einem Anwalt prüfen lassen.
-
-## 4. Am Ende sicher pushen (nur wenn du willst, einmal)
-
-Im Projektordner nacheinander:
+In die `.env` im Projektordner zusätzlich `PATHFINDER_MOCK=1`, ein Test-Passwort `MENTOR_PASSWORT=...` und einen Test-Pfad `MENTOR_PFAD=...` schreiben, dann:
 
 ```
-git status
+netlify dev
 ```
 
-Prüfen: keine `.env` in der Liste.
+Im Browser http://localhost:8888 öffnen und prüfen:
+
+1. Oben "Zugang erhalten": Vorname und E-Mail eingeben. Ein Code erscheint, "Weiter zur Anmeldung" füllt ihn ein.
+2. Anmelden, Startkarte "Lebenslauf verbessern". Unten erscheint "Mit einem Menschen sprechen". Regler ziehen, "Anfragen".
+3. In einem zweiten Tab `/m/` plus deinen `MENTOR_PFAD` öffnen, anmelden, Anfrage antippen, antworten.
+4. Zurück im ersten Tab: Unter "Mentor" erscheint die Antwort.
+5. Abmelden und mit einem Code aus `PATHFINDER_ACCESS_CODES` anmelden: geht ebenfalls.
+
+Vor dem echten Test die Zeile `PATHFINDER_MOCK=1` wieder löschen und `netlify dev` neu starten.
+
+Falls `netlify dev` jede Anfrage mit Fehler 500 beantwortet und im Terminal "NODE_OPTIONS" steht: `env -u NODE_OPTIONS netlify dev` starten.
+
+## 4. Was du NICHT tun sollst
+
+- Schlüssel und Passwörter nie in Dateien, Chats oder Screenshots schreiben.
+- Die `.env` nie hochladen. Vor jedem Commit mit `git status` prüfen, dass sie nicht in der Liste steht.
+- Nicht pushen, bevor die Testschritte oben funktionieren.
+- Die Datenschutztexte (Coach und Datenschutzseite, Abschnitt 6) vor dem Start von einer Anwältin oder einem Anwalt prüfen lassen.
+
+## 5. Zurückrollen, wenn etwas schiefgeht
+
+Schnell, ohne Code: Bei Netlify unter "Deploys" den letzten funktionierenden Deploy anklicken und "Publish deploy" wählen. Die Seite ist sofort wieder auf diesem Stand.
+
+Dauerhaft im Code (im Projektordner, nacheinander):
 
 ```
-npm test
+git log --oneline -5
 ```
 
-```
-npm run build
-```
-
-Beide müssen ohne Fehler durchlaufen.
+Den Hash des fehlerhaften Commits notieren, dann:
 
 ```
-git add -A
-```
-
-```
-git commit -m "Rework Teil 1 bis 3: Buttons, Hintergründe, Chat, Code-Login"
+git revert <hash>
 ```
 
 ```
 git push
 ```
 
-Hinweis: Es liegt schon ein früherer, noch nicht gepushter Commit für den Coach bereit. Der geht mit diesem Push zusammen hoch. Danach baut Netlify die Seite einmal neu.
+Die gespeicherten Daten (Codes, Anfragen) liegen in Netlify Blobs und bleiben beim Zurückrollen erhalten.

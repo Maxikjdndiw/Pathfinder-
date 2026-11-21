@@ -13,6 +13,8 @@ shots/
 
 # generated from app-data/ by npm run app-data
 netlify/functions/_shared/data.generated.ts
+netlify/functions/_shared/vorlagen.generated.ts
+netlify/functions/_shared/mentor-page.generated.ts
 
 # local secrets (API key, access codes): never commit
 .env

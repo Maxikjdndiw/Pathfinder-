@@ -347,7 +347,7 @@ input[type='range']:disabled { opacity: 0.5; cursor: default; }
   cursor: pointer;
 }
 .q-field summary::-webkit-details-marker { display: none; }
-.q-field__name { flex: 1; font: 700 18px/1.2 var(--font-display); letter-spacing: -0.01em; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.q-field__name { flex: 1; min-width: 0; hyphens: auto; overflow-wrap: break-word; font: 700 18px/1.2 var(--font-display); letter-spacing: -0.01em; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .q-field__tag { font: 500 12.5px/1 var(--font-body); color: var(--card); background: var(--accent); padding: 5px 7px; border-radius: var(--r-tag); }
 .q-field__pct { font-size: var(--fs-label); color: var(--ink-muted); white-space: nowrap; }
 .q-field__chevron { flex: none; transition: transform 0.25s; }

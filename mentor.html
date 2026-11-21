@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Mentorenbereich · Pathfinder DE</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <link rel="icon" href="/pathfinder-app-icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+  <script type="module" src="/src/mentor/main.ts"></script>
+</head>
+<body class="mp">
+  <header class="mp-head">
+    <a class="mp-brand" href="/"><!--brand-mark--><span>Pathfinder DE</span></a>
+    <span class="mp-head__title">Mentorenbereich</span>
+    <button class="btn btn--quiet btn--small" type="button" data-logout hidden>Abmelden</button>
+  </header>
+
+  <main class="mp-main">
+    <!-- password, checked on the server for every request (netlify/functions/mentor-admin.mts) -->
+    <section class="mp-login" data-login>
+      <h1>Mentorenbereich</h1>
+      <form data-login-form novalidate>
+        <label class="field">
+          <span class="field__label">Passwort</span>
+          <input class="input" type="password" name="passwort" autocomplete="current-password" required />
+        </label>
+        <p class="form-error" data-login-error role="alert"></p>
+        <button class="btn btn--primary" type="submit">Anmelden</button>
+      </form>
+    </section>
+
+    <section class="mp-app" data-app hidden>
+      <div class="mp-tabs" role="tablist" aria-label="Bereiche">
+        <button type="button" role="tab" aria-selected="true" data-tab="anfragen">Anfragen <span class="mp-count" data-count-open></span></button>
+        <button type="button" role="tab" aria-selected="false" data-tab="zugaenge">Zugänge</button>
+      </div>
+
+      <div class="mp-panel" data-panel="anfragen">
+        <div class="mp-split">
+          <ul class="mp-list" data-threads aria-label="Anfragen"></ul>
+          <div class="mp-detail" data-detail hidden>
+            <button class="mp-back" type="button" data-back>Alle Anfragen</button>
+            <div class="mp-detail__head">
+              <h2 data-detail-name></h2>
+              <button class="btn btn--quiet btn--small" type="button" data-status-toggle></button>
+            </div>
+            <p class="mp-meta" data-detail-meta></p>
+            <div class="mp-summary">
+              <p class="mp-summary__label">Zusammenfassung</p>
+              <p data-detail-summary></p>
+              <p class="mp-profile" data-detail-profile></p>
+            </div>
+            <div class="mp-thread" data-detail-thread aria-live="polite"></div>
+            <form class="mp-reply" data-reply novalidate>
+              <label class="sr-only" for="reply">Antwort</label>
+              <textarea class="input" id="reply" name="text" rows="3" maxlength="2000" placeholder="Antwort schreiben"></textarea>
+              <ul class="mp-files" data-reply-files></ul>
+              <p class="form-error" data-reply-error role="alert"></p>
+              <div class="mp-reply__actions">
+                <input class="sr-only" type="file" data-reply-input multiple accept=".pdf,.docx,.png,.jpg,.jpeg" tabindex="-1" aria-hidden="true" />
+                <button class="btn btn--quiet btn--small" type="button" data-reply-attach>Datei anhängen</button>
+                <button class="btn btn--solid" type="submit">Antworten</button>
+              </div>
+            </form>
+          </div>
+          <p class="mp-empty" data-detail-empty>Wähle links eine Anfrage.</p>
+        </div>
+      </div>
+
+      <div class="mp-panel" data-panel="zugaenge" hidden>
+        <p class="mp-meta" data-waitlist></p>
+        <div class="mp-table-wrap">
+          <table class="mp-table">
+            <thead><tr><th>Vorname</th><th>Code</th><th>Erstellt</th><th>Zuletzt benutzt</th><th><span class="sr-only">Aktion</span></th></tr></thead>
+            <tbody data-access></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

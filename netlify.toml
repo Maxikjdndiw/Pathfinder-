@@ -27,5 +27,8 @@
   to = "/app.html"
   status = 200
 
+# The mentor area has no public address: /mentor does not exist. The page is served by the
+# function mentor-seite only at /m/<MENTOR_PFAD> (secret, set as an environment variable).
+
 [functions]
   node_bundler = "esbuild"

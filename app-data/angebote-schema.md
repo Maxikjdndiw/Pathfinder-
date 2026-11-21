@@ -81,3 +81,19 @@ Zweck: Alle Empfehlungen kommen aus dieser festen Liste. Die KI erfindet keine A
 ```
 
 Hinweis: Die Beispiel-Links sind Platzhalter und müssen vor dem Start durch die geprüften offiziellen Seiten ersetzt werden.
+
+## Ergänzungen vom 21.11.2026
+
+Neue Werte für `typ`:
+- `simulation`: kostenlose Job-Simulation (Forage), online, englisch, selbstbestimmtes Tempo, Zertifikat. `land` ist INT, `online` ist true.
+- `onlinekurs`: bezahlter oder teilweise kostenloser Kurs (Coursera). `kosten_pro_jahr_eur` ist null, stattdessen steht in `kosten_hinweis` der Preisrahmen. Coursera rechnet per Abo ab, den aktuellen Preis immer auf der Kursseite prüfen. Viele Kursinhalte lassen sich kostenlos ansehen.
+
+Neue optionale Felder:
+- `zielgruppe`: `schueler` (Standard, offen für Schüler) oder `alle` (Online-Angebote ohne Schülerbezug, offen für jeden).
+- `sprache`: `de` (Standard) oder `en`. Die KI soll bei englischen Angeboten sagen, dass sie auf Englisch sind.
+- `kosten_hinweis`: freier Text zu unklaren Preisen.
+
+Hinweise zur Ehrlichkeit:
+- Praktika mit Qualität C stammen aus Jobportalen, die KI soll dazu sagen: "Bitte auf der Karriereseite des Unternehmens prüfen".
+- Termine aus 2026 sind Beispiele für den Rhythmus, nicht für 2027. Die KI nennt sie nicht als aktuelle Frist.
+- Viele Beratungs- und Bankprogramme (McKinsey, Bain, BCG, Roland Berger, Oliver Wyman) sind nur für Studierende. Sie gehören nicht als Schülerpraktikum in die Liste.

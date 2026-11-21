@@ -25,6 +25,7 @@
       <details class="menu">
         <summary class="menu__btn" aria-label="Weitere Optionen"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></summary>
         <div class="menu__list">
+          <button type="button" data-action="vorlagen">Vorlagen</button>
           <button type="button" data-action="delete">Meine Daten löschen</button>
           <button type="button" data-action="logout">Abmelden</button>
         </div>
@@ -34,7 +35,7 @@
 
   <main id="app-main" class="app-main">
     <!-- 1. Login with access code and consent -->
-    <section class="login" data-screen="login" aria-labelledby="login-title">
+    <section class="login" id="login" data-screen="login" aria-labelledby="login-title">
       <h1 id="login-title">Dein Coach</h1>
       <p class="login__lead">Für Teilnehmende der Pilotphase.</p>
       <form class="login__form" data-form="login" novalidate>
@@ -61,8 +62,10 @@
         <details class="notice">
           <summary>Datenschutzhinweis lesen</summary>
           <p>Pathfinder DE ist ein Beratungswerkzeug für Schülerinnen und Schüler. Wir speichern so wenig wie möglich.</p>
-          <p>Was wir speichern: einen Zugangscode, eine kurze Zusammenfassung deines Profils (Klasse, Interessen, Felder) und deine gemerkten Angebote. Profil, Verlauf und gemerkte Angebote liegen nur in deinem Browser. Auf dem Server zählen wir pro Zugangscode, wie viele Nachrichten am Tag geschickt werden. Bitte gib keine sensiblen Daten ein, zum Beispiel Namen, Gesundheitsdaten, Adresse oder Telefonnummer.</p>
-          <p>Wer die Daten verarbeitet: Deine Chatnachrichten werden zur Beantwortung an einen KI-Dienst (Anthropic) übermittelt. Die Seite wird bei Netlify gehostet. Anfragen an eine Mentorin oder einen Mentor laufen über Netlify Forms: Dabei geht eine kurze Zusammenfassung deines Gesprächs an die Mentorin oder den Mentor, die Antwort kommt per E-Mail.</p>
+          <p>Was wir speichern: deinen Zugangscode und, wenn du ihn selbst angefordert hast, deinen Vornamen und deine E-Mail-Adresse. Dazu eine kurze Zusammenfassung deines Profils (Klasse, Interessen, Felder) und deine gemerkten Angebote. Profil, Chatverlauf mit der KI und gemerkte Angebote liegen nur in deinem Browser. Auf dem Server zählen wir pro Zugangscode, wie viele Nachrichten am Tag geschickt werden. Bitte gib keine sensiblen Daten ein, zum Beispiel Nachnamen, Gesundheitsdaten, Adresse oder Telefonnummer.</p>
+          <p>Mit einem Menschen sprechen: Wenn du eine Mentorin oder einen Mentor anfragst, speichern wir eine kurze Zusammenfassung deines Gesprächs und eure Nachrichten auf dem Server, damit ihr direkt schreiben könnt. Eine E-Mail-Benachrichtigung bekommst du nur, wenn du das ausdrücklich möchtest.</p>
+          <p>Dateien: Wenn du eine Datei anhängst (PDF, DOCX, PNG, JPG), speichern wir sie auf dem Server. Im Gespräch mit der KI geht sie zur Auswertung an den KI-Dienst, im Gespräch mit dem Mentor sieht nur er sie. Du kannst jede Datei selbst löschen, sonst löschen wir sie automatisch nach 30 Tagen.</p>
+          <p>Wer die Daten verarbeitet: Deine Chatnachrichten an die KI werden zur Beantwortung an einen KI-Dienst (Anthropic) übermittelt. Die Seite und die gespeicherten Daten liegen bei Netlify. E-Mails (Zugangscode, Benachrichtigungen) verschicken wir über einen E-Mail-Dienst.</p>
           <p>Rechtsgrundlage: deine Einwilligung. Du kannst sie jederzeit widerrufen und die Löschung deiner Daten verlangen: <a href="mailto:benedict.velazquez@mail.louisenlund.de">benedict.velazquez@mail.louisenlund.de</a>.</p>
           <p>Die KI kann Fehler machen. Prüfe wichtige Angaben (Fristen, Kosten) immer auf der offiziellen Seite des Anbieters.</p>
         </details>
@@ -74,14 +77,73 @@
         <p class="form-error" data-error role="alert"></p>
         <button class="btn btn--primary" type="submit">Los geht's<span class="btn__arrow" aria-hidden="true">→</span></button>
       </form>
+      <p class="login__switch">Noch keinen Code? <a href="#zugang" data-goto="register">Zugang anfordern</a></p>
       <p class="login__hint">Die Antworten von Pathfinder DE sind Orientierungshilfen und keine Rechts-, Finanz- oder Studienberatung. Angaben zu Fristen, Kosten und Zulassung können sich ändern. Maßgeblich sind immer die offiziellen Seiten der Anbieter.</p>
+    </section>
+
+    <!-- 1b. Request access: first name and e-mail, the code comes right away (and by e-mail) -->
+    <section class="login register" id="zugang" data-screen="register" aria-labelledby="register-title" hidden>
+      <h1 id="register-title">Zugang anfordern</h1>
+      <form class="login__form" data-form="register" novalidate data-register-form>
+        <label class="field">
+          <span class="field__label">Vorname</span>
+          <input class="input" name="vorname" autocomplete="given-name" maxlength="40" required />
+        </label>
+        <label class="field">
+          <span class="field__label">E-Mail</span>
+          <input class="input" type="email" name="email" autocomplete="email" maxlength="254" required />
+        </label>
+        <!-- honeypot: hidden from people, bots fill it in -->
+        <p class="sr-only" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off" /></label></p>
+        <label class="check">
+          <input type="checkbox" name="datenschutz" required />
+          <span>Ich habe den <a href="/datenschutz.html" target="_blank" rel="noopener">Datenschutzhinweis</a> gelesen und bin einverstanden, dass Vorname und E-Mail für meinen Zugang gespeichert werden.</span>
+        </label>
+        <p class="form-error" data-register-error role="alert"></p>
+        <button class="btn btn--primary" type="submit">Code anfordern</button>
+      </form>
+      <div class="register__done" data-register-done hidden>
+        <p class="register__label">Dein Zugangscode</p>
+        <p class="register__code" data-register-code></p>
+        <p class="register__note" data-register-note></p>
+        <button class="btn btn--primary" type="button" data-goto="login" data-use-code>Weiter zur Anmeldung</button>
+      </div>
+      <p class="login__switch"><a href="#login" data-goto="login">Ich habe schon einen Code</a></p>
+    </section>
+
+    <!-- 1c. Templates: only for logged-in people, files come from /api/vorlage -->
+    <section class="vorlagen" data-screen="vorlagen" aria-labelledby="vorlagen-title" hidden>
+      <button class="vorlagen__back" type="button" data-action="zurueck">Zurück zum Chat</button>
+      <h1 id="vorlagen-title">Vorlagen</h1>
+      <div class="vorlagen__grid">
+        <article class="vorlage">
+          <h2>Schüler</h2>
+          <p>Lebenslauf in Word, mit Platz für ein Foto.</p>
+          <button class="btn btn--quiet btn--small" type="button" data-vorlage="schueler">Herunterladen</button>
+        </article>
+        <article class="vorlage">
+          <h2>Wirtschaft, Finanzen, Beratung</h2>
+          <p>Klassischer Lebenslauf in Word.</p>
+          <button class="btn btn--quiet btn--small" type="button" data-vorlage="wirtschaft">Herunterladen</button>
+        </article>
+        <article class="vorlage">
+          <h2>Technik, Informatik, Naturwissenschaften</h2>
+          <p>Klassischer Lebenslauf in Word.</p>
+          <button class="btn btn--quiet btn--small" type="button" data-vorlage="technik">Herunterladen</button>
+        </article>
+        <article class="vorlage">
+          <h2>Kreativ, Medien, Design</h2>
+          <p>Portfolio in PowerPoint.</p>
+          <button class="btn btn--quiet btn--small" type="button" data-vorlage="kreativ">Herunterladen</button>
+        </article>
+      </div>
+      <p class="form-error" data-vorlage-error role="alert"></p>
     </section>
 
     <!-- 2. Chat -->
     <section class="chat" data-screen="chat" aria-label="Gespräch mit Pathfinder" hidden>
-      <!-- empty state: greeting and start suggestions (a quiet PatternWaves layer behind it) -->
+      <!-- empty state: greeting and start suggestions -->
       <div class="welcome" data-welcome hidden>
-        <div class="welcome__waves" data-welcome-waves aria-hidden="true"></div>
         <h1 class="welcome__title">Hi, schön, dass du da bist.</h1>
         <p class="welcome__lead">Womit willst du anfangen?</p>
         <p class="welcome__privacy">Bitte keine Namen, Adressen oder Telefonnummern.</p>
@@ -105,14 +167,35 @@
 
       <!-- mentor request: slide to confirm (src/app/slide-confirm.ts), from the CV part on -->
       <section class="mentor-slot" data-mentor-slot aria-labelledby="mentor-slot-title" hidden>
-        <h2 class="mentor-slot__title" id="mentor-slot-title">Mit einer echten Person sprechen</h2>
+        <h2 class="mentor-slot__title" id="mentor-slot-title">Mit einem Menschen sprechen</h2>
         <div data-mentor-slider></div>
       </section>
 
+      <!-- direct chat with the mentor: only the student and the mentor write here, never the AI -->
+      <section class="mentor-chat" data-mentor-chat aria-label="Gespräch mit deinem Mentor" hidden>
+        <p class="mentor-chat__status" data-mentor-status>Ein Mensch ist informiert. Eine Antwort kann etwas dauern.</p>
+        <div class="chat__log" data-mentor-log aria-live="polite"></div>
+      </section>
+
       <div class="composer-wrap">
+        <button class="to-bottom" type="button" data-to-bottom hidden>Nach unten</button>
+        <!-- appears after a mentor request: who the next message goes to -->
+        <div class="views" role="tablist" aria-label="Gespräch" data-views hidden>
+          <button type="button" role="tab" aria-selected="true" data-view="coach">Coach</button>
+          <button type="button" role="tab" aria-selected="false" data-view="mentor">Mentor<span class="views__dot" data-mentor-unread hidden></span></button>
+        </div>
+        <!-- chosen files: uploaded right away, sent with the next message -->
+        <div class="tray" data-tray hidden>
+          <ul class="tray__files" data-tray-files></ul>
+          <p class="tray__note">Dateien werden nach 30 Tagen gelöscht.</p>
+        </div>
         <form class="composer" data-form="chat">
+          <input class="sr-only" type="file" data-file-input multiple accept=".pdf,.docx,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg,application/vnd.openxmlformats-officedocument.wordprocessingml.document" tabindex="-1" aria-hidden="true" />
+          <button class="composer__attach" type="button" data-attach aria-label="Datei anhängen (PDF, DOCX, PNG, JPG, bis 5 MB)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5l-7.8 7.8a5 5 0 0 1-7.1-7.1l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.5 8.5a1.7 1.7 0 0 1-2.4-2.4l7.8-7.8"/></svg>
+          </button>
           <label class="sr-only" for="chat-input">Deine Nachricht</label>
-          <textarea id="chat-input" aria-describedby="composer-hint" class="composer__input" name="text" rows="1" maxlength="6000" placeholder="Schreib Pathfinder eine Nachricht" required></textarea>
+          <textarea id="chat-input" aria-describedby="composer-hint" class="composer__input" name="text" rows="1" maxlength="6000" placeholder="Nachricht an Pathfinder"></textarea>
           <button class="btn btn--primary composer__send" type="submit" aria-label="Senden">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
           </button>
@@ -123,24 +206,21 @@
     </section>
   </main>
 
-  <!-- Mentor request (Netlify Forms). The form must exist in the HTML so Netlify finds it. -->
+  <!-- Mentor request: goes to /api/mentor-anfrage (src/app/main.ts) -->
   <dialog class="mentor" data-mentor aria-labelledby="mentor-title">
-    <form name="mentor-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-form="mentor">
-      <h2 id="mentor-title">Mentor kontaktieren</h2>
-      <input type="hidden" name="form-name" value="mentor-anfrage" />
-      <p class="sr-only"><label>Nicht ausfüllen: <input name="bot-field" /></label></p>
-      <input type="hidden" name="zugangscode" />
+    <form data-form="mentor" novalidate>
+      <h2 id="mentor-title">Mit einem Menschen sprechen</h2>
       <label class="field">
         <span class="field__label">Zusammenfassung</span>
-        <textarea class="input" name="zusammenfassung" rows="6" maxlength="1200" required></textarea>
-      </label>
-      <label class="field">
-        <span class="field__label">E-Mail</span>
-        <input class="input" type="email" name="email" autocomplete="email" required />
+        <textarea class="input" name="zusammenfassung" rows="6" maxlength="1200"></textarea>
       </label>
       <label class="check">
-        <input type="checkbox" name="einwilligung" required />
-        <span>Ich bin einverstanden, dass meine Anfrage und meine E-Mail-Adresse für die Antwort gespeichert werden.</span>
+        <input type="checkbox" name="emailEinwilligung" data-mentor-mail-toggle />
+        <span>Bei einer Antwort per E-Mail benachrichtigen. Dafür speichern wir deine E-Mail-Adresse.</span>
+      </label>
+      <label class="field" data-mentor-mail hidden>
+        <span class="field__label">E-Mail</span>
+        <input class="input" type="email" name="email" autocomplete="email" maxlength="254" />
       </label>
       <p class="form-error" data-mentor-error role="alert"></p>
       <div class="mentor__actions">
@@ -149,5 +229,15 @@
       </div>
     </form>
   </dialog>
+
+  <!-- Silent backup only: if the function fails, the request goes to Netlify Forms instead.
+       Netlify needs the form in the HTML to detect it; visitors never see it. -->
+  <form name="mentor-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+    <input type="hidden" name="form-name" value="mentor-anfrage" />
+    <input name="bot-field" />
+    <input name="zugangscode" />
+    <textarea name="zusammenfassung"></textarea>
+    <input name="email" />
+  </form>
 </body>
 </html>

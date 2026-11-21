@@ -8,7 +8,7 @@
 import { getStore } from '@netlify/blobs';
 
 /** Only letters and digits, upper case: "abcd-1234", " ABCD 1234 " and "ABCD1234" all match. */
-const canonical = (code: unknown) => String(code ?? '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+export const canonical = (code: unknown) => String(code ?? '').toUpperCase().replace(/[^A-Z0-9]/g, '');
 
 /** The codes from the environment. PATHFINDER_ACCESS_CODES, or ACCESS_CODES as a fallback name. */
 export function accessCodes(): string[] {

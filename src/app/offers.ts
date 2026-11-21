@@ -4,7 +4,16 @@
  */
 import raw from '../../app-data/angebote.json';
 
-export type Typ = 'kurs' | 'sommerkurs' | 'praktikum' | 'wettbewerb' | 'hochschule' | 'studiengang' | 'freiwilligendienst';
+export type Typ =
+  | 'kurs'
+  | 'sommerkurs'
+  | 'praktikum'
+  | 'wettbewerb'
+  | 'hochschule'
+  | 'studiengang'
+  | 'freiwilligendienst'
+  | 'simulation'
+  | 'onlinekurs';
 export type Stufe = 'jung' | 'mittel' | 'abschluss';
 
 export interface Offer {
@@ -24,6 +33,14 @@ export interface Offer {
   link: string;
   zuletzt_geprueft: string;
   kurzbeschreibung: string;
+  /** A official or the provider itself, B portal, C job portal only (check on the career page) */
+  quelle_qualitaet?: string;
+  /** schueler (default) or alle (online offers open to everyone) */
+  zielgruppe?: 'schueler' | 'alle';
+  /** de (default) or en */
+  sprache?: 'de' | 'en';
+  /** free text for unclear prices, for example subscriptions */
+  kosten_hinweis?: string;
 }
 
 export const OFFERS = raw as Offer[];
@@ -36,7 +53,12 @@ export const TYP_LABEL: Record<Typ, string> = {
   hochschule: 'Hochschule',
   studiengang: 'Studiengang',
   freiwilligendienst: 'Freiwilligendienst',
+  simulation: 'Simulation',
+  onlinekurs: 'Onlinekurs',
 };
+
+/** Cost labels that get a coloured pill on the card; other values are not shown as a pill. */
+export const COST_LABELS = ['staatlich', 'kostenpflichtig', 'kostenintensiv', 'sehr kostenintensiv'];
 
 export const FIELD_LABEL: Record<string, string> = {
   wirtschaft: 'Wirtschaft', finanzen: 'Finanzen', beratung: 'Beratung', informatik: 'Informatik', ki: 'KI und Data Science',
@@ -54,7 +76,8 @@ export const COST_STEPS = [0, 1000, 5000, 10000, 20000, 30000, 50000];
 export interface Filters {
   felder: string[];
   stufe: Stufe | 'alle';
-  land: 'alle' | 'de' | 'ausland';
+  /** online: international online offers (land INT) */
+  land: 'alle' | 'de' | 'ausland' | 'online';
   /** indexes into COST_STEPS */
   kostenMin: number;
   kostenMax: number;
@@ -83,7 +106,8 @@ export function filterOffers(offers: Offer[], f: Filters, today = new Date()): O
     if (f.stufe !== 'alle' && !o.stufen.includes(f.stufe)) return false;
     const land = o.land ?? 'DE';
     if (f.land === 'de' && land !== 'DE') return false;
-    if (f.land === 'ausland' && land === 'DE') return false;
+    if (f.land === 'ausland' && (land === 'DE' || land === 'INT')) return false;
+    if (f.land === 'online' && land !== 'INT') return false;
     if (f.typen.length && !f.typen.includes(o.typ)) return false;
     // offers without a cost figure stay visible ("Kosten unbekannt")
     if (o.kosten_pro_jahr_eur !== null && (o.kosten_pro_jahr_eur < min || o.kosten_pro_jahr_eur > max)) return false;

@@ -5,12 +5,12 @@
 import { SIGNUP_URL } from './config';
 import { initSvgLiquidGlass } from './liquidGlass';
 
-/** Every "Kostenlos mitmachen" button uses the one link from src/config.ts, in a new tab */
+/** Every sign-up button uses the one link from src/config.ts (the access request in the coach) */
 export function initSignupLinks(root: ParentNode = document): void {
   root.querySelectorAll<HTMLAnchorElement>('[data-signup]').forEach((a) => {
     a.href = SIGNUP_URL;
-    a.target = '_blank';
-    a.rel = 'noopener';
+    a.removeAttribute('target');
+    a.removeAttribute('rel');
   });
 }
 

@@ -1,6 +1,6 @@
 /**
  * The ONE place for the sign-up link.
- * Every "Kostenlos mitmachen" button on the site reads this value.
- * Paste the real Google Form link here when you have it.
+ * Every sign-up button on the site ("Zugang erhalten", "Kostenlos mitmachen") reads this value:
+ * it opens "Zugang anfordern" in the coach, where people get their access code.
  */
-export const SIGNUP_URL = 'https://forms.gle/kFBJyTRaUKRrz2uX8';
+export const SIGNUP_URL = '/app#zugang';
