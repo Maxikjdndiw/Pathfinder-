@@ -12,20 +12,30 @@ import './app.css';
 import { parseMarkers, visibleText, type ModeButton, type Recommendation } from './markers';
 import { createSlideConfirm, type SlideResult } from './slide-confirm';
 import { createCodeSlots } from './code-slots';
+import type { MapHandle } from './map';
 import { createLatticeLoader } from '../components/lattice-loader';
 import {
   COST_LABELS as PILL_LABELS,
   COST_STEPS,
+  ALEVEL_GRADES,
   defaultFilters,
+  emptyFit,
   FIELD_LABEL,
+  FIT_LABEL,
   filterOffers,
+  fitFor,
+  LEISTUNGSFAECHER,
   formatDate,
   formatEuro,
   isPast,
   OFFERS,
+  RECHTSFORM_LABEL,
+  SPRACHE_LABEL,
   STUFE_LABEL,
   TYP_LABEL,
   type Filters,
+  type FitProfile,
+  type FitStatus,
   type Offer,
   type Stufe,
   type Typ,
@@ -78,6 +88,34 @@ function load() {
     /* private mode or broken data: start fresh */
   }
 }
+// fit check profile ("Passt das?"): grades stay in this browser, never sent to the server
+const fitKey = () => `${storeKey()}:fit`;
+let fitProfile: FitProfile = emptyFit();
+function loadFit() {
+  fitProfile = emptyFit();
+  try {
+    const raw = localStorage.getItem(fitKey());
+    if (raw) fitProfile = { ...fitProfile, ...JSON.parse(raw) };
+  } catch {
+    /* private mode or broken data: no grades */
+  }
+}
+function saveFit() {
+  try {
+    localStorage.setItem(fitKey(), JSON.stringify(fitProfile));
+  } catch {
+    /* storage blocked: the fit check works for this visit only */
+  }
+}
+const fitSummary = (p: FitProfile) =>
+  p.abschluss === 'abitur'
+    ? `Abitur ${p.note.toFixed(1).replace('.', ',')}`
+    : p.abschluss === 'ib'
+      ? `IB ${p.ib} Punkte`
+      : p.abschluss === 'alevel'
+        ? `A-Levels ${p.alevel.join('')}`
+        : 'Noten eingeben';
+
 function save() {
   try {
     localStorage.setItem(storeKey(), JSON.stringify({ ...state, messages: state.messages.slice(-60) }));
@@ -169,12 +207,23 @@ function bubble(role: Msg['role'], html: string, files?: FileRef[]): HTMLElement
 function renderAll() {
   log.innerHTML = '';
   const lastAssistant = state.messages.map((m) => m.role).lastIndexOf('assistant');
+  // only the newest cards or map block is shown; older ones were replaced by it
+  const lastVisual = state.messages.reduce((acc, m, i) => {
+    if (m.role !== 'assistant') return acc;
+    const p = parseMarkers(m.content);
+    return p.map || p.recommendation ? i : acc;
+  }, -1);
   state.messages.forEach((m, i) => {
     if (m.hidden) return;
     if (m.role === 'user') return void bubble('user', m.dateien?.length && m.content === FILE_ONLY ? '' : format(m.content), m.dateien);
     const parsed = parseMarkers(m.content);
     const el = bubble('assistant', format(parsed.text));
-    if (parsed.recommendation) renderRecommendations(el, parsed.recommendation);
+    if (i === lastVisual) {
+      const rec = parsed.recommendation;
+      const withMap = Boolean(parsed.map) || Boolean(rec?.typen.some((x) => x === 'hochschule' || x === 'studiengang'));
+      if (rec) renderRecommendations(el, rec, withMap ? { map: true, highlight: parsed.map } : {});
+      else if (parsed.map) renderMapOnly(el, parsed.map);
+    }
     if (i === lastAssistant) renderActions(el, parsed.options, parsed.buttons);
   });
   scrollDown();
@@ -298,14 +347,30 @@ function renderActions(after: HTMLElement, options: string[], buttons: ModeButto
 // ---------- recommendation cards ----------
 const COST_LABELS = COST_STEPS.map((v, i) => (i === COST_STEPS.length - 1 ? `${formatEuro(v)} oder mehr` : formatEuro(v)));
 let recCount = 0;
+/** the cards block on screen; a newer one replaces it */
+let liveRecs: HTMLElement | null = null;
 
-function renderRecommendations(after: HTMLElement, rec: Recommendation) {
+function renderRecommendations(after: HTMLElement, rec: Recommendation, mapOpts: { map?: boolean; highlight?: string[] | null } = {}) {
   const id = `rec-${++recCount}`;
   const stufe = (rec.stufe ?? (state.profile.stufe as Stufe | undefined) ?? null) as Stufe | null;
-  const f: Filters = defaultFilters(rec.felder, stufe);
+  // the offers the coach talks about (ids=), only real ones from angebote.json
+  const pinned = rec.ids.map((x) => OFFERS.find((o) => o.id === x)).filter((o): o is Offer => Boolean(o));
+  // filters the coach did not set follow the pinned offers
+  const typen = rec.typen.length ? rec.typen : [...new Set(pinned.map((o) => o.typ))];
+  const land =
+    rec.land ??
+    (pinned.length && pinned.every((o) => o.land === 'DE') ? 'de' : pinned.length && pinned.every((o) => o.land !== 'DE' && !o.online) ? 'ausland' : null);
+  const felder = rec.felder.length ? rec.felder : [...new Set(pinned.flatMap((o) => o.felder))];
+  const f: Filters = defaultFilters(felder, stufe, typen, land, rec.sprachen);
+  const isStudy = (o: Offer) => o.typ === 'hochschule' || o.typ === 'studiengang';
+  // the fit check belongs to universities: Studium mode or a block that shows universities
+  const showFit = state.mode === 'studium' || f.typen.some((t) => t === 'hochschule' || t === 'studiengang') || pinned.some(isStudy);
   const fieldsAvailable = [...new Set([...rec.felder, ...OFFERS.flatMap((o) => o.felder)])].filter((x) => FIELD_LABEL[x]);
+  // the newest block replaces the older one, so cards and maps never stack up
+  if (liveRecs) liveRecs.remove();
   const box = document.createElement('section');
   box.className = 'recs';
+  liveRecs = box;
   box.setAttribute('aria-labelledby', `${id}-title`);
   box.innerHTML = `
     <h3 class="recs__title" id="${id}-title">Angebote für dich</h3>
@@ -315,6 +380,8 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation) {
       <div class="filter-grid">
         <label class="field"><span class="field__label">Land</span>
           <select class="input" data-f="land"><option value="alle">Alle</option><option value="de">Deutschland</option><option value="ausland">Ausland</option><option value="online">Online</option></select></label>
+        <label class="field"><span class="field__label">Rechtsform</span>
+          <select class="input" data-f="rechtsform"><option value="alle">Alle</option><option value="oeffentlich">Öffentlich</option><option value="privat">Privat</option></select></label>
         <label class="field"><span class="field__label">Stufe</span>
           <select class="input" data-f="stufe"><option value="alle">Alle</option>${(Object.keys(STUFE_LABEL) as Stufe[]).map((s) => `<option value="${s}">${STUFE_LABEL[s]}</option>`).join('')}</select></label>
         <label class="field"><span class="field__label">Sortierung</span>
@@ -331,14 +398,37 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation) {
           </div>
         </div>
         <div class="field field--wide"><span class="field__label">Typ</span>
-          <div class="chips chips--small" data-typen>${(Object.keys(TYP_LABEL) as Typ[]).map((t) => `<button type="button" class="chip" aria-pressed="false" data-typ="${t}">${TYP_LABEL[t]}</button>`).join('')}</div></div>
+          <div class="chips chips--small" data-typen>${(Object.keys(TYP_LABEL) as Typ[]).map((t) => `<button type="button" class="chip" aria-pressed="${f.typen.includes(t)}" data-typ="${t}">${TYP_LABEL[t]}</button>`).join('')}</div></div>
+        <div class="field field--wide"><span class="field__label">Sprache</span>
+          <div class="chips chips--small" data-sprachen>${Object.entries(SPRACHE_LABEL).map(([c, l]) => `<button type="button" class="chip" aria-pressed="${f.sprachen.includes(c)}" data-sprache="${c}">${l}</button>`).join('')}</div></div>
+        ${showFit ? `<div class="field field--wide"><span class="field__label">Richtwerte</span>
+          <div class="chips chips--small"><button type="button" class="chip" aria-pressed="false" data-nur-passende>Nur Passende</button></div></div>` : ''}
         <div class="field field--wide"><span class="field__label">Felder</span>
           <div class="chips chips--small" data-felder>${fieldsAvailable.map((x) => `<button type="button" class="chip" aria-pressed="${rec.felder.includes(x)}" data-feld="${x}">${esc(FIELD_LABEL[x])}</button>`).join('')}</div></div>
       </div>
     </details>
+    ${showFit ? `<details class="fit">
+      <summary>Passt das? <span class="fit__sum" data-fit-sum></span></summary>
+      <div class="filter-grid fit__body">
+        <label class="field"><span class="field__label">Abschluss</span>
+          <select class="input" data-fit="abschluss"><option value="">Bitte wählen</option><option value="abitur">Abitur</option><option value="ib">IB</option><option value="alevel">A-Levels</option></select></label>
+        <label class="field" data-fit-only="abitur"><span class="field__label">Note (1,0 bis 4,0)</span>
+          <select class="input" data-fit="note">${Array.from({ length: 31 }, (_, i) => (1 + i / 10).toFixed(1)).map((n) => `<option value="${n}">${n.replace('.', ',')}</option>`).join('')}</select></label>
+        <label class="field" data-fit-only="ib"><span class="field__label">Punkte (24 bis 45)</span>
+          <select class="input" data-fit="ib">${Array.from({ length: 22 }, (_, i) => 45 - i).map((n) => `<option value="${n}">${n}</option>`).join('')}</select></label>
+        <div class="field" data-fit-only="alevel" role="group" aria-labelledby="${id}-al"><span class="field__label" id="${id}-al">A-Level Noten</span>
+          <div class="fit__alevel">${[0, 1, 2].map((i) => `<select class="input" data-fit-al="${i}" aria-label="Note ${i + 1}">${ALEVEL_GRADES.map((g) => `<option value="${g}">${g}</option>`).join('')}</select>`).join('')}</div></div>
+        <div class="field field--wide"><span class="field__label">Leistungskurs / Higher Level</span>
+          <div class="chips chips--small">${Object.entries(LEISTUNGSFAECHER).map(([k, l]) => `<button type="button" class="chip" aria-pressed="${fitProfile.faecher.includes(k)}" data-lk="${k}">${l}</button>`).join('')}</div></div>
+      </div>
+    </details>
+    <p class="fit__note">Ungefähre Einschätzung, keine Zulassungsgarantie. Bitte die offiziellen Voraussetzungen prüfen.</p>` : ''}
+    <div data-map-slot></div>
     <p class="recs__count" data-count aria-live="polite"></p>
     <div class="cards" data-cards></div>`;
   after.appendChild(box);
+  let map: Promise<MapHandle | null> | null = null;
+  if (mapOpts.map) map = attachMap(box.querySelector<HTMLElement>('[data-map-slot]')!, mapOpts.highlight?.length ? mapOpts.highlight : rec.ids.length ? rec.ids : null);
 
   const set = <K extends keyof Filters>(k: K, v: Filters[K]) => {
     f[k] = v;
@@ -346,9 +436,11 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation) {
   };
   const sel = (k: string) => box.querySelector<HTMLInputElement & HTMLSelectElement>(`[data-f="${k}"]`)!;
   sel('land').value = f.land;
+  sel('rechtsform').value = f.rechtsform;
   sel('stufe').value = f.stufe;
   sel('sort').value = f.sort;
   sel('land').addEventListener('change', (e) => set('land', (e.target as HTMLSelectElement).value as Filters['land']));
+  sel('rechtsform').addEventListener('change', (e) => set('rechtsform', (e.target as HTMLSelectElement).value as Filters['rechtsform']));
   sel('stufe').addEventListener('change', (e) => set('stufe', (e.target as HTMLSelectElement).value as Filters['stufe']));
   sel('sort').addEventListener('change', (e) => set('sort', (e.target as HTMLSelectElement).value as Filters['sort']));
   const minEl = sel('kostenMin');
@@ -375,7 +467,7 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation) {
       update();
     }),
   );
-  const toggleGroup = (attr: string, key: 'typen' | 'felder') =>
+  const toggleGroup = (attr: string, key: 'typen' | 'felder' | 'sprachen') =>
     box.querySelectorAll<HTMLElement>(`[data-${attr}]`).forEach((b) =>
       b.addEventListener('click', () => {
         const on = b.getAttribute('aria-pressed') !== 'true';
@@ -390,17 +482,80 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation) {
     );
   toggleGroup('typ', 'typen');
   toggleGroup('feld', 'felder');
+  toggleGroup('sprache', 'sprachen');
+  box.querySelector<HTMLButtonElement>('[data-nur-passende]')?.addEventListener('click', (e) => {
+    const b = e.currentTarget as HTMLButtonElement;
+    f.nurPassende = b.getAttribute('aria-pressed') !== 'true';
+    b.setAttribute('aria-pressed', String(f.nurPassende));
+    update();
+  });
+  if (showFit) {
+    const fitSel = (k: string) => box.querySelector<HTMLSelectElement>(`[data-fit="${k}"]`)!;
+    const alSels = [...box.querySelectorAll<HTMLSelectElement>('[data-fit-al]')];
+    const syncFit = () => {
+      fitSel('abschluss').value = fitProfile.abschluss ?? '';
+      fitSel('note').value = fitProfile.note.toFixed(1);
+      fitSel('ib').value = String(fitProfile.ib);
+      alSels.forEach((s, i) => (s.value = fitProfile.alevel[i] ?? 'A'));
+      box.querySelectorAll<HTMLElement>('[data-fit-only]').forEach((el) => (el.hidden = el.dataset.fitOnly !== fitProfile.abschluss));
+      box.querySelector('[data-fit-sum]')!.textContent = fitSummary(fitProfile);
+    };
+    const changed = () => {
+      saveFit();
+      syncFit();
+      update();
+    };
+    fitSel('abschluss').addEventListener('change', (e) => {
+      fitProfile.abschluss = ((e.target as HTMLSelectElement).value || null) as FitProfile['abschluss'];
+      changed();
+    });
+    fitSel('note').addEventListener('change', (e) => {
+      fitProfile.note = Number((e.target as HTMLSelectElement).value);
+      changed();
+    });
+    fitSel('ib').addEventListener('change', (e) => {
+      fitProfile.ib = Number((e.target as HTMLSelectElement).value);
+      changed();
+    });
+    alSels.forEach((s, i) =>
+      s.addEventListener('change', () => {
+        fitProfile.alevel = [...fitProfile.alevel];
+        fitProfile.alevel[i] = s.value;
+        changed();
+      }),
+    );
+    box.querySelectorAll<HTMLButtonElement>('[data-lk]').forEach((b) =>
+      b.addEventListener('click', () => {
+        const on = b.getAttribute('aria-pressed') !== 'true';
+        b.setAttribute('aria-pressed', String(on));
+        const k = b.dataset.lk!;
+        fitProfile.faecher = on ? [...new Set([...fitProfile.faecher, k])] : fitProfile.faecher.filter((x) => x !== k);
+        changed();
+      }),
+    );
+    syncFit();
+  }
 
   function update() {
     box.querySelector('[data-cost-out]')!.textContent = `${COST_LABELS[f.kostenMin]} bis ${COST_LABELS[f.kostenMax]}`;
-    const list = filterOffers(OFFERS, f);
+    // pinned offers first (always shown), then the rest that matches the filters
+    const pinnedIds = new Set(pinned.map((o) => o.id));
+    const fitP = showFit ? fitProfile : null;
+    const list = [...pinned, ...filterOffers(OFFERS, f, new Date(), fitP).filter((o) => !pinnedIds.has(o.id))];
     const known = rec.felder.filter((x) => OFFERS.some((o) => o.felder.includes(x)));
     box.querySelector('[data-count]')!.textContent = list.length
       ? `${list.length} ${list.length === 1 ? 'Angebot' : 'Angebote'}`
       : known.length
         ? 'Keine Treffer.'
         : 'Noch keine geprüften Angebote für diese Felder.';
-    box.querySelector('[data-cards]')!.innerHTML = list.map(card).join('');
+    box.querySelector('[data-cards]')!.innerHTML = list.map((o) => card(o, pinnedIds.has(o.id), fitP)).join('');
+    // the map keeps every university and only dims the ones that do not match (and by the fit check)
+    const fitMap = new Map<string, FitStatus>();
+    if (fitP) for (const o of UNIS) {
+      const r = fitFor(o, fitP);
+      if (r) fitMap.set(o.id, r.status);
+    }
+    map?.then((m) => m?.setMatching(new Set(list.map((o) => o.id)), fitMap));
     box.querySelectorAll<HTMLButtonElement>('[data-save]').forEach((b) =>
       b.addEventListener('click', () => {
         const oid = b.dataset.save!;
@@ -413,23 +568,28 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation) {
   update();
 }
 
-function card(o: Offer): string {
+function card(o: Offer, pinned = false, fitP: FitProfile | null = null): string {
+  const fit = fitFor(o, fitP);
   const study = o.typ === 'hochschule' || o.typ === 'studiengang';
   const cost =
     o.kosten_pro_jahr_eur === null
       ? o.kosten_hinweis ? 'Siehe Hinweis' : 'Kosten unbekannt'
-      : o.kosten_pro_jahr_eur === 0
+      : o.kosten_pro_jahr_eur === 0 && !o.kosten_bis_eur
         ? study ? 'Nur Semesterbeitrag' : 'Kostenlos'
-        : `${formatEuro(o.kosten_pro_jahr_eur)} pro Jahr`;
+        : o.kosten_bis_eur
+          ? `${formatEuro(o.kosten_pro_jahr_eur)} bis ${formatEuro(o.kosten_bis_eur)} pro Jahr`
+          : `${formatEuro(o.kosten_pro_jahr_eur)} pro Jahr`;
   const place = [o.ort, o.online ? 'online' : ''].filter(Boolean).join(', ');
   const past = isPast(o.frist);
   const frist = o.frist ? `${formatDate(o.frist)}${past ? ' (abgelaufen)' : ''}` : 'noch nicht bekannt';
   const saved = state.saved.includes(o.id);
-  return `<article class="offer">
+  return `<article class="offer${pinned ? ' offer--pinned' : ''}">
     <div class="offer__top">
       <span class="offer__typ">${TYP_LABEL[o.typ] ?? esc(o.typ)}</span>
       ${o.kosten_label && PILL_LABELS.includes(o.kosten_label) ? `<span class="offer__label offer__label--${esc(o.kosten_label.replace(/\s+/g, '-'))}">${esc(o.kosten_label)}</span>` : ''}
+      ${o.rechtsform ? `<span class="offer__form offer__form--${o.rechtsform}">${RECHTSFORM_LABEL[o.rechtsform]}</span>` : ''}
       ${o.sprache === 'en' ? '<span class="offer__lang">Englisch</span>' : ''}
+      ${fit ? `<span class="offer__fit offer__fit--${fit.status}">${FIT_LABEL[fit.status]}</span>` : ''}
       <button type="button" class="offer__save" data-save="${o.id}" aria-pressed="${saved}" aria-label="Merken: ${esc(o.name)}">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.6 3.9 4.5 7.2 4.5c2 0 3.4 1.1 4.8 2.9 1.4-1.8 2.8-2.9 4.8-2.9 3.3 0 5.6 3.1 4.4 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg></button>
     </div>
@@ -439,7 +599,11 @@ function card(o: Offer): string {
       ${place ? `<div><dt>Ort</dt><dd>${esc(place)}</dd></div>` : ''}
       <div><dt>Kosten</dt><dd>${esc(cost)}</dd></div>
       <div><dt>Frist</dt><dd class="${past ? 'is-past' : ''}">${esc(frist)}</dd></div>
+      ${o.studiengaenge?.length ? `<div><dt>Studium</dt><dd>${esc(o.studiengaenge.slice(0, 3).join(', '))}${o.studiengaenge.length > 3 ? ' und mehr' : ''}</dd></div>` : ''}
+      ${o.zulassung ? `<div><dt>Zulassung</dt><dd>${esc(o.zulassung)}</dd></div>` : ''}
+      ${fit && o.richtwerte?.hinweis ? `<div><dt>Richtwert</dt><dd>${esc(o.richtwerte.hinweis)}</dd></div>` : ''}
     </dl>
+    ${fit?.pflicht.map((x) => `<p class="offer__hint offer__hint--fit">${esc(x)}</p>`).join('') ?? ''}
     <p class="offer__text">${esc(o.kurzbeschreibung)}</p>
     ${o.kosten_pro_jahr_eur === null && o.kosten_hinweis ? `<p class="offer__hint">${esc(o.kosten_hinweis)}</p>` : ''}
     ${o.quelle_qualitaet === 'C' ? '<p class="offer__hint">Bitte auf der Karriereseite des Unternehmens prüfen.</p>' : ''}
@@ -448,6 +612,82 @@ function card(o: Offer): string {
       <a class="btn btn--quiet btn--small" href="${esc(o.link)}" target="_blank" rel="noopener noreferrer">Mehr erfahren<span class="btn__arrow" aria-hidden="true">→</span></a>
     </div>
   </article>`;
+}
+
+// ---------- world map (Studium mode, src/app/map.ts, loaded on demand) ----------
+const UNIS = OFFERS.filter((o) => o.typ === 'hochschule' || o.typ === 'studiengang');
+let liveMap: { handle: MapHandle | null; wrap: HTMLElement } | null = null;
+
+/** map with a collapse toggle; open on desktop, collapsed on phones. Returns the map once it is shown. */
+function attachMap(slot: HTMLElement, highlight: string[] | null, forceOpen = false): Promise<MapHandle | null> {
+  // one live map: the older one goes away
+  if (liveMap) {
+    liveMap.handle?.destroy();
+    liveMap.wrap.remove();
+    liveMap = null;
+  }
+  const phone = window.matchMedia('(max-width: 640px)').matches && !forceOpen;
+  const wrap = document.createElement('div');
+  wrap.className = 'mapwrap';
+  wrap.innerHTML = `
+    <button type="button" class="btn btn--quiet btn--small mapwrap__toggle" aria-expanded="${!phone}">${phone ? 'Karte anzeigen' : 'Karte ausblenden'}</button>
+    <div class="mapwrap__map" ${phone ? 'hidden' : ''}></div>
+    <div class="mapwrap__picked" aria-live="polite"></div>`;
+  slot.append(wrap);
+  // tracked from the start, also while still collapsed, so a newer map replaces it
+  const entry: { handle: MapHandle | null; wrap: HTMLElement } = { handle: null, wrap };
+  liveMap = entry;
+  const toggle = wrap.querySelector<HTMLButtonElement>('.mapwrap__toggle')!;
+  const box = wrap.querySelector<HTMLElement>('.mapwrap__map')!;
+  const picked = wrap.querySelector<HTMLElement>('.mapwrap__picked')!;
+  let handle: MapHandle | null = null;
+  let resolve: (m: MapHandle | null) => void = () => {};
+  const ready = new Promise<MapHandle | null>((r) => (resolve = r));
+
+  const onSelect = (o: Offer) => {
+    picked.innerHTML = `${card(o, false, fitProfile)}<button type="button" class="btn btn--solid btn--small mapwrap__ask">Dazu fragen</button>`;
+    picked.querySelector<HTMLButtonElement>('.mapwrap__ask')!.addEventListener('click', () => {
+      input.value = `Erzähl mir mehr über ${o.name}`;
+      autosize();
+      input.focus();
+    });
+    picked.querySelector<HTMLButtonElement>('[data-save]')?.addEventListener('click', (e) => {
+      const b = e.currentTarget as HTMLButtonElement;
+      state.saved = state.saved.includes(o.id) ? state.saved.filter((x) => x !== o.id) : [...state.saved, o.id];
+      save();
+      b.setAttribute('aria-pressed', String(state.saved.includes(o.id)));
+    });
+    picked.scrollIntoView({ block: 'nearest', behavior: reduceMotion() ? 'auto' : 'smooth' });
+  };
+  const show = async () => {
+    if (handle) return;
+    const { mountMap } = await import('./map');
+    if (!wrap.isConnected) return resolve(null);
+    handle = mountMap(box, UNIS, { onSelect });
+    entry.handle = handle;
+    if (highlight?.length) handle.highlight(highlight);
+    resolve(handle);
+  };
+  toggle.addEventListener('click', () => {
+    const open = box.hidden;
+    box.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Karte ausblenden' : 'Karte anzeigen';
+    if (open) show();
+  });
+  if (!phone) show();
+  return ready;
+}
+
+/** [[KARTE: ...]] without cards ("Wo liegt ...?"): only the map with the highlighted pins */
+function renderMapOnly(after: HTMLElement, ids: string[]) {
+  if (liveRecs) liveRecs.remove();
+  const slot = document.createElement('div');
+  slot.className = 'recs recs--map';
+  liveRecs = slot;
+  after.append(slot);
+  // asked for on purpose ("Wo liegt ...?"), so it opens on phones too
+  attachMap(slot, ids, true);
 }
 
 // ---------- talking to the coach ----------
@@ -547,7 +787,9 @@ async function send(text: string, opts: { hidden?: boolean; dateien?: FileRef[] 
         status.remove();
       }, 450);
     }, 1600);
-    if (parsed.recommendation) renderRecommendations(el, parsed.recommendation);
+    const withMap = state.mode === 'studium' || Boolean(parsed.map);
+    if (parsed.recommendation) renderRecommendations(el, parsed.recommendation, withMap ? { map: true, highlight: parsed.map } : {});
+    else if (parsed.map) renderMapOnly(el, parsed.map);
     renderActions(el, parsed.options, parsed.buttons);
     updateMentorSlot();
   } catch (e) {
@@ -1124,6 +1366,7 @@ loginForm.addEventListener('submit', async (e) => {
 function enterChat() {
   state = { mode: 'orientierung', profile: {}, messages: [], saved: [] };
   load();
+  loadFit();
   show('chat');
   setMode(state.mode);
   renderAll();
@@ -1170,9 +1413,10 @@ function logout() {
 }
 $<HTMLButtonElement>('[data-action="logout"]').addEventListener('click', logout);
 $<HTMLButtonElement>('[data-action="delete"]').addEventListener('click', () => {
-  if (!confirm('Profil, Verlauf und gemerkte Angebote in diesem Browser löschen?')) return;
+  if (!confirm('Profil, Verlauf, Noten und gemerkte Angebote in diesem Browser löschen?')) return;
   try {
     localStorage.removeItem(storeKey());
+    localStorage.removeItem(fitKey());
   } catch {
     /* nothing stored */
   }

@@ -224,12 +224,29 @@
   "link": "https://www.unibocconi.it/en/fees",
   "lat": 45.4506,
   "lng": 9.1889,
-  "lebenshaltung_pro_monat_eur": null,
+  "lebenshaltung_pro_monat_eur": 1400,
   "zuletzt_geprueft": "2026-11-20",
   "quelle_qualitaet": "A",
   "kurzbeschreibung": "Private Wirtschaftsuniversität, 17.000 Euro pro Jahr im ersten Bachelorjahr 2026/27, Teilerlass ab 20 Prozent möglich.",
-  "link_im_browser_geprueft": "2026-11-20",
-  "wg_miete_pro_monat_eur": null
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en",
+   "it"
+  ],
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "studiengaenge": [
+   "Economics and Management",
+   "Economics and Finance",
+   "International Politics and Government",
+   "Business Administration (BIEM)"
+  ],
+  "zulassung": "Aufnahmetest oder SAT beziehungsweise ACT, Bewerbungsrunden im Jahr vor dem Start, Auswahl nach Test und Schulleistung.",
+  "richtwerte": {
+   "ib_skala": 45,
+   "hl_pflicht": [],
+   "hinweis": "Für die Einschreibung braucht man mindestens 24 IB-Punkte mit 12 auf Higher Level. Die Zulassung hängt vor allem von Test und Bewerbungsrunde ab.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
  },
  {
   "id": "ie-university-bba",
@@ -255,12 +272,30 @@
   "link": "https://www.ie.edu/university/admission/fees-scholarships/",
   "lat": 40.4168,
   "lng": -3.7038,
-  "lebenshaltung_pro_monat_eur": null,
+  "lebenshaltung_pro_monat_eur": 1300,
   "zuletzt_geprueft": "2026-11-20",
   "quelle_qualitaet": "A",
   "kurzbeschreibung": "Internationale Privatuniversität, Gebühr laut IE 29.880 Euro pro Jahr für den Start 2027/28 und jährlich angepasst, Spanischkurse im ersten und zweiten Jahr inklusive.",
-  "link_im_browser_geprueft": "2026-11-20",
-  "wg_miete_pro_monat_eur": null
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en",
+   "es"
+  ],
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "studiengaenge": [
+   "Business Administration (BBA)",
+   "Economics",
+   "International Relations",
+   "Data and Business Analytics"
+  ],
+  "zulassung": "Bewerbungsrunden mit Aufnahmetest, Motivation und Gespräch, englischer Zweig.",
+  "richtwerte": {
+   "ib_punkte": 36,
+   "ib_skala": 42,
+   "hl_pflicht": [],
+   "hinweis": "Durchschnitt der Zugelassenen laut IE 36, übliche Bandbreite 34 bis 45.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
  },
  {
   "id": "maastricht-bachelor",
@@ -288,12 +323,23 @@
   "link": "https://www.maastrichtuniversity.nl/study/admission-enrolment/tuition-fees",
   "lat": 50.8514,
   "lng": 5.691,
-  "lebenshaltung_pro_monat_eur": null,
+  "lebenshaltung_pro_monat_eur": 1000,
   "zuletzt_geprueft": "2026-11-20",
   "quelle_qualitaet": "A",
   "kurzbeschreibung": "Staatliche niederländische Universität, gesetzliche Gebühr für EU-Studierende 2.771 Euro im Studienjahr 2027/28 (2026/27: 2.694 Euro), University College Maastricht und einige weitere Programme kosten mehr (4.595 Euro).",
-  "link_im_browser_geprueft": "2026-11-20",
-  "wg_miete_pro_monat_eur": null
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en",
+   "nl"
+  ],
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "studiengaenge": [
+   "Economics and Business Economics",
+   "International Business",
+   "European Studies",
+   "Arts and Culture"
+  ],
+  "zulassung": "Abitur, Bewerbung über Studielink, teils Auswahlverfahren, problemorientiertes Lernen in kleinen Gruppen."
  },
  {
   "id": "whu-bachelor",
@@ -320,12 +366,21 @@
   "link": "https://www.whu.edu",
   "lat": 50.398,
   "lng": 7.613,
-  "lebenshaltung_pro_monat_eur": null,
+  "lebenshaltung_pro_monat_eur": 950,
   "zuletzt_geprueft": "2026-11-20",
   "quelle_qualitaet": "B",
   "kurzbeschreibung": "Private Business School, laut Vergleichsportal 9.100 Euro pro Semester und Bewerbungsfrist 15. Mai, für BAföG-Berechtigte gibt es Freiplätze oder Teilerlass. Zahlen vor dem Livegang auf whu.edu prüfen.",
-  "link_im_browser_geprueft": "2026-11-20",
-  "wg_miete_pro_monat_eur": null
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en",
+   "de"
+  ],
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "studiengaenge": [
+   "Internationale BWL (Bachelor)",
+   "Gründerlabor und Auslandssemester"
+  ],
+  "zulassung": "Vierstufiges Auswahlverfahren mit Test und Gespräch, Bewerbungsfrist laut Portal 15. Mai."
  },
  {
   "id": "frankfurt-school-bachelor",
@@ -351,12 +406,23 @@
   "link": "https://www.frankfurt-school.de/de/home/study/bachelor/bachelor-science",
   "lat": 50.1109,
   "lng": 8.6821,
-  "lebenshaltung_pro_monat_eur": null,
+  "lebenshaltung_pro_monat_eur": 1300,
   "zuletzt_geprueft": "2026-11-20",
   "quelle_qualitaet": "C",
   "kurzbeschreibung": "Private Hochschule mit 7-semestrigem Bachelor of Science (Business Administration, Computational Business Analytics, Management Philosophy and Economics), Auslandssemester mit Praktikum Pflicht, Eignungsverfahren. Semestergebühr laut Portalen etwa 7.700 bis 8.600 Euro (also etwa 15.400 bis 17.200 Euro pro Jahr), Frist laut Portal 30. Juni, bitte offiziell prüfen.",
-  "link_im_browser_geprueft": null,
-  "wg_miete_pro_monat_eur": 681
+  "wg_miete_pro_monat_eur": 681,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en",
+   "de"
+  ],
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "studiengaenge": [
+   "Business Administration",
+   "Computational Business Analytics",
+   "Management, Philosophy and Economics"
+  ],
+  "zulassung": "Eignungsverfahren, sieben Semester inklusive Auslandssemester mit Praktikum."
  },
  {
   "id": "uni-mannheim-bwl",
@@ -382,12 +448,29 @@
   "link": "https://www.uni-mannheim.de/studium/vor-dem-studium/studienangebot/bachelor-bwl/",
   "lat": 49.4875,
   "lng": 8.466,
-  "lebenshaltung_pro_monat_eur": null,
+  "lebenshaltung_pro_monat_eur": 950,
   "zuletzt_geprueft": "2026-11-20",
   "quelle_qualitaet": "A",
   "kurzbeschreibung": "Staatliche Universität mit zulassungsbeschränktem BWL-Bachelor (NC), 6 Semester, Veranstaltungen auf Deutsch und Englisch, nur Semesterbeitrag. Der Studiengang hat ein Pflichtauslandssemester im 5. Semester.",
-  "link_im_browser_geprueft": "2026-11-20",
-  "wg_miete_pro_monat_eur": null
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de",
+   "en"
+  ],
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "studiengaenge": [
+   "BWL",
+   "Wirtschaftsinformatik",
+   "VWL",
+   "Wirtschaftspädagogik"
+  ],
+  "zulassung": "Abitur, zulassungsbeschränkt (NC), Bewerbung über hochschulstart.de oder direkt.",
+  "richtwerte": {
+   "ib_skala": 45,
+   "hl_pflicht": [],
+   "hinweis": "Mannheim hat keine feste Grenznote, die Auswahl nutzt die Abiturnote und weitere Kriterien. Für VWL nennt Mannheim einen Abiturschnitt bis ungefähr 2,5 als gute Chance.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
  },
  {
   "id": "jgu-germersheim-translation",
@@ -413,12 +496,20 @@
   "link": "https://sl.uni-mainz.de/sprache-kultur-translation",
   "lat": 49.2217,
   "lng": 8.3646,
-  "lebenshaltung_pro_monat_eur": null,
+  "lebenshaltung_pro_monat_eur": 800,
   "zuletzt_geprueft": "2026-11-20",
   "quelle_qualitaet": "A",
   "kurzbeschreibung": "Eine der größten Ausbildungsstätten für Übersetzen und Dolmetschen weltweit. Bei Studiengängen mit Eignungsprüfung endet die Bewerbungsfrist laut DAAD am 15.01. bzw. 15.07., die Anmeldung zur Eignungsprüfung kann früher enden.",
-  "link_im_browser_geprueft": null,
-  "wg_miete_pro_monat_eur": null
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "studiengaenge": [
+   "Sprache, Kultur, Translation",
+   "Übersetzen und Dolmetschen"
+  ],
+  "zulassung": "Abitur plus Eignungsprüfung je Sprache."
  },
  {
   "id": "mun-sh",
@@ -690,14 +781,24 @@
   "link": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/",
   "lat": 48.2627,
   "lng": 11.668,
-  "lebenshaltung_pro_monat_eur": null,
+  "lebenshaltung_pro_monat_eur": 1350,
   "quelle_qualitaet": "A",
   "kurzbeschreibung": "Bachelor Informatik an der TUM mit zweistufigem Eignungsfeststellungsverfahren (Unterlagen, dann Präsenztest in Garching). Bewerbung zum Wintersemester vom 15. Mai bis 15. Juli.",
   "zuletzt_geprueft": "2026-11-20",
   "online": false,
   "land": "DE",
-  "link_im_browser_geprueft": "2026-11-20",
-  "wg_miete_pro_monat_eur": 850
+  "wg_miete_pro_monat_eur": 850,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "studiengaenge": [
+   "Informatik",
+   "Wirtschaftsinformatik",
+   "Games Engineering"
+  ],
+  "zulassung": "Zweistufiges Eignungsverfahren, Bewerbung vom 15. Mai bis 15. Juli für das Wintersemester."
  },
  {
   "id": "deloitte-schulpraktikum",
@@ -3893,6 +3994,2482 @@
   "zuletzt_geprueft": "2026-11-21",
   "zielgruppe": "schueler",
   "sprache": "en",
-  "link_im_browser_geprueft": null
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "studiengaenge": [
+   "Management and Technology",
+   "Finance and AI",
+   "Artificial Intelligence"
+  ],
+  "zulassung": "Online-Bewerbung in Runden mit Essays und Aufgaben, Stipendien möglich."
+ },
+ {
+  "id": "lse-undergraduate",
+  "typ": "hochschule",
+  "name": "London School of Economics (LSE), Bachelor",
+  "anbieter": "London School of Economics and Political Science",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "politik",
+   "jura",
+   "intl-business",
+   "diplomatie"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "GB",
+  "ort": "London",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 36180,
+  "kosten_bis_eur": 49860,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über UCAS im Jahr vor dem Start, bei Oxford und Cambridge meist Mitte Oktober, bei den meisten anderen Mitte Januar. Für EU-Studierende gilt seit 2021 die höhere Overseas-Gebühr.",
+  "frist": null,
+  "link": "https://www.lse.ac.uk/study-at-lse/undergraduate",
+  "lat": 51.5145,
+  "lng": -0.117,
+  "lebenshaltung_pro_monat_eur": 2000,
+  "lebenshaltung_hinweis": "grobe Schätzung für London",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Sozialwissenschaftliche Spitzenuniversität in London, drei Jahre Bachelor, sehr stark in Wirtschaft, Politik und Jura. Die Gebühren hängen vom Studiengang ab, die Lebenshaltung in London ist teuer.",
+  "studiengaenge": [
+   "Economics",
+   "Finance",
+   "International Relations",
+   "Management",
+   "Law (LLB)"
+  ],
+  "zulassung": "Abitur oder IB, sehr hohe Notenanforderungen je Studiengang, Auswahl über UCAS-Bewerbung mit Personal Statement und Empfehlung.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Overseas-Gebühr 2027/28 je Studiengang: £30.400 (zum Beispiel Geschichte) bis £41.900 (Economics), Finance £39.300, International Relations £33.800, Jura £37.500.",
+  "sprache": "en",
+  "richtwerte": {
+   "ib_punkte": 38,
+   "ib_skala": 45,
+   "alevel": "A*AA bis AAB",
+   "hl_pflicht": [
+    "mathe"
+   ],
+   "hinweis": "LSE nennt 37 Punkte (666 auf Higher Level) bis 39 Punkte (766). Economics und viele andere Studiengänge verlangen Mathe auf Higher Level.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
+ },
+ {
+  "id": "oxford-undergraduate",
+  "typ": "hochschule",
+  "name": "University of Oxford, Bachelor",
+  "anbieter": "University of Oxford",
+  "felder": [
+   "wirtschaft",
+   "politik",
+   "jura",
+   "informatik",
+   "naturwiss",
+   "medizin",
+   "sprachen",
+   "ingenieur"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "GB",
+  "ort": "Oxford",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 54990,
+  "kosten_bis_eur": 79230,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über UCAS im Jahr vor dem Start, bei Oxford und Cambridge meist Mitte Oktober, bei den meisten anderen Mitte Januar. Für EU-Studierende gilt seit 2021 die höhere Overseas-Gebühr. Bei Medizin gibt es für internationale Studierende eine feste Quote.",
+  "frist": null,
+  "link": "https://www.ox.ac.uk/admissions/undergraduate/fees-and-funding/course-fees",
+  "lat": 51.7548,
+  "lng": -1.2544,
+  "lebenshaltung_pro_monat_eur": 1800,
+  "lebenshaltung_hinweis": "grobe Schätzung für Oxford",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Älteste Universität im englischsprachigen Raum mit Tutorien in kleinen Gruppen und College-System. Auswahl mit Aufnahmetests und Interviews, die Gebühr enthält die College-Gebühr.",
+  "studiengaenge": [
+   "Philosophy, Politics and Economics (PPE)",
+   "Economics and Management",
+   "Computer Science",
+   "Law",
+   "Engineering Science"
+  ],
+  "zulassung": "Abitur oder IB, Aufnahmetest je Fach und Interview, Bewerbung über UCAS früh im Herbst.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Course Fee 2027 inklusive College: Geisteswissenschaften zum Beispiel Modern Languages £46.210, Biomedical Sciences £58.280, Computer Science und Engineering £66.580, Medizin vorklinisch £52.360.",
+  "sprache": "en",
+  "richtwerte": {
+   "ib_punkte": 39,
+   "ib_skala": 45,
+   "alevel": "A*AA",
+   "hl_pflicht": [
+    "mathe"
+   ],
+   "hinweis": "Beispiel Computer Science: A*AA oder 39 Punkte mit 766 auf Higher Level und einer 7 in Mathe. Andere Fächer können abweichen, Aufnahmetests kommen dazu.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
+ },
+ {
+  "id": "cambridge-undergraduate",
+  "typ": "hochschule",
+  "name": "University of Cambridge, Bachelor",
+  "anbieter": "University of Cambridge",
+  "felder": [
+   "wirtschaft",
+   "informatik",
+   "naturwiss",
+   "ingenieur",
+   "jura",
+   "architektur",
+   "medizin",
+   "politik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "GB",
+  "ort": "Cambridge",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 52120,
+  "kosten_bis_eur": 71250,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über UCAS im Jahr vor dem Start, bei Oxford und Cambridge meist Mitte Oktober, bei den meisten anderen Mitte Januar. Für EU-Studierende gilt seit 2021 die höhere Overseas-Gebühr.",
+  "frist": null,
+  "link": "https://www.undergraduate.study.cam.ac.uk/international-students/international-fees-and-costs",
+  "lat": 52.2043,
+  "lng": 0.1149,
+  "lebenshaltung_pro_monat_eur": 1800,
+  "lebenshaltung_hinweis": "grobe Schätzung für Cambridge",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Forschungsstarke Universität im College-System, Studienfach wird früh festgelegt. Gebühr besteht aus Universitäts- und College-Anteil.",
+  "studiengaenge": [
+   "Economics",
+   "Computer Science",
+   "Engineering",
+   "Natural Sciences",
+   "Law"
+  ],
+  "zulassung": "Abitur oder IB mit Fächerauflagen je Studiengang, oft Aufnahmetest und Interview, Bewerbung über UCAS im Oktober.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Universitätsgebühr 2027/28 für internationale Studierende £30.798 (zum Beispiel Economics) bis £46.872 (Computer Science, Engineering), dazu eine College-Gebühr von etwa £13.000 (Christ's 2027: £13.000).",
+  "sprache": "en",
+  "richtwerte": {
+   "ib_punkte": 41,
+   "ib_skala": 45,
+   "alevel": "A*A*A",
+   "hl_pflicht": [
+    "mathe"
+   ],
+   "hinweis": "Für Economics und Computer Science nennt Cambridge 41 bis 42 IB-Punkte mit 776 auf Higher Level und Mathe auf Higher Level. Die meisten Zugelassenen hatten 43 Punkte oder mehr.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
+ },
+ {
+  "id": "imperial-undergraduate",
+  "typ": "hochschule",
+  "name": "Imperial College London, Bachelor",
+  "anbieter": "Imperial College London",
+  "felder": [
+   "ingenieur",
+   "naturwiss",
+   "informatik",
+   "ki",
+   "medizin",
+   "wirtschaft",
+   "finanzen",
+   "gesundheit"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "GB",
+  "ort": "London",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 53310,
+  "kosten_bis_eur": 73240,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über UCAS im Jahr vor dem Start, bei Oxford und Cambridge meist Mitte Oktober, bei den meisten anderen Mitte Januar. Für EU-Studierende gilt seit 2021 die höhere Overseas-Gebühr.",
+  "frist": null,
+  "link": "https://www.imperial.ac.uk/study/fees-and-funding/undergraduate/tuition-fees/",
+  "lat": 51.4988,
+  "lng": -0.1749,
+  "lebenshaltung_pro_monat_eur": 2000,
+  "lebenshaltung_hinweis": "grobe Schätzung für London",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Spezialisiert auf Naturwissenschaft, Technik, Medizin und Business, sehr starke Informatik und Ingenieurwissenschaften. Beliebt bei Schülern mit Mathe und Physik als Stärke.",
+  "studiengaenge": [
+   "Computing",
+   "Mathematics",
+   "Design Engineering",
+   "Medicine",
+   "Economics, Finance and Data Science"
+  ],
+  "zulassung": "Abitur oder IB mit Mathe und passenden Naturwissenschaften, teils Aufnahmetests, Bewerbung über UCAS.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Overseas-Gebühr 2027: zum Beispiel Mathematics £44.850, Design Engineering £47.800, Medizin £61.550, Economics, Finance and Data Science £44.800.",
+  "sprache": "en",
+  "richtwerte": {
+   "ib_punkte": 39,
+   "ib_skala": 45,
+   "alevel": "A*AA bis A*A*A",
+   "hl_pflicht": [
+    "mathe"
+   ],
+   "hinweis": "Ingenieur und Naturwissenschaft: 39 bis 40 Punkte, Mathe auf Higher Level mit 7 und ein weiteres Higher-Level-Fach mit 6. Medizin: 39 Punkte.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
+ },
+ {
+  "id": "kcl-undergraduate",
+  "typ": "hochschule",
+  "name": "King's College London, Bachelor",
+  "anbieter": "King's College London",
+  "felder": [
+   "politik",
+   "diplomatie",
+   "wirtschaft",
+   "jura",
+   "medizin",
+   "gesundheit",
+   "psychologie",
+   "naturwiss"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "GB",
+  "ort": "London",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": null,
+  "zeitraum": "Bewerbung über UCAS im Jahr vor dem Start, bei Oxford und Cambridge meist Mitte Oktober, bei den meisten anderen Mitte Januar. Für EU-Studierende gilt seit 2021 die höhere Overseas-Gebühr. Beispiel Politics and International Affairs: A-Level-Anforderung AAA, Start September 2027.",
+  "frist": null,
+  "link": "https://www.kcl.ac.uk/study/undergraduate/fees-and-funding/tuition-fees",
+  "lat": 51.5115,
+  "lng": -0.116,
+  "lebenshaltung_pro_monat_eur": 2000,
+  "lebenshaltung_hinweis": "grobe Schätzung für London",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Große Universität im Zentrum von London mit Stärken in Politik, Internationale Beziehungen, Jura, Medizin und Gesundheit. Gebühren je Studiengang direkt beim Anbieter prüfen.",
+  "studiengaenge": [
+   "Politics and International Affairs",
+   "War Studies",
+   "Law",
+   "Economics",
+   "Medicine"
+  ],
+  "zulassung": "Abitur oder IB, Anforderungen je Studiengang (zum Beispiel AAA bei Politik), Bewerbung über UCAS.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Die Overseas-Gebühr je Studiengang steht laut King's im Online-Prospekt und war über die Suche nicht lesbar. Home-Gebühr 9.790 Pfund ab 2026, EU-Studierende zahlen den internationalen Satz. Bitte im Prospekt des Studiengangs prüfen.",
+  "sprache": "en",
+  "richtwerte": {
+   "ib_skala": 45,
+   "alevel": "AAA",
+   "hl_pflicht": [],
+   "hinweis": "Beispiel Politics and International Affairs: AAA. IB-Punkte standen auf der geprüften Seite nicht.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
+ },
+ {
+  "id": "ucl-undergraduate",
+  "typ": "hochschule",
+  "name": "University College London (UCL), Bachelor",
+  "anbieter": "University College London",
+  "felder": [
+   "wirtschaft",
+   "politik",
+   "architektur",
+   "naturwiss",
+   "ingenieur",
+   "psychologie",
+   "medizin",
+   "jura"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "GB",
+  "ort": "London",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 43790,
+  "kosten_bis_eur": 52840,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über UCAS im Jahr vor dem Start, bei Oxford und Cambridge meist Mitte Oktober, bei den meisten anderen Mitte Januar. Für EU-Studierende gilt seit 2021 die höhere Overseas-Gebühr.",
+  "frist": null,
+  "link": "https://www.ucl.ac.uk/study/student-finances/tuition-fees/fee-schedules/fee-schedules-2027-2028/undergraduate-fees-2027-2028",
+  "lat": 51.5246,
+  "lng": -0.134,
+  "lebenshaltung_pro_monat_eur": 2000,
+  "lebenshaltung_hinweis": "grobe Schätzung für London",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Breite Forschungsuniversität in London mit sehr vielen Fächern, von Architektur (Bartlett) bis Wirtschaft. Die Overseas-Gebühr gilt für die ganze Studiendauer fest für Neueinsteiger.",
+  "studiengaenge": [
+   "Economics",
+   "Architecture (Bartlett)",
+   "Psychology",
+   "Computer Science",
+   "Law"
+  ],
+  "zulassung": "Abitur oder IB, Anforderungen je Studiengang, Bewerbung über UCAS.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Overseas-Gebühr 2027/28 bei Wirtschaftsstudiengängen: Economics £40.800, Economics and Statistics £44.400, Economics and Business with East European Studies £36.800. Andere Fächer anders.",
+  "sprache": "en",
+  "richtwerte": {
+   "ib_punkte": 39,
+   "ib_skala": 45,
+   "alevel": "A*AA",
+   "hl_pflicht": [],
+   "hinweis": "UCL nennt je nach Studiengang A*A*A (40 Punkte) bis ABB. A*AA entspricht 39 Punkten mit 19 Punkten auf drei Higher-Level-Fächern.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
+ },
+ {
+  "id": "warwick-undergraduate",
+  "typ": "hochschule",
+  "name": "University of Warwick, Bachelor",
+  "anbieter": "University of Warwick",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "beratung",
+   "informatik",
+   "ki",
+   "politik",
+   "intl-business"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "GB",
+  "ort": "Coventry",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 34820,
+  "kosten_bis_eur": 44400,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über UCAS. Studienstart 27. September 2027 laut Studiengangsseiten.",
+  "frist": null,
+  "link": "https://warwick.ac.uk/services/finance/studentfinance/fees/overseasfees/",
+  "lat": 52.3793,
+  "lng": -1.5615,
+  "lebenshaltung_pro_monat_eur": 1400,
+  "lebenshaltung_hinweis": "grobe Schätzung für Coventry und Umgebung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Campus-Universität mit starker Warwick Business School, Economics und Data Science. Günstigere Lebenshaltung als London, gute Bahnanbindung dorthin.",
+  "studiengaenge": [
+   "Economics",
+   "Accounting and Finance",
+   "International Business and Management",
+   "Data Science",
+   "Politics"
+  ],
+  "zulassung": "Abitur oder IB, Anforderungen je Studiengang, Bewerbung über UCAS.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Overseas-Gebühr 2027/28: Band 1 (Geistes- und viele Sozialwissenschaften) £29.260, Band 2 (zum Beispiel Accounting and Finance, Data Science) £37.310.",
+  "sprache": "en",
+  "richtwerte": {
+   "ib_punkte": 38,
+   "ib_skala": 45,
+   "alevel": "A*AA",
+   "hl_pflicht": [],
+   "hinweis": "Beispiel PPE, die Angabe ist älter. Je Studiengang prüfen.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
+ },
+ {
+  "id": "harvard-college",
+  "typ": "hochschule",
+  "name": "Harvard College, Bachelor",
+  "anbieter": "Harvard University",
+  "felder": [
+   "wirtschaft",
+   "politik",
+   "jura",
+   "informatik",
+   "naturwiss",
+   "medizin",
+   "diplomatie",
+   "psychologie"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "US",
+  "ort": "Cambridge, Massachusetts",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 81550,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über die Common App mit Essays, Empfehlungen und Schulzeugnissen. Frist Regular Decision für 2027: 1. Januar (Harvard, Princeton, Columbia), 2. Januar (Yale), 5. Januar (Penn). Testanforderungen (SAT oder ACT) vor der Bewerbung auf der Zulassungsseite prüfen.",
+  "frist": null,
+  "link": "https://college.harvard.edu",
+  "lat": 42.377,
+  "lng": -71.1167,
+  "lebenshaltung_pro_monat_eur": 2000,
+  "lebenshaltung_hinweis": "Cost of Attendance abzüglich Gebühr, grob",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Liberal-Arts-Bachelor über vier Jahre, Studienfach wird erst nach dem ersten Jahr festgelegt. Sehr niedrige Zulassungsquote, hohe Gesamtkosten, aber umfangreiche bedarfsabhängige Finanzhilfe.",
+  "studiengaenge": [
+   "Economics",
+   "Government",
+   "Computer Science",
+   "Applied Mathematics",
+   "Social Studies"
+  ],
+  "zulassung": "Abitur plus sehr gute Noten, Essays, außerschulisches Engagement, Empfehlungen. Zulassungsquote einstellig.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Gesamtkosten (Cost of Attendance) 2026/27 laut Presse etwa $91.634, davon Studiengebühr etwa $62.226. Mit Stipendium je nach Familieneinkommen oft deutlich weniger, laut Vergleichsportalen vergibt Harvard Hilfe ohne Rücksicht auf den Finanzbedarf auch an internationale Bewerber.",
+  "sprache": "en"
+ },
+ {
+  "id": "yale-college",
+  "typ": "hochschule",
+  "name": "Yale College, Bachelor",
+  "anbieter": "Yale University",
+  "felder": [
+   "wirtschaft",
+   "politik",
+   "jura",
+   "naturwiss",
+   "informatik",
+   "diplomatie",
+   "psychologie"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "US",
+  "ort": "New Haven, Connecticut",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 87210,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über die Common App mit Essays, Empfehlungen und Schulzeugnissen. Frist Regular Decision für 2027: 1. Januar (Harvard, Princeton, Columbia), 2. Januar (Yale), 5. Januar (Penn). Testanforderungen (SAT oder ACT) vor der Bewerbung auf der Zulassungsseite prüfen.",
+  "frist": null,
+  "link": "https://finaid.yale.edu/coa",
+  "lat": 41.3163,
+  "lng": -72.9223,
+  "lebenshaltung_pro_monat_eur": 1900,
+  "lebenshaltung_hinweis": "Cost of Attendance abzüglich Gebühr, grob",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Liberal-Arts-Bachelor mit Wohn-Colleges, starke Sozialwissenschaften, Politik, Jura-Vorbereitung und Geisteswissenschaften. Studienfach nach dem ersten Jahr.",
+  "studiengaenge": [
+   "Economics",
+   "Political Science",
+   "Global Affairs",
+   "Computer Science",
+   "Ethics, Politics and Economics"
+  ],
+  "zulassung": "Abitur plus sehr gute Noten, Essays, Engagement, Empfehlungen.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Studiengebühr 2026/27 laut Yale $72.500, Gesamtkosten (Cost of Attendance) laut Presse etwa $97.985. Mit bedarfsabhängiger Hilfe oft deutlich weniger, laut Vergleichsportalen ohne Rücksicht auf Finanzbedarf bei der Zulassung auch für internationale Bewerber.",
+  "sprache": "en"
+ },
+ {
+  "id": "princeton-undergraduate",
+  "typ": "hochschule",
+  "name": "Princeton University, Bachelor",
+  "anbieter": "Princeton University",
+  "felder": [
+   "wirtschaft",
+   "politik",
+   "naturwiss",
+   "ingenieur",
+   "informatik",
+   "diplomatie"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "US",
+  "ort": "Princeton, New Jersey",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 84220,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über die Common App mit Essays, Empfehlungen und Schulzeugnissen. Frist Regular Decision für 2027: 1. Januar (Harvard, Princeton, Columbia), 2. Januar (Yale), 5. Januar (Penn). Testanforderungen (SAT oder ACT) vor der Bewerbung auf der Zulassungsseite prüfen.",
+  "frist": null,
+  "link": "https://admission.princeton.edu",
+  "lat": 40.3573,
+  "lng": -74.6672,
+  "lebenshaltung_pro_monat_eur": 2000,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Kleiner, auf Bachelor ausgerichteter Campus mit Abschlussarbeit für alle, stark in Ökonomie, Politik, Technik und Naturwissenschaften.",
+  "studiengaenge": [
+   "Economics",
+   "School of Public and International Affairs",
+   "Computer Science",
+   "Operations Research and Financial Engineering",
+   "Engineering"
+  ],
+  "zulassung": "Abitur plus sehr gute Noten, Essays, Engagement, Empfehlungen.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Gesamtkosten 2026/27 laut Presse etwa $94.624. Princeton vergibt laut Vergleichsportalen Hilfe ohne Rücksicht auf den Finanzbedarf auch an internationale Bewerber und deckt den Bedarf überwiegend über Zuschüsse.",
+  "sprache": "en"
+ },
+ {
+  "id": "upenn-wharton",
+  "typ": "hochschule",
+  "name": "University of Pennsylvania, Bachelor (Wharton)",
+  "anbieter": "University of Pennsylvania",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "beratung",
+   "gruendung",
+   "intl-business",
+   "marketing"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "US",
+  "ort": "Philadelphia, Pennsylvania",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 84130,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über die Common App mit Essays, Empfehlungen und Schulzeugnissen. Frist Regular Decision für 2027: 1. Januar (Harvard, Princeton, Columbia), 2. Januar (Yale), 5. Januar (Penn). Testanforderungen (SAT oder ACT) vor der Bewerbung auf der Zulassungsseite prüfen.",
+  "frist": null,
+  "link": "https://admissions.upenn.edu",
+  "lat": 39.9522,
+  "lng": -75.1932,
+  "lebenshaltung_pro_monat_eur": 2000,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Wharton ist die Business School von Penn mit einem sehr bekannten Bachelor in Wirtschaft (B.S. in Economics) und starker Finanz- und Gründerszene.",
+  "studiengaenge": [
+   "Wharton: Economics (B.S.)",
+   "Finance",
+   "Management",
+   "Marketing",
+   "Operations, Information and Decisions"
+  ],
+  "zulassung": "Abitur plus sehr gute Noten, Essays, Engagement, Empfehlungen.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Gesamtkosten 2025/26 laut Presse etwa $94.532 (Studiengebühr etwa $63.204). Penn berücksichtigt nach Vergleichsportalen den Finanzbedarf bei internationalen Bewerbern bei der Zulassung.",
+  "sprache": "en"
+ },
+ {
+  "id": "columbia-college",
+  "typ": "hochschule",
+  "name": "Columbia College, Bachelor",
+  "anbieter": "Columbia University",
+  "felder": [
+   "wirtschaft",
+   "politik",
+   "jura",
+   "medien",
+   "diplomatie",
+   "naturwiss"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "US",
+  "ort": "New York City, New York",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 85670,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über die Common App mit Essays, Empfehlungen und Schulzeugnissen. Frist Regular Decision für 2027: 1. Januar (Harvard, Princeton, Columbia), 2. Januar (Yale), 5. Januar (Penn). Testanforderungen (SAT oder ACT) vor der Bewerbung auf der Zulassungsseite prüfen.",
+  "frist": null,
+  "link": "https://undergrad.admissions.columbia.edu",
+  "lat": 40.8075,
+  "lng": -73.9626,
+  "lebenshaltung_pro_monat_eur": 2400,
+  "lebenshaltung_hinweis": "grobe Schätzung für New York",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Bachelor mit festem Kerncurriculum (Core Curriculum) mitten in New York, stark in Wirtschaft, Politik, Journalismus und Geisteswissenschaften.",
+  "studiengaenge": [
+   "Economics",
+   "Political Science",
+   "Computer Science",
+   "History",
+   "Journalism-nahe Fächer"
+  ],
+  "zulassung": "Abitur plus sehr gute Noten, Essays, Engagement, Empfehlungen.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Gesamtkosten 2025/26 laut Presse etwa $96.260 (Studiengebühr etwa $70.170). Hohe Lebenshaltung in New York, Finanzhilfe je nach Bedarf.",
+  "sprache": "en"
+ },
+ {
+  "id": "mit-undergraduate",
+  "typ": "hochschule",
+  "name": "Massachusetts Institute of Technology (MIT), Bachelor",
+  "anbieter": "Massachusetts Institute of Technology",
+  "felder": [
+   "informatik",
+   "ki",
+   "ingenieur",
+   "naturwiss",
+   "gruendung",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "US",
+  "ort": "Cambridge, Massachusetts",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 59380,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Bewerbung über das MIT-eigene Portal, Fristen und Testanforderungen auf der Zulassungsseite prüfen.",
+  "frist": null,
+  "link": "https://sfs.mit.edu/undergraduate-students/the-cost-of-attendance/coa/",
+  "lat": 42.3601,
+  "lng": -71.0942,
+  "lebenshaltung_pro_monat_eur": 2000,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Technische Spitzenuniversität mit Schwerpunkt Informatik, KI, Ingenieur- und Naturwissenschaften sowie Gründerkultur im Umfeld Boston.",
+  "studiengaenge": [
+   "Computer Science and Engineering",
+   "Mathematics",
+   "Mechanical Engineering",
+   "Management (Sloan)",
+   "Physics"
+  ],
+  "zulassung": "Abitur plus sehr starke Leistungen in Mathe und Naturwissenschaften, Projekte und Wettbewerbe zählen, eigene Bewerbungsseite.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Nur Studiengebühr 2026/27: $66.720. Dazu kommen Unterkunft, Verpflegung und weitere Kosten, die Gesamtkosten stehen auf sfs.mit.edu. Hilfe bedarfsabhängig.",
+  "sprache": "en"
+ },
+ {
+  "id": "eth-zuerich-bachelor",
+  "typ": "hochschule",
+  "name": "ETH Zürich, Bachelor",
+  "anbieter": "ETH Zürich",
+  "felder": [
+   "ingenieur",
+   "naturwiss",
+   "informatik",
+   "ki",
+   "architektur"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "CH",
+  "ort": "Zürich",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 1580,
+  "kosten_bis_eur": 4730,
+  "kosten_label": "kostenpflichtig",
+  "zeitraum": "Bachelor auf Deutsch (Niveau C1 nötig), Englisch ab dem 2. Jahr wichtig. Aufnahmeprüfung, falls die Hochschulzugangsberechtigung nicht reicht. Anmeldung zur Prüfung vom 15. September bis 15. Oktober. IB ab 38 von 42 Punkten mit Mathe, Naturwissenschaft und Sprache A auf Higher Level ohne Prüfung, deutsches Abitur mit Mathe, Physik, Chemie oder Biologie und einer Sprache in den letzten zwei Jahren.",
+  "frist": null,
+  "link": "https://ethz.ch/en/studies/financial.html",
+  "lat": 47.3763,
+  "lng": 8.5476,
+  "lebenshaltung_pro_monat_eur": 2000,
+  "lebenshaltung_hinweis": "laut ETH CHF 20.000 bis 26.000 pro Jahr inklusive Gebühren, grob",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Technische Spitzenhochschule mit niedriger Gebühr, aber hohen Lebenshaltungskosten in Zürich. Sehr hoher Leistungsanspruch in Mathe und Naturwissenschaften.",
+  "studiengaenge": [
+   "Informatik",
+   "Maschinenbau",
+   "Elektrotechnik und Informationstechnologie",
+   "Physik",
+   "Mathematik"
+  ],
+  "zulassung": "Abitur mit Auflagen in Mathe und Naturwissenschaft oder Aufnahmeprüfung, Deutschniveau C1, Prüfung auf Deutsch.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Studiengebühr pro Semester CHF 730 bis CHF 2.190, je nach Gruppe (seit Herbst 2025 höher für neue Bachelor-Studierende mit ausländischer Hochschulzugangsberechtigung). ETH rechnet mit CHF 20.000 bis 26.000 pro Jahr für Studium und Leben.",
+  "richtwerte": {
+   "ib_punkte": 38,
+   "ib_skala": 42,
+   "hl_pflicht": [
+    "mathe",
+    "naturwiss"
+   ],
+   "hinweis": "Ab 38 von 42 Punkten mit Mathe, einer Naturwissenschaft und Sprache A auf Higher Level ist laut ETH keine Aufnahmeprüfung nötig. Sonst Prüfung.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
+ },
+ {
+  "id": "hsg-bachelor",
+  "typ": "hochschule",
+  "name": "Universität St. Gallen (HSG), Bachelor",
+  "anbieter": "Universität St. Gallen",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "politik",
+   "jura",
+   "intl-business",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "CH",
+  "ort": "St. Gallen",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de",
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 7220,
+  "kosten_label": "kostenpflichtig",
+  "zeitraum": "Bewerbung 1. Oktober bis 30. April für den Start im Herbst, das deutsche Abitur gilt als gleichwertig zur Matura, Assessment-Jahr im ersten Jahr.",
+  "frist": null,
+  "link": "https://www.unisg.ch/en/studying/studying-at-hsg/costs-of-an-hsg-degree/",
+  "lat": 47.43,
+  "lng": 9.375,
+  "lebenshaltung_pro_monat_eur": 2200,
+  "lebenshaltung_hinweis": "laut HSG CHF 2.200 bis 2.600 pro Monat inklusive Gebühren, grob",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Staatliche Schweizer Wirtschaftsuniversität mit sehr gutem Ruf in Wirtschaft und Management. Für Ausländer teurer als für Schweizer, aber deutlich günstiger als britische oder amerikanische Spitzenunis. Kleine Stadt.",
+  "studiengaenge": [
+   "Business Administration (BA)",
+   "Economics (BA)",
+   "International Affairs (BA)",
+   "Law and Economics",
+   "Computer Science (BCS)"
+  ],
+  "zulassung": "Abitur gilt als Matura-Äquivalent, Auswahl über Leistung im ersten Jahr (Assessment), Sprache vor allem Deutsch mit englischem Anteil.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Studiengebühr für Studierende aus dem Ausland CHF 3.343,50 pro Semester (seit Herbst 2026, ca. 7 Prozent mehr), also etwa CHF 6.687 pro Jahr. HSG empfiehlt CHF 2.200 bis 2.600 pro Monat inklusive Gebühren (Stand Broschüre 2024)."
+ },
+ {
+  "id": "esade-bba",
+  "typ": "hochschule",
+  "name": "Esade, Bachelor in Business Administration (BBA)",
+  "anbieter": "Esade (Universität Ramon Llull)",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "marketing",
+   "gruendung",
+   "intl-business",
+   "beratung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "ES",
+  "ort": "Barcelona (Campus Sant Cugat)",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en",
+   "es"
+  ],
+  "kosten_pro_jahr_eur": 21300,
+  "kosten_bis_eur": 24500,
+  "kosten_label": "kostenintensiv",
+  "zeitraum": "Start September 2027, Bewerbung läuft laut Esade bis Juni 2027, solange Plätze frei sind. Aufnahmetest ist Pflicht (eigener Test oder anerkannte Alternativen).",
+  "frist": null,
+  "link": "https://www.esade.edu/bachelor/en/degrees/tuition-fees",
+  "lat": 41.4731,
+  "lng": 2.0863,
+  "lebenshaltung_pro_monat_eur": 1300,
+  "lebenshaltung_hinweis": "grobe Schätzung für Barcelona",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Private Business School in Barcelona mit englischem und zweisprachigem Zweig, starke Gründer- und Startup-Szene, vier Jahre Bachelor.",
+  "studiengaenge": [
+   "BBA",
+   "BBA mit Business and Artificial Intelligence (Doppelabschluss)",
+   "BBA mit Jura (Doppelabschluss)",
+   "Global Governance, Economics and Legal Order"
+  ],
+  "zulassung": "Abitur, Aufnahmetest, Motivation, Englisch. Spanische Studiengebühr gilt für alle gleich.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Studienjahr 2027/28: BBA 21.300 Euro pro Jahr, Doppelabschlüsse (zum Beispiel mit Jura oder KI) 24.500 Euro. Anmeldegebühr 180 Euro.",
+  "sprache": "en",
+  "richtwerte": {
+   "ib_punkte": 36,
+   "ib_skala": 42,
+   "hl_pflicht": [],
+   "hinweis": "Durchschnitt der Zugelassenen laut Esade 36 von 42 Punkten (ohne Bonus), ab 32 vorhergesagten Punkten ist eine Zulassung möglich. Dazu Aufnahmetest.",
+   "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
+  }
+ },
+ {
+  "id": "eu-business-school-bachelor",
+  "typ": "hochschule",
+  "name": "EU Business School, Bachelor (Barcelona, München, Genf)",
+  "anbieter": "EU Business School",
+  "felder": [
+   "wirtschaft",
+   "marketing",
+   "intl-business",
+   "design",
+   "diplomatie",
+   "gruendung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "ES",
+  "ort": "Barcelona, München, Genf und digital",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 10700,
+  "kosten_label": "kostenintensiv",
+  "zeitraum": "Start im Oktober, Februar, Juni oder August, keine feste Bewerbungsfrist genannt. Programm 3 Jahre bzw. 6 bis 7 Semester.",
+  "frist": null,
+  "link": "https://www.euruni.edu/en/Prospective-Students/Tuition-Fees/Bachelor-s/tuition-fees.html",
+  "lat": 41.3874,
+  "lng": 2.1686,
+  "lebenshaltung_pro_monat_eur": 1300,
+  "lebenshaltung_hinweis": "grobe Schätzung für Barcelona",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Private englischsprachige Business School mit mehreren Standorten, flexible Starttermine und praxisnahe Programme. Der Abschluss ist teils ein Hochschul-Titel (título propio) kombiniert mit einem britischen BA (Hons), Anerkennung vor der Bewerbung prüfen.",
+  "studiengaenge": [
+   "BBA",
+   "International Relations",
+   "Digital Business, Design and Innovation",
+   "BA (Hons) in Business (München)"
+  ],
+  "zulassung": "Abitur genügt als Zugangsvoraussetzung, Englischnachweis, kein Test genannt, Aufnahme über Bewerbung.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Studienjahr 2026/27 in Barcelona: etwa 5.350 Euro pro Semester, also 10.700 Euro pro Jahr, dazu einmalig 2.000 Euro Anzahlung und 200 Euro Bewerbungsgebühr. Die Angaben auf der Seite wirken je Campus unterschiedlich (zum Beispiel München 7.350 Euro pro Semester), bitte direkt beim Anbieter bestätigen.",
+  "sprache": "en"
+ },
+ {
+  "id": "hult-bba",
+  "typ": "hochschule",
+  "name": "Hult International Business School, Bachelor (BBA)",
+  "anbieter": "Hult International Business School",
+  "felder": [
+   "wirtschaft",
+   "marketing",
+   "gruendung",
+   "intl-business",
+   "design",
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "INT",
+  "ort": "London, Boston, San Francisco, Dubai",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 44980,
+  "kosten_bis_eur": 53400,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Start Januar oder September. Für den Start im September 2027: Fristen 1. November 2026, 15. Dezember 2026 und 1. März 2027, danach Spätbewerbung bis 1. Juni 2027.",
+  "frist": "2026-12-15",
+  "link": "https://hult.edu/ug-cost",
+  "lat": 51.519,
+  "lng": -0.07,
+  "lebenshaltung_pro_monat_eur": 2000,
+  "lebenshaltung_hinweis": "grobe Schätzung für London",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Private Business School mit Campus in mehreren Ländern, vier Jahre Bachelor mit Praxisprojekten. Teuer, aber mit Stipendienoption, Anerkennung des Abschlusses je Standort prüfen.",
+  "studiengaenge": [
+   "BBA in Business Administration (London oder Boston)",
+   "Business Analytics",
+   "Finance",
+   "Design"
+  ],
+  "zulassung": "Abitur, Englisch, Bewerbung über Hult mit Essay und Gespräch, keine festen Notenhürden genannt.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "London: £37.800 pro Jahr (laut UCAS-Eintrag), amerikanische Standorte nach Vergleichsportalen etwa $56.000 bis $60.000. Merit-Stipendien bis zu $35.000 pro Jahr möglich. Europäische Abiturienten können teils in drei Jahren abschließen.",
+  "sprache": "en"
+ },
+ {
+  "id": "upf-barcelona",
+  "typ": "hochschule",
+  "name": "Universitat Pompeu Fabra (UPF), Bachelor",
+  "anbieter": "Universitat Pompeu Fabra",
+  "felder": [
+   "wirtschaft",
+   "politik",
+   "intl-business",
+   "medien",
+   "informatik",
+   "jura"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "ES",
+  "ort": "Barcelona",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "es",
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 6800,
+  "kosten_bis_eur": 7000,
+  "kosten_label": "kostenpflichtig",
+  "zeitraum": "Bewerbung für EU-Abiturienten meist über das nationale Verfahren oder UPF-Verfahren, Fristen und Voraussetzungen auf upf.edu prüfen.",
+  "frist": null,
+  "link": "https://www.upf.edu/web/graus/preus",
+  "lat": 41.391,
+  "lng": 2.1894,
+  "lebenshaltung_pro_monat_eur": 1300,
+  "lebenshaltung_hinweis": "grobe Schätzung für Barcelona",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Staatliche Universität in Katalonien, Preise setzt die Region Katalonien fest. Mehrere Studiengänge laufen auch auf Englisch.",
+  "studiengaenge": [
+   "Business Administration",
+   "International Business Economics (englisch)",
+   "Economics",
+   "Political Science",
+   "Law"
+  ],
+  "zulassung": "Abitur, Anerkennung über Spanien (UNED), Sprachkenntnisse Spanisch oder Englisch je Studiengang.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Laut UPF-Preistabelle 2026/27 kostet das erste Jahr etwa 6.800 bis 7.000 Euro je Studiengang (zum Beispiel Business 6.911 Euro). Daneben steht eine zweite, niedrigere Spalte (etwa 1.200 Euro), die ich nicht sicher zuordnen konnte. Bitte auf upf.edu/web/graus/preus prüfen."
+ },
+ {
+  "id": "marangoni-milano",
+  "typ": "hochschule",
+  "name": "Istituto Marangoni Milano, Bachelor (Mode)",
+  "anbieter": "Istituto Marangoni",
+  "felder": [
+   "mode",
+   "design",
+   "marketing",
+   "medien"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "IT",
+  "ort": "Mailand",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "it",
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 26000,
+  "kosten_bis_eur": 26550,
+  "kosten_label": "sehr kostenintensiv",
+  "zeitraum": "Start 20. September 2027 oder 25. Januar 2027, Bewerbung laufend. Mindestens zwölf Schuljahre nötig, Motivationsschreiben, Englisch bei englischen Kursen.",
+  "frist": null,
+  "link": "https://www.istitutomarangoni.com/en/admission/entry-requirements-milano-firenze",
+  "lat": 45.4642,
+  "lng": 9.19,
+  "lebenshaltung_pro_monat_eur": 1400,
+  "lebenshaltung_hinweis": "grobe Schätzung für Mailand",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Private Mode-Hochschule in Mailand, dreijähriger Bachelor (AFAM, 180 ECTS) in Design, Styling und Mode-Kommunikation, teils auf Englisch. Gute Verbindung zur Modebranche.",
+  "studiengaenge": [
+   "Fashion Design und Accessories",
+   "Fashion Communication and Image",
+   "Fashion Business",
+   "Foundation in Fashion (Einstiegsjahr)"
+  ],
+  "zulassung": "Abitur (zwölf Schuljahre), Motivationsschreiben, Zeugnisse, Passkopie, kein Test. Für Mode je nach Kurs Portfolio sinnvoll.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Studienjahr ab September 2027, EU-Studierende: Studiengebühr etwa 22.000 bis 22.550 Euro plus jährliche Einschreibegebühr 4.000 Euro, also etwa 26.000 bis 26.550 Euro pro Jahr. Außerhalb der EU etwa 25.800 Euro plus 4.000 Euro."
+ },
+ {
+  "id": "polimi-bachelor",
+  "typ": "hochschule",
+  "name": "Politecnico di Milano, Bachelor",
+  "anbieter": "Politecnico di Milano",
+  "felder": [
+   "ingenieur",
+   "architektur",
+   "design",
+   "informatik",
+   "naturwiss"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "IT",
+  "ort": "Mailand",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "it",
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 157,
+  "kosten_bis_eur": 3943,
+  "kosten_label": "kostenpflichtig",
+  "zeitraum": "Studienstart im September, Anmeldung zum Eingangstest (TOL) mit 35 Euro, Mindestpunktzahl 30 von 100. SAT oder CEnT-S werden alternativ anerkannt.",
+  "frist": null,
+  "link": "https://www.polimi.it/en/students/tuition-fees-scholarships-and-financial-aid/tuition-fees",
+  "lat": 45.4781,
+  "lng": 9.2272,
+  "lebenshaltung_pro_monat_eur": 1400,
+  "lebenshaltung_hinweis": "grobe Schätzung für Mailand",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Große staatliche Technische Hochschule mit Ingenieurwesen, Architektur und Design, Kurse auf Italienisch und Englisch. Eintrittstest ist Pflicht.",
+  "studiengaenge": [
+   "Ingenieurwesen (Bauwesen, Maschinenbau, Informatik)",
+   "Architektur",
+   "Design",
+   "Mathematical Engineering"
+  ],
+  "zulassung": "Abitur plus Eingangstest TOL (Online) oder SAT, Sprachnachweis für das gewählte Programm.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Gebühr hängt vom Einkommensnachweis ab (ISEE): von 157 Euro bis höchstens 3.943 Euro pro Jahr bei normalem Studienplan. Wie ein deutsches Einkommen eingestuft wird, steht in der Gebührenordnung (Studierende mit Einkommen im Ausland)."
+ },
+ {
+  "id": "luiss-bachelor",
+  "typ": "hochschule",
+  "name": "LUISS Guido Carli, Bachelor",
+  "anbieter": "Libera Università Internazionale degli Studi Sociali Guido Carli",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "politik",
+   "jura",
+   "intl-business",
+   "ki"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "IT",
+  "ort": "Rom",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "it",
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 15000,
+  "kosten_label": "kostenintensiv",
+  "zeitraum": "Es gibt ein Aufnahmeverfahren mit Test. Der geprüfte Studiengang wird auf Italienisch unterrichtet, weitere Programme (zum Beispiel International Relations, Management, Finance) auch auf Englisch.",
+  "frist": null,
+  "link": "https://www.luiss.edu/ammissione/offerta-formativa/laurea-triennale/economia-e-management",
+  "lat": 41.9097,
+  "lng": 12.5139,
+  "lebenshaltung_pro_monat_eur": 1300,
+  "lebenshaltung_hinweis": "grobe Schätzung für Rom",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Private Universität in Rom mit Schwerpunkt Wirtschaft, Politik und Jura, drei Jahre Bachelor, Aufnahmetest.",
+  "studiengaenge": [
+   "Economics and Management",
+   "Business Administration",
+   "Political Science",
+   "Law",
+   "International Relations"
+  ],
+  "zulassung": "Abitur plus Aufnahmetest, Sprachkenntnisse je Programm.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Studiengebühr für Economics and Management 2027/28: 15.000 Euro pro Jahr, in drei Raten, plus regionale Gebühr. Gleiche Gebühr für EU und Nicht-EU. Bewerbungsgebühr 150 Euro."
+ },
+ {
+  "id": "unibo-bologna",
+  "typ": "hochschule",
+  "name": "Alma Mater Studiorum Università di Bologna, Bachelor",
+  "anbieter": "Università di Bologna",
+  "felder": [
+   "wirtschaft",
+   "jura",
+   "politik",
+   "medizin",
+   "sprachen",
+   "ingenieur"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "IT",
+  "ort": "Bologna",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "it",
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 157,
+  "kosten_label": "kostenpflichtig",
+  "zeitraum": "Studienstart im Herbst, Zulassung je Studiengang, teils Aufnahmetests. Anerkannt wird eine Hochschulzugangsberechtigung mit mindestens zwölf Schuljahren.",
+  "frist": null,
+  "link": "https://www.unibo.it/en/study/enrolment-fees-and-other-procedures/degree-programmes/tuition-fees-and-exemptions",
+  "lat": 44.4968,
+  "lng": 11.3523,
+  "lebenshaltung_pro_monat_eur": 1100,
+  "lebenshaltung_hinweis": "grobe Schätzung für Bologna",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Älteste Universität Europas, staatlich und sehr günstig, überwiegend auf Italienisch, einzelne englische Programme. Gut für alle, die Italienisch lernen wollen.",
+  "studiengaenge": [
+   "Wirtschaft (Economics, Management)",
+   "Jura",
+   "Politikwissenschaft",
+   "Medizin (mit Test)",
+   "Sprachen und Kulturen"
+  ],
+  "zulassung": "Abitur, Sprachnachweis (Italienisch oder Englisch je Programm), teils Test.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Feste Gebühr 157,04 Euro plus ein einkommensabhängiger Teil (ISEE) bis zu einem je Studiengang festgelegten Höchstbetrag, die Liste steht auf unibo.it. Für Nicht-OECD-Staatsangehörige gibt es eine reduzierte Fixgebühr von 1.000 Euro."
+ },
+ {
+  "id": "erasmus-rotterdam-bachelor",
+  "typ": "hochschule",
+  "name": "Erasmus University Rotterdam, Bachelor (Rotterdam School of Management)",
+  "anbieter": "Erasmus Universiteit Rotterdam",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "beratung",
+   "intl-business",
+   "gruendung",
+   "politik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "NL",
+  "ort": "Rotterdam",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en",
+   "nl"
+  ],
+  "kosten_pro_jahr_eur": 2771,
+  "kosten_label": "kostenpflichtig",
+  "zeitraum": "Studienstart September 2027, Studielink-Frist 15. Januar 2027 (IBA und Economics). Beide Programme haben ein Auswahlverfahren mit Platzbegrenzung (Numerus fixus).",
+  "frist": "2027-01-15",
+  "link": "https://www.eur.nl/en/bachelor/bachelor-international-business-administration/facts-figures",
+  "lat": 51.9176,
+  "lng": 4.5258,
+  "lebenshaltung_pro_monat_eur": 1100,
+  "lebenshaltung_hinweis": "grobe Schätzung für Rotterdam",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Staatliche Universität mit der Rotterdam School of Management, englischsprachige Bachelor in Wirtschaft und Internationaler BWL. Als Backup oft genannt, geringere Kosten als Privatunis.",
+  "studiengaenge": [
+   "International Business Administration (IBA)",
+   "Economics and Business Economics",
+   "Global Business and Sustainability"
+  ],
+  "zulassung": "Abitur, Auswahlverfahren (Numerus fixus je nach Programm), Englisch.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Gesetzliche Gebühr für EWR-Studierende 2027/28: 2.771 Euro (2026/27: 2.694 Euro), nur wenn noch kein gleichwertiger Abschluss an einer niederländischen Hochschule vorliegt. Das Liberal-Arts-Programm kostet mehr (6.000 Euro in 2027/28)."
+ },
+ {
+  "id": "ebs-bachelor",
+  "typ": "hochschule",
+  "name": "EBS Universität, Bachelor",
+  "anbieter": "EBS Universität für Wirtschaft und Recht",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "beratung",
+   "jura",
+   "politik",
+   "intl-business"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Oestrich-Winkel (Rheingau)",
+  "online": false,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en",
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 17500,
+  "kosten_label": "kostenintensiv",
+  "zeitraum": "Vorlesungsstart im Winter 23. August 2027, im Sommer 18. Januar 2027. Keine feste Bewerbungsfrist, laut EBS ist eine Bewerbung bis zwei Jahre im Voraus möglich.",
+  "frist": null,
+  "link": "https://www.ebs.edu/ebs-business-school/studienprogramme/bwl-bachelorstudium",
+  "lat": 50.0275,
+  "lng": 8.0258,
+  "lebenshaltung_pro_monat_eur": 1000,
+  "lebenshaltung_hinweis": "grobe Schätzung für den Rheingau",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Private Universität im Rheingau mit englischsprachigem BWL-Bachelor (sechs Semester inklusive Auslandssemester), Law, Politics and Economics sowie Jura mit Staatsexamen. Holistisches Auswahlverfahren mit Test.",
+  "studiengaenge": [
+   "Business Studies (BWL)",
+   "Law, Politics and Economics",
+   "Jura (Staatsexamen)",
+   "Business Studies mit Spezialisierung"
+  ],
+  "zulassung": "Abitur, Auswahlverfahren aus Tests, Schulleistungen, Motivation und Persönlichkeit, keine feste Frist.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Studiengebühr 8.750 Euro pro Semester, also 17.500 Euro pro Jahr. Gesamtgebühren für sechs Semester im BWL-Bachelor etwa 54.480 Euro inklusive aller Gebühren. Early-Enrolment-Rabatt von 500 Euro bei früher Einschreibung."
+ },
+ {
+  "id": "lmu-muenchen",
+  "typ": "hochschule",
+  "name": "LMU München, Bachelor",
+  "anbieter": "Ludwig-Maximilians-Universität München",
+  "felder": [
+   "wirtschaft",
+   "jura",
+   "politik",
+   "medizin",
+   "psychologie",
+   "naturwiss",
+   "sprachen",
+   "medien"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "München",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.lmu.de",
+  "lat": 48.1503,
+  "lng": 11.58,
+  "lebenshaltung_pro_monat_eur": 1300,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Große staatliche Volluniversität, viele Fächer, starke Sozial- und Geisteswissenschaften sowie Medizin und Jura. München hat hohe Lebenshaltungskosten.",
+  "studiengaenge": [
+   "BWL",
+   "VWL",
+   "Politikwissenschaft",
+   "Rechtswissenschaft (Staatsexamen)",
+   "Psychologie"
+  ],
+  "zulassung": "Abitur, viele Fächer zulassungsbeschränkt (NC), Bewerbung über das Online-Portal der LMU.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "tum-management-technology",
+  "typ": "hochschule",
+  "name": "TU München, Management and Technology (TUM School of Management)",
+  "anbieter": "Technische Universität München",
+  "felder": [
+   "wirtschaft",
+   "ingenieur",
+   "informatik",
+   "beratung",
+   "gruendung",
+   "finanzen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "München und Heilbronn",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.tum.de",
+  "lat": 48.1497,
+  "lng": 11.5679,
+  "lebenshaltung_pro_monat_eur": 1350,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Technische Universität mit eigener Wirtschaftsfakultät, Bachelor Management and Technology kombiniert BWL mit einem Technik- oder Naturwissenschaftsfach. Auswahlverfahren je Studiengang möglich.",
+  "studiengaenge": [
+   "Management and Technology",
+   "Informatik (siehe eigener Eintrag)",
+   "Maschinenwesen",
+   "Elektro- und Informationstechnik",
+   "Wirtschaftsinformatik"
+  ],
+  "zulassung": "Abitur, Eignungsverfahren je Studiengang möglich, Bewerbungszeiträume und Fristen auf tum.de prüfen.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "uni-koeln",
+  "typ": "hochschule",
+  "name": "Universität zu Köln, Bachelor (WiSo)",
+  "anbieter": "Universität zu Köln",
+  "felder": [
+   "wirtschaft",
+   "jura",
+   "politik",
+   "psychologie",
+   "medien",
+   "sprachen"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Köln",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.uni-koeln.de",
+  "lat": 50.9285,
+  "lng": 6.9279,
+  "lebenshaltung_pro_monat_eur": 1000,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Eine der größten deutschen Universitäten mit großer Wirtschafts- und Sozialwissenschaftlicher Fakultät und Rechtswissenschaft.",
+  "studiengaenge": [
+   "BWL",
+   "VWL",
+   "Sozialwissenschaften",
+   "Rechtswissenschaft",
+   "Psychologie"
+  ],
+  "zulassung": "Abitur, viele Wirtschafts- und Psychologiefächer zulassungsbeschränkt (NC) oder mit Auswahl.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "hu-berlin",
+  "typ": "hochschule",
+  "name": "Humboldt-Universität zu Berlin, Bachelor",
+  "anbieter": "Humboldt-Universität zu Berlin",
+  "felder": [
+   "wirtschaft",
+   "politik",
+   "jura",
+   "sprachen",
+   "naturwiss",
+   "informatik"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Berlin",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.hu-berlin.de",
+  "lat": 52.518,
+  "lng": 13.3936,
+  "lebenshaltung_pro_monat_eur": 1100,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Traditionsreiche Universität in Berlin mit starker Politik, Rechts- und Wirtschaftswissenschaft. Berlin hat eine große Gründer- und Politikszene.",
+  "studiengaenge": [
+   "Wirtschaftswissenschaften",
+   "Politikwissenschaft",
+   "Rechtswissenschaft",
+   "Informatik",
+   "Philosophie"
+  ],
+  "zulassung": "Abitur, Bewerbung über uni-assist oder das Hochschul-Portal, viele Fächer mit NC.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "fu-berlin",
+  "typ": "hochschule",
+  "name": "Freie Universität Berlin, Bachelor",
+  "anbieter": "Freie Universität Berlin",
+  "felder": [
+   "politik",
+   "wirtschaft",
+   "jura",
+   "medien",
+   "psychologie",
+   "diplomatie"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Berlin",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.fu-berlin.de",
+  "lat": 52.45,
+  "lng": 13.29,
+  "lebenshaltung_pro_monat_eur": 1100,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Große Universität mit internationalem Profil, stark in Politikwissenschaft, Wirtschaft und Sozialwissenschaften.",
+  "studiengaenge": [
+   "Politikwissenschaft",
+   "Volkswirtschaftslehre",
+   "Rechtswissenschaft",
+   "Publizistik und Kommunikationswissenschaft",
+   "Psychologie"
+  ],
+  "zulassung": "Abitur, viele Fächer zulassungsbeschränkt (NC), Bewerbung über das Hochschul-Portal.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "uni-hamburg",
+  "typ": "hochschule",
+  "name": "Universität Hamburg, Bachelor",
+  "anbieter": "Universität Hamburg",
+  "felder": [
+   "wirtschaft",
+   "jura",
+   "politik",
+   "psychologie",
+   "medien",
+   "naturwiss"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Hamburg",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.uni-hamburg.de",
+  "lat": 53.5663,
+  "lng": 9.9857,
+  "lebenshaltung_pro_monat_eur": 1100,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Große Volluniversität in der Hansestadt, nahe an Schleswig-Holstein, starke Wirtschafts- und Rechtswissenschaft und Volkswirtschaft.",
+  "studiengaenge": [
+   "BWL",
+   "VWL",
+   "Rechtswissenschaft",
+   "Politikwissenschaft",
+   "Psychologie"
+  ],
+  "zulassung": "Abitur, viele Fächer zulassungsbeschränkt (NC).",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "uni-heidelberg",
+  "typ": "hochschule",
+  "name": "Universität Heidelberg, Bachelor",
+  "anbieter": "Ruprecht-Karls-Universität Heidelberg",
+  "felder": [
+   "medizin",
+   "naturwiss",
+   "jura",
+   "politik",
+   "wirtschaft",
+   "psychologie"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Heidelberg",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.uni-heidelberg.de",
+  "lat": 49.4106,
+  "lng": 8.7071,
+  "lebenshaltung_pro_monat_eur": 1050,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Älteste Universität Deutschlands, starke Medizin, Naturwissenschaften und Geisteswissenschaften. Kleinstadt-Atmosphäre.",
+  "studiengaenge": [
+   "Medizin",
+   "Rechtswissenschaft",
+   "Volkswirtschaftslehre",
+   "Physik",
+   "Politikwissenschaft"
+  ],
+  "zulassung": "Abitur, Medizin mit zentralem Auswahlverfahren, andere Fächer teils NC.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "rwth-aachen",
+  "typ": "hochschule",
+  "name": "RWTH Aachen, Bachelor",
+  "anbieter": "RWTH Aachen University",
+  "felder": [
+   "ingenieur",
+   "informatik",
+   "naturwiss",
+   "architektur",
+   "wirtschaft"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Aachen",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.rwth-aachen.de",
+  "lat": 50.7783,
+  "lng": 6.0647,
+  "lebenshaltung_pro_monat_eur": 900,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Große technische Universität, stark in Ingenieurwissenschaften, Informatik, Architektur und Wirtschaftsingenieurwesen.",
+  "studiengaenge": [
+   "Maschinenbau",
+   "Informatik",
+   "Elektrotechnik",
+   "Wirtschaftsingenieurwesen",
+   "Architektur"
+  ],
+  "zulassung": "Abitur, viele Fächer ohne NC, bei Architektur und einzelnen Fächern Auswahl.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "kit-karlsruhe",
+  "typ": "hochschule",
+  "name": "Karlsruher Institut für Technologie (KIT), Bachelor",
+  "anbieter": "Karlsruher Institut für Technologie",
+  "felder": [
+   "ingenieur",
+   "informatik",
+   "naturwiss",
+   "wirtschaft",
+   "ki"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Karlsruhe",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.kit.edu",
+  "lat": 49.0094,
+  "lng": 8.4044,
+  "lebenshaltung_pro_monat_eur": 950,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Technische Spitzenuniversität mit Informatik, Ingenieurwissenschaften und Wirtschaftsingenieurwesen. Starkes Umfeld für Gründer und Forschung.",
+  "studiengaenge": [
+   "Informatik",
+   "Maschinenbau",
+   "Elektrotechnik",
+   "Wirtschaftsingenieurwesen",
+   "Physik"
+  ],
+  "zulassung": "Abitur, viele Fächer ohne NC, einzelne mit Auswahlverfahren.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "goethe-frankfurt",
+  "typ": "hochschule",
+  "name": "Goethe-Universität Frankfurt, Bachelor",
+  "anbieter": "Goethe-Universität Frankfurt am Main",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "jura",
+   "politik",
+   "psychologie"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Frankfurt am Main",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.uni-frankfurt.de",
+  "lat": 50.1286,
+  "lng": 8.6663,
+  "lebenshaltung_pro_monat_eur": 1200,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Große Universität im Finanzzentrum Deutschlands mit starker Wirtschaftsfakultät (Finance, VWL, BWL) und Rechtswissenschaft.",
+  "studiengaenge": [
+   "BWL",
+   "VWL",
+   "Rechtswissenschaft",
+   "Politikwissenschaft",
+   "Psychologie"
+  ],
+  "zulassung": "Abitur, viele Wirtschafts- und Psychologiefächer zulassungsbeschränkt (NC).",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "cau-kiel",
+  "typ": "hochschule",
+  "name": "Christian-Albrechts-Universität zu Kiel, Bachelor",
+  "anbieter": "Christian-Albrechts-Universität zu Kiel",
+  "felder": [
+   "wirtschaft",
+   "jura",
+   "politik",
+   "naturwiss",
+   "medizin",
+   "psychologie",
+   "lehramt"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Kiel",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.uni-kiel.de",
+  "lat": 54.3397,
+  "lng": 10.1156,
+  "lebenshaltung_pro_monat_eur": 850,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Die Landesuniversität von Schleswig-Holstein, nah an Schleswig, mit Wirtschaft, Rechtswissenschaft, Meeres- und Naturwissenschaften und Medizin. Günstigere Lebenshaltung als in den Großstädten.",
+  "studiengaenge": [
+   "BWL",
+   "VWL",
+   "Rechtswissenschaft",
+   "Meereswissenschaften",
+   "Medizin"
+  ],
+  "zulassung": "Abitur, viele Fächer zulassungsbeschränkt, Medizin mit zentralem Verfahren.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "id": "uni-flensburg",
+  "typ": "hochschule",
+  "name": "Europa-Universität Flensburg, Bachelor",
+  "anbieter": "Europa-Universität Flensburg",
+  "felder": [
+   "lehramt",
+   "wirtschaft",
+   "politik",
+   "sprachen",
+   "gruendung"
+  ],
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "land": "DE",
+  "ort": "Flensburg",
+  "online": false,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "zeitraum": "Studienstart zum Wintersemester im Oktober, Bewerbungszeiträume je Studiengang, bei zulassungsbeschränkten Fächern oft bis Mitte Juli (Wintersemester).",
+  "frist": null,
+  "link": "https://www.uni-flensburg.de",
+  "lat": 54.7745,
+  "lng": 9.454,
+  "lebenshaltung_pro_monat_eur": 800,
+  "lebenshaltung_hinweis": "grobe Schätzung",
+  "zuletzt_geprueft": "2026-11-22",
+  "quelle_qualitaet": "B",
+  "kurzbeschreibung": "Kleine Universität im Norden Schleswig-Holsteins, stark in Lehramt und Bildung, mit eigenen Wirtschafts- und Kulturprogrammen. Nähe zu Dänemark.",
+  "studiengaenge": [
+   "Lehramt (Grundschule, Sekundarstufe)",
+   "International Management",
+   "Bildungs- und Sozialwissenschaften",
+   "Energie- und Umweltmanagement"
+  ],
+  "zulassung": "Abitur, einzelne Fächer zulassungsbeschränkt, Bewerbung über die Hochschule.",
+  "zielgruppe": "schueler",
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "id": "wu-wien-bachelor",
+  "name": "WU Wien, Bachelor Business and Economics",
+  "anbieter": "WU Wirtschaftsuniversität Wien",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "beratung",
+   "intl-business",
+   "jura"
+  ],
+  "land": "AT",
+  "ort": "Wien",
+  "lat": 48.2146,
+  "lng": 16.4097,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en",
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "kosten_hinweis": "Die Studiengebühr habe ich nicht auf der WU-Seite geprüft. Für EU-Studierende gilt nach meinem Kenntnisstand in Österreich innerhalb der Regelstudienzeit keine Studiengebühr, nur ein kleiner Beitrag zur Hochschülerschaft. Bitte auf wu.ac.at bestätigen.",
+  "lebenshaltung_pro_monat_eur": 1100,
+  "lebenshaltung_hinweis": "grobe Schätzung für Wien",
+  "zeitraum": "Studienstart 1. Oktober 2027, Registrierung online vom 1. März bis 24. Mai 2027, Start nur im Wintersemester",
+  "frist": "2027-05-24",
+  "link": "https://www.wu.ac.at/en/programs/bachelors-programs/business-and-economics/overview/selection-procedure-bbe-1",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Große Wirtschaftsuniversität in Wien. Wenn mehr Personen sich anmelden als Plätze da sind, gibt es ein mehrstufiges Aufnahmeverfahren (Online-Self-Assessment, dann Prüfung vor Ort), das für EU und Nicht-EU gleich gilt. Business and Economics ist das Programm mit englischem Schwerpunkt, Wirtschafts- und Sozialwissenschaften läuft auf Deutsch.",
+  "studiengaenge": [
+   "Business and Economics (BBE)",
+   "Wirtschafts- und Sozialwissenschaften (WISO)",
+   "Wirtschaftsrecht (WIRE)"
+  ],
+  "zulassung": "Online-Registrierung, Registrierungsbeitrag, dann bei Platzmangel Self-Assessment und Aufnahmeprüfung in Wien. Schulabschluss bis spätestens Ende Juli.",
+  "sprache": "en"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "id": "uva-economics-business",
+  "name": "Universiteit van Amsterdam, Bachelor Economics and Business Economics",
+  "anbieter": "Universiteit van Amsterdam",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "intl-business",
+   "beratung",
+   "politik"
+  ],
+  "land": "NL",
+  "ort": "Amsterdam",
+  "lat": 52.3646,
+  "lng": 4.911,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en",
+   "nl"
+  ],
+  "kosten_pro_jahr_eur": 2771,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "2.771 Euro ist die gesetzliche Gebühr für EU-Studierende 2027/28 (gleicher Satz wie bei Rotterdam, nicht auf der UvA-Seite des Studiengangs gelesen). Das selektive Programm PPLE kostet 5.819 Euro pro Jahr für EU-Studierende.",
+  "lebenshaltung_pro_monat_eur": 1200,
+  "lebenshaltung_hinweis": "laut UvA 900 bis 1.500 Euro pro Monat inklusive Miete",
+  "zeitraum": "Studienstart September 2027, englischer Zweig mit Numerus fixus (550 Plätze), Studielink geöffnet vom 1. Oktober 2026 bis 15. Januar 2027",
+  "frist": "2027-01-15",
+  "link": "https://www.uva.nl/en/programmes/bachelors/economics--business-economics/application-and-admission/application-and-admission.html",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Staatliche Universität mitten in Amsterdam, englischer Zweig mit 550 Plätzen und Auswahlverfahren. Die Frist ist früh, schon der 15. Januar 2027. Geprüft werden Schulabschluss, Englisch und Mathematik.",
+  "studiengaenge": [
+   "Economics and Business Economics (englisch)",
+   "Politics, Psychology, Law and Economics (PPLE)"
+  ],
+  "zulassung": "Schulabschluss, Englisch- und Mathenachweis, Anmeldung über Studielink und My Applications bis 15. Januar.",
+  "sprache": "en"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "id": "nyu-shanghai",
+  "name": "NYU Shanghai, Bachelor",
+  "anbieter": "NYU Shanghai (New York University)",
+  "felder": [
+   "wirtschaft",
+   "informatik",
+   "ki",
+   "naturwiss",
+   "intl-business",
+   "politik"
+  ],
+  "land": "CN",
+  "ort": "Shanghai",
+  "lat": 31.23,
+  "lng": 121.537,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 61030,
+  "kosten_bis_eur": 71930,
+  "kosten_label": "sehr kostenintensiv",
+  "kosten_hinweis": "Studiengebühr 2026/27 laut NYU Shanghai 68.576 Dollar, geschätzte direkte Kosten inklusive Wohnen und Versicherung 80.820 Dollar. Finanzhilfe für Studierende außerhalb Chinas ist möglich.",
+  "zeitraum": "Bewerbung über die Common App: Early Decision I am 1. November, Early Decision II am 1. Januar, Regular Decision am 5. Januar",
+  "frist": "2027-01-05",
+  "link": "https://shanghai.nyu.edu/page/how-apply",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Campus der New York University in Shanghai, englischsprachig, Bewerbung wie bei US-Hochschulen mit Common App, Essays und Empfehlungen. Bewerbungsgebühr 85 Dollar.",
+  "studiengaenge": [
+   "Business and Finance",
+   "Computer Science",
+   "Data Science",
+   "Economics",
+   "Global China Studies"
+  ],
+  "zulassung": "Common Application, Schulzeugnisse, Lehrerempfehlung, Englischnachweis für Nicht-Muttersprachler.",
+  "sprache": "en"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "id": "fudan-uipe",
+  "name": "Fudan University, Undergraduate International Program in Economics",
+  "anbieter": "Fudan University",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "intl-business",
+   "informatik"
+  ],
+  "land": "CN",
+  "ort": "Shanghai",
+  "lat": 31.2989,
+  "lng": 121.5033,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 12500,
+  "kosten_label": "kostenintensiv",
+  "kosten_hinweis": "Studiengebühr laut Fudan 100.000 RMB pro Jahr ab dem Jahrgang 2027, dazu 800 RMB Bewerbungsgebühr. Die Umrechnung in Euro ist grob.",
+  "zeitraum": "Bei den Fudan-Programmen für das Jahr 2026 lagen die Bewerbungsphasen vom 1. bis 15. Januar und vom 23. Februar bis 6. März. Die Termine für 2027 erscheinen laut Fudan im Oktober, bitte auf der Seite des Programms prüfen.",
+  "frist": null,
+  "link": "https://econ.fudan.edu.cn/uipe/Prospective_Students1/Tuition_and_Expenses.htm",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Englischsprachiges Bachelor-Programm in Wirtschaft an einer der führenden Universitäten Chinas. Für Ausländer mit eigenem Bewerbungsverfahren über die Fakultät.",
+  "studiengaenge": [
+   "Economics (englisch)",
+   "Data Science and Big Data Technology (englisch)",
+   "Global Bachelor of Fintech"
+  ],
+  "zulassung": "Bewerbung über das Online-System der Universität mit Zeugnissen und Sprachnachweis, Auswahl durch die Fakultät. Details je Jahrgang prüfen.",
+  "sprache": "en"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "id": "hku-bachelor",
+  "name": "University of Hong Kong (HKU), Bachelor",
+  "anbieter": "The University of Hong Kong",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "jura",
+   "medizin",
+   "informatik",
+   "naturwiss",
+   "politik",
+   "architektur"
+  ],
+  "land": "HK",
+  "ort": "Hongkong",
+  "lat": 22.2831,
+  "lng": 114.1342,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 25560,
+  "kosten_bis_eur": 28410,
+  "kosten_label": "sehr kostenintensiv",
+  "kosten_hinweis": "Gebühr für Nicht-Einheimische 2026/27: 224.000 Hongkong-Dollar (Wirtschaft, Jura, Geisteswissenschaften) oder 249.000 Hongkong-Dollar (Technik, Medizin, Naturwissenschaften). Euro-Wert grob umgerechnet.",
+  "zeitraum": "Start September 2027. Erste Auswahlrunde für internationale Bewerber mit Frist 25. November 2026, danach Bewerbung bis 25. August 2027 möglich",
+  "frist": "2026-11-25",
+  "link": "https://www.hku.hk/en/admission-aid/tuition-fee-scholarships",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Älteste Universität Hongkongs, komplett englischsprachig, mit internationalem Bewerbungsweg für IB und andere ausländische Abschlüsse. Bewerbungsgebühr 780 Hongkong-Dollar. Frühe Bewerbung lohnt sich, weil Angebote ab Dezember kommen.",
+  "studiengaenge": [
+   "Business Administration",
+   "Economics and Finance",
+   "Law (LLB)",
+   "Computer Science",
+   "Medicine"
+  ],
+  "zulassung": "Bewerbung über das International/Non-JUPAS-Verfahren mit IB oder Abitur, Auswahl nach Zeugnissen und Englischnachweis.",
+  "sprache": "en"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "id": "hkust-bachelor",
+  "name": "HKUST, Bachelor",
+  "anbieter": "The Hong Kong University of Science and Technology",
+  "felder": [
+   "informatik",
+   "ki",
+   "ingenieur",
+   "wirtschaft",
+   "naturwiss",
+   "finanzen",
+   "gruendung"
+  ],
+  "land": "HK",
+  "ort": "Hongkong (Clear Water Bay)",
+  "lat": 22.3364,
+  "lng": 114.2655,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 29640,
+  "kosten_label": "sehr kostenintensiv",
+  "kosten_hinweis": "Gebühr für Nicht-Einheimische 2027/28 laut HKUST 260.000 Hongkong-Dollar (ca. 33.300 US-Dollar). Persönliche Kosten kommen laut HKUST mit etwa 60.000 Hongkong-Dollar pro Jahr obendrauf, dazu Unterkunft.",
+  "zeitraum": "Start September 2027. Bewerbung mit internationalem Abschluss: Priority Round bis 25. November 2026, danach laufende Zulassung",
+  "frist": "2026-11-25",
+  "link": "https://join.ust.hk/fees/",
+  "quelle_qualitaet": "A",
+  "kurzbeschreibung": "Technische Universität mit starker Informatik, Ingenieurwissenschaft und Business, komplett englischsprachig. Es gibt Stipendien für internationale Studierende (zum Beispiel Global Learners Scholarship und Future Leaders Award).",
+  "studiengaenge": [
+   "Computer Science",
+   "Engineering",
+   "Business (Technology and Management)",
+   "Data Science"
+  ],
+  "zulassung": "Online-Bewerbung mit IB oder Abitur, Empfehlungsschreiben, Personal Statement und Englischnachweis (zum Beispiel IELTS 6.0).",
+  "sprache": "en"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "quelle_qualitaet": "A",
+  "id": "leuphana-college",
+  "name": "Leuphana Universität Lüneburg, Bachelor (College)",
+  "anbieter": "Leuphana Universität Lüneburg",
+  "felder": [
+   "wirtschaft",
+   "gruendung",
+   "intl-business",
+   "politik",
+   "jura",
+   "informatik",
+   "ki",
+   "psychologie",
+   "medien",
+   "ingenieur"
+  ],
+  "land": "DE",
+  "ort": "Lüneburg",
+  "lat": 53.2299,
+  "lng": 10.4017,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de",
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "kosten_hinweis": "Keine Studiengebühren, nur der Semesterbeitrag von 452,92 Euro pro Semester laut Leuphana.",
+  "lebenshaltung_pro_monat_eur": 900,
+  "lebenshaltung_hinweis": "grobe Schätzung für Lüneburg",
+  "zeitraum": "Studienstart im Wintersemester (Anfang Oktober), Online-Bewerbung für das erste Fachsemester von Mitte Mai bis Mitte Juli",
+  "frist": "2027-07-15",
+  "link": "https://www.leuphana.de/college/bachelor.html",
+  "kurzbeschreibung": "Staatliche Universität eine Bahnstunde von Hamburg. Im Bachelor wählst du ein Hauptfach (Major) und ein Nebenfach (Minor), dazu gibt es das fächerübergreifende Leuphana Semester. Viele Majors laufen auf Englisch, zum Beispiel Economics, International Business Administration & Entrepreneurship, Data Science and Artificial Intelligence und Psychology. Politikwissenschaft und Rechtswissenschaft laufen auf Deutsch.",
+  "studiengaenge": [
+   "International Business Administration & Entrepreneurship (EN)",
+   "Economics (EN)",
+   "Data Science and Artificial Intelligence (EN)",
+   "Politikwissenschaft (DE)",
+   "Rechtswissenschaft (DE)"
+  ],
+  "zulassung": "Allgemeine Hochschulreife (Abitur) oder IB, Online-Bewerbung, Zulassung je nach Major mit Auswahl.",
+  "sprache": "de"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "quelle_qualitaet": "A",
+  "id": "constructor-university-bremen",
+  "name": "Constructor University Bremen, Bachelor",
+  "anbieter": "Constructor University",
+  "felder": [
+   "informatik",
+   "ki",
+   "ingenieur",
+   "naturwiss",
+   "wirtschaft",
+   "intl-business",
+   "politik"
+  ],
+  "land": "DE",
+  "ort": "Bremen",
+  "lat": 53.165,
+  "lng": 8.651,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 23850,
+  "kosten_label": "kostenintensiv",
+  "kosten_hinweis": "Studiengebühr ab dem Jahrgang 2027: 11.925 Euro pro Semester, also 23.850 Euro pro Jahr, dazu einmalig 640 Euro Einschreibegebühr für EU-Studierende und Zimmer ab 4.000 Euro (geteiltes Zimmer, September bis Mai). Jeder Bewerber bekommt ein individuelles Finanzpaket, zum Beispiel ein Leistungsstipendium nach Schulnoten, ein Full-Tuition-Talent-Stipendium oder die Möglichkeit, Gebühren erst nach dem Berufseinstieg zu zahlen.",
+  "lebenshaltung_pro_monat_eur": 1000,
+  "lebenshaltung_hinweis": "grobe Schätzung, Zimmer und Verpflegung auf dem Campus sind extra",
+  "zeitraum": "Studienstart im September 2027. Early Action vom 1. Oktober 2026 bis 1. Februar 2027, danach laufende Zulassung bis 31. Juli 2027, Entscheidung meist nach 2 bis 4 Wochen, keine Bewerbungsgebühr",
+  "frist": "2027-07-31",
+  "link": "https://constructor.university/admission-aid/application-information-undergraduate",
+  "kurzbeschreibung": "Private internationale Campus-Universität in Bremen, komplett englischsprachig, drei Jahre Bachelor. Starke Informatik, Ingenieurwissenschaften und Naturwissenschaften, dazu Wirtschaft und Politik. Hohe Gebühr, aber viele Stipendien und eine Gebührenstundung bis nach dem Berufseinstieg.",
+  "studiengaenge": [
+   "Computer Science",
+   "Robotics and Intelligent Systems",
+   "Mathematics, Modelling and Data Analytics",
+   "Global Economics and Management",
+   "International Relations"
+  ],
+  "zulassung": "Online-Bewerbung mit Zeugnissen, Englischnachweis und Motivation, laufende Zulassung.",
+  "sprache": "en"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "quelle_qualitaet": "A",
+  "id": "bucerius-law-school",
+  "name": "Bucerius Law School, Jura (Staatsexamen und LL.B.)",
+  "anbieter": "Bucerius Law School",
+  "felder": [
+   "jura",
+   "politik",
+   "wirtschaft"
+  ],
+  "land": "DE",
+  "ort": "Hamburg",
+  "lat": 53.5603,
+  "lng": 9.989,
+  "rechtsform": "privat",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 16800,
+  "kosten_label": "kostenintensiv",
+  "kosten_hinweis": "Laut Bucerius 5.600 Euro pro Trimester für 12,5 Trimester, zusammen 70.000 Euro, also umgerechnet etwa 16.800 Euro pro Jahr bei drei Trimestern. Während des Studiums fallen dank des Umgekehrten Generationenvertrags keine Gebühren an, du zahlst erst nach dem Berufseinstieg. Es gibt zusätzlich Stipendien und das Deutschlandstipendium (300 Euro pro Monat).",
+  "lebenshaltung_pro_monat_eur": 1100,
+  "lebenshaltung_hinweis": "grobe Schätzung für Hamburg",
+  "zeitraum": "Studienstart Anfang September. Bewerbung jedes Jahr ab Dezember, Early-Bird-Frist 1. März (Gebühr 40 Euro), finale Frist 15. Mai (Gebühr 80 Euro), Auswahl im Juni und Juli",
+  "frist": "2027-05-15",
+  "link": "https://www.law-school.de/studium/jurastudium/bewerbung-auswahl/auswahlverfahren",
+  "kurzbeschreibung": "Private Hochschule für Rechtswissenschaft in Hamburg. Plätze werden nach Eignung vergeben und nicht nur nach der Abiturnote, in einem zweistufigen Verfahren mit Online-Test und mündlichem Teil. Neben Jura mit Staatsexamen gibt es den Studiengang Recht und Digitale Transformation.",
+  "studiengaenge": [
+   "Rechtswissenschaft (Staatsexamen mit LL.B.)",
+   "Recht und Digitale Transformation"
+  ],
+  "zulassung": "Abitur, zweistufiges Auswahlverfahren (schriftlich online, dann mündlich vor Ort), kein NC.",
+  "sprache": "de"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "quelle_qualitaet": "A",
+  "id": "uni-konstanz",
+  "name": "Universität Konstanz, Bachelor",
+  "anbieter": "Universität Konstanz",
+  "felder": [
+   "wirtschaft",
+   "politik",
+   "jura",
+   "psychologie",
+   "naturwiss",
+   "informatik",
+   "ki",
+   "sprachen"
+  ],
+  "land": "DE",
+  "ort": "Konstanz",
+  "lat": 47.6896,
+  "lng": 9.188,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "de"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "kosten_hinweis": "Staatliche Universität, nur Semesterbeitrag. Die genaue Höhe habe ich nicht gelesen, bitte auf uni-konstanz.de prüfen.",
+  "lebenshaltung_pro_monat_eur": 1000,
+  "lebenshaltung_hinweis": "grobe Schätzung für Konstanz",
+  "zeitraum": "Start im Wintersemester. Bewerbung bis 15. Juli bei zulassungsbeschränkten Studiengängen, bis 15. September bei Studiengängen ohne Beschränkung",
+  "frist": "2027-07-15",
+  "link": "https://www.uni-konstanz.de/studieren/vor-dem-studium/bewerbung-und-immatrikulation/bachelor-und-erste-juristische-pruefung/deutscher-hochschulzugang-oder-deutsche-staatsangehoerigkeit/",
+  "kurzbeschreibung": "Staatliche Campus-Universität am Bodensee, bekannt für Politik, Wirtschaft, Psychologie und Naturwissenschaften. Die Bewerbungsfristen sind Ausschlussfristen. Psychologie und Biologie sind zulassungsbeschränkt, Physik und Wirtschaftswissenschaften laufen bis 15. September.",
+  "studiengaenge": [
+   "Wirtschaftswissenschaften (BSc)",
+   "Politik- und Verwaltungswissenschaft",
+   "Psychologie (BSc)",
+   "Physik (BSc)",
+   "Rechtswissenschaft"
+  ],
+  "zulassung": "Abitur, zulassungsbeschränkte Fächer mit NC, die Fristen sind Ausschlussfristen.",
+  "sprache": "de"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "quelle_qualitaet": "A",
+  "id": "cbs-copenhagen",
+  "name": "Copenhagen Business School (CBS), Bachelor",
+  "anbieter": "Copenhagen Business School",
+  "felder": [
+   "wirtschaft",
+   "finanzen",
+   "intl-business",
+   "marketing",
+   "politik",
+   "informatik"
+  ],
+  "land": "DK",
+  "ort": "Kopenhagen",
+  "lat": 55.6811,
+  "lng": 12.5313,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en",
+   "da"
+  ],
+  "kosten_pro_jahr_eur": 0,
+  "kosten_label": "staatlich",
+  "kosten_hinweis": "Laut CBS zahlen EU/EWR- und Schweizer Staatsangehörige keine Studiengebühren und keine Bewerbungsgebühr.",
+  "zeitraum": "Studienstart im September. Wer einen ausländischen Schulabschluss hat (auch IB oder Abitur), bewirbt sich bis 15. März um 12 Uhr mitteleuropäischer Zeit, in beiden Quoten",
+  "frist": "2027-03-15",
+  "link": "https://www.cbs.dk/en/study-programmes/bachelor-programmes/application-and-admission",
+  "kurzbeschreibung": "Dänische Wirtschaftsuniversität in Kopenhagen, für EU-Bürger gebührenfrei. Ein Teil der Bachelorprogramme läuft auf Englisch. Das Abitur zählt dort als ausländischer Abschluss, deshalb gilt die Frist 15. März.",
+  "studiengaenge": [
+   "International Business (englisch)",
+   "Business Administration and Digital Management",
+   "Economics and Business Administration",
+   "Business, Asian Language and Culture"
+  ],
+  "zulassung": "Bewerbung über die Bewerbungsplattform optagelse.dk, Notenquote und Quote 2, Mindestanforderungen je nach Studiengang.",
+  "sprache": "en"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "quelle_qualitaet": "A",
+  "id": "sciences-po-college",
+  "name": "Sciences Po, Bachelor (Undergraduate College)",
+  "anbieter": "Sciences Po",
+  "felder": [
+   "politik",
+   "diplomatie",
+   "wirtschaft",
+   "jura",
+   "intl-business",
+   "medien",
+   "internationale-orgs"
+  ],
+  "land": "FR",
+  "ort": "Paris und weitere Campus",
+  "lat": 48.8545,
+  "lng": 2.328,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en",
+   "fr"
+  ],
+  "kosten_pro_jahr_eur": 5740,
+  "kosten_bis_eur": 14900,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Für Studierende, deren Haushalt im Europäischen Wirtschaftsraum steuerpflichtig ist, 2026/27 zwischen 0 und 14.900 Euro pro Jahr je nach Haushaltseinkommen. Der Durchschnitt für europäische Studierende lag 2024/25 bei 5.740 Euro. Bewerbungsgebühr 150 Euro.",
+  "zeitraum": "Studienstart September 2027. Internationale Bewerbung mit ausländischem Schulabschluss läuft laufend bis 1. März 2027 (23:59 Uhr Paris-Zeit)",
+  "frist": "2027-03-01",
+  "link": "https://www.sciencespo.fr/admissions/en/undergraduate/foreign-secondary-schools/",
+  "kurzbeschreibung": "Französische Eliteschule für Politik, Internationale Beziehungen, Recht und Wirtschaft, dreijähriger Bachelor mit einem Auslandsjahr. Fast nur Auswahl über Bewerbung und Gespräch. Die Gebühr richtet sich nach dem Einkommen der Eltern.",
+  "studiengaenge": [
+   "Politik und Regierung",
+   "Wirtschaft und Gesellschaft",
+   "Politik und Wirtschaft",
+   "Europa und Internationales",
+   "Doppelabschlüsse mit Partneruniversitäten"
+  ],
+  "zulassung": "Unterlagen, Essays und Gespräch, getrennter Bewerbungsweg für ausländische Schulabschlüsse, Sprachnachweis (Französisch oder Englisch je nach Campus).",
+  "sprache": "en"
+ },
+ {
+  "typ": "hochschule",
+  "stufen": [
+   "mittel",
+   "abschluss"
+  ],
+  "online": false,
+  "zuletzt_geprueft": "2026-11-22",
+  "zielgruppe": "schueler",
+  "quelle_qualitaet": "A",
+  "id": "trinity-college-dublin",
+  "name": "Trinity College Dublin, Bachelor",
+  "anbieter": "Trinity College Dublin",
+  "felder": [
+   "wirtschaft",
+   "politik",
+   "jura",
+   "sprachen",
+   "informatik",
+   "naturwiss",
+   "medizin",
+   "psychologie"
+  ],
+  "land": "IE",
+  "ort": "Dublin",
+  "lat": 53.3438,
+  "lng": -6.2546,
+  "rechtsform": "oeffentlich",
+  "unterrichtssprache": [
+   "en"
+  ],
+  "kosten_pro_jahr_eur": 2500,
+  "kosten_label": "kostenpflichtig",
+  "kosten_hinweis": "Für EU-Studierende mit Anspruch auf die staatliche Gebührenübernahme fällt der Studierendenbeitrag von 2.500 Euro pro Jahr (2026) an. Einzelne Kurse haben höhere Gesamtgebühren, die Seite listet Studiengebühren je Kurs.",
+  "zeitraum": "Studienstart im September. EU-Bewerber bewerben sich über das irische Zentralbüro CAO, Angebote kommen im August. Für Kurse mit begrenztem Zugang endet die Frist am 1. Februar des Einstiegsjahres",
+  "frist": "2027-02-01",
+  "link": "https://www.tcd.ie/study/apply/making-an-application/undergraduate/cao/",
+  "kurzbeschreibung": "Älteste Universität Irlands, englischsprachig und als EU-Land nach dem Brexit für EU-Bürger ohne Overseas-Gebühr. Die Zulassung läuft über Punkte aus den Abschlussnoten, die Bewerbung über das CAO.",
+  "studiengaenge": [
+   "Business, Economic and Social Studies (BESS)",
+   "Law",
+   "Computer Science",
+   "European Studies",
+   "Psychology"
+  ],
+  "zulassung": "Bewerbung über das CAO, Zulassung nach Punkten aus dem Schulabschluss, Englischnachweis nur wenn nicht Muttersprache.",
+  "sprache": "en"
  }
 ]

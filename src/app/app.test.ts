@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { parseMarkers, visibleText } from './markers';
-import { COST_STEPS, defaultFilters, filterOffers, OFFERS } from './offers';
+import { alevelToIb, COST_STEPS, defaultFilters, emptyFit, filterOffers, fitFor, OFFERS, profileToIb, type Offer } from './offers';
 
 describe('markers', () => {
   it('reads every marker and hides it from the text', () => {
@@ -19,7 +19,26 @@ describe('markers', () => {
     ]);
   });
   it('reads recommendations', () => {
-    expect(parseMarkers('[[EMPFEHLUNGEN: felder=mode,design | stufe=jung]]').recommendation).toEqual({ felder: ['mode', 'design'], stufe: 'jung' });
+    expect(parseMarkers('[[EMPFEHLUNGEN: felder=mode,design | stufe=jung]]').recommendation).toEqual({ felder: ['mode', 'design'], stufe: 'jung', typen: [], land: null, ids: [], sprachen: [] });
+  });
+  it('reads type and country presets and ignores unknown values', () => {
+    expect(parseMarkers('[[EMPFEHLUNGEN: felder=wirtschaft | stufe=abschluss | typen=hochschule,quatsch | land=ausland]]').recommendation).toEqual({
+      felder: ['wirtschaft'],
+      stufe: 'abschluss',
+      typen: ['hochschule'],
+      land: 'ausland',
+      ids: [],
+      sprachen: [],
+    });
+    expect(parseMarkers('[[EMPFEHLUNGEN: felder=ki | sprache=en, DE,xx]]').recommendation?.sprachen).toEqual(['en', 'de']);
+    expect(parseMarkers('[[EMPFEHLUNGEN: felder=wirtschaft | ids=bocconi-bsc, whu-bachelor,<x>]]').recommendation?.ids).toEqual(['bocconi-bsc', 'whu-bachelor']);
+    expect(parseMarkers('[[EMPFEHLUNGEN: felder=ki | land=mars]]').recommendation?.land).toBeNull();
+  });
+  it('reads map ids and allows the studium mode button', () => {
+    const p = parseMarkers('Text\n[[KARTE: bocconi-bsc, whu-bachelor,<b>]]\n[[BUTTONS: studium:Weiter mit Studium]]');
+    expect(p.map).toEqual(['bocconi-bsc', 'whu-bachelor']);
+    expect(p.buttons).toEqual([{ mode: 'studium', label: 'Weiter mit Studium' }]);
+    expect(p.text).toBe('Text');
   });
   it('ignores a broken profile', () => {
     expect(parseMarkers('[[PROFIL: {kaputt]]').profile).toBeNull();
@@ -57,5 +76,42 @@ describe('offers', () => {
     const list = filterOffers(OFFERS, { ...defaultFilters(), sort: 'frist' }, new Date('2026-11-25'));
     const first = list[0];
     expect(first.frist && Date.parse(first.frist) >= Date.parse('2026-11-25')).toBe(true);
+  });
+});
+
+describe('fit check', () => {
+  const uni = (richtwerte?: Offer['richtwerte']): Offer => ({ ...OFFERS.find((o) => o.typ === 'hochschule')!, richtwerte });
+  const abi = (note: number, faecher: string[] = []) => ({ ...emptyFit(), abschluss: 'abitur' as const, note, faecher });
+  it('converts grades to IB points', () => {
+    expect(profileToIb(abi(1.0))).toBe(45);
+    expect(profileToIb(abi(4.0))).toBe(24);
+    expect(profileToIb({ ...emptyFit(), abschluss: 'ib', ib: 33 })).toBe(33);
+    expect(alevelToIb(['A', 'A*', 'A*'])).toBe(41);
+    expect(alevelToIb('A*AA')).toBe(39);
+    expect(alevelToIb('AAB')).toBe(36);
+    expect(alevelToIb('A*BB')).toBe(34);
+    expect(alevelToIb('BBC')).toBe(30);
+    expect(profileToIb(emptyFit())).toBeNull();
+  });
+  it('rates against the guide value', () => {
+    expect(fitFor(uni({ ib_punkte: 38, ib_skala: 45 }), abi(1.5))?.status).toBe('ueber'); // 41.5
+    expect(fitFor(uni({ ib_punkte: 38, ib_skala: 45 }), abi(2.2))?.status).toBe('nahe'); // 36.6
+    expect(fitFor(uni({ ib_punkte: 38, ib_skala: 45 }), abi(2.5))?.status).toBe('unter'); // 34.5
+    // 42 scale: two points off the user's value
+    expect(fitFor(uni({ ib_punkte: 38, ib_skala: 42 }), { ...emptyFit(), abschluss: 'ib', ib: 39 })?.status).toBe('nahe');
+    expect(fitFor(uni(), abi(1.0))?.status).toBe('keine');
+    expect(fitFor(uni({ alevel: 'AAA' }), abi(2.3))?.status).toBe('nahe'); // 35.9 vs AAA = 37
+  });
+  it('lists missing Higher Level subjects and leaves other offers alone', () => {
+    expect(fitFor(uni({ ib_punkte: 30, hl_pflicht: ['mathe', 'naturwiss'] }), abi(2, ['mathe']))?.pflicht).toEqual(['Voraussetzung prüfen: Naturwissenschaft auf Higher Level']);
+    expect(fitFor(OFFERS.find((o) => o.typ !== 'hochschule' && o.typ !== 'studiengang')!, abi(1))).toBeNull();
+  });
+  it('Nur Passende hides only universities below the guide value', () => {
+    const f = { ...defaultFilters([], null, ['hochschule']), nurPassende: true };
+    const all = filterOffers(OFFERS, { ...f, nurPassende: false }, new Date(), abi(3.5));
+    const list = filterOffers(OFFERS, f, new Date(), abi(3.5));
+    expect(list.length).toBeLessThan(all.length);
+    expect(list.every((o) => fitFor(o, abi(3.5))?.status !== 'unter')).toBe(true);
+    expect(list.some((o) => !o.richtwerte)).toBe(true);
   });
 });

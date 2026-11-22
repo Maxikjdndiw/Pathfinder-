@@ -3,12 +3,20 @@
  * The frontend turns them into buttons and cards and never shows them to the student.
  */
 export interface ModeButton {
-  mode: 'orientierung' | 'cv_linkedin' | 'praktika';
+  mode: 'orientierung' | 'cv_linkedin' | 'praktika' | 'studium';
   label: string;
 }
 export interface Recommendation {
   felder: string[];
   stufe: 'jung' | 'mittel' | 'abschluss' | null;
+  /** optional: preset the type filter, for example hochschule */
+  typen: string[];
+  /** optional: preset the country filter */
+  land: 'de' | 'ausland' | 'online' | null;
+  /** optional: exactly these offers first (the ones the coach talks about) */
+  ids: string[];
+  /** optional: preset the language chips, codes like de, en */
+  sprachen: string[];
 }
 export interface Parsed {
   /** text without markers, safe to show */
@@ -18,14 +26,19 @@ export interface Parsed {
   profile: Record<string, unknown> | null;
   recommendation: Recommendation | null;
   summary: string | null;
+  /** [[KARTE: id1,id2]]: offer ids to highlight on the map (Studium mode) */
+  map: string[] | null;
 }
 
-const MODES = new Set(['orientierung', 'cv_linkedin', 'praktika']);
+const MODES = new Set(['orientierung', 'cv_linkedin', 'praktika', 'studium']);
 const STUFEN = new Set(['jung', 'mittel', 'abschluss']);
-const MARKER = /\[\[\s*(OPTIONEN|BUTTONS|PROFIL|EMPFEHLUNGEN|ZUSAMMENFASSUNG|SYSTEM)\s*:([\s\S]*?)\]\]/g;
+const TYPEN = new Set(['kurs', 'sommerkurs', 'praktikum', 'wettbewerb', 'hochschule', 'studiengang', 'freiwilligendienst', 'simulation', 'onlinekurs']);
+const LAENDER = new Set(['de', 'ausland', 'online']);
+const SPRACHEN = new Set(['de', 'en', 'es', 'it', 'fr', 'nl', 'da']);
+const MARKER = /\[\[\s*(OPTIONEN|BUTTONS|PROFIL|EMPFEHLUNGEN|ZUSAMMENFASSUNG|KARTE|SYSTEM)\s*:([\s\S]*?)\]\]/g;
 
 export function parseMarkers(raw: string): Parsed {
-  const out: Parsed = { text: '', options: [], buttons: [], profile: null, recommendation: null, summary: null };
+  const out: Parsed = { text: '', options: [], buttons: [], profile: null, recommendation: null, summary: null, map: null };
   for (const m of raw.matchAll(MARKER)) {
     const kind = m[1];
     const body = m[2].trim();
@@ -59,7 +72,32 @@ export function parseMarkers(raw: string): Parsed {
         .map((f) => f.trim().toLowerCase())
         .filter(Boolean);
       const stufe = String(parts.stufe ?? '').trim().toLowerCase();
-      out.recommendation = { felder, stufe: STUFEN.has(stufe) ? (stufe as Recommendation['stufe']) : null };
+      const typen = String(parts.typen ?? '')
+        .split(',')
+        .map((t) => t.trim().toLowerCase())
+        .filter((t) => TYPEN.has(t));
+      const land = String(parts.land ?? '').trim().toLowerCase();
+      out.recommendation = {
+        felder,
+        stufe: STUFEN.has(stufe) ? (stufe as Recommendation['stufe']) : null,
+        typen,
+        land: LAENDER.has(land) ? (land as Recommendation['land']) : null,
+        sprachen: String(parts.sprache ?? parts.sprachen ?? '')
+          .split(',')
+          .map((c) => c.trim().toLowerCase())
+          .filter((c) => SPRACHEN.has(c)),
+        ids: String(parts.ids ?? '')
+          .split(',')
+          .map((id) => id.trim())
+          .filter((id) => /^[a-z0-9-]{2,80}$/.test(id))
+          .slice(0, 30),
+      };
+    } else if (kind === 'KARTE') {
+      out.map = body
+        .split(',')
+        .map((id) => id.trim())
+        .filter((id) => /^[a-z0-9-]{2,80}$/.test(id))
+        .slice(0, 60);
     } else if (kind === 'ZUSAMMENFASSUNG') {
       out.summary = body;
     }

@@ -31,15 +31,31 @@ const wissen = read('wissen.md');
 const sections = wissen.split(/\n(?=## )/).filter((s) => s.startsWith('## '));
 const byField = Object.fromEntries(FIELD_IDS.map((id) => [id, []]));
 const general = [];
+const studium = [];
 for (const s of sections) {
   const head = s.split('\n')[0];
   if (/^## (Noch offen|Quellen)/.test(head)) continue; // notes for the team, not for the coach
+  // only for mode 4 (Studium), so the other modes do not carry it
+  if (/Modus "studium"/.test(head)) {
+    studium.push(s.replace(/\n---\s*$/, '').trim());
+    continue;
+  }
   const m = [...head.matchAll(/Feld "([a-z-]+)"/g)].map((x) => x[1]);
   if (/^## Lehramt, Ergänzung/.test(head)) m.push('lehramt');
   const clean = s.replace(/\n---\s*$/, '').trim();
   if (m.length) m.forEach((id) => byField[id]?.push(clean));
   else general.push(clean);
 }
+
+// 3b. Universities for mode 4: one line each, so the coach can name real ids in [[KARTE: ...]]
+const angebote = JSON.parse(read('angebote.json'));
+const hochschulListe = angebote
+  .filter((o) => o.typ === 'hochschule' || o.typ === 'studiengang')
+  .map((o) => `${o.id} | ${o.name} | ${o.land}, ${o.ort} | ${o.rechtsform ?? ''} | ${o.kosten_label ?? 'Kosten siehe Karte'} | Felder: ${o.felder.join(',')}`)
+  .join('\n');
+
+// 3c. All offers, one short line each: the ids the coach may use in ids= (every mode)
+const angebotsIndex = angebote.map((o) => `${o.id} | ${o.name} | ${o.typ} | ${o.land}`).join('\n');
 
 // 4. Templates (Teil A) and approved tips (Teil B)
 const vr = read('vorlagen-recht.md');
@@ -56,6 +72,9 @@ export const WISSEN_GENERAL = ${JSON.stringify(general.join('\n\n'))};
 export const WISSEN_BY_FIELD: Record<string, string> = ${JSON.stringify(Object.fromEntries(Object.entries(byField).map(([k, v]) => [k, v.join('\n\n')])))};
 export const VORLAGEN = ${JSON.stringify(teilA)};
 export const TIPPS_ALLGEMEIN = ${JSON.stringify(teilB)};
+export const WISSEN_STUDIUM = ${JSON.stringify(studium.join('\n\n'))};
+export const HOCHSCHUL_LISTE = ${JSON.stringify(hochschulListe)};
+export const ANGEBOTS_INDEX = ${JSON.stringify(angebotsIndex)};
 `;
 mkdirSync(new URL('../netlify/functions/_shared/', import.meta.url), { recursive: true });
 writeFileSync(new URL('../netlify/functions/_shared/data.generated.ts', import.meta.url), out);

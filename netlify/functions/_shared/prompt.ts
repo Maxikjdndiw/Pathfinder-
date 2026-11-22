@@ -14,10 +14,13 @@ import {
   VORLAGEN,
   WISSEN_BY_FIELD,
   WISSEN_GENERAL,
+  WISSEN_STUDIUM,
+  HOCHSCHUL_LISTE,
+  ANGEBOTS_INDEX,
 } from './data.generated';
 import { MENTORS } from '../../../src/content/mentors';
 
-export const MODES = ['orientierung', 'cv_linkedin', 'praktika'] as const;
+export const MODES = ['orientierung', 'cv_linkedin', 'praktika', 'studium'] as const;
 export type Mode = (typeof MODES)[number];
 
 export interface Profile {
@@ -50,6 +53,11 @@ const STATIC_PROMPT = `${PROMPT_CORE}
 Stand: ${STAND}
 Feld-Kennungen (für EMPFEHLUNGEN und PROFIL): ${FIELD_IDS.join(', ')}
 
+<angebote>
+Alle Angebote der geprüften Liste (Kennung | Name | Typ | Land). Nur diese Kennungen gibt es, zum Beispiel für ids= und KARTE:
+${ANGEBOTS_INDEX}
+</angebote>
+
 <feldprofile>
 ${COST_LEGEND}
 
@@ -80,7 +88,12 @@ export function cleanFields(felder: unknown): string[] {
 
 export function buildSystem(mode: Mode, profile: Profile | null): Anthropic.TextBlockParam[] {
   const felder = cleanFields(profile?.felder);
-  const wissen = [WISSEN_GENERAL, ...felder.map((f) => WISSEN_BY_FIELD[f]).filter(Boolean)].join('\n\n');
+  const wissen = [
+    WISSEN_GENERAL,
+    ...felder.map((f) => WISSEN_BY_FIELD[f]).filter(Boolean),
+    // mode 4: how studying works per country, and the universities with their ids for [[KARTE]]
+    ...(mode === 'studium' ? [WISSEN_STUDIUM, `Hochschulen in der Liste (id | Name | Land, Ort | Rechtsform | Kosten | Felder):\n${HOCHSCHUL_LISTE}`] : []),
+  ].join('\n\n');
   const profil = profile && Object.keys(profile).length ? JSON.stringify(profile) : 'leer';
   return [
     { type: 'text', text: STATIC_PROMPT, cache_control: { type: 'ephemeral' } },

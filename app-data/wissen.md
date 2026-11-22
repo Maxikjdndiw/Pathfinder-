@@ -372,3 +372,31 @@ Alle 25 Felder haben eine Faktenbasis. Vertiefen: Mappenvorgaben je Hochschule, 
 - Frist Runde 1: 14. Dezember 2026.
 - Die KI sagt ehrlich: Gebühren stehen nicht auf der Startseite, die Anerkennung der Abschlüsse in Deutschland ist vor einer Bewerbung selbst zu prüfen. Die KI vergleicht nicht mit Bocconi oder IE, solange keine geprüften Daten vorliegen.
 - Hinweis: Tetr bietet auch Sommerprogramme unter dem Namen "Pathfinder" an. Das ist nur eine Namensähnlichkeit, kein Bezug zu Pathfinder DE.
+
+
+## Studium: Wissensblock für Modus 4 (Modus "studium")
+
+Stand: 22. November 2026. Alle Gebühren sind gerundet und können sich ändern. Nenne Zahlen nur aus den Karten oder diesem Block und sage bei Unsicherheit, dass der Nutzer die Anbieterseite prüfen soll. Erfinde keine Hochschulen, Gebühren oder Fristen.
+
+### Wie das Studium in den Ländern funktioniert
+- Deutschland, staatlich: keine Studiengebühren, nur Semesterbeitrag (etwa 100 bis 400 Euro pro Semester). Viele beliebte Fächer sind zulassungsbeschränkt (NC, Numerus Clausus), Bewerbung oft über hochschulstart.de oder direkt, Wintersemester meist bis 15. Juli.
+- Deutschland, privat (WHU, EBS, Frankfurt School): Gebühren etwa 15.000 bis 18.000 Euro pro Jahr, eigenes Auswahlverfahren mit Test und Gespräch, Auslandssemester fast immer inklusive. BAföG kann helfen, manche Hochschulen vergeben Stipendien.
+- Großbritannien: Bewerbung über UCAS, Oxford und Cambridge meist Mitte Oktober, die meisten anderen Mitte Januar. Bachelor dauert drei Jahre. Seit dem Brexit zahlen EU-Studierende die hohe Overseas-Gebühr, etwa 30.000 bis 60.000 Euro pro Jahr je nach Fach. Dazu hohe Lebenshaltung, besonders in London.
+- USA: Bewerbung über die Common App mit Essays und Empfehlungen, Frist Regular Decision meist Anfang Januar. Gesamtkosten (Cost of Attendance) bei Top-Hochschulen etwa 90.000 bis 100.000 Dollar pro Jahr, aber bedarfsabhängige Finanzhilfe kann viel abdecken. Harvard, Yale und Princeton vergeben Hilfe laut Vergleichsportalen ohne Rücksicht auf den Finanzbedarf, bei anderen kann der Bedarf die Zulassung beeinflussen. Vier Jahre Bachelor, Studienfach wird oft erst später festgelegt.
+- Schweiz: ETH Zürich und Universität St. Gallen (HSG) sind staatlich. Gebühren niedrig bis mittel (ETH CHF 730 bis 2.190 pro Semester, HSG CHF 3.343,50 pro Semester für Ausländer), aber die Lebenshaltung ist sehr teuer. ETH hat eine Aufnahmeprüfung, falls der Abschluss nicht reicht, Deutsch auf C1.
+- Spanien: staatliche Universitäten sind günstig, private (Esade, IE, EU Business School) kosten etwa 10.000 bis 30.000 Euro pro Jahr. Vier Jahre Bachelor bei den meisten privaten, Unterricht oft auf Englisch.
+- Italien: staatliche Universitäten staffeln die Gebühr nach Einkommen (ISEE), oft 157 bis etwa 4.000 Euro pro Jahr. Eingangstests (zum Beispiel TOL am Politecnico di Milano). Private (Bocconi, LUISS, Istituto Marangoni) kosten etwa 15.000 bis 26.000 Euro pro Jahr.
+- Niederlande: gesetzliche Gebühr für EU-Studierende etwa 2.700 Euro pro Jahr, Bewerbung über Studielink, oft bis Mitte Januar, viele englischsprachige Programme.
+
+### Was bei der Wahl hilft
+- Kosten ehrlich rechnen: Studiengebühr plus Lebenshaltung. Gib Lebenshaltung nur als grobe Schätzung an.
+- Sprache: Unterrichtssprache und nötige Sprachtests (zum Beispiel IELTS, TOEFL) früh klären.
+- Anerkennung: Bei privaten Hochschulen und neuen Colleges (zum Beispiel Tetr) Akkreditierung und Anerkennung in Deutschland selbst prüfen lassen.
+- Bewerbungstermine liegen oft ein Jahr vor Studienstart, daher zuerst die Frist nennen.
+- Auslands-BAföG, Stipendien (zum Beispiel Studienstiftung, Deutschlandstipendium, DAAD) nur allgemein erwähnen und auf offizielle Seiten verweisen.
+- Staatlich oder privat ist keine Qualitätsaussage. Zeige beide Seiten, auch günstige staatliche Wege zum gleichen Ziel (zum Beispiel Mannheim, Maastricht, Bologna).
+
+### Ablauf des Modus
+1. Frage zuerst nach Interessen, Land, Budget, Sprache und Notenstand, jeweils eine Frage.
+2. Zeige danach Karten mit [[EMPFEHLUNGEN: felder=... | stufe=abschluss | typen=hochschule | land=...]].
+3. Erkläre pro Hochschule in zwei Sätzen, warum sie passt oder nicht, und nenne Frist und Zulassung.

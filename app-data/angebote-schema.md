@@ -97,3 +97,40 @@ Hinweise zur Ehrlichkeit:
 - Praktika mit Qualität C stammen aus Jobportalen, die KI soll dazu sagen: "Bitte auf der Karriereseite des Unternehmens prüfen".
 - Termine aus 2026 sind Beispiele für den Rhythmus, nicht für 2027. Die KI nennt sie nicht als aktuelle Frist.
 - Viele Beratungs- und Bankprogramme (McKinsey, Bain, BCG, Roland Berger, Oliver Wyman) sind nur für Studierende. Sie gehören nicht als Schülerpraktikum in die Liste.
+
+## Ergänzungen vom 22.11.2026 (Studium)
+
+Neue optionale Felder für Hochschulen und Studiengänge:
+- `rechtsform`: `oeffentlich` oder `privat`. Die Karte zeigt eine Kennzeichnung, der Filter "Rechtsform" grenzt danach ein.
+- `unterrichtssprache`: Liste, zum Beispiel `["de", "en"]` (Kürzel de, en, es, it, fr, nl, da). Der Sprachfilter nutzt sie; Angebote ohne dieses Feld zählen mit `sprache` (Standard de). Der Marker `[[EMPFEHLUNGEN]]` kann mit `sprache=de,en` vorauswählen.
+- `kosten_bis_eur`: Obergrenze, wenn die Gebühr eine Spanne ist (zum Beispiel nach Einkommen gestaffelt). `kosten_pro_jahr_eur` ist dann die Untergrenze.
+- `lebenshaltung_hinweis`: freier Text zur groben Lebenshaltung am Ort.
+- `studiengaenge`: Liste von Studiengängen; die Karte zeigt höchstens drei.
+- `zulassung`: ein Satz zur Zulassung (Test, Gespräch, NC, Bewerbungsweg).
+- `lat`, `lng`: Lage für die Weltkarte im Modus studium. Ohne Koordinaten (zum Beispiel bei mehreren Standorten) steht die Hochschule unter der Karte.
+
+Länder: `DE` gilt als Deutschland. Alle anderen Codes (zum Beispiel `GB`, `US`, `CH`, `ES`, `IT`, `NL`, `AT`, `CN`, `HK`, `DK`, `FR`, `IE` und `INT`) gelten im Filter und auf der Karte als Ausland; reine Online-Angebote (`online: true`) stehen unter "Online".
+
+Neuer Modus `studium` (Modus 4 im Prompt). Der Marker `[[EMPFEHLUNGEN]]` kann zusätzlich `typen=...`, `land=de|ausland|online` und `ids=a,b` (genau diese Karten zuerst) setzen, der Marker `[[KARTE: id1,id2]]` markiert Hochschulen auf der Karte.
+
+## Ergänzungen vom 22.11.2026 (Passt das?)
+
+Hochschulen können optional `richtwerte` haben:
+
+```json
+"richtwerte": {
+  "ib_punkte": 38,
+  "ib_skala": 45,
+  "alevel": "A*AA",
+  "hl_pflicht": ["mathe"],
+  "hinweis": "Kurzer Satz zur Zulassung",
+  "quelle": "offizielle Seiten der Hochschule, Stand ..."
+}
+```
+
+- `ib_punkte`: ungefährer IB-Richtwert. `ib_skala`: 45 (mit Bonuspunkten) oder 42 (ohne); bei 42 werden vom Wert des Schülers 2 Punkte abgezogen.
+- `alevel`: A-Level-Richtwert. Fehlt `ib_punkte`, rechnet das Frontend `alevel` mit derselben Tabelle in IB-Punkte um.
+- `hl_pflicht`: Fächer, die auf Higher Level (Leistungskurs) verlangt werden: `mathe`, `naturwiss`.
+- Ohne `richtwerte` zeigt die Karte "Keine Angabe".
+- Umrechnung in IB-Punkte (Skala 45): Abitur 45 minus (Note minus 1) mal 7, also 1,0 = 45 und 4,0 = 24. A-Levels: A*A*A = 41, A*AA = 39, AAA = 37, AAB = 36, ABB = 34, BBB = 32, darunter 30.
+- Ergebnis: Über dem Richtwert (mindestens der Wert), Nahe am Richtwert (bis 2 Punkte darunter), Unter dem Richtwert, Keine Angabe. Die Noten bleiben im Browser (localStorage) und gehen nie an den Server.

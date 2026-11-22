@@ -10,8 +10,16 @@ export function mockReply(mode: Mode, messages: { role: string; content: string;
     text = '[[ZUSAMMENFASSUNG: Schüler aus Klasse 10, interessiert an Wirtschaft und Mode. Hat ein erstes Lebenslauf-Gerüst. Offene Frage: Wie findet man ein Praktikum im Modebereich in Schleswig-Holstein?]]';
   } else if (mode === 'cv_linkedin') {
     text = 'Testmodus: Lass uns mit deinem Lebenslauf anfangen. In welche Richtung soll er gehen, eher Wirtschaft oder eher Mode?\n[[BUTTONS: praktika:Weiter mit Praktika und Sommerkursen]]';
+  } else if (/nochmal/i.test(last) && /shanghai/i.test(last)) {
+    text = 'Testmodus: Hier sind die beiden Hochschulen in Shanghai noch einmal.\n[[EMPFEHLUNGEN: felder=wirtschaft | stufe=abschluss | typen=hochschule | land=ausland | ids=nyu-shanghai,fudan-uipe]]\n[[KARTE: nyu-shanghai,fudan-uipe]]';
+  } else if (/eher business/i.test(last)) {
+    text = 'Testmodus: Dann schauen wir auf Business.\n[[EMPFEHLUNGEN: felder=intl-business | stufe=abschluss | typen=hochschule | ids=wu-wien-bachelor,ie-university-bba]]\n[[KARTE: wu-wien-bachelor,ie-university-bba]]';
+  } else if (mode === 'studium') {
+    text = turn === 1
+      ? 'Testmodus: Lass uns Hochschulen finden. Was interessiert dich, und wo möchtest du studieren?'
+      : 'Testmodus: Hier sind Hochschulen für Wirtschaft in Deutschland und im Ausland. Die Karte zeigt, wo sie liegen.\n[[EMPFEHLUNGEN: felder=wirtschaft | stufe=abschluss | typen=hochschule | sprache=en]]\n[[KARTE: bocconi-bsc,uni-mannheim-bwl,whu-bachelor,maastricht-bachelor,ie-university-bba]]';
   } else if (mode === 'praktika') {
-    text = 'Testmodus: Praktika findest du über deine Schule, über Kammern und indem du Firmen direkt anschreibst. Wann hättest du Zeit, in den Ferien oder an Brückentagen?';
+    text = 'Testmodus: Praktika findest du über deine Schule, über Kammern und indem du Firmen direkt anschreibst. Wann hättest du Zeit, in den Ferien oder an Brückentagen?\n[[BUTTONS: studium:Weiter mit Studium]]';
   } else if (turn === 1) {
     text = 'Testmodus: Hi! Wir schauen zusammen, welche Wege zu dir passen könnten. In welche Klasse gehst du gerade?';
   } else if (turn === 2) {

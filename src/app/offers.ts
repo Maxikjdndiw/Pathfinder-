@@ -41,7 +41,48 @@ export interface Offer {
   sprache?: 'de' | 'en';
   /** free text for unclear prices, for example subscriptions */
   kosten_hinweis?: string;
+  /** universities: public or private */
+  rechtsform?: 'oeffentlich' | 'privat';
+  unterrichtssprache?: string[];
+  /** upper end when the fee is a range */
+  kosten_bis_eur?: number | null;
+  lebenshaltung_hinweis?: string;
+  studiengaenge?: string[];
+  zulassung?: string;
+  /** position on the world map (Studium mode) */
+  lat?: number;
+  lng?: number;
+  /** universities: rough entry guide values (Studium fit check) */
+  richtwerte?: Richtwerte;
 }
+
+export interface Richtwerte {
+  ib_punkte?: number;
+  /** 45 (with bonus points) or 42 (without) */
+  ib_skala?: 45 | 42;
+  /** for example "AAA" or "A*AA" */
+  alevel?: string;
+  /** subjects required on Higher Level: mathe, naturwiss */
+  hl_pflicht?: string[];
+  hinweis?: string;
+  quelle?: string;
+}
+
+/** teaching languages for the language filter (codes as in unterrichtssprache) */
+export const SPRACHE_LABEL: Record<string, string> = {
+  de: 'Deutsch',
+  en: 'Englisch',
+  es: 'Spanisch',
+  it: 'Italienisch',
+  fr: 'Französisch',
+  nl: 'Niederländisch',
+  da: 'Dänisch',
+};
+
+/** the languages of an offer: unterrichtssprache, else the older field sprache (default German) */
+export const offerLanguages = (o: Offer): string[] => (o.unterrichtssprache?.length ? o.unterrichtssprache : [o.sprache ?? 'de']);
+
+export const RECHTSFORM_LABEL: Record<'oeffentlich' | 'privat', string> = { oeffentlich: 'Öffentlich', privat: 'Privat' };
 
 export const OFFERS = raw as Offer[];
 
@@ -78,37 +119,56 @@ export interface Filters {
   stufe: Stufe | 'alle';
   /** online: international online offers (land INT) */
   land: 'alle' | 'de' | 'ausland' | 'online';
+  rechtsform: 'alle' | 'oeffentlich' | 'privat';
+  /** language codes; an offer matches if any of its languages is chosen (none chosen: all) */
+  sprachen: string[];
   /** indexes into COST_STEPS */
   kostenMin: number;
   kostenMax: number;
   typen: Typ[];
   sort: 'frist' | 'kosten' | 'passung';
+  /** hides universities "Unter dem Richtwert" (fit check), keeps "Keine Angabe" */
+  nurPassende: boolean;
 }
 
-export const defaultFilters = (felder: string[] = [], stufe: Stufe | null = null): Filters => ({
+export const defaultFilters = (
+  felder: string[] = [],
+  stufe: Stufe | null = null,
+  typen: string[] = [],
+  land: Filters['land'] | null = null,
+  sprachen: string[] = [],
+): Filters => ({
   felder,
   stufe: stufe ?? 'alle',
-  land: 'alle',
+  land: land ?? 'alle',
+  rechtsform: 'alle',
+  sprachen: sprachen.filter((c) => c in SPRACHE_LABEL),
   kostenMin: 0,
   kostenMax: COST_STEPS.length - 1,
-  typen: [],
+  typen: typen.filter((t): t is Typ => t in TYP_LABEL),
   sort: 'passung',
+  nurPassende: false,
 });
 
 const matchCount = (o: Offer, felder: string[]) => o.felder.filter((f) => felder.includes(f)).length;
 
-export function filterOffers(offers: Offer[], f: Filters, today = new Date()): Offer[] {
+export function filterOffers(offers: Offer[], f: Filters, today = new Date(), fit: FitProfile | null = null): Offer[] {
   const min = COST_STEPS[f.kostenMin] ?? 0;
   const maxStep = Math.min(f.kostenMax, COST_STEPS.length - 1);
   const max = maxStep === COST_STEPS.length - 1 ? Infinity : COST_STEPS[maxStep];
   const list = offers.filter((o) => {
     if (f.felder.length && !matchCount(o, f.felder)) return false;
     if (f.stufe !== 'alle' && !o.stufen.includes(f.stufe)) return false;
+    // Deutschland: DE. Online: offers that only run online. Ausland: everything else
+    // (GB, US, CH, ES, IT, NL, INT and others), for example universities with several campuses
     const land = o.land ?? 'DE';
     if (f.land === 'de' && land !== 'DE') return false;
-    if (f.land === 'ausland' && (land === 'DE' || land === 'INT')) return false;
-    if (f.land === 'online' && land !== 'INT') return false;
+    if (f.land === 'ausland' && (land === 'DE' || o.online === true)) return false;
+    if (f.land === 'online' && o.online !== true) return false;
+    if (f.rechtsform !== 'alle' && o.rechtsform !== f.rechtsform) return false;
+    if (f.sprachen.length && !offerLanguages(o).some((l) => f.sprachen.includes(l))) return false;
     if (f.typen.length && !f.typen.includes(o.typ)) return false;
+    if (f.nurPassende && fitFor(o, fit)?.status === 'unter') return false;
     // offers without a cost figure stay visible ("Kosten unbekannt")
     if (o.kosten_pro_jahr_eur !== null && (o.kosten_pro_jahr_eur < min || o.kosten_pro_jahr_eur > max)) return false;
     return true;
@@ -139,4 +199,95 @@ export function formatDate(iso: string | null): string {
 export function isPast(iso: string | null, today = new Date()): boolean {
   if (!iso) return false;
   return Date.parse(`${iso}T23:59:59`) < today.getTime();
+}
+
+// ---------- fit check "Passt das?" (Studium mode, stays in this browser) ----------
+
+export type Abschluss = 'abitur' | 'ib' | 'alevel';
+export const ALEVEL_GRADES = ['A*', 'A', 'B', 'C', 'D', 'E'] as const;
+export const LEISTUNGSFAECHER: Record<string, string> = {
+  mathe: 'Mathe',
+  naturwiss: 'Naturwissenschaft',
+  wirtschaft: 'Wirtschaft',
+  sprachen: 'Sprachen',
+  sonstiges: 'Sonstiges',
+};
+
+export interface FitProfile {
+  abschluss: Abschluss | null;
+  /** Abitur grade 1.0 to 4.0 */
+  note: number;
+  /** IB points 24 to 45 */
+  ib: number;
+  /** three A-Level grades, A* to E */
+  alevel: string[];
+  /** Leistungskurs / Higher Level subjects (keys of LEISTUNGSFAECHER) */
+  faecher: string[];
+}
+
+export const emptyFit = (): FitProfile => ({ abschluss: null, note: 2.0, ib: 34, alevel: ['A', 'A', 'B'], faecher: [] });
+
+export type FitStatus = 'ueber' | 'nahe' | 'unter' | 'keine';
+export const FIT_LABEL: Record<FitStatus, string> = {
+  ueber: 'Über dem Richtwert',
+  nahe: 'Nahe am Richtwert',
+  unter: 'Unter dem Richtwert',
+  keine: 'Keine Angabe',
+};
+
+/** A-Level combinations and their IB equivalent (45 scale), best first; anything lower is 30 */
+const ALEVEL_TABLE: [string[], number][] = [
+  [['A*', 'A*', 'A'], 41],
+  [['A*', 'A', 'A'], 39],
+  [['A', 'A', 'A'], 37],
+  [['A', 'A', 'B'], 36],
+  [['A', 'B', 'B'], 34],
+  [['B', 'B', 'B'], 32],
+];
+const rank = (g: string) => {
+  const i = (ALEVEL_GRADES as readonly string[]).indexOf(g);
+  return i < 0 ? ALEVEL_GRADES.length : i;
+};
+/** "A*AA" or ["A*","A","A"] to three grades, best first */
+const splitAlevel = (v: string | string[]): string[] =>
+  (Array.isArray(v) ? v : v.toUpperCase().match(/A\*|[A-E]/g) ?? []).slice(0, 3).sort((a, b) => rank(a) - rank(b));
+
+export function alevelToIb(v: string | string[]): number | null {
+  const g = splitAlevel(v);
+  if (g.length !== 3) return null;
+  // the first row the grades reach in every position
+  for (const [row, ib] of ALEVEL_TABLE) if (g.every((x, i) => rank(x) <= rank(row[i]))) return ib;
+  return 30;
+}
+
+/** the user's grade as IB points on the 45 scale, or null without an Abschluss */
+export function profileToIb(p: FitProfile | null): number | null {
+  if (!p?.abschluss) return null;
+  if (p.abschluss === 'abitur') return Math.round((45 - (p.note - 1) * 7) * 10) / 10;
+  if (p.abschluss === 'ib') return p.ib;
+  return alevelToIb(p.alevel);
+}
+
+export interface Fit {
+  status: FitStatus;
+  /** "Voraussetzung prüfen: Mathe auf Higher Level" lines */
+  pflicht: string[];
+}
+
+/** rough fit of the user's grade against a university's guide value; null for non-university offers or without grades */
+export function fitFor(o: Offer, p: FitProfile | null): Fit | null {
+  if (o.typ !== 'hochschule' && o.typ !== 'studiengang') return null;
+  const user = profileToIb(p);
+  if (user === null) return null;
+  const r = o.richtwerte;
+  // the guide value in IB points; universities that only name A-Levels use the same table
+  let need: number | null = r?.ib_punkte ?? null;
+  let mine = user;
+  if (need !== null && r?.ib_skala === 42) mine -= 2;
+  if (need === null && r?.alevel) need = alevelToIb(r.alevel);
+  const status: FitStatus = need === null ? 'keine' : mine >= need ? 'ueber' : mine >= need - 2 ? 'nahe' : 'unter';
+  const pflicht = (r?.hl_pflicht ?? [])
+    .filter((x) => !p!.faecher.includes(x))
+    .map((x) => `Voraussetzung prüfen: ${LEISTUNGSFAECHER[x] ?? x} auf Higher Level`);
+  return { status, pflicht };
 }
