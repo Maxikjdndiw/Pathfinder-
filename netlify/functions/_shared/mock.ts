@@ -12,6 +12,10 @@ export function mockReply(mode: Mode, messages: { role: string; content: string;
     text = 'Testmodus: Lass uns mit deinem Lebenslauf anfangen. In welche Richtung soll er gehen, eher Wirtschaft oder eher Mode?\n[[BUTTONS: praktika:Weiter mit Praktika und Sommerkursen]]';
   } else if (/nochmal/i.test(last) && /shanghai/i.test(last)) {
     text = 'Testmodus: Hier sind die beiden Hochschulen in Shanghai noch einmal.\n[[EMPFEHLUNGEN: felder=wirtschaft | stufe=abschluss | typen=hochschule | land=ausland | ids=nyu-shanghai,fudan-uipe]]\n[[KARTE: nyu-shanghai,fudan-uipe]]';
+  } else if (/mode/i.test(last) && mode === 'studium') {
+    text = 'Testmodus: Mode also. Hier ist eine Hochschule für Mode.\n[[EMPFEHLUNGEN: felder=mode,design | stufe=abschluss | typen=hochschule | land=ausland | ids=marangoni-milano]]\n[[KARTE: marangoni-milano]]';
+  } else if (/20\.?000/.test(last)) {
+    text = 'Testmodus: Mit 20.000 Euro pro Jahr bleiben diese Wege.\n[[EMPFEHLUNGEN: felder=wirtschaft | stufe=abschluss | typen=hochschule | kosten=20000 | ids=bocconi-bsc,maastricht-bachelor]]\n[[KARTE: bocconi-bsc,maastricht-bachelor]]';
   } else if (/eher business/i.test(last)) {
     text = 'Testmodus: Dann schauen wir auf Business.\n[[EMPFEHLUNGEN: felder=intl-business | stufe=abschluss | typen=hochschule | ids=wu-wien-bachelor,ie-university-bba]]\n[[KARTE: wu-wien-bachelor,ie-university-bba]]';
   } else if (mode === 'studium') {

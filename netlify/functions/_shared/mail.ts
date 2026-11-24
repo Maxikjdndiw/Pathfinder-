@@ -1,7 +1,7 @@
 /**
  * E-mail via Resend (https://resend.com). Settings, all optional:
  *   MAIL_API_KEY   the Resend API key
- *   MAIL_ABSENDER  sender, for example "Pathfinder DE <hallo@deine-domain.de>" (domain verified in Resend)
+ *   MAIL_ABSENDER  sender, for example "Pathfinder DE <hello@mypathfinder.site>" (domain verified in Resend)
  *   MENTOR_MAIL_AN where new mentor requests go
  * Without MAIL_API_KEY nothing is sent and sendMail returns false; everything else keeps working.
  */

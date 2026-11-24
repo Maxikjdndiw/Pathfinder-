@@ -22,6 +22,7 @@ import {
   emptyFit,
   FIELD_LABEL,
   FIT_LABEL,
+  SELEKTIV_LABEL,
   filterOffers,
   fitFor,
   LEISTUNGSFAECHER,
@@ -59,9 +60,12 @@ interface Msg {
   hidden?: boolean;
 }
 interface State {
+  /** the open tab */
   mode: Mode;
+  /** one profile per access code, shared by all tabs */
   profile: Record<string, unknown>;
-  messages: Msg[];
+  /** one conversation per tab; only the open tab's history goes to the server */
+  chats: Record<Mode, Msg[]>;
   saved: string[];
   /** a mentor request was sent from this browser */
   mentorSent?: boolean;
@@ -72,18 +76,32 @@ interface State {
 }
 
 const MENTOR = '[[SYSTEM: MENTOR_ANFRAGE]]';
+/** first message of a tab: the coach opens the conversation with the profile it knows */
+const START = '[[SYSTEM: START]]';
 const $ = <T extends Element>(sel: string, root: ParentNode = document) => root.querySelector<T>(sel)!;
 const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
 // ---------- storage (this browser only) ----------
 const CODE_KEY = 'pf-app:code';
 let code = '';
-let state: State = { mode: 'orientierung', profile: {}, messages: [], saved: [] };
+const MODE_LIST: Mode[] = ['orientierung', 'cv_linkedin', 'praktika', 'studium'];
+const emptyChats = (): Record<Mode, Msg[]> => ({ orientierung: [], cv_linkedin: [], praktika: [], studium: [] });
+const freshState = (): State => ({ mode: 'orientierung', profile: {}, chats: emptyChats(), saved: [] });
+let state: State = freshState();
+/** the open tab's conversation */
+const chat = () => state.chats[state.mode];
+const hasReply = (msgs: Msg[]) => msgs.some((m) => m.role === 'assistant');
 const storeKey = () => `pf-app:${code}`;
 function load() {
   try {
     const raw = localStorage.getItem(storeKey());
-    if (raw) state = { ...state, ...JSON.parse(raw) };
+    if (!raw) return;
+    const { messages, chats, ...rest } = JSON.parse(raw);
+    state = { ...state, ...rest, chats: emptyChats() };
+    if (!MODE_LIST.includes(state.mode)) state.mode = 'orientierung';
+    for (const m of MODE_LIST) if (Array.isArray(chats?.[m])) state.chats[m] = chats[m];
+    // older version: one shared chat, it becomes the chat of the tab it was in
+    if (!chats && Array.isArray(messages)) state.chats[state.mode] = messages;
   } catch {
     /* private mode or broken data: start fresh */
   }
@@ -118,7 +136,8 @@ const fitSummary = (p: FitProfile) =>
 
 function save() {
   try {
-    localStorage.setItem(storeKey(), JSON.stringify({ ...state, messages: state.messages.slice(-60) }));
+    const chats = Object.fromEntries(MODE_LIST.map((m) => [m, state.chats[m].slice(-60)]));
+    localStorage.setItem(storeKey(), JSON.stringify({ ...state, chats }));
   } catch {
     /* storage full or blocked: the chat still works for this visit */
   }
@@ -141,18 +160,36 @@ let view: 'coach' | 'mentor' = 'coach';
 
 function setMode(mode: Mode) {
   state.mode = mode;
-  document.querySelectorAll<HTMLElement>('[data-step]').forEach((li) => {
-    li.classList.toggle('is-current', li.dataset.step === mode);
-    if (li.dataset.step === mode) li.setAttribute('aria-current', 'step');
-    else li.removeAttribute('aria-current');
+  document.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach((b) => {
+    b.classList.toggle('is-current', b.dataset.tab === mode);
+    b.setAttribute('aria-selected', String(b.dataset.tab === mode));
   });
   updateMentorSlot();
 }
 
+/** Opens a tab with its own chat exactly as it was left. An empty tab starts its conversation. */
+function openTab(mode: Mode, start = true) {
+  if (busy) return;
+  if (view === 'mentor') setView('coach');
+  if (mode !== state.mode) {
+    setMode(mode);
+    clearTray(true);
+    save();
+    renderAll();
+  }
+  const empty = !hasReply(chat());
+  if (empty) state.chats[mode] = [];
+  const first = MODE_LIST.every((m) => !hasReply(state.chats[m]));
+  showWelcome(empty && first);
+  if (empty && !first && start) send(START, { hidden: true });
+  input.focus({ preventScroll: true });
+}
+document.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach((b) => b.addEventListener('click', () => openTab(b.dataset.tab as Mode)));
+
 /** The mentor slider belongs to the CV and internship parts, not to orientation. */
 function updateMentorSlot() {
   const slot = $<HTMLElement>('[data-mentor-slot]');
-  slot.hidden = view === 'mentor' || state.mode === 'orientierung' || !state.messages.some((m) => m.role === 'assistant');
+  slot.hidden = view === 'mentor' || state.mode === 'orientierung' || !hasReply(chat());
 }
 
 // ---------- rendering of messages ----------
@@ -206,14 +243,15 @@ function bubble(role: Msg['role'], html: string, files?: FileRef[]): HTMLElement
 
 function renderAll() {
   log.innerHTML = '';
-  const lastAssistant = state.messages.map((m) => m.role).lastIndexOf('assistant');
+  const msgs = chat();
+  const lastAssistant = msgs.map((m) => m.role).lastIndexOf('assistant');
   // only the newest cards or map block is shown; older ones were replaced by it
-  const lastVisual = state.messages.reduce((acc, m, i) => {
+  const lastVisual = msgs.reduce((acc, m, i) => {
     if (m.role !== 'assistant') return acc;
     const p = parseMarkers(m.content);
     return p.map || p.recommendation ? i : acc;
   }, -1);
-  state.messages.forEach((m, i) => {
+  msgs.forEach((m, i) => {
     if (m.hidden) return;
     if (m.role === 'user') return void bubble('user', m.dateien?.length && m.content === FILE_ONLY ? '' : format(m.content), m.dateien);
     const parsed = parseMarkers(m.content);
@@ -333,10 +371,8 @@ function renderActions(after: HTMLElement, options: string[], buttons: ModeButto
       btn.type = 'button';
       btn.className = 'btn btn--quiet btn--small';
       btn.textContent = b.label;
-      btn.addEventListener('click', () => {
-        setMode(b.mode);
-        send(b.label);
-      });
+      // opens the existing chat of that tab, never a second one
+      btn.addEventListener('click', () => openTab(b.mode));
       row.appendChild(btn);
     });
     box.appendChild(row);
@@ -361,7 +397,13 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation, mapOpts:
     rec.land ??
     (pinned.length && pinned.every((o) => o.land === 'DE') ? 'de' : pinned.length && pinned.every((o) => o.land !== 'DE' && !o.online) ? 'ausland' : null);
   const felder = rec.felder.length ? rec.felder : [...new Set(pinned.flatMap((o) => o.felder))];
-  const f: Filters = defaultFilters(felder, stufe, typen, land, rec.sprachen);
+  // every block starts from fresh filters (no merging with the older block)
+  const f: Filters = defaultFilters(felder, stufe, typen, land, rec.sprachen, rec.kosten);
+  // the cost slider follows the budget: the smallest step that still covers it
+  if (f.budget !== null) {
+    const step = COST_STEPS.findIndex((x) => x >= f.budget!);
+    f.kostenMax = step < 0 ? COST_STEPS.length - 1 : step;
+  }
   const isStudy = (o: Offer) => o.typ === 'hochschule' || o.typ === 'studiengang';
   // the fit check belongs to universities: Studium mode or a block that shows universities
   const showFit = state.mode === 'studium' || f.typen.some((t) => t === 'hochschule' || t === 'studiengang') || pinned.some(isStudy);
@@ -395,6 +437,7 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation, mapOpts:
             <button type="button" class="chip" data-cost="0,0">Kostenlos oder nur Semesterbeitrag</button>
             <button type="button" class="chip" data-cost="0,1">bis 1.000 €</button>
             <button type="button" class="chip" data-cost="5,6">über 30.000 €</button>
+            ${f.budget !== null ? `<button type="button" class="chip" aria-pressed="true" data-budget>Budget aus dem Gespräch: bis ${formatEuro(f.budget)}</button>` : ''}
           </div>
         </div>
         <div class="field field--wide"><span class="field__label">Typ</span>
@@ -420,6 +463,7 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation, mapOpts:
           <div class="fit__alevel">${[0, 1, 2].map((i) => `<select class="input" data-fit-al="${i}" aria-label="Note ${i + 1}">${ALEVEL_GRADES.map((g) => `<option value="${g}">${g}</option>`).join('')}</select>`).join('')}</div></div>
         <div class="field field--wide"><span class="field__label">Leistungskurs / Higher Level</span>
           <div class="chips chips--small">${Object.entries(LEISTUNGSFAECHER).map(([k, l]) => `<button type="button" class="chip" aria-pressed="${fitProfile.faecher.includes(k)}" data-lk="${k}">${l}</button>`).join('')}</div></div>
+        <div class="field field--wide"><button type="button" class="btn btn--quiet btn--small fit__recheck" data-fit-recheck>Neu prüfen</button></div>
       </div>
     </details>
     <p class="fit__note">Ungefähre Einschätzung, keine Zulassungsgarantie. Bitte die offiziellen Voraussetzungen prüfen.</p>` : ''}
@@ -447,18 +491,33 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation, mapOpts:
   const maxEl = sel('kostenMax');
   minEl.value = String(f.kostenMin);
   maxEl.value = String(f.kostenMax);
+  // moving the slider or a cost chip replaces the budget from the conversation
+  const budgetChip = box.querySelector<HTMLButtonElement>('[data-budget]');
+  const dropBudget = () => {
+    f.budget = null;
+    budgetChip?.remove();
+  };
+  budgetChip?.addEventListener('click', () => {
+    dropBudget();
+    f.kostenMax = COST_STEPS.length - 1;
+    maxEl.value = String(f.kostenMax);
+    update();
+  });
   minEl.addEventListener('input', () => {
+    dropBudget();
     f.kostenMin = Math.min(Number(minEl.value), f.kostenMax);
     minEl.value = String(f.kostenMin);
     update();
   });
   maxEl.addEventListener('input', () => {
+    dropBudget();
     f.kostenMax = Math.max(Number(maxEl.value), f.kostenMin);
     maxEl.value = String(f.kostenMax);
     update();
   });
   box.querySelectorAll<HTMLElement>('[data-cost]').forEach((b) =>
     b.addEventListener('click', () => {
+      dropBudget();
       const [a, c] = b.dataset.cost!.split(',').map(Number);
       f.kostenMin = a;
       f.kostenMax = c;
@@ -505,6 +564,13 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation, mapOpts:
       syncFit();
       update();
     };
+    // recomputes pills, order and map dimming (also with grades changed in another tab)
+    box.querySelector<HTMLButtonElement>('[data-fit-recheck]')!.addEventListener('click', () => {
+      loadFit();
+      box.querySelectorAll<HTMLElement>('[data-lk]').forEach((b) => b.setAttribute('aria-pressed', String(fitProfile.faecher.includes(b.dataset.lk!))));
+      syncFit();
+      update();
+    });
     fitSel('abschluss').addEventListener('change', (e) => {
       fitProfile.abschluss = ((e.target as HTMLSelectElement).value || null) as FitProfile['abschluss'];
       changed();
@@ -589,6 +655,7 @@ function card(o: Offer, pinned = false, fitP: FitProfile | null = null): string 
       ${o.kosten_label && PILL_LABELS.includes(o.kosten_label) ? `<span class="offer__label offer__label--${esc(o.kosten_label.replace(/\s+/g, '-'))}">${esc(o.kosten_label)}</span>` : ''}
       ${o.rechtsform ? `<span class="offer__form offer__form--${o.rechtsform}">${RECHTSFORM_LABEL[o.rechtsform]}</span>` : ''}
       ${o.sprache === 'en' ? '<span class="offer__lang">Englisch</span>' : ''}
+      ${o.wettbewerb && SELEKTIV_LABEL[o.wettbewerb] ? `<span class="offer__sel offer__sel--${o.wettbewerb === 'hoch' ? 'hoch' : 'sehr-hoch'}">${SELEKTIV_LABEL[o.wettbewerb]}</span>` : ''}
       ${fit ? `<span class="offer__fit offer__fit--${fit.status}">${FIT_LABEL[fit.status]}</span>` : ''}
       <button type="button" class="offer__save" data-save="${o.id}" aria-pressed="${saved}" aria-label="Merken: ${esc(o.name)}">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.6 3.9 4.5 7.2 4.5c2 0 3.4 1.1 4.8 2.9 1.4-1.8 2.8-2.9 4.8-2.9 3.3 0 5.6 3.1 4.4 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg></button>
@@ -603,6 +670,7 @@ function card(o: Offer, pinned = false, fitP: FitProfile | null = null): string 
       ${o.zulassung ? `<div><dt>Zulassung</dt><dd>${esc(o.zulassung)}</dd></div>` : ''}
       ${fit && o.richtwerte?.hinweis ? `<div><dt>Richtwert</dt><dd>${esc(o.richtwerte.hinweis)}</dd></div>` : ''}
     </dl>
+    ${o.wettbewerb === 'sehr hoch' ? '<p class="offer__hint offer__hint--fit">Für internationale Bewerber besonders schwierig</p>' : ''}
     ${fit?.pflicht.map((x) => `<p class="offer__hint offer__hint--fit">${esc(x)}</p>`).join('') ?? ''}
     <p class="offer__text">${esc(o.kurzbeschreibung)}</p>
     ${o.kosten_pro_jahr_eur === null && o.kosten_hinweis ? `<p class="offer__hint">${esc(o.kosten_hinweis)}</p>` : ''}
@@ -691,13 +759,13 @@ function renderMapOnly(after: HTMLElement, ids: string[]) {
 }
 
 // ---------- talking to the coach ----------
-async function ask(messages: Msg[], onText: (raw: string) => void): Promise<string> {
+async function ask(messages: Msg[], onText: (raw: string) => void, mode: Mode = state.mode): Promise<string> {
   const res = await fetch('/api/chat', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({
       code,
-      mode: state.mode,
+      mode,
       profile: state.profile,
       messages: messages.map(({ role, content, dateien }) => ({ role, content, dateien: dateien?.filter((f) => !f.geloescht).map(({ id, name }) => ({ id, name })) })),
     }),
@@ -735,7 +803,10 @@ async function send(text: string, opts: { hidden?: boolean; dateien?: FileRef[] 
   busy = true;
   chatForm.classList.add('is-busy');
   log.querySelectorAll('.actions').forEach((a) => a.remove());
-  state.messages.push({ role: 'user', content: text, hidden: opts.hidden, ...(opts.dateien?.length ? { dateien: opts.dateien } : {}) });
+  // the reply belongs to the tab it was asked in
+  const mode = state.mode;
+  const msgs = chat();
+  msgs.push({ role: 'user', content: text, hidden: opts.hidden, ...(opts.dateien?.length ? { dateien: opts.dateien } : {}) });
   if (!opts.hidden) bubble('user', opts.dateien?.length && text === FILE_ONLY ? '' : format(text), opts.dateien);
   const el = bubble('assistant', '');
   const body = el.querySelector<HTMLElement>('.msg__body')!;
@@ -766,9 +837,9 @@ async function send(text: string, opts: { hidden?: boolean; dateien?: FileRef[] 
     if (html) body.innerHTML = html;
   });
   try {
-    const raw = await ask(state.messages, (r) => type.push(visibleText(r)));
+    const raw = await ask(msgs, (r) => type.push(visibleText(r)), mode);
     await type.finish();
-    state.messages.push({ role: 'assistant', content: raw });
+    msgs.push({ role: 'assistant', content: raw });
     const parsed = parseMarkers(raw);
     if (parsed.profile) state.profile = { ...state.profile, ...parsed.profile };
     if (parsed.recommendation) {
@@ -794,7 +865,7 @@ async function send(text: string, opts: { hidden?: boolean; dateien?: FileRef[] 
     updateMentorSlot();
   } catch (e) {
     type.stop();
-    state.messages.pop(); // the student can send it again
+    msgs.pop(); // the student can send it again
     el.classList.remove('is-streaming');
     el.classList.add('msg--error');
     loader.setStatus('error');
@@ -873,7 +944,7 @@ const slider = createSlideConfirm({
     busy = true;
     let summary = '';
     try {
-      const raw = await ask([...state.messages, { role: 'user', content: MENTOR }], () => {});
+      const raw = await ask([...chat(), { role: 'user', content: MENTOR }], () => {});
       summary = parseMarkers(raw).summary ?? visibleText(raw);
     } catch {
       summary = '';
@@ -985,7 +1056,7 @@ function setView(next: 'coach' | 'mentor') {
   mentorChat.hidden = !mentor;
   log.hidden = mentor;
   if (mentor) welcome.hidden = true;
-  else showWelcome(!state.messages.some((m) => m.role === 'assistant'));
+  else showWelcome(MODE_LIST.every((m) => !hasReply(state.chats[m])));
   updateMentorSlot();
   input.placeholder = mentor ? 'Nachricht an deinen Mentor' : 'Nachricht an Pathfinder';
   if (mentor) markMentorSeen();
@@ -1269,7 +1340,7 @@ for (const area of [log, mentorLog]) {
     if (!del || !confirm('Diese Datei löschen?')) return;
     const id = del.dataset.delFile!;
     await deleteOnServer(id);
-    for (const m of state.messages) m.dateien?.forEach((f) => f.id === id && (f.geloescht = true));
+    for (const m of MODE_LIST.flatMap((k) => state.chats[k])) m.dateien?.forEach((f) => f.id === id && (f.geloescht = true));
     for (const m of mentorMessages) m.dateien?.forEach((f) => f.id === id && (f.geloescht = true));
     save();
     const li = del.closest('.file')!;
@@ -1364,7 +1435,7 @@ loginForm.addEventListener('submit', async (e) => {
 });
 
 function enterChat() {
-  state = { mode: 'orientierung', profile: {}, messages: [], saved: [] };
+  state = freshState();
   load();
   loadFit();
   show('chat');
@@ -1374,11 +1445,7 @@ function enterChat() {
   else slider.reset();
   if (state.mentorThread) openMentorThread(false);
   else closeMentorThread();
-  if (!state.messages.some((m) => m.role === 'assistant')) {
-    state.messages = [];
-    showWelcome(true);
-  } else showWelcome(false);
-  input.focus();
+  openTab(state.mode);
 }
 
 /* ---------- empty state: greeting and start suggestions ---------- */

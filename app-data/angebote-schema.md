@@ -134,3 +134,10 @@ Hochschulen können optional `richtwerte` haben:
 - Ohne `richtwerte` zeigt die Karte "Keine Angabe".
 - Umrechnung in IB-Punkte (Skala 45): Abitur 45 minus (Note minus 1) mal 7, also 1,0 = 45 und 4,0 = 24. A-Levels: A*A*A = 41, A*AA = 39, AAA = 37, AAB = 36, ABB = 34, BBB = 32, darunter 30.
 - Ergebnis: Über dem Richtwert (mindestens der Wert), Nahe am Richtwert (bis 2 Punkte darunter), Unter dem Richtwert, Keine Angabe. Die Noten bleiben im Browser (localStorage) und gehen nie an den Server.
+
+## Ergänzungen vom 22.11.2026 (Wettbewerb und Budget)
+
+- `wettbewerb` (Hochschulen, optional): `sehr hoch`, `hoch`, `mittel` oder `niedrig`. Karten zeigen bei `sehr hoch` "Sehr selektiv" mit dem Hinweis "Für internationale Bewerber besonders schwierig", bei `hoch` "Selektiv".
+- Passt das? Bei `niedrig` wird ein schwacher Wert zu "Gute Chancen auch mit schwächerer Note" statt "Unter dem Richtwert". Ohne `richtwerte` gilt der Wettbewerb allein: `niedrig` "Gute Chancen", `mittel` "Offen, Voraussetzungen prüfen", sonst "Keine Angabe".
+- Sortierung mit eingetragenen Noten (Sortierung Passung): erst Über oder Nahe am Richtwert, von `sehr hoch` bis `niedrig`, dann Gute Chancen, dann der Rest, Unter dem Richtwert zuletzt.
+- Marker `[[EMPFEHLUNGEN]]` mit `kosten=20000`: höchste Kosten pro Jahr in Euro. Verglichen wird `kosten_bis_eur`, sonst `kosten_pro_jahr_eur`; Angebote ohne Zahl bleiben sichtbar. Jeder neue Block ersetzt die Filter komplett.

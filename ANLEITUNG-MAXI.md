@@ -12,7 +12,7 @@ Eintragen unter https://app.netlify.com, Seite "pathfinderde", dann "Site config
 | `MENTOR_PFAD` | ja | Geheime Adresse des Mentorenbereichs, mindestens 16 Zeichen aus Buchstaben, Zahlen und Bindestrichen, zum Beispiel aus einem Passwortgenerator. Die Seite gibt es dann nur unter `/m/` plus diesem Wert. `/mentor` existiert nicht. |
 | `MAIL_API_KEY` | nein | Schlüssel von Resend (resend.com). Ohne ihn werden keine E-Mails verschickt, alles andere läuft weiter. |
 | `MENTOR_MAIL_AN` | nein | Deine Adresse für neue Anfragen. |
-| `MAIL_ABSENDER` | nein | Absender, zum Beispiel `Pathfinder DE <hallo@deine-domain.de>`. Die Domain muss in Resend bestätigt sein. Ohne eigene Domain schickt Resend nur an deine eigene Adresse. |
+| `MAIL_ABSENDER` | nein | Absender, zum Beispiel `Pathfinder DE <hello@mypathfinder.site>`. Die Domain muss in Resend bestätigt sein. Ohne eigene Domain schickt Resend nur an deine eigene Adresse. |
 | `MAX_NEUE_CODES_PRO_TAG` | nein | Höchstzahl neuer Codes pro Tag, Standard 30. Danach kommen Leute auf die Warteliste. |
 | `PATHFINDER_DAILY_LIMIT` | nein | Nachrichten pro Code und Tag, Standard 60. |
 

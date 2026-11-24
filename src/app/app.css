@@ -17,8 +17,10 @@
 .app-brand .brand__mark { width: 24px; height: 24px; }
 /* segmented control: shows where the student is, the coach moves it forward */
 .modes { justify-self: center; display: inline-flex; padding: 3px; gap: 2px; border-radius: 12px; background: var(--card); border: 1px solid rgba(210, 210, 215, 0.6); }
-.modes li { padding: 7px 12px; border-radius: 9px; font-size: 13px; font-weight: 500; color: var(--ink-muted); white-space: nowrap; }
-.modes li.is-current { background: #fff; color: var(--ink); box-shadow: 0 1px 2px rgba(29, 29, 31, 0.1), 0 2px 6px -2px rgba(29, 29, 31, 0.12); }
+.modes button { padding: 7px 12px; border: 0; border-radius: 9px; background: none; font: inherit; font-size: 13px; font-weight: 500; color: var(--ink-muted); white-space: nowrap; cursor: pointer; min-height: 32px; }
+.modes button:hover { color: var(--ink); }
+.modes button:focus-visible { outline: 2px solid var(--accent, #0066cc); outline-offset: 1px; }
+.modes button.is-current { background: #fff; color: var(--ink); box-shadow: 0 1px 2px rgba(29, 29, 31, 0.1), 0 2px 6px -2px rgba(29, 29, 31, 0.12); }
 .app-head__actions { display: flex; align-items: center; gap: 8px; justify-self: end; }
 .menu { position: relative; }
 .menu__btn { list-style: none; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; cursor: pointer; color: var(--ink-muted); }
@@ -208,7 +210,7 @@ select.input { appearance: auto; }
 .offer__name { font: 700 17px / 1.25 var(--font-display); letter-spacing: -0.01em; }
 .offer__by { font-size: 13px; color: var(--ink-muted); margin-top: -4px; }
 .offer__meta { display: grid; gap: 3px; margin: 2px 0 0; font-size: 13.5px; }
-.offer__meta div { display: grid; grid-template-columns: 56px 1fr; gap: 8px; }
+.offer__meta div { display: grid; grid-template-columns: 72px 1fr; gap: 8px; }
 .offer__meta dt { color: var(--ink-muted); }
 .offer__meta dd { margin: 0; }
 .offer__meta .is-past { color: var(--ink-muted); }
@@ -221,6 +223,10 @@ select.input { appearance: auto; }
 .offer__fit--ueber { color: #1B6B34; border-color: #B7DDC3; background: #E9F6EE; }
 .offer__fit--nahe { color: #7A5200; border-color: #EDD6A4; background: #FFF6E3; }
 .offer__fit--unter { color: #1D1D1F; background: #F5F5F7; }
+.offer__fit--gut, .offer__fit--gut-schwach { color: var(--accent); border-color: #B9D3EF; background: #E8F1FB; }
+.offer__fit--offen { color: var(--ink); }
+.offer__sel { font-size: 11.5px; font-weight: 500; padding: 3px 8px; border-radius: 999px; border: 1px solid #1D1D1F; color: #1D1D1F; background: #fff; }
+.offer__sel--sehr-hoch { color: #fff; background: #1D1D1F; }
 .offer__hint--fit { border-left-color: #EDD6A4; color: var(--ink); }
 .offer__lang { font-size: 11.5px; font-weight: 500; padding: 3px 8px; border-radius: 999px; color: var(--accent); background: #E8F1FB; }
 .offer__foot { margin-top: auto; padding-top: 6px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--ink-muted); }
@@ -231,10 +237,19 @@ select.input { appearance: auto; }
 .mentor form { display: grid; gap: 14px; }
 .mentor h2 { font-size: 24px; }
 /* mentor request card at the end of the conversation, with the slide to confirm */
-.mentor-slot {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 340px); align-items: center; gap: 14px 24px;
-  margin: 4px 0 20px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 20px; background: #fff;
+.mentor-slot { margin: 0 0 12px; }
+.mentor-slot__title {
+  list-style: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 6px 12px;
+  border: 1px solid var(--line); border-radius: 999px; background: #fff; cursor: pointer;
+  font: 500 13px / 1.2 var(--font-body); color: var(--ink-muted);
 }
+.mentor-slot__title::-webkit-details-marker { display: none; }
+.mentor-slot__title:hover { color: var(--ink); border-color: #C7C7CC; }
+.mentor-slot__title:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mentor-slot__title svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s ease; }
+.mentor-slot[open] .mentor-slot__title { color: var(--ink); }
+.mentor-slot[open] .mentor-slot__title svg { transform: rotate(180deg); }
+.mentor-slot__body { max-width: 340px; margin-top: 10px; }
 
 /* chat buttons: flat and quiet. Blue only for small accents (send button, checks, loader). */
 .btn--quiet, .btn--solid { box-shadow: none; transform: none; background-image: none; }
@@ -247,8 +262,6 @@ select.input { appearance: auto; }
 .btn--quiet:hover, .btn--quiet:active, .btn--solid:hover, .btn--solid:active { transform: none; box-shadow: none; }
 .btn--solid:disabled, .btn--quiet:disabled { opacity: 0.35; cursor: default; background: var(--ink); }
 .btn--quiet:disabled { background: #fff; }
-.mentor-slot__title { font: 600 16px / 1.3 var(--font-body); color: var(--ink); }
-@media (max-width: 640px) { .mentor-slot { grid-template-columns: minmax(0, 1fr); padding: 16px; } }
 
 /* slide to confirm (src/app/slide-confirm.ts): plain, in the brand colours, no gloss */
 .slide {
@@ -329,7 +342,7 @@ select.input { appearance: auto; }
   /* phones: logo and actions on top, the mode control in its own row */
   .app-head { grid-template-columns: 1fr auto; row-gap: 8px; padding-bottom: 8px; }
   .modes { grid-column: 1 / -1; grid-row: 2; justify-self: stretch; }
-  .modes li { flex: 1; text-align: center; padding: 7px 6px; font-size: 12.5px; }
+  .modes button { flex: 1; text-align: center; padding: 7px 6px; font-size: 12.5px; }
 }
 @media (max-width: 640px) {
   .filter-grid, .cards, .starts { grid-template-columns: minmax(0, 1fr); }
@@ -413,6 +426,14 @@ button.file__name { cursor: pointer; text-decoration: underline; text-decoration
 
 /* very narrow phones: four steps still fit (CV und LinkedIn may break onto two lines) */
 @media (max-width: 360px) {
-  .modes li { padding: 6px 4px; font-size: 11.5px; line-height: 1.2; white-space: normal; }
+  .modes button { padding: 6px 4px; font-size: 11.5px; line-height: 1.2; white-space: normal; }
 }
 
+/* text wrapping: balanced headings, no lonely last words, long words never break the layout */
+.app h1, .app h2, .app h3, .app h4, .offer__name, .recs__title { text-wrap-style: balance; }
+.app p, .app li, .app dd { text-wrap-style: pretty; overflow-wrap: anywhere; }
+/* pills, labels and chips stay whole words */
+.offer__top > span, .offer__meta dt, .chip, .field__label, .modes button { overflow-wrap: normal; }
+.offer__top > span, .offer__meta dt { white-space: nowrap; }
+.offer__top { flex-wrap: wrap; }
+.fit__recheck { justify-self: start; }

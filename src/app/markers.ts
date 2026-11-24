@@ -17,6 +17,8 @@ export interface Recommendation {
   ids: string[];
   /** optional: preset the language chips, codes like de, en */
   sprachen: string[];
+  /** optional: budget, highest cost in euro per year (kosten=20000) */
+  kosten: number | null;
 }
 export interface Parsed {
   /** text without markers, safe to show */
@@ -91,6 +93,7 @@ export function parseMarkers(raw: string): Parsed {
           .map((id) => id.trim())
           .filter((id) => /^[a-z0-9-]{2,80}$/.test(id))
           .slice(0, 30),
+        kosten: parseEuro(parts.kosten),
       };
     } else if (kind === 'KARTE') {
       out.map = body
@@ -112,4 +115,11 @@ export function visibleText(raw: string): string {
   const open = t.lastIndexOf('[[');
   if (open >= 0 && t.indexOf(']]', open) < 0) t = t.slice(0, open);
   return t.replace(/\n{3,}/g, '\n\n').trim();
+}
+
+/** "20000", "20.000" or "20.000 Euro" to a whole euro amount; anything odd is null */
+function parseEuro(v: unknown): number | null {
+  const digits = String(v ?? '').split(',')[0].replace(/[^\d]/g, '');
+  const n = Number(digits);
+  return digits && n > 0 && n <= 1_000_000 ? n : null;
 }

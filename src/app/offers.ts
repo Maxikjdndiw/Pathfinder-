@@ -54,7 +54,13 @@ export interface Offer {
   lng?: number;
   /** universities: rough entry guide values (Studium fit check) */
   richtwerte?: Richtwerte;
+  /** universities: how hard it is to get in */
+  wettbewerb?: Wettbewerb;
 }
+
+export type Wettbewerb = 'sehr hoch' | 'hoch' | 'mittel' | 'niedrig';
+/** hardest first, for the sort of strong scores */
+const WETTBEWERB_RANK: Record<Wettbewerb, number> = { 'sehr hoch': 0, hoch: 1, mittel: 2, niedrig: 3 };
 
 export interface Richtwerte {
   ib_punkte?: number;
@@ -129,6 +135,8 @@ export interface Filters {
   sort: 'frist' | 'kosten' | 'passung';
   /** hides universities "Unter dem Richtwert" (fit check), keeps "Keine Angabe" */
   nurPassende: boolean;
+  /** budget from the conversation (kosten= in EMPFEHLUNGEN): highest cost per year in euro, null for none */
+  budget: number | null;
 }
 
 export const defaultFilters = (
@@ -137,6 +145,7 @@ export const defaultFilters = (
   typen: string[] = [],
   land: Filters['land'] | null = null,
   sprachen: string[] = [],
+  budget: number | null = null,
 ): Filters => ({
   felder,
   stufe: stufe ?? 'alle',
@@ -148,6 +157,7 @@ export const defaultFilters = (
   typen: typen.filter((t): t is Typ => t in TYP_LABEL),
   sort: 'passung',
   nurPassende: false,
+  budget: budget && budget > 0 ? budget : null,
 });
 
 const matchCount = (o: Offer, felder: string[]) => o.felder.filter((f) => felder.includes(f)).length;
@@ -171,6 +181,9 @@ export function filterOffers(offers: Offer[], f: Filters, today = new Date(), fi
     if (f.nurPassende && fitFor(o, fit)?.status === 'unter') return false;
     // offers without a cost figure stay visible ("Kosten unbekannt")
     if (o.kosten_pro_jahr_eur !== null && (o.kosten_pro_jahr_eur < min || o.kosten_pro_jahr_eur > max)) return false;
+    // budget: the upper end of the fee (kosten_bis_eur), else the fee; offers without a figure stay
+    const top = o.kosten_bis_eur ?? o.kosten_pro_jahr_eur;
+    if (f.budget !== null && top !== null && top !== undefined && top > f.budget) return false;
     return true;
   });
   const deadline = (o: Offer) => {
@@ -179,11 +192,26 @@ export function filterOffers(offers: Offer[], f: Filters, today = new Date(), fi
     return Number.isNaN(t) || t < today.getTime() - 86400000 ? Infinity : t;
   };
   const cost = (o: Offer) => o.kosten_pro_jahr_eur ?? Infinity;
-  return list.sort((a, b) => {
+  list.sort((a, b) => {
     if (f.sort === 'frist') return deadline(a) - deadline(b) || cost(a) - cost(b);
     if (f.sort === 'kosten') return cost(a) - cost(b) || deadline(a) - deadline(b);
     return matchCount(b, f.felder) - matchCount(a, f.felder) || deadline(a) - deadline(b);
   });
+  // with grades entered, "Passung" puts the fit first (stable sort keeps the order inside a group)
+  if (f.sort === 'passung' && profileToIb(fit) !== null) {
+    const ranks = new Map(list.map((o) => [o.id, fitRank(fitFor(o, fit))]));
+    list.sort((a, b) => ranks.get(a.id)! - ranks.get(b.id)!);
+  }
+  return list;
+}
+
+/** Über or Nahe am Richtwert first, hardest university first (a strong score at a hard
+ * university leads), then Gute Chancen, then the rest, Unter dem Richtwert last */
+function fitRank(fit: Fit | null): number {
+  if (!fit) return 20;
+  if (fit.status === 'ueber' || fit.status === 'nahe') return fit.wettbewerb ? WETTBEWERB_RANK[fit.wettbewerb] : 4;
+  if (fit.status === 'gut' || fit.status === 'gut-schwach') return 10;
+  return fit.status === 'unter' ? 30 : 20;
 }
 
 export function formatEuro(n: number): string {
@@ -227,13 +255,18 @@ export interface FitProfile {
 
 export const emptyFit = (): FitProfile => ({ abschluss: null, note: 2.0, ib: 34, alevel: ['A', 'A', 'B'], faecher: [] });
 
-export type FitStatus = 'ueber' | 'nahe' | 'unter' | 'keine';
+export type FitStatus = 'ueber' | 'nahe' | 'unter' | 'gut-schwach' | 'gut' | 'offen' | 'keine';
 export const FIT_LABEL: Record<FitStatus, string> = {
   ueber: 'Über dem Richtwert',
   nahe: 'Nahe am Richtwert',
   unter: 'Unter dem Richtwert',
+  'gut-schwach': 'Gute Chancen auch mit schwächerer Note',
+  gut: 'Gute Chancen',
+  offen: 'Offen, Voraussetzungen prüfen',
   keine: 'Keine Angabe',
 };
+/** flag on the card for hard universities */
+export const SELEKTIV_LABEL: Partial<Record<Wettbewerb, string>> = { 'sehr hoch': 'Sehr selektiv', hoch: 'Selektiv' };
 
 /** A-Level combinations and their IB equivalent (45 scale), best first; anything lower is 30 */
 const ALEVEL_TABLE: [string[], number][] = [
@@ -270,6 +303,8 @@ export function profileToIb(p: FitProfile | null): number | null {
 
 export interface Fit {
   status: FitStatus;
+  /** second value: how hard the university is to get into (from the data) */
+  wettbewerb: Wettbewerb | null;
   /** "Voraussetzung prüfen: Mathe auf Higher Level" lines */
   pflicht: string[];
 }
@@ -285,9 +320,18 @@ export function fitFor(o: Offer, p: FitProfile | null): Fit | null {
   let mine = user;
   if (need !== null && r?.ib_skala === 42) mine -= 2;
   if (need === null && r?.alevel) need = alevelToIb(r.alevel);
-  const status: FitStatus = need === null ? 'keine' : mine >= need ? 'ueber' : mine >= need - 2 ? 'nahe' : 'unter';
+  const wettbewerb = o.wettbewerb ?? null;
+  let status: FitStatus;
+  if (need !== null) {
+    status = mine >= need ? 'ueber' : mine >= need - 2 ? 'nahe' : 'unter';
+    // low competition: a weaker score still has good chances, never "Unter dem Richtwert"
+    if (status === 'unter' && wettbewerb === 'niedrig') status = 'gut-schwach';
+  } else {
+    // no guide value: competition alone
+    status = wettbewerb === 'niedrig' ? 'gut' : wettbewerb === 'mittel' ? 'offen' : 'keine';
+  }
   const pflicht = (r?.hl_pflicht ?? [])
     .filter((x) => !p!.faecher.includes(x))
     .map((x) => `Voraussetzung prüfen: ${LEISTUNGSFAECHER[x] ?? x} auf Higher Level`);
-  return { status, pflicht };
+  return { status, wettbewerb, pflicht };
 }

@@ -246,7 +246,8 @@
    "hl_pflicht": [],
    "hinweis": "Für die Einschreibung braucht man mindestens 24 IB-Punkte mit 12 auf Higher Level. Die Zulassung hängt vor allem von Test und Bewerbungsrunde ab.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "hoch"
  },
  {
   "id": "ie-university-bba",
@@ -295,7 +296,8 @@
    "hl_pflicht": [],
    "hinweis": "Durchschnitt der Zugelassenen laut IE 36, übliche Bandbreite 34 bis 45.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "hoch"
  },
  {
   "id": "maastricht-bachelor",
@@ -339,7 +341,8 @@
    "European Studies",
    "Arts and Culture"
   ],
-  "zulassung": "Abitur, Bewerbung über Studielink, teils Auswahlverfahren, problemorientiertes Lernen in kleinen Gruppen."
+  "zulassung": "Abitur, Bewerbung über Studielink, teils Auswahlverfahren, problemorientiertes Lernen in kleinen Gruppen.",
+  "wettbewerb": "mittel"
  },
  {
   "id": "whu-bachelor",
@@ -380,7 +383,8 @@
    "Internationale BWL (Bachelor)",
    "Gründerlabor und Auslandssemester"
   ],
-  "zulassung": "Vierstufiges Auswahlverfahren mit Test und Gespräch, Bewerbungsfrist laut Portal 15. Mai."
+  "zulassung": "Vierstufiges Auswahlverfahren mit Test und Gespräch, Bewerbungsfrist laut Portal 15. Mai.",
+  "wettbewerb": "hoch"
  },
  {
   "id": "frankfurt-school-bachelor",
@@ -422,7 +426,8 @@
    "Computational Business Analytics",
    "Management, Philosophy and Economics"
   ],
-  "zulassung": "Eignungsverfahren, sieben Semester inklusive Auslandssemester mit Praktikum."
+  "zulassung": "Eignungsverfahren, sieben Semester inklusive Auslandssemester mit Praktikum.",
+  "wettbewerb": "mittel"
  },
  {
   "id": "uni-mannheim-bwl",
@@ -470,7 +475,8 @@
    "hl_pflicht": [],
    "hinweis": "Mannheim hat keine feste Grenznote, die Auswahl nutzt die Abiturnote und weitere Kriterien. Für VWL nennt Mannheim einen Abiturschnitt bis ungefähr 2,5 als gute Chance.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "hoch"
  },
  {
   "id": "jgu-germersheim-translation",
@@ -509,7 +515,8 @@
    "Sprache, Kultur, Translation",
    "Übersetzen und Dolmetschen"
   ],
-  "zulassung": "Abitur plus Eignungsprüfung je Sprache."
+  "zulassung": "Abitur plus Eignungsprüfung je Sprache.",
+  "wettbewerb": "niedrig"
  },
  {
   "id": "mun-sh",
@@ -798,7 +805,8 @@
    "Wirtschaftsinformatik",
    "Games Engineering"
   ],
-  "zulassung": "Zweistufiges Eignungsverfahren, Bewerbung vom 15. Mai bis 15. Juli für das Wintersemester."
+  "zulassung": "Zweistufiges Eignungsverfahren, Bewerbung vom 15. Mai bis 15. Juli für das Wintersemester.",
+  "wettbewerb": "hoch"
  },
  {
   "id": "deloitte-schulpraktikum",
@@ -4003,7 +4011,8 @@
    "Finance and AI",
    "Artificial Intelligence"
   ],
-  "zulassung": "Online-Bewerbung in Runden mit Essays und Aufgaben, Stipendien möglich."
+  "zulassung": "Online-Bewerbung in Runden mit Essays und Aufgaben, Stipendien möglich.",
+  "wettbewerb": "niedrig"
  },
  {
   "id": "lse-undergraduate",
@@ -4062,7 +4071,8 @@
    ],
    "hinweis": "LSE nennt 37 Punkte (666 auf Higher Level) bis 39 Punkte (766). Economics und viele andere Studiengänge verlangen Mathe auf Higher Level.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "hoch"
  },
  {
   "id": "oxford-undergraduate",
@@ -4123,7 +4133,8 @@
    ],
    "hinweis": "Beispiel Computer Science: A*AA oder 39 Punkte mit 766 auf Higher Level und einer 7 in Mathe. Andere Fächer können abweichen, Aufnahmetests kommen dazu.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "sehr hoch"
  },
  {
   "id": "cambridge-undergraduate",
@@ -4184,7 +4195,8 @@
    ],
    "hinweis": "Für Economics und Computer Science nennt Cambridge 41 bis 42 IB-Punkte mit 776 auf Higher Level und Mathe auf Higher Level. Die meisten Zugelassenen hatten 43 Punkte oder mehr.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "sehr hoch"
  },
  {
   "id": "imperial-undergraduate",
@@ -4245,7 +4257,8 @@
    ],
    "hinweis": "Ingenieur und Naturwissenschaft: 39 bis 40 Punkte, Mathe auf Higher Level mit 7 und ein weiteres Higher-Level-Fach mit 6. Medizin: 39 Punkte.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "hoch"
  },
  {
   "id": "kcl-undergraduate",
@@ -4301,7 +4314,8 @@
    "hl_pflicht": [],
    "hinweis": "Beispiel Politics and International Affairs: AAA. IB-Punkte standen auf der geprüften Seite nicht.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "mittel"
  },
  {
   "id": "ucl-undergraduate",
@@ -4360,7 +4374,8 @@
    "hl_pflicht": [],
    "hinweis": "UCL nennt je nach Studiengang A*A*A (40 Punkte) bis ABB. A*AA entspricht 39 Punkten mit 19 Punkten auf drei Higher-Level-Fächern.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "hoch"
  },
  {
   "id": "warwick-undergraduate",
@@ -4418,7 +4433,8 @@
    "hl_pflicht": [],
    "hinweis": "Beispiel PPE, die Angabe ist älter. Je Studiengang prüfen.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "hoch"
  },
  {
   "id": "harvard-college",
@@ -4468,7 +4484,8 @@
   "zulassung": "Abitur plus sehr gute Noten, Essays, außerschulisches Engagement, Empfehlungen. Zulassungsquote einstellig.",
   "zielgruppe": "schueler",
   "kosten_hinweis": "Gesamtkosten (Cost of Attendance) 2026/27 laut Presse etwa $91.634, davon Studiengebühr etwa $62.226. Mit Stipendium je nach Familieneinkommen oft deutlich weniger, laut Vergleichsportalen vergibt Harvard Hilfe ohne Rücksicht auf den Finanzbedarf auch an internationale Bewerber.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "sehr hoch"
  },
  {
   "id": "yale-college",
@@ -4517,7 +4534,8 @@
   "zulassung": "Abitur plus sehr gute Noten, Essays, Engagement, Empfehlungen.",
   "zielgruppe": "schueler",
   "kosten_hinweis": "Studiengebühr 2026/27 laut Yale $72.500, Gesamtkosten (Cost of Attendance) laut Presse etwa $97.985. Mit bedarfsabhängiger Hilfe oft deutlich weniger, laut Vergleichsportalen ohne Rücksicht auf Finanzbedarf bei der Zulassung auch für internationale Bewerber.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "sehr hoch"
  },
  {
   "id": "princeton-undergraduate",
@@ -4565,7 +4583,8 @@
   "zulassung": "Abitur plus sehr gute Noten, Essays, Engagement, Empfehlungen.",
   "zielgruppe": "schueler",
   "kosten_hinweis": "Gesamtkosten 2026/27 laut Presse etwa $94.624. Princeton vergibt laut Vergleichsportalen Hilfe ohne Rücksicht auf den Finanzbedarf auch an internationale Bewerber und deckt den Bedarf überwiegend über Zuschüsse.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "sehr hoch"
  },
  {
   "id": "upenn-wharton",
@@ -4613,7 +4632,8 @@
   "zulassung": "Abitur plus sehr gute Noten, Essays, Engagement, Empfehlungen.",
   "zielgruppe": "schueler",
   "kosten_hinweis": "Gesamtkosten 2025/26 laut Presse etwa $94.532 (Studiengebühr etwa $63.204). Penn berücksichtigt nach Vergleichsportalen den Finanzbedarf bei internationalen Bewerbern bei der Zulassung.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "sehr hoch"
  },
  {
   "id": "columbia-college",
@@ -4661,7 +4681,8 @@
   "zulassung": "Abitur plus sehr gute Noten, Essays, Engagement, Empfehlungen.",
   "zielgruppe": "schueler",
   "kosten_hinweis": "Gesamtkosten 2025/26 laut Presse etwa $96.260 (Studiengebühr etwa $70.170). Hohe Lebenshaltung in New York, Finanzhilfe je nach Bedarf.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "sehr hoch"
  },
  {
   "id": "mit-undergraduate",
@@ -4709,7 +4730,8 @@
   "zulassung": "Abitur plus sehr starke Leistungen in Mathe und Naturwissenschaften, Projekte und Wettbewerbe zählen, eigene Bewerbungsseite.",
   "zielgruppe": "schueler",
   "kosten_hinweis": "Nur Studiengebühr 2026/27: $66.720. Dazu kommen Unterkunft, Verpflegung und weitere Kosten, die Gesamtkosten stehen auf sfs.mit.edu. Hilfe bedarfsabhängig.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "sehr hoch"
  },
  {
   "id": "eth-zuerich-bachelor",
@@ -4766,7 +4788,8 @@
    ],
    "hinweis": "Ab 38 von 42 Punkten mit Mathe, einer Naturwissenschaft und Sprache A auf Higher Level ist laut ETH keine Aufnahmeprüfung nötig. Sonst Prüfung.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "hoch"
  },
  {
   "id": "hsg-bachelor",
@@ -4814,7 +4837,8 @@
   ],
   "zulassung": "Abitur gilt als Matura-Äquivalent, Auswahl über Leistung im ersten Jahr (Assessment), Sprache vor allem Deutsch mit englischem Anteil.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Studiengebühr für Studierende aus dem Ausland CHF 3.343,50 pro Semester (seit Herbst 2026, ca. 7 Prozent mehr), also etwa CHF 6.687 pro Jahr. HSG empfiehlt CHF 2.200 bis 2.600 pro Monat inklusive Gebühren (Stand Broschüre 2024)."
+  "kosten_hinweis": "Studiengebühr für Studierende aus dem Ausland CHF 3.343,50 pro Semester (seit Herbst 2026, ca. 7 Prozent mehr), also etwa CHF 6.687 pro Jahr. HSG empfiehlt CHF 2.200 bis 2.600 pro Monat inklusive Gebühren (Stand Broschüre 2024).",
+  "wettbewerb": "hoch"
  },
  {
   "id": "esade-bba",
@@ -4870,7 +4894,8 @@
    "hl_pflicht": [],
    "hinweis": "Durchschnitt der Zugelassenen laut Esade 36 von 42 Punkten (ohne Bonus), ab 32 vorhergesagten Punkten ist eine Zulassung möglich. Dazu Aufnahmetest.",
    "quelle": "offizielle Seiten der Hochschule, ungefähre Richtwerte, Stand 2026-11-22"
-  }
+  },
+  "wettbewerb": "hoch"
  },
  {
   "id": "eu-business-school-bachelor",
@@ -4917,7 +4942,8 @@
   "zulassung": "Abitur genügt als Zugangsvoraussetzung, Englischnachweis, kein Test genannt, Aufnahme über Bewerbung.",
   "zielgruppe": "schueler",
   "kosten_hinweis": "Studienjahr 2026/27 in Barcelona: etwa 5.350 Euro pro Semester, also 10.700 Euro pro Jahr, dazu einmalig 2.000 Euro Anzahlung und 200 Euro Bewerbungsgebühr. Die Angaben auf der Seite wirken je Campus unterschiedlich (zum Beispiel München 7.350 Euro pro Semester), bitte direkt beim Anbieter bestätigen.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "niedrig"
  },
  {
   "id": "hult-bba",
@@ -4965,7 +4991,8 @@
   "zulassung": "Abitur, Englisch, Bewerbung über Hult mit Essay und Gespräch, keine festen Notenhürden genannt.",
   "zielgruppe": "schueler",
   "kosten_hinweis": "London: £37.800 pro Jahr (laut UCAS-Eintrag), amerikanische Standorte nach Vergleichsportalen etwa $56.000 bis $60.000. Merit-Stipendien bis zu $35.000 pro Jahr möglich. Europäische Abiturienten können teils in drei Jahren abschließen.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "niedrig"
  },
  {
   "id": "upf-barcelona",
@@ -5014,7 +5041,8 @@
   ],
   "zulassung": "Abitur, Anerkennung über Spanien (UNED), Sprachkenntnisse Spanisch oder Englisch je Studiengang.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Laut UPF-Preistabelle 2026/27 kostet das erste Jahr etwa 6.800 bis 7.000 Euro je Studiengang (zum Beispiel Business 6.911 Euro). Daneben steht eine zweite, niedrigere Spalte (etwa 1.200 Euro), die ich nicht sicher zuordnen konnte. Bitte auf upf.edu/web/graus/preus prüfen."
+  "kosten_hinweis": "Laut UPF-Preistabelle 2026/27 kostet das erste Jahr etwa 6.800 bis 7.000 Euro je Studiengang (zum Beispiel Business 6.911 Euro). Daneben steht eine zweite, niedrigere Spalte (etwa 1.200 Euro), die ich nicht sicher zuordnen konnte. Bitte auf upf.edu/web/graus/preus prüfen.",
+  "wettbewerb": "mittel"
  },
  {
   "id": "marangoni-milano",
@@ -5060,7 +5088,8 @@
   ],
   "zulassung": "Abitur (zwölf Schuljahre), Motivationsschreiben, Zeugnisse, Passkopie, kein Test. Für Mode je nach Kurs Portfolio sinnvoll.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Studienjahr ab September 2027, EU-Studierende: Studiengebühr etwa 22.000 bis 22.550 Euro plus jährliche Einschreibegebühr 4.000 Euro, also etwa 26.000 bis 26.550 Euro pro Jahr. Außerhalb der EU etwa 25.800 Euro plus 4.000 Euro."
+  "kosten_hinweis": "Studienjahr ab September 2027, EU-Studierende: Studiengebühr etwa 22.000 bis 22.550 Euro plus jährliche Einschreibegebühr 4.000 Euro, also etwa 26.000 bis 26.550 Euro pro Jahr. Außerhalb der EU etwa 25.800 Euro plus 4.000 Euro.",
+  "wettbewerb": "niedrig"
  },
  {
   "id": "polimi-bachelor",
@@ -5107,7 +5136,8 @@
   ],
   "zulassung": "Abitur plus Eingangstest TOL (Online) oder SAT, Sprachnachweis für das gewählte Programm.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Gebühr hängt vom Einkommensnachweis ab (ISEE): von 157 Euro bis höchstens 3.943 Euro pro Jahr bei normalem Studienplan. Wie ein deutsches Einkommen eingestuft wird, steht in der Gebührenordnung (Studierende mit Einkommen im Ausland)."
+  "kosten_hinweis": "Gebühr hängt vom Einkommensnachweis ab (ISEE): von 157 Euro bis höchstens 3.943 Euro pro Jahr bei normalem Studienplan. Wie ein deutsches Einkommen eingestuft wird, steht in der Gebührenordnung (Studierende mit Einkommen im Ausland).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "luiss-bachelor",
@@ -5155,7 +5185,8 @@
   ],
   "zulassung": "Abitur plus Aufnahmetest, Sprachkenntnisse je Programm.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Studiengebühr für Economics and Management 2027/28: 15.000 Euro pro Jahr, in drei Raten, plus regionale Gebühr. Gleiche Gebühr für EU und Nicht-EU. Bewerbungsgebühr 150 Euro."
+  "kosten_hinweis": "Studiengebühr für Economics and Management 2027/28: 15.000 Euro pro Jahr, in drei Raten, plus regionale Gebühr. Gleiche Gebühr für EU und Nicht-EU. Bewerbungsgebühr 150 Euro.",
+  "wettbewerb": "mittel"
  },
  {
   "id": "unibo-bologna",
@@ -5203,7 +5234,8 @@
   ],
   "zulassung": "Abitur, Sprachnachweis (Italienisch oder Englisch je Programm), teils Test.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Feste Gebühr 157,04 Euro plus ein einkommensabhängiger Teil (ISEE) bis zu einem je Studiengang festgelegten Höchstbetrag, die Liste steht auf unibo.it. Für Nicht-OECD-Staatsangehörige gibt es eine reduzierte Fixgebühr von 1.000 Euro."
+  "kosten_hinweis": "Feste Gebühr 157,04 Euro plus ein einkommensabhängiger Teil (ISEE) bis zu einem je Studiengang festgelegten Höchstbetrag, die Liste steht auf unibo.it. Für Nicht-OECD-Staatsangehörige gibt es eine reduzierte Fixgebühr von 1.000 Euro.",
+  "wettbewerb": "niedrig"
  },
  {
   "id": "erasmus-rotterdam-bachelor",
@@ -5249,7 +5281,8 @@
   ],
   "zulassung": "Abitur, Auswahlverfahren (Numerus fixus je nach Programm), Englisch.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Gesetzliche Gebühr für EWR-Studierende 2027/28: 2.771 Euro (2026/27: 2.694 Euro), nur wenn noch kein gleichwertiger Abschluss an einer niederländischen Hochschule vorliegt. Das Liberal-Arts-Programm kostet mehr (6.000 Euro in 2027/28)."
+  "kosten_hinweis": "Gesetzliche Gebühr für EWR-Studierende 2027/28: 2.771 Euro (2026/27: 2.694 Euro), nur wenn noch kein gleichwertiger Abschluss an einer niederländischen Hochschule vorliegt. Das Liberal-Arts-Programm kostet mehr (6.000 Euro in 2027/28).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "ebs-bachelor",
@@ -5296,7 +5329,8 @@
   ],
   "zulassung": "Abitur, Auswahlverfahren aus Tests, Schulleistungen, Motivation und Persönlichkeit, keine feste Frist.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Studiengebühr 8.750 Euro pro Semester, also 17.500 Euro pro Jahr. Gesamtgebühren für sechs Semester im BWL-Bachelor etwa 54.480 Euro inklusive aller Gebühren. Early-Enrolment-Rabatt von 500 Euro bei früher Einschreibung."
+  "kosten_hinweis": "Studiengebühr 8.750 Euro pro Semester, also 17.500 Euro pro Jahr. Gesamtgebühren für sechs Semester im BWL-Bachelor etwa 54.480 Euro inklusive aller Gebühren. Early-Enrolment-Rabatt von 500 Euro bei früher Einschreibung.",
+  "wettbewerb": "mittel"
  },
  {
   "id": "lmu-muenchen",
@@ -5345,7 +5379,8 @@
   ],
   "zulassung": "Abitur, viele Fächer zulassungsbeschränkt (NC), Bewerbung über das Online-Portal der LMU.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "tum-management-technology",
@@ -5392,7 +5427,8 @@
   ],
   "zulassung": "Abitur, Eignungsverfahren je Studiengang möglich, Bewerbungszeiträume und Fristen auf tum.de prüfen.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "hoch"
  },
  {
   "id": "uni-koeln",
@@ -5439,7 +5475,8 @@
   ],
   "zulassung": "Abitur, viele Wirtschafts- und Psychologiefächer zulassungsbeschränkt (NC) oder mit Auswahl.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "hu-berlin",
@@ -5486,7 +5523,8 @@
   ],
   "zulassung": "Abitur, Bewerbung über uni-assist oder das Hochschul-Portal, viele Fächer mit NC.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "fu-berlin",
@@ -5533,7 +5571,8 @@
   ],
   "zulassung": "Abitur, viele Fächer zulassungsbeschränkt (NC), Bewerbung über das Hochschul-Portal.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "uni-hamburg",
@@ -5580,7 +5619,8 @@
   ],
   "zulassung": "Abitur, viele Fächer zulassungsbeschränkt (NC).",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "uni-heidelberg",
@@ -5627,7 +5667,8 @@
   ],
   "zulassung": "Abitur, Medizin mit zentralem Auswahlverfahren, andere Fächer teils NC.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "rwth-aachen",
@@ -5673,7 +5714,8 @@
   ],
   "zulassung": "Abitur, viele Fächer ohne NC, bei Architektur und einzelnen Fächern Auswahl.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "kit-karlsruhe",
@@ -5719,7 +5761,8 @@
   ],
   "zulassung": "Abitur, viele Fächer ohne NC, einzelne mit Auswahlverfahren.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "goethe-frankfurt",
@@ -5765,7 +5808,8 @@
   ],
   "zulassung": "Abitur, viele Wirtschafts- und Psychologiefächer zulassungsbeschränkt (NC).",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "mittel"
  },
  {
   "id": "cau-kiel",
@@ -5813,7 +5857,8 @@
   ],
   "zulassung": "Abitur, viele Fächer zulassungsbeschränkt, Medizin mit zentralem Verfahren.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "niedrig"
  },
  {
   "id": "uni-flensburg",
@@ -5858,7 +5903,8 @@
   ],
   "zulassung": "Abitur, einzelne Fächer zulassungsbeschränkt, Bewerbung über die Hochschule.",
   "zielgruppe": "schueler",
-  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr)."
+  "kosten_hinweis": "Staatliche Hochschule: keine Studiengebühren für Studierende aus Deutschland, nur der Semesterbeitrag (je nach Hochschule etwa 100 bis 400 Euro pro Semester, oft mit Deutschlandticket oder Nahverkehr).",
+  "wettbewerb": "niedrig"
  },
  {
   "typ": "hochschule",
@@ -5904,7 +5950,8 @@
    "Wirtschaftsrecht (WIRE)"
   ],
   "zulassung": "Online-Registrierung, Registrierungsbeitrag, dann bei Platzmangel Self-Assessment und Aufnahmeprüfung in Wien. Schulabschluss bis spätestens Ende Juli.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "niedrig"
  },
  {
   "typ": "hochschule",
@@ -5949,7 +5996,8 @@
    "Politics, Psychology, Law and Economics (PPLE)"
   ],
   "zulassung": "Schulabschluss, Englisch- und Mathenachweis, Anmeldung über Studielink und My Applications bis 15. Januar.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "mittel"
  },
  {
   "typ": "hochschule",
@@ -5996,7 +6044,8 @@
    "Global China Studies"
   ],
   "zulassung": "Common Application, Schulzeugnisse, Lehrerempfehlung, Englischnachweis für Nicht-Muttersprachler.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "hoch"
  },
  {
   "typ": "hochschule",
@@ -6038,7 +6087,8 @@
    "Global Bachelor of Fintech"
   ],
   "zulassung": "Bewerbung über das Online-System der Universität mit Zeugnissen und Sprachnachweis, Auswahl durch die Fakultät. Details je Jahrgang prüfen.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "hoch"
  },
  {
   "typ": "hochschule",
@@ -6087,7 +6137,8 @@
    "Medicine"
   ],
   "zulassung": "Bewerbung über das International/Non-JUPAS-Verfahren mit IB oder Abitur, Auswahl nach Zeugnissen und Englischnachweis.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "hoch"
  },
  {
   "typ": "hochschule",
@@ -6133,7 +6184,8 @@
    "Data Science"
   ],
   "zulassung": "Online-Bewerbung mit IB oder Abitur, Empfehlungsschreiben, Personal Statement und Englischnachweis (zum Beispiel IELTS 6.0).",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "hoch"
  },
  {
   "typ": "hochschule",
@@ -6186,7 +6238,8 @@
    "Rechtswissenschaft (DE)"
   ],
   "zulassung": "Allgemeine Hochschulreife (Abitur) oder IB, Online-Bewerbung, Zulassung je nach Major mit Auswahl.",
-  "sprache": "de"
+  "sprache": "de",
+  "wettbewerb": "mittel"
  },
  {
   "typ": "hochschule",
@@ -6235,7 +6288,8 @@
    "International Relations"
   ],
   "zulassung": "Online-Bewerbung mit Zeugnissen, Englischnachweis und Motivation, laufende Zulassung.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "mittel"
  },
  {
   "typ": "hochschule",
@@ -6277,7 +6331,8 @@
    "Recht und Digitale Transformation"
   ],
   "zulassung": "Abitur, zweistufiges Auswahlverfahren (schriftlich online, dann mündlich vor Ort), kein NC.",
-  "sprache": "de"
+  "sprache": "de",
+  "wettbewerb": "hoch"
  },
  {
   "typ": "hochschule",
@@ -6327,7 +6382,8 @@
    "Rechtswissenschaft"
   ],
   "zulassung": "Abitur, zulassungsbeschränkte Fächer mit NC, die Fristen sind Ausschlussfristen.",
-  "sprache": "de"
+  "sprache": "de",
+  "wettbewerb": "mittel"
  },
  {
   "typ": "hochschule",
@@ -6373,7 +6429,8 @@
    "Business, Asian Language and Culture"
   ],
   "zulassung": "Bewerbung über die Bewerbungsplattform optagelse.dk, Notenquote und Quote 2, Mindestanforderungen je nach Studiengang.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "mittel"
  },
  {
   "typ": "hochschule",
@@ -6422,7 +6479,8 @@
    "Doppelabschlüsse mit Partneruniversitäten"
   ],
   "zulassung": "Unterlagen, Essays und Gespräch, getrennter Bewerbungsweg für ausländische Schulabschlüsse, Sprachnachweis (Französisch oder Englisch je nach Campus).",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "hoch"
  },
  {
   "typ": "hochschule",
@@ -6470,6 +6528,7 @@
    "Psychology"
   ],
   "zulassung": "Bewerbung über das CAO, Zulassung nach Punkten aus dem Schulabschluss, Englischnachweis nur wenn nicht Muttersprache.",
-  "sprache": "en"
+  "sprache": "en",
+  "wettbewerb": "mittel"
  }
 ]

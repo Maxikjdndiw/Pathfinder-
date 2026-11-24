@@ -16,12 +16,12 @@
   <a class="skip-link" href="#app-main">Zum Inhalt springen</a>
   <header class="app-head">
     <a class="app-brand" href="/" aria-label="Pathfinder DE, zur Startseite"><!--brand-mark--><span>Pathfinder DE</span></a>
-    <ol class="modes" data-when="chat" aria-label="Abschnitte" hidden>
-      <li data-step="orientierung">Orientierung</li>
-      <li data-step="cv_linkedin">CV und LinkedIn</li>
-      <li data-step="praktika">Praktika</li>
-      <li data-step="studium">Studium</li>
-    </ol>
+    <nav class="modes" data-when="chat" aria-label="Abschnitte" role="tablist" hidden>
+      <button type="button" role="tab" data-tab="orientierung">Orientierung</button>
+      <button type="button" role="tab" data-tab="cv_linkedin">CV und LinkedIn</button>
+      <button type="button" role="tab" data-tab="praktika">Praktika</button>
+      <button type="button" role="tab" data-tab="studium">Studium</button>
+    </nav>
     <div class="app-head__actions" data-when="chat" hidden>
       <details class="menu">
         <summary class="menu__btn" aria-label="Weitere Optionen"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></summary>
@@ -67,7 +67,7 @@
           <p>Mit einem Menschen sprechen: Wenn du eine Mentorin oder einen Mentor anfragst, speichern wir eine kurze Zusammenfassung deines Gesprächs und eure Nachrichten auf dem Server, damit ihr direkt schreiben könnt. Eine E-Mail-Benachrichtigung bekommst du nur, wenn du das ausdrücklich möchtest.</p>
           <p>Dateien: Wenn du eine Datei anhängst (PDF, DOCX, PNG, JPG), speichern wir sie auf dem Server. Im Gespräch mit der KI geht sie zur Auswertung an den KI-Dienst, im Gespräch mit dem Mentor sieht nur er sie. Du kannst jede Datei selbst löschen, sonst löschen wir sie automatisch nach 30 Tagen.</p>
           <p>Wer die Daten verarbeitet: Deine Chatnachrichten an die KI werden zur Beantwortung an einen KI-Dienst (Anthropic) übermittelt. Die Seite und die gespeicherten Daten liegen bei Netlify. E-Mails (Zugangscode, Benachrichtigungen) verschicken wir über einen E-Mail-Dienst.</p>
-          <p>Rechtsgrundlage: deine Einwilligung. Du kannst sie jederzeit widerrufen und die Löschung deiner Daten verlangen: <a href="mailto:benedict.velazquez@mail.louisenlund.de">benedict.velazquez@mail.louisenlund.de</a>.</p>
+          <p>Rechtsgrundlage: deine Einwilligung. Du kannst sie jederzeit widerrufen und die Löschung deiner Daten verlangen: <a href="mailto:hello@mypathfinder.site">hello@mypathfinder.site</a>.</p>
           <p>Die KI kann Fehler machen. Prüfe wichtige Angaben (Fristen, Kosten) immer auf der offiziellen Seite des Anbieters.</p>
         </details>
         <label class="check">
@@ -167,10 +167,10 @@
       <div class="chat__log" data-log aria-live="polite"></div>
 
       <!-- mentor request: slide to confirm (src/app/slide-confirm.ts), from the CV part on -->
-      <section class="mentor-slot" data-mentor-slot aria-labelledby="mentor-slot-title" hidden>
-        <h2 class="mentor-slot__title" id="mentor-slot-title">Mit einem Menschen sprechen</h2>
-        <div data-mentor-slider></div>
-      </section>
+      <details class="mentor-slot" data-mentor-slot hidden>
+        <summary class="mentor-slot__title">Mit einem Menschen sprechen<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></summary>
+        <div class="mentor-slot__body" data-mentor-slider></div>
+      </details>
 
       <!-- direct chat with the mentor: only the student and the mentor write here, never the AI -->
       <section class="mentor-chat" data-mentor-chat aria-label="Gespräch mit deinem Mentor" hidden>
