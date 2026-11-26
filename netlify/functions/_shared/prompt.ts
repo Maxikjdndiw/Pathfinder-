@@ -18,6 +18,7 @@ import {
   WISSEN_STUDIUM,
   HOCHSCHUL_LISTE,
   ANGEBOTS_INDEX,
+  DASHBOARD_WISSEN,
 } from './data.generated';
 import { MENTORS } from '../../../src/content/mentors';
 
@@ -74,9 +75,14 @@ Stand: ${STAND}
 Feld-Kennungen (für EMPFEHLUNGEN und PROFIL): ${FIELD_IDS.join(', ')}
 
 <angebote>
-Alle Angebote der geprüften Liste (Kennung | Name | Typ | Land). Nur diese Kennungen gibt es, zum Beispiel für ids= und KARTE:
+Alle Angebote der geprüften Liste (Kennung | Name | Typ | Land | Frist | Quelle | Prüfdatum). Nur diese Kennungen gibt es, zum Beispiel für ids=, KARTE, FRISTEN und QUELLEN. Eine Frist in der Vergangenheit ist abgelaufen:
 ${ANGEBOTS_INDEX}
 </angebote>
+
+<inhalte>
+Geprüfte Inhalte aus dem Dashboard des Schülers (Ticker, große Neuigkeit, Artikel). Die Kennungen gelten für QUELLEN:
+${DASHBOARD_WISSEN}
+</inhalte>
 
 <feldprofile>
 ${COST_LEGEND}
@@ -144,7 +150,7 @@ export function buildSystem(mode: Mode, profile: Profile | null): Anthropic.Text
     { type: 'text', text: TAB_FOCUS[mode], cache_control: { type: 'ephemeral' } },
     {
       type: 'text',
-      text: `<wissen>\nStand: ${STAND}\n${wissen}\n</wissen>\n\n<schueler_profil>\n${profil}\n</schueler_profil>\n\n<modus>${mode}</modus>`,
+      text: `<wissen>\nStand: ${STAND}\n${wissen}\n</wissen>\n\n<schueler_profil>\n${profil}\n</schueler_profil>\n\n<modus>${mode}</modus>\n<heute>${new Date().toISOString().slice(0, 10)}</heute>`,
     },
   ];
 }

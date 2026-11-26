@@ -204,7 +204,8 @@ if (insiderStack) {
             <p class="insider__name">${esc(m.name)}</p>
             <p class="insider__role">${esc(m.role)}</p>
           </div>
-        </div>
+        </div>${m.headline ? `
+        <p class="insider__headline">${esc(m.headline)}</p>` : ''}
         <ul class="insider__bullets">${m.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`;
       return el;
     });

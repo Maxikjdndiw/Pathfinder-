@@ -8,6 +8,8 @@
  *   ip/<hash>/<hour>   count              requests per IP and hour
  *   tag/<date>         count              new codes per day
  *   warteliste/<hash>  { vorname, email, zeit }
+ *   login/<day>/<CODE> 1                  this code was active on that day (Berlin time), for the mentor overview
+ *   seen/<CODE>        { code, erst, letzter }  first and latest activity, also for fixed codes
  */
 import { accessCodes, canonical } from './limits';
 import { hash, store } from './store';
@@ -49,6 +51,41 @@ export async function isAllowed(code: string, touch = false): Promise<boolean> {
   if (!rec || rec.gesperrt) return false;
   if (touch) await s.set(`code/${c}`, { ...rec, zuletztBenutzt: new Date().toISOString() });
   return true;
+}
+
+/** first name from the signup for a self-requested code; fixed codes have none */
+export async function nameFor(code: string): Promise<string> {
+  const c = canonical(code);
+  if (!c || accessCodes().includes(c)) return '';
+  const rec = await codesStore().get<AccessRecord>(`code/${c}`);
+  return rec && !rec.gesperrt ? String(rec.vorname ?? '').slice(0, 40) : '';
+}
+
+/** YYYY-MM-DD in German time */
+export const berlinDay = (d = new Date()) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Berlin' }).format(d);
+
+export interface SeenRecord {
+  code: string;
+  erst: string;
+  letzter: string;
+}
+/** Remembers that a code was used today: one read, and two writes only on the first use of the day. */
+export async function recordActivity(code: string): Promise<void> {
+  const c = canonical(code);
+  if (!c) return;
+  try {
+    const s = codesStore();
+    const now = new Date();
+    const day = berlinDay(now);
+    const seen = await s.get<SeenRecord>(`seen/${c}`);
+    if (seen && berlinDay(new Date(seen.letzter)) === day) return;
+    await Promise.all([
+      s.set(`login/${day}/${c}`, 1),
+      s.set(`seen/${c}`, { code: c, erst: seen?.erst ?? now.toISOString(), letzter: now.toISOString() } satisfies SeenRecord),
+    ]);
+  } catch {
+    /* statistics only: never block a login or a message */
+  }
 }
 
 export const emailKey = async (email: string) => `email/${await hash(email.trim().toLowerCase())}`;

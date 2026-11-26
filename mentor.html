@@ -6,16 +6,23 @@
   <title>Mentorenbereich · Pathfinder DE</title>
   <meta name="robots" content="noindex, nofollow" />
   <meta name="referrer" content="no-referrer" />
-  <meta name="theme-color" content="#FFFFFF" />
+  <meta name="theme-color" content="#FAF9F5" />
   <link rel="icon" href="/pathfinder-app-icon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
   <script type="module" src="/src/mentor/main.ts"></script>
 </head>
 <body class="mp">
   <header class="mp-head">
-    <a class="mp-brand" href="/"><!--brand-mark--><span>Pathfinder DE</span></a>
-    <span class="mp-head__title">Mentorenbereich</span>
-    <button class="btn btn--quiet btn--small" type="button" data-logout hidden>Abmelden</button>
+    <div class="mp-head__in">
+      <a class="mp-brand" href="/"><!--brand-mark--><span>Pathfinder DE</span></a>
+      <span class="mp-head__title">Mentorenbereich</span>
+      <nav class="mp-tabs" role="tablist" aria-label="Bereiche" data-tabs hidden>
+        <button type="button" role="tab" aria-selected="false" data-tab="uebersicht">Übersicht</button>
+        <button type="button" role="tab" aria-selected="true" data-tab="chats">Chats <span class="mp-count" data-count-unread></span></button>
+        <button type="button" role="tab" aria-selected="false" data-tab="zugaenge">Zugänge</button>
+      </nav>
+      <button class="mp-btn" type="button" data-logout hidden>Abmelden</button>
+    </div>
   </header>
 
   <main class="mp-main">
@@ -28,51 +35,80 @@
           <input class="input" type="password" name="passwort" autocomplete="current-password" required />
         </label>
         <p class="form-error" data-login-error role="alert"></p>
-        <button class="btn btn--primary" type="submit">Anmelden</button>
+        <button class="mp-btn mp-btn--accent" type="submit">Anmelden</button>
       </form>
     </section>
 
     <section class="mp-app" data-app hidden>
-      <div class="mp-tabs" role="tablist" aria-label="Bereiche">
-        <button type="button" role="tab" aria-selected="true" data-tab="anfragen">Anfragen <span class="mp-count" data-count-open></span></button>
-        <button type="button" role="tab" aria-selected="false" data-tab="zugaenge">Zugänge</button>
-      </div>
-
-      <div class="mp-panel" data-panel="anfragen">
-        <div class="mp-split">
-          <ul class="mp-list" data-threads aria-label="Anfragen"></ul>
-          <div class="mp-detail" data-detail hidden>
-            <button class="mp-back" type="button" data-back>Alle Anfragen</button>
-            <div class="mp-detail__head">
-              <h2 data-detail-name></h2>
-              <button class="btn btn--quiet btn--small" type="button" data-status-toggle></button>
-            </div>
-            <p class="mp-meta" data-detail-meta></p>
-            <div class="mp-summary">
-              <p class="mp-summary__label">Zusammenfassung</p>
-              <p data-detail-summary></p>
-              <p class="mp-profile" data-detail-profile></p>
-            </div>
-            <div class="mp-thread" data-detail-thread aria-live="polite"></div>
-            <form class="mp-reply" data-reply novalidate>
-              <label class="sr-only" for="reply">Antwort</label>
-              <textarea class="input" id="reply" name="text" rows="3" maxlength="2000" placeholder="Antwort schreiben"></textarea>
-              <ul class="mp-files" data-reply-files></ul>
-              <p class="form-error" data-reply-error role="alert"></p>
-              <div class="mp-reply__actions">
-                <input class="sr-only" type="file" data-reply-input multiple accept=".pdf,.docx,.png,.jpg,.jpeg" tabindex="-1" aria-hidden="true" />
-                <button class="btn btn--quiet btn--small" type="button" data-reply-attach>Datei anhängen</button>
-                <button class="btn btn--solid" type="submit">Antworten</button>
-              </div>
-            </form>
+      <!-- Übersicht: key figures, chart, latest logins -->
+      <div class="mp-panel" data-panel="uebersicht" hidden>
+        <div class="mp-kpis" data-kpis></div>
+        <div class="mp-card mp-chart">
+          <div class="mp-card__head">
+            <h2>Anmeldungen und Logins pro Tag</h2>
+            <p class="mp-legend"><span class="mp-legend__dot mp-legend__dot--a"></span>Neue Anmeldungen <span class="mp-legend__dot mp-legend__dot--b"></span>Logins</p>
           </div>
-          <p class="mp-empty" data-detail-empty>Wähle links eine Anfrage.</p>
+          <div class="mp-chart__plot" data-chart></div>
+        </div>
+        <div class="mp-card">
+          <div class="mp-card__head"><h2>Zuletzt eingeloggt</h2></div>
+          <ul class="mp-recent" data-recent></ul>
         </div>
       </div>
 
+      <!-- Chats: inbox on the left, conversation on the right -->
+      <div class="mp-panel" data-panel="chats">
+        <div class="mp-inbox">
+          <aside class="mp-side" aria-label="Chats">
+            <label class="sr-only" for="mp-search">Chats durchsuchen</label>
+            <input class="mp-search" id="mp-search" type="search" placeholder="Suchen: Name, Code oder Nachricht" autocomplete="off" data-search />
+            <div class="mp-chips" role="group" aria-label="Filter">
+              <button type="button" class="mp-chip" aria-pressed="false" data-filter="ungelesen">Ungelesen</button>
+              <button type="button" class="mp-chip" aria-pressed="false" data-filter="heute">Heute</button>
+              <button type="button" class="mp-chip" aria-pressed="false" data-filter="woche">7 Tage</button>
+              <button type="button" class="mp-chip" aria-pressed="false" data-filter="tab" title="Direkt über Mentor im Dashboard gestartet">Tab</button>
+            </div>
+            <ul class="mp-list" data-threads></ul>
+          </aside>
+
+          <section class="mp-conv" data-detail hidden aria-label="Gespräch">
+            <div class="mp-conv__head">
+              <button class="mp-back" type="button" data-back>Alle Chats</button>
+              <div class="mp-conv__who">
+                <h2 data-detail-name></h2>
+                <p class="mp-meta" data-detail-meta></p>
+              </div>
+              <button class="mp-btn" type="button" data-status-toggle></button>
+            </div>
+            <details class="mp-info" data-info>
+              <summary>Profil und Zusammenfassung</summary>
+              <p class="mp-info__label">Profil</p>
+              <p data-detail-profile></p>
+              <p class="mp-info__label">Zusammenfassung</p>
+              <p data-detail-summary></p>
+            </details>
+            <div class="mp-thread" data-detail-thread aria-live="polite"></div>
+            <form class="mp-reply" data-reply novalidate>
+              <ul class="mp-files" data-reply-files></ul>
+              <p class="form-error" data-reply-error role="alert"></p>
+              <div class="mp-reply__box">
+                <input class="sr-only" type="file" data-reply-input multiple accept=".pdf,.docx,.png,.jpg,.jpeg" tabindex="-1" aria-hidden="true" />
+                <button class="mp-attach" type="button" data-reply-attach aria-label="Datei anhängen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5l-7.8 7.8a5 5 0 0 1-7.1-7.1l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.5 8.5a1.7 1.7 0 0 1-2.4-2.4l7.8-7.8"/></svg></button>
+                <label class="sr-only" for="reply">Antwort</label>
+                <textarea id="reply" name="text" rows="1" maxlength="2000" placeholder="Antwort schreiben" aria-describedby="reply-hint"></textarea>
+                <button class="mp-send" type="submit" aria-label="Senden"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></button>
+              </div>
+              <p class="mp-hint" id="reply-hint">Enter sendet, Shift und Enter macht eine neue Zeile.</p>
+            </form>
+          </section>
+          <div class="mp-conv mp-conv--empty" data-detail-empty><p>Wähle links einen Chat.</p></div>
+        </div>
+      </div>
+
+      <!-- Zugänge: self-requested access codes -->
       <div class="mp-panel" data-panel="zugaenge" hidden>
         <p class="mp-meta" data-waitlist></p>
-        <div class="mp-table-wrap">
+        <div class="mp-card mp-table-wrap">
           <table class="mp-table">
             <thead><tr><th>Vorname</th><th>Code</th><th>Erstellt</th><th>Zuletzt benutzt</th><th><span class="sr-only">Aktion</span></th></tr></thead>
             <tbody data-access></tbody>

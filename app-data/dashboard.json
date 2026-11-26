@@ -1,0 +1,108 @@
+{
+ "_hinweis": "Inhalte des Schüler-Dashboards und Wissen für den KI-Assistenten. Nur hier ändern, kein Design-Code nötig. Fehlt ein Bereich oder ist er leer, wird er nicht angezeigt. Jeder Eintrag hat eine id, die der Assistent als Quelle nennt. lastVerified: Datum der letzten Prüfung auf der Quellseite; leer bedeutet: noch nicht im Browser geprüft. Fristen kommen aus angebote.json (frist, link, zuletzt_geprueft).",
+ "ticker": [
+  {
+   "id": "news-bocconi-winter",
+   "text": "Bocconi Bachelor: Bewerbung für die Winter Session läuft bis 26. Januar 2027",
+   "source": "Bocconi",
+   "url": "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/application-and-admissions/admissions",
+   "lastVerified": "2026-11-26"
+  },
+  {
+   "id": "news-schuelerakademie",
+   "text": "Deutsche SchülerAkademie: Vorschläge bis 2. März, Kurswahl bis 31. März",
+   "source": "SchülerAkademien",
+   "url": "https://www.schuelerakademien.de/deutsche-schuelerakademie",
+   "lastVerified": "2026-11-26"
+  },
+  {
+   "id": "news-citadel-discover",
+   "text": "Ausblick: Citadel Discover EMEA, Bewerbung für Studierende im 1. und 2. Jahr bis 29. Januar 2027",
+   "source": "Citadel",
+   "url": "https://www.citadel.com/careers/programs-and-events/discover-citadel/",
+   "lastVerified": ""
+  },
+  {
+   "id": "news-db-spring",
+   "text": "Ausblick: Deutsche Bank Spring into Banking, Bewerbung bis 31. Dezember 2026",
+   "source": "e-fellows.net",
+   "url": "https://www.e-fellows.net/events/spring-into-banking-2027",
+   "lastVerified": ""
+  },
+  {
+   "id": "news-commerzbank-praktikum",
+   "text": "Commerzbank Schülerpraktikum: bundesweit, 1 bis 4 Wochen",
+   "source": "Commerzbank",
+   "url": "https://www.commerzbank.de/konzern/karriere/schueler/praktikum/",
+   "lastVerified": ""
+  },
+  {
+   "id": "news-db-orientierung",
+   "text": "Deutsche Bank: Orientierungspraktika für Schüler in Filiale und IT",
+   "source": "Deutsche Bank Karriere",
+   "url": "https://careers.db.com/Schuelerinnen/dein-schul-fos-und-berufsorientierungs-praktikum",
+   "lastVerified": ""
+  },
+  {
+   "id": "news-fashionunited-praktikum",
+   "text": "FashionUnited: Was steckt hinter einem Praktikum in der Mode",
+   "source": "FashionUnited",
+   "url": "https://fashionunited.de/nachrichten/personen/was-steckt-hinter-einem-praktikum-in-der-mode-vom-designstudio-bis-zum-lager/2026111869439",
+   "lastVerified": ""
+  }
+ ],
+ "bigNews": {
+  "id": "bignews-bocconi",
+  "label": "Große Neuigkeit",
+  "title": "Bocconi: Das Winter-Bewerbungsfenster ist offen",
+  "teaser": "Bis zum 26. Januar 2027 kannst du dich für den Bachelor 2027/28 bewerben.",
+  "body": "Bocconi nimmt Bewerbungen für das Studienjahr 2027/28 in der Winter Session vom 25. November 2026 bis zum 26. Januar 2027 an, jeweils bis 15 Uhr italienischer Zeit. Die Ergebnisse folgen Mitte März 2027. Vor der Bewerbung brauchst du ein Testergebnis, entweder vom Bocconi Online Test, vom SAT oder vom ACT. Die Bewerbungsgebühr beträgt 100 € pro Bewerbung. Bocconi rät, früh zu bewerben, weil der Wettbewerb sehr intensiv ist.",
+  "source": "Bocconi",
+  "url": "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/application-and-admissions/admissions",
+  "verified": "2026-11-26",
+  "image": "/sketches/bocconi-sketch.svg"
+ },
+ "dayInLife": {
+  "id": "tag-im-leben-modedesign",
+  "label": "Ein Tag im Leben",
+  "image": "/sketches/mode-sketch.svg",
+  "markdown": "# Ein Tag im Leben: Modedesign\n\n*Dieser Tag ist kein Porträt einer einzelnen Person, sondern ein typischer Tag, zusammengestellt aus Berufsberichten und Branchenquellen. Wie der Alltag aussieht, hängt stark davon ab, ob man in einem großen Unternehmen oder in einem kleinen Label arbeitet. Einige Quellen stammen aus den USA und Großbritannien.*\n\nWer an Modedesign denkt, denkt an Skizzen und Fashion Weeks. Der Alltag besteht aus deutlich mehr. Nach der Branchenübersicht von FashionUnited läuft der Prozess in vier Schritten: Recherche zu Trends, Stoffen und Farben, dann Skizzen und technische Unterlagen, dann Anproben und schließlich die Übergabe an die Produktion \\[1\\].\n\n&#91;image: Illustration: Moodboard, Schneiderpuppe, technische Zeichnung, Maßband und Bleistift auf einem Atelier-Tisch\\]\n\n## 08:30 Trends und Moodboard\n\nDer Tag beginnt oft mit Recherche. Modemagazine lesen, die Social-Media-Kanäle der eigenen Marke prüfen und ein Moodboard mit einer Farbwelt zusammenstellen gehören dazu \\[2\\]. Moodboards sind in Stellenbeschreibungen ein fester Bestandteil des Jobs \\[3\\].\n\n## 10:00 Skizzen und technische Zeichnungen\n\nIdeen werden von Hand oder mit CAD-Software (computergestütztes Zeichnen) entworfen \\[3\\]. Nicht jeder arbeitet dabei vor allem mit dem Stift: Eine Designerin sagt, dass sie weniger als ein Zehntel ihres Prozesses mit Skizzieren verbringt, weil sie Stoffe mehr inspirieren und sie lieber direkt an der Puppe drapiert \\[4\\].\n\n## 11:30 Stoffe und Lieferanten\n\nJetzt geht es um das Material: Stoffmuster anfragen, Stoffmessen besuchen und Farben an Lieferanten schicken, die dann Farbmuster (sogenannte Lab Dips) anfertigen \\[2\\]. Eine Quelle beschreibt die Auswahl von Stoffen, Zutaten und Farbmustern als großen Teil des Tages, weil die Farben bei verschiedenen Materialien übereinstimmen müssen \\[5\\].\n\n## 13:30 Abstimmung im Team\n\nDesignerinnen und Designer arbeiten eng mit Produktentwicklung, Merchandising (Warenplanung), Einkauf und Marketing zusammen \\[1\\]. Wer als Assistenz startet, erstellt oft Spezifikationsblätter, besorgt Zubehör und koordiniert Muster \\[1\\]. Manchmal müssen Entwürfe auch überarbeitet werden, damit das Sortiment ausgewogen bleibt oder die Kosten sinken \\[2\\].\n\n## 15:00 Anprobe\n\nBei der Anprobe wird das Musterteil geprüft. Technische Designerinnen und Designer messen die Muster nach, vergleichen sie mit dem Tech Pack (der Bauanleitung für die Produktion) und stellen dabei häufig fest, dass der Hersteller die Vorgaben nicht genau umgesetzt hat \\[6\\]. Danach gehen Änderungen zurück an die Produktion \\[6\\]. Für die Umsetzung arbeiten Designerinnen und Designer eng mit Schneiderinnen, Schneidern und Models zusammen \\[7\\].\n\n## 17:00 Mails und Verwaltung\n\nEin erheblicher Teil der Arbeit ist nicht kreativ: Verwaltung und die Kommunikation mit Kunden und Geschäftspartnern \\[8\\].\n\n## Alles läuft gleichzeitig\n\nEine Senior Designerin beschreibt, dass sie Woche für Woche neue Kollektionsgruppen entwickelt und anprobiert und gleichzeitig die Produktion früherer Gruppen betreut \\[9\\]. Dazu passt, dass die Arbeitszeiten laut Princeton Review lang sind und das Einstiegsgehalt begrenzt ist \\[10\\].\n\n## Was du daraus mitnehmen kannst\n\n- Modedesign ist ein Sammelbegriff. Es gibt Assistenz, Senior Design, Technical Design, Textil- und Printdesign, Schuh- und Accessoire-Design sowie Grafik \\[1\\].\n- Wer lieber mit Passform und Produktion arbeitet, findet im Technical Design einen eigenen Weg \\[1\\].\n- Für den Einstieg zählt eine gute Mappe (Portfolio), dazu kommt Grundwissen in Wirtschaft und Marketing \\[10\\].\n- Der Zugang führt über eine Ausbildung oder ein Studium, und der Weg dauert je nach Form etwa zwei bis vier Jahre \\[8\\].\n\n## Quellen\n\n1. FashionUnited: Was machen eigentlich Modedesigner:innen? (2026). https://fashionunited.de/nachrichten/personen/was-macht-ein-e-modedesigner-in-eigentlich-ein-blick-auf-die-vielen-facetten-des-designs/2026081168042\n2. Jennifer Serr, Fashion Studies: Jobs in Fashion, Fashion Designer (2022). https://jennifer-serr.squarespace.com/fashion-studies-blog/2022/5/12/jobs-in-fashion-fashion-designer\n3. TARGETjobs: Fashion designer, job description (2023). https://targetjobs.co.uk/careers-advice/job-descriptions/fashion-designer-job-description\n4. Copenhagen Post: Style Stil, When design comes to life. https://cphpost.dk/?p=133819\n5. ClimbTheLadder: How Many Hours Do Fashion Designers Work a Day? https://climbtheladder.com/how-many-hours-do-fashion-designers-work-a-day/\n6. Interview mit der Technical Designerin Damaris Barajas: What does a Technical Designer in the Fashion Industry do? https://cat-accordion-xr2x.squarespace.com/what-does-a-technical-designer-in-the-fashion-industry-do\n7. ausbildung.de: Modedesigner/-in, Ausbildung und Beruf. https://www.ausbildung.de/berufe/modedesigner/gehalt/\n8. Karrierebibel: Modedesigner/in, Beruf, Ausbildung, Gehalt + Jobs. https://karrierebibel.de/modedesigner-werden/\n9. Jennifer Serr, Fashion Studies: Fashion Careers, What is a Fashion Designer (2020), Interview mit Julie Ann Silverman, Senior Designer. https://jennifer-serr.squarespace.com/fashion-studies-blog/2020/2/14/fashion-careers-what-is-a-fashion-designer\n10. Princeton Review: A Day in the Life of a Fashion Designer. https://www.princetonreview.com/careers/63/fashion-designer\n"
+ },
+ "greetings": {
+  "morgen": [
+   "Guten Morgen, {name}.",
+   "Schön, dass du so früh da bist, {name}.",
+   "Morgen, {name}. Kaffee oder Kakao?",
+   "Ein frischer Tag für neue Pläne, {name}.",
+   "Na, ausgeschlafen, {name}?"
+  ],
+  "mittag": [
+   "Mahlzeit, {name}.",
+   "Kurze Pause, {name}?",
+   "Halbzeit für heute, {name}.",
+   "Schön, dich zu sehen, {name}.",
+   "Worauf hast du heute Lust, {name}?"
+  ],
+  "nachmittag": [
+   "Produktiver Nachmittag, {name}?",
+   "Hallo, {name}. Schule geschafft?",
+   "Schön, dass du vorbeischaust, {name}.",
+   "Zeit für einen nächsten Schritt, {name}.",
+   "Worauf hast du heute Lust, {name}?"
+  ],
+  "abend": [
+   "Guten Abend, {name}.",
+   "Noch ein paar Pläne für morgen, {name}?",
+   "Schöner Abend zum Nachdenken, {name}.",
+   "Hallo, {name}. Wie war dein Tag?",
+   "Ein ruhiger Moment für dich, {name}."
+  ],
+  "nacht": [
+   "Noch wach, {name}?",
+   "Späte Ideen sind oft die besten, {name}.",
+   "Hallo, Nachteule {name}.",
+   "Die Nacht gehört den Planern, {name}.",
+   "Kurz vor dem Schlafen noch ein Blick, {name}?"
+  ]
+ }
+}

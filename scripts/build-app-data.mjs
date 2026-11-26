@@ -55,7 +55,21 @@ const hochschulListe = angebote
   .join('\n');
 
 // 3c. All offers, one short line each: the ids the coach may use in ids= (every mode)
-const angebotsIndex = angebote.map((o) => `${o.id} | ${o.name} | ${o.typ} | ${o.land}`).join('\n');
+const angebotsIndex = angebote
+  .map((o) => `${o.id} | ${o.name} | ${o.typ} | ${o.land} | Frist: ${o.frist ?? 'keine feste Frist'} | Quelle: ${o.anbieter} | geprüft: ${o.zuletzt_geprueft}`)
+  .join('\n');
+
+// 3b. Dashboard content (app-data/dashboard.json): the whole file goes into the coach's knowledge
+const dash = JSON.parse(read('dashboard.json'));
+const verified = (d) => (d ? `geprüft: ${d}` : 'noch nicht auf der Quellseite geprüft');
+const dashWissen = [
+  'Neuigkeiten (id | Meldung | Quelle | Link | Prüfung):',
+  ...(dash.ticker ?? []).map((t) => `${t.id} | ${t.text} | ${t.source} | ${t.url} | ${verified(t.lastVerified)}`),
+  dash.bigNews?.title ? `\nGroße Neuigkeit (id ${dash.bigNews.id}, Quelle ${dash.bigNews.source}, ${dash.bigNews.url}, ${verified(dash.bigNews.verified)}):\n${dash.bigNews.title}\n${dash.bigNews.body}` : '',
+  dash.dayInLife?.markdown ? `\nArtikel (id ${dash.dayInLife.id}, Quellen im Artikel):\n${dash.dayInLife.markdown.trim()}` : '',
+]
+  .filter(Boolean)
+  .join('\n');
 
 // 4. Templates (Teil A) and approved tips (Teil B)
 const vr = read('vorlagen-recht.md');
@@ -75,6 +89,7 @@ export const TIPPS_ALLGEMEIN = ${JSON.stringify(teilB)};
 export const WISSEN_STUDIUM = ${JSON.stringify(studium.join('\n\n'))};
 export const HOCHSCHUL_LISTE = ${JSON.stringify(hochschulListe)};
 export const ANGEBOTS_INDEX = ${JSON.stringify(angebotsIndex)};
+export const DASHBOARD_WISSEN = ${JSON.stringify(dashWissen)};
 `;
 mkdirSync(new URL('../netlify/functions/_shared/', import.meta.url), { recursive: true });
 writeFileSync(new URL('../netlify/functions/_shared/data.generated.ts', import.meta.url), out);

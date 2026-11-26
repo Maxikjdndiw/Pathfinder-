@@ -11,7 +11,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { buildSystem, cleanProfile, MODES, type Mode } from './_shared/prompt';
 import { normaliseCode, takeQuota } from './_shared/limits';
-import { isAllowed } from './_shared/codes';
+import { isAllowed, recordActivity } from './_shared/codes';
 import { mockReply } from './_shared/mock';
 import { getFile, MAX_FILES_PER_MESSAGE } from './_shared/uploads';
 import mammoth from 'mammoth';
@@ -100,6 +100,7 @@ export default async (req: Request) => {
 
   const code = normaliseCode(body.code);
   if (!(await isAllowed(code))) return json(401, { error: 'Dieser Zugangscode ist nicht gültig.' });
+  await recordActivity(code);
   const mode: Mode = MODES.includes(body.mode as Mode) ? (body.mode as Mode) : 'orientierung';
   const profile = cleanProfile(body.profile);
   const messages = cleanMessages(body.messages);

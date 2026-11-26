@@ -171,6 +171,8 @@
 .insider--featured .insider__name { font-size: 15px; line-height: 20px; font-weight: 500; }
 .insider__role { font-size: 13.5px; line-height: 19px; color: var(--ink-muted); }
 .insider--featured .insider__field { background: var(--card); color: var(--ink-muted); border: 1px solid var(--line); }
+.insider__headline { margin-top: 18px; font-size: 17px; line-height: 23px; font-weight: 600; color: var(--ink); text-wrap: balance; }
+.insider--compact .insider__headline { margin-top: 14px; font-size: 16px; line-height: 22px; }
 .insider__bullets { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 9px; }
 .insider__bullets li { position: relative; padding-left: 18px; font-size: 15px; line-height: 21px; color: var(--ink); }
 .insider__bullets li::before { content: ''; position: absolute; left: 2px; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--ink-muted); }

@@ -9,11 +9,13 @@ import '@fontsource/inter/500.css';
 import '../styles/tokens.css';
 import '../styles/base.css';
 import './app.css';
+import './theme.css';
 import { parseMarkers, visibleText, type ModeButton, type Recommendation } from './markers';
 import { createSlideConfirm, type SlideResult } from './slide-confirm';
 import { createCodeSlots } from './code-slots';
 import type { MapHandle } from './map';
 import { createLatticeLoader } from '../components/lattice-loader';
+import { daysLabel, daysLeft, renderDashboard, renderTicker, sourceFor } from './dashboard';
 import {
   COST_LABELS as PILL_LABELS,
   COST_STEPS,
@@ -67,6 +69,8 @@ interface State {
   /** one conversation per tab; only the open tab's history goes to the server */
   chats: Record<Mode, Msg[]>;
   saved: string[];
+  /** first name from the signup, returned by /api/login (empty for fixed codes) */
+  name?: string;
   /** a mentor request was sent from this browser */
   mentorSent?: boolean;
   /** the request created a direct chat with the mentor (false: it went out as a backup form only) */
@@ -144,10 +148,10 @@ function save() {
 }
 
 // ---------- screens ----------
-type Screen = 'login' | 'register' | 'chat' | 'vorlagen';
+type Screen = 'login' | 'register' | 'dashboard' | 'chat' | 'vorlagen';
 function show(screen: Screen) {
   document.querySelectorAll<HTMLElement>('[data-screen]').forEach((el) => (el.hidden = el.dataset.screen !== screen));
-  document.querySelectorAll<HTMLElement>('[data-when]').forEach((el) => (el.hidden = el.dataset.when !== screen));
+  document.querySelectorAll<HTMLElement>('[data-when]').forEach((el) => (el.hidden = !el.dataset.when!.split(' ').includes(screen)));
   if (screen === 'login' || screen === 'register') history.replaceState(null, '', screen === 'register' ? '#zugang' : location.pathname);
 }
 
@@ -232,11 +236,12 @@ function fileChips(files: FileRef[] | undefined, own: boolean): string {
     .join('')}</ul>`;
 }
 
+const AVATAR = '<span class="msg__avatar" aria-hidden="true"><img src="/pathfinder-mark.svg" alt="" width="18" height="18" /></span>';
 function bubble(role: Msg['role'], html: string, files?: FileRef[]): HTMLElement {
   const el = document.createElement('div');
   el.className = `msg msg--${role === 'user' ? 'me' : 'coach'}`;
-  el.innerHTML = `${fileChips(files, role === 'user')}${html ? `<div class="msg__body">${html}</div>` : ''}`;
-  if (role !== 'user' && !html) el.innerHTML = '<div class="msg__body"></div>';
+  el.innerHTML = `${role === 'user' ? '' : AVATAR}${fileChips(files, role === 'user')}${html ? `<div class="msg__body">${html}</div>` : ''}`;
+  if (role !== 'user' && !html) el.innerHTML = `${AVATAR}<div class="msg__body"></div>`;
   log.appendChild(el);
   return el;
 }
@@ -256,13 +261,16 @@ function renderAll() {
     if (m.role === 'user') return void bubble('user', m.dateien?.length && m.content === FILE_ONLY ? '' : format(m.content), m.dateien);
     const parsed = parseMarkers(m.content);
     const el = bubble('assistant', format(parsed.text));
+    const b = el.querySelector<HTMLElement>('.msg__body');
+    if (b) renderSources(b, parsed.sources);
+    renderDeadlineCards(el, parsed.deadlines);
     if (i === lastVisual) {
       const rec = parsed.recommendation;
       const withMap = Boolean(parsed.map) || Boolean(rec?.typen.some((x) => x === 'hochschule' || x === 'studiengang'));
       if (rec) renderRecommendations(el, rec, withMap ? { map: true, highlight: parsed.map } : {});
       else if (parsed.map) renderMapOnly(el, parsed.map);
     }
-    if (i === lastAssistant) renderActions(el, parsed.options, parsed.buttons);
+    if (i === lastAssistant) renderActions(el, parsed.options, parsed.buttons, parsed.followups);
   });
   scrollDown();
 }
@@ -338,8 +346,8 @@ function typer(render: (text: string) => void) {
 }
 
 /** Tappable options (several can be picked) and mode buttons, only under the latest reply. */
-function renderActions(after: HTMLElement, options: string[], buttons: ModeButton[]) {
-  if (!options.length && !buttons.length) return;
+function renderActions(after: HTMLElement, options: string[], buttons: ModeButton[], followups: string[] = []) {
+  if (!options.length && !buttons.length && !followups.length) return;
   const box = document.createElement('div');
   box.className = 'actions';
   if (options.length) {
@@ -377,6 +385,62 @@ function renderActions(after: HTMLElement, options: string[], buttons: ModeButto
     });
     box.appendChild(row);
   }
+  if (followups.length && !options.length) {
+    const row = document.createElement('div');
+    row.className = 'follow';
+    row.setAttribute('role', 'group');
+    row.setAttribute('aria-label', 'Mögliche Anschlussfragen');
+    followups.forEach((q) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip-s';
+      btn.textContent = q;
+      btn.addEventListener('click', () => send(q));
+      row.appendChild(btn);
+    });
+    box.appendChild(row);
+  }
+  after.appendChild(box);
+}
+
+/** source chips under an answer: name and the date it was last verified */
+function renderSources(body: HTMLElement, ids: string[]) {
+  const refs = ids.map((id) => sourceFor(id)).filter((r): r is NonNullable<typeof r> => Boolean(r));
+  const seen = new Set<string>();
+  const list = refs.filter((r) => !seen.has(r.name + r.url) && seen.add(r.name + r.url));
+  if (!list.length) return;
+  const box = document.createElement('div');
+  box.className = 'srcs';
+  box.setAttribute('aria-label', 'Quellen');
+  box.innerHTML = list
+    .map((r) => {
+      const inner = `${esc(r.name)}<span class="src__date">${r.verified ? `geprüft am ${esc(formatDate(r.verified))}` : 'noch nicht geprüft'}</span>`;
+      return r.url ? `<a class="src" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">${inner}</a>` : `<span class="src">${inner}</span>`;
+    })
+    .join('');
+  body.after(box);
+}
+
+/** recommended deadlines as small cards with a countdown and "Zu Meine Fristen hinzufügen" */
+function renderDeadlineCards(after: HTMLElement, items: { id: string; grund: string }[]) {
+  const list = items.map((d) => ({ ...d, o: OFFERS.find((x) => x.id === d.id) })).filter((d): d is { id: string; grund: string; o: Offer } => Boolean(d.o));
+  if (!list.length) return;
+  const box = document.createElement('div');
+  box.className = 'dl-cards';
+  box.innerHTML = list
+    .map(({ o, grund }) => {
+      const days = o.frist && /^\d{4}-\d{2}-\d{2}$/.test(o.frist) ? daysLeft(o.frist) : null;
+      const on = state.saved.includes(o.id);
+      return `<article class="dl-card">
+        <div class="dl-card__top"><span class="dl-card__type">${esc(TYP_LABEL[o.typ] ?? o.typ)}</span>${days === null ? '<span class="pill pill--quiet">Frist offen</span>' : `<span class="pill${days < 0 ? ' pill--past' : ''}">${daysLabel(days)}</span>`}</div>
+        <h4 class="dl-card__title">${esc(o.name)}</h4>
+        ${grund ? `<p class="dl-card__why">${esc(grund)}</p>` : ''}
+        <p class="dl-card__date">${days === null ? 'Keine feste Frist bekannt' : `Frist ${esc(formatDate(o.frist))}`}, zuletzt geprüft am ${esc(formatDate(o.zuletzt_geprueft))}</p>
+        <button type="button" class="qbtn" data-save="${o.id}" data-save-kind="frist" aria-pressed="${on}">${on ? 'In Meine Fristen' : 'Zu Meine Fristen hinzufügen'}</button>
+      </article>`;
+    })
+    .join('');
+  box.querySelectorAll<HTMLButtonElement>('[data-save]').forEach((b) => b.addEventListener('click', () => toggleSaved(b.dataset.save!)));
   after.appendChild(box);
 }
 
@@ -622,17 +686,32 @@ function renderRecommendations(after: HTMLElement, rec: Recommendation, mapOpts:
       if (r) fitMap.set(o.id, r.status);
     }
     map?.then((m) => m?.setMatching(new Set(list.map((o) => o.id)), fitMap));
-    box.querySelectorAll<HTMLButtonElement>('[data-save]').forEach((b) =>
-      b.addEventListener('click', () => {
-        const oid = b.dataset.save!;
-        state.saved = state.saved.includes(oid) ? state.saved.filter((x) => x !== oid) : [...state.saved, oid];
-        save();
-        document.querySelectorAll<HTMLButtonElement>(`[data-save="${oid}"]`).forEach((x) => x.setAttribute('aria-pressed', String(state.saved.includes(oid))));
-      }),
-    );
+    box.querySelectorAll<HTMLButtonElement>('[data-save]').forEach((b) => b.addEventListener('click', () => toggleSaved(b.dataset.save!)));
   }
   update();
 }
+
+// ---------- saving: ids per access code in this browser, "Meine Fristen" on the dashboard reads them ----------
+const saveButton = (o: Offer, on: boolean) =>
+  `<button type="button" class="btn btn--quiet btn--small offer__save" data-save="${o.id}" aria-pressed="${on}" aria-label="${on ? 'Gespeichert' : 'Speichern'}: ${esc(o.name)}">${on ? 'Gespeichert' : 'Speichern'}</button>`;
+function syncSaveButtons(id: string) {
+  const on = state.saved.includes(id);
+  const o = OFFERS.find((x) => x.id === id);
+  document.querySelectorAll<HTMLButtonElement>(`[data-save="${id}"]`).forEach((b) => {
+    b.setAttribute('aria-pressed', String(on));
+    if (b.dataset.saveKind === 'frist') return void (b.textContent = on ? 'In Meine Fristen' : 'Zu Meine Fristen hinzufügen');
+    b.textContent = on ? 'Gespeichert' : 'Speichern';
+    b.setAttribute('aria-label', `${on ? 'Gespeichert' : 'Speichern'}: ${o?.name ?? ''}`);
+  });
+}
+/** saves an offer id from angebote.json for this student; unknown ids are ignored */
+export function saveItem(id: string, on = true) {
+  if (!OFFERS.some((o) => o.id === id)) return;
+  state.saved = on ? [...new Set([...state.saved, id])] : state.saved.filter((x) => x !== id);
+  save();
+  syncSaveButtons(id);
+}
+const toggleSaved = (id: string) => saveItem(id, !state.saved.includes(id));
 
 function card(o: Offer, pinned = false, fitP: FitProfile | null = null): string {
   const fit = fitFor(o, fitP);
@@ -657,8 +736,6 @@ function card(o: Offer, pinned = false, fitP: FitProfile | null = null): string 
       ${o.sprache === 'en' ? '<span class="offer__lang">Englisch</span>' : ''}
       ${o.wettbewerb && SELEKTIV_LABEL[o.wettbewerb] ? `<span class="offer__sel offer__sel--${o.wettbewerb === 'hoch' ? 'hoch' : 'sehr-hoch'}">${SELEKTIV_LABEL[o.wettbewerb]}</span>` : ''}
       ${fit ? `<span class="offer__fit offer__fit--${fit.status}">${FIT_LABEL[fit.status]}</span>` : ''}
-      <button type="button" class="offer__save" data-save="${o.id}" aria-pressed="${saved}" aria-label="Merken: ${esc(o.name)}">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.6 3.9 4.5 7.2 4.5c2 0 3.4 1.1 4.8 2.9 1.4-1.8 2.8-2.9 4.8-2.9 3.3 0 5.6 3.1 4.4 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg></button>
     </div>
     <h4 class="offer__name">${esc(o.name)}</h4>
     <p class="offer__by">${esc(o.anbieter)}</p>
@@ -677,7 +754,7 @@ function card(o: Offer, pinned = false, fitP: FitProfile | null = null): string 
     ${o.quelle_qualitaet === 'C' ? '<p class="offer__hint">Bitte auf der Karriereseite des Unternehmens prüfen.</p>' : ''}
     <div class="offer__foot">
       <span>Zuletzt geprüft am ${esc(formatDate(o.zuletzt_geprueft))}</span>
-      <a class="btn btn--quiet btn--small" href="${esc(o.link)}" target="_blank" rel="noopener noreferrer">Mehr erfahren<span class="btn__arrow" aria-hidden="true">→</span></a>
+      <span class="offer__btns">${saveButton(o, saved)}<a class="btn btn--quiet btn--small" href="${esc(o.link)}" target="_blank" rel="noopener noreferrer">Mehr erfahren<span class="btn__arrow" aria-hidden="true">→</span></a></span>
     </div>
   </article>`;
 }
@@ -719,12 +796,7 @@ function attachMap(slot: HTMLElement, highlight: string[] | null, forceOpen = fa
       autosize();
       input.focus();
     });
-    picked.querySelector<HTMLButtonElement>('[data-save]')?.addEventListener('click', (e) => {
-      const b = e.currentTarget as HTMLButtonElement;
-      state.saved = state.saved.includes(o.id) ? state.saved.filter((x) => x !== o.id) : [...state.saved, o.id];
-      save();
-      b.setAttribute('aria-pressed', String(state.saved.includes(o.id)));
-    });
+    picked.querySelector<HTMLButtonElement>('[data-save]')?.addEventListener('click', () => toggleSaved(o.id));
     picked.scrollIntoView({ block: 'nearest', behavior: reduceMotion() ? 'auto' : 'smooth' });
   };
   const show = async () => {
@@ -810,31 +882,20 @@ async function send(text: string, opts: { hidden?: boolean; dateien?: FileRef[] 
   if (!opts.hidden) bubble('user', opts.dateien?.length && text === FILE_ONLY ? '' : format(text), opts.dateien);
   const el = bubble('assistant', '');
   const body = el.querySelector<HTMLElement>('.msg__body')!;
-  // LatticeLoader where the reply will appear; it stays above the text while it streams
-  const loader = createLatticeLoader({
-    label: 'Denkt nach',
-    doneLabel: 'Fertig in',
-    errorLabel: 'Fehlgeschlagen nach',
-    pattern: 'orbit',
-    grid: 3,
-    shape: 'round',
-    cellSize: 6,
-    gap: 2,
-    fontSize: 14,
-    showTimer: true,
-    color: '#0066CC',
-    doneColor: '#22C55E',
-    errorColor: '#C4321F',
-  });
+  // calm typing dots until the first words arrive
   const status = document.createElement('div');
   status.className = 'msg__status';
-  status.append(loader.el);
-  el.prepend(status);
+  status.innerHTML = '<span class="typing" role="status"><i></i><i></i><i></i><span class="sr-only">Pathfinder schreibt</span></span>';
+  body.before(status);
+  const dropStatus = () => status.remove();
   el.classList.add('is-streaming');
   scrollDown(true);
   const type = typer((t) => {
     const html = format(t);
-    if (html) body.innerHTML = html;
+    if (html) {
+      dropStatus();
+      body.innerHTML = html;
+    }
   });
   try {
     const raw = await ask(msgs, (r) => type.push(visibleText(r)), mode);
@@ -849,30 +910,23 @@ async function send(text: string, opts: { hidden?: boolean; dateien?: FileRef[] 
     save();
     body.innerHTML = format(parsed.text);
     el.classList.remove('is-streaming');
-    loader.setStatus('done');
-    // stays a moment, then folds away softly; older replies never show it again
-    window.setTimeout(() => {
-      status.classList.add('is-leaving');
-      window.setTimeout(() => {
-        loader.destroy();
-        status.remove();
-      }, 450);
-    }, 1600);
+    dropStatus();
+    renderSources(body, parsed.sources);
+    renderDeadlineCards(el, parsed.deadlines);
     const withMap = state.mode === 'studium' || Boolean(parsed.map);
     if (parsed.recommendation) renderRecommendations(el, parsed.recommendation, withMap ? { map: true, highlight: parsed.map } : {});
     else if (parsed.map) renderMapOnly(el, parsed.map);
-    renderActions(el, parsed.options, parsed.buttons);
+    renderActions(el, parsed.options, parsed.buttons, parsed.followups);
     updateMentorSlot();
   } catch (e) {
     type.stop();
     msgs.pop(); // the student can send it again
     el.classList.remove('is-streaming');
     el.classList.add('msg--error');
-    loader.setStatus('error');
+    dropStatus();
     body.innerHTML = `<p>${esc((e as Error).message)}</p><button class="btn btn--quiet btn--small msg__retry" type="button">Erneut versuchen</button>`;
     body.querySelector('.msg__retry')!.addEventListener('click', () => {
       if (busy) return;
-      loader.destroy();
       el.remove();
       // the student's message is still on screen: send it again without a second copy
       retry(text, opts);
@@ -941,6 +995,14 @@ const slider = createSlideConfirm({
   keyHint: 'Zum Bestätigen noch einmal drücken.',
   async onConfirm() {
     if (busy || state.mentorSent) return 'cancel';
+    await prepareMentorDialog();
+    return new Promise<SlideResult>((resolve, reject) => (mentorOutcome = { resolve, reject }));
+  },
+});
+$<HTMLElement>('[data-mentor-slider]').append(slider.el);
+
+/** the AI writes a short summary, then the existing request form opens (slider and dashboard) */
+async function prepareMentorDialog() {
     busy = true;
     let summary = '';
     try {
@@ -957,15 +1019,13 @@ const slider = createSlideConfirm({
     $<HTMLElement>('[data-mentor-error]').textContent = '';
     mentorFailed = false;
     dialog.showModal();
-    return new Promise<SlideResult>((resolve, reject) => (mentorOutcome = { resolve, reject }));
-  },
-});
-$<HTMLElement>('[data-mentor-slider]').append(slider.el);
+}
 
 dialog.addEventListener('close', () => {
   const outcome = mentorOutcome;
   mentorOutcome = null;
-  if (!outcome) return;
+  // opened from the dashboard: no slider waiting, show its done state directly
+  if (!outcome) return void (state.mentorSent && slider.markDone(false));
   if (state.mentorSent) outcome.resolve('done');
   else if (mentorFailed) outcome.reject(new Error(MENTOR_ERROR));
   else outcome.resolve('cancel');
@@ -1050,6 +1110,7 @@ let mentorMessages: { von: 'schueler' | 'mentor'; text: string; zeit: string; da
 function setView(next: 'coach' | 'mentor') {
   if (next !== view) clearTray(true);
   view = next;
+  if (!$<HTMLElement>('[data-screen="chat"]').hidden) setNav(next === 'mentor' ? 'mentor' : 'ki');
   views.querySelectorAll<HTMLButtonElement>('[data-view]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.view === next)));
   const mentor = next === 'mentor';
   chatSection.classList.toggle('is-mentor', mentor);
@@ -1150,11 +1211,20 @@ async function sendToMentor(text: string, files: FileRef[] = []) {
     const res = await fetch('/api/mentor-nachrichten', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ code, aktion: 'senden', text, dateien: files.map((f) => f.id) }),
+      // the profile goes along as background for the mentor; no AI and no AI chat history
+      body: JSON.stringify({ code, aktion: 'senden', text, dateien: files.map((f) => f.id), profil: state.profile }),
     });
     if (!res.ok) throw new Error();
     mentorMessages = (await res.json()).thread.nachrichten;
     renderMentor();
+    if (!state.mentorThread) {
+      // the first message from the dashboard started the direct chat
+      state.mentorThread = true;
+      state.mentorSent = true;
+      save();
+      slider.markDone(false);
+      openMentorThread(false);
+    }
   } catch {
     mentorMessages = mentorMessages.filter((m) => m !== pending);
     renderMentor();
@@ -1413,7 +1483,9 @@ loginForm.addEventListener('submit', async (e) => {
     const res = await fetch('/api/login', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ code: value }) });
     if (res.status === 401) throw new Error(CODE_WRONG);
     if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error ?? 'Das hat nicht geklappt.');
+    const vorname = String((await res.json().catch(() => ({}))).vorname ?? '');
     code = value;
+    loginName = vorname;
     try {
       localStorage.setItem(CODE_KEY, code);
     } catch {
@@ -1434,10 +1506,61 @@ loginForm.addEventListener('submit', async (e) => {
   }
 });
 
+let loginName = '';
+/** after login: load this student's data and show the dashboard */
 function enterChat() {
   state = freshState();
   load();
   loadFit();
+  if (loginName) state.name = loginName;
+  loginName = '';
+  save();
+  showDashboard();
+  // logged in before names were returned: ask once, quietly
+  if (state.name === undefined) void fetchName();
+}
+async function fetchName() {
+  const forCode = code;
+  try {
+    const res = await fetch('/api/login', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ code }) });
+    if (!res.ok || forCode !== code) return;
+    state.name = String((await res.json()).vorname ?? '');
+    save();
+    if (state.name && !dashRoot.hidden) showDashboard();
+  } catch {
+    /* offline: greeting without a name */
+  }
+}
+
+const dashRoot = $<HTMLElement>('[data-dash]');
+const dashTicker = $<HTMLElement>('[data-dash-ticker]');
+function showDashboard(to: 'top' | 'fristen' = 'top') {
+  if (busy) return;
+  show('dashboard');
+  renderTicker(dashTicker);
+  renderDashboard(dashRoot, {
+    name: state.name ?? '',
+    felder: Array.isArray(state.profile.felder) ? (state.profile.felder as string[]) : [],
+    saved: state.saved,
+    ask: (q) => openChat(q),
+    openMentor: () => openMentor(),
+    unsave: (id) => saveItem(id, false),
+  });
+  showUser();
+  if (to === 'fristen') {
+    const sec = dashRoot.querySelector<HTMLElement>('#fristen');
+    sec?.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth' });
+    sec?.focus({ preventScroll: true });
+    setNav('fristen');
+  } else {
+    window.scrollTo(0, 0);
+    setNav('start');
+  }
+}
+
+/** the chat with the open tab, exactly as it was left; a question from the dashboard is sent right away */
+function openChat(question = '') {
+  if (busy) return;
   show('chat');
   setMode(state.mode);
   renderAll();
@@ -1445,7 +1568,62 @@ function enterChat() {
   else slider.reset();
   if (state.mentorThread) openMentorThread(false);
   else closeMentorThread();
-  openTab(state.mode);
+  if (view === 'mentor') setView('coach');
+  openTab(state.mode, !question);
+  setNav('ki');
+  if (question) {
+    showWelcome(false);
+    send(question);
+  }
+}
+
+/** "Mentor" on the dashboard: the direct chat with a person, no AI. The first message starts it. */
+function openMentor() {
+  if (busy) return;
+  openChat();
+  if (state.mentorThread) openMentorThread(false);
+  $<HTMLElement>('[data-mentor-status]').textContent = state.mentorThread
+    ? 'Ein Mensch ist informiert. Eine Antwort kann etwas dauern.'
+    : 'Hier schreibst du direkt mit deinem Mentor. Es antwortet ein Mensch, keine KI, eine Antwort kann etwas dauern. Dein Mentor sieht dein Profil (zum Beispiel Klasse, Interessen und Ziele), deine KI-Chats nicht.';
+  setView('mentor');
+  input.focus({ preventScroll: true });
+}
+
+// ---------- main navigation (header and the sheet on phones) ----------
+type NavKey = 'start' | 'fristen' | 'ki' | 'mentor';
+function setNav(key: NavKey) {
+  document.querySelectorAll<HTMLButtonElement>('[data-nav]').forEach((b) => {
+    if (b.dataset.nav === key) b.setAttribute('aria-current', 'page');
+    else b.removeAttribute('aria-current');
+  });
+}
+const sheet = $<HTMLDialogElement>('[data-sheet]');
+document.querySelectorAll<HTMLButtonElement>('[data-nav]').forEach((b) =>
+  b.addEventListener('click', () => {
+    if (sheet.open) sheet.close();
+    const key = b.dataset.nav as NavKey;
+    if (key === 'start') showDashboard();
+    else if (key === 'fristen') showDashboard('fristen');
+    else if (key === 'ki') openChat();
+    else openMentor();
+  }),
+);
+$<HTMLButtonElement>('[data-sheet-open]').addEventListener('click', () => sheet.showModal());
+$<HTMLButtonElement>('[data-sheet-close]').addEventListener('click', () => sheet.close());
+sheet.addEventListener('click', (e) => e.target === sheet && sheet.close());
+sheet.querySelectorAll<HTMLButtonElement>('[data-sheet-action]').forEach((b) =>
+  b.addEventListener('click', () => {
+    sheet.close();
+    document.querySelector<HTMLButtonElement>(`.menu [data-action="${b.dataset.sheetAction}"]`)?.click();
+  }),
+);
+/** initial and name in the user menu */
+function showUser() {
+  const name = (state.name ?? '').trim();
+  $<HTMLElement>('[data-user-initial]').textContent = (name[0] ?? 'P').toUpperCase();
+  const label = $<HTMLElement>('[data-user-name]');
+  label.textContent = name ? `Angemeldet als ${name}` : '';
+  label.hidden = !name;
 }
 
 /* ---------- empty state: greeting and start suggestions ---------- */
@@ -1498,6 +1676,8 @@ try {
 }
 if (code) enterChat();
 else show(location.hash === '#zugang' ? 'register' : 'login');
+// the loading screen in app.html waits for this (and for the fonts)
+requestAnimationFrame(() => requestAnimationFrame(() => window.dispatchEvent(new Event('pf-ready'))));
 window.addEventListener('hashchange', () => {
   if (!code) show(location.hash === '#zugang' ? 'register' : 'login');
 });

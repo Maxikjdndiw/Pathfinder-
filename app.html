@@ -11,28 +11,77 @@
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
   <script type="module" src="/src/app/main.ts"></script>
+  <!-- loading screen, inline so it shows before the app styles arrive -->
+  <style>
+    .boot { position: fixed; inset: 0; z-index: 100; display: grid; place-content: center; justify-items: center; gap: 22px; background: #FAF9F5; transition: opacity 0.28s ease-out; }
+    .boot__in { display: flex; align-items: center; gap: 10px; color: #1F1E1D; font: 600 20px/1 Inter, system-ui, sans-serif; letter-spacing: -0.01em; }
+    .boot__in svg { width: 28px; height: 28px; }
+    .boot__line { width: 160px; height: 2px; border-radius: 2px; background: #E8E4DA; overflow: hidden; }
+    .boot__line i { display: block; height: 100%; width: 0; background: #0066CC; animation: boot-line 1.1s cubic-bezier(0.3, 0.7, 0.4, 1) forwards; }
+    .boot.is-done { opacity: 0; pointer-events: none; }
+    .boot.is-done .boot__line i { width: 100%; animation: none; transition: width 0.2s ease-out; }
+    @keyframes boot-line { to { width: 90%; } }
+    @media (prefers-reduced-motion: reduce) { .boot__line i { animation: none; width: 60%; } .boot { transition-duration: 0.12s; } }
+  </style>
 </head>
 <body class="app">
+  <div class="boot" id="boot" aria-hidden="true"><div class="boot__in"><!--brand-mark--><span>Pathfinder DE</span></div><div class="boot__line"><i></i></div></div>
+  <script>
+    /* once per session; hides when fonts and the first screen are ready, after 1.2 s at the latest */
+    (function () {
+      var boot = document.getElementById('boot');
+      var seen = false;
+      try { seen = sessionStorage.getItem('pf-boot') === '1'; sessionStorage.setItem('pf-boot', '1'); } catch (e) {}
+      if (seen) { boot.remove(); return; }
+      var done = false;
+      function hide() { if (done) return; done = true; boot.classList.add('is-done'); setTimeout(function () { boot.remove(); }, 320); }
+      setTimeout(hide, 1200);
+      var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+      var ready = new Promise(function (r) { window.addEventListener('pf-ready', r, { once: true }); });
+      Promise.all([fonts, ready]).then(function () { setTimeout(hide, 120); });
+    })();
+  </script>
   <a class="skip-link" href="#app-main">Zum Inhalt springen</a>
   <header class="app-head">
-    <a class="app-brand" href="/" aria-label="Pathfinder DE, zur Startseite"><!--brand-mark--><span>Pathfinder DE</span></a>
-    <nav class="modes" data-when="chat" aria-label="Abschnitte" role="tablist" hidden>
-      <button type="button" role="tab" data-tab="orientierung">Orientierung</button>
-      <button type="button" role="tab" data-tab="cv_linkedin">CV und LinkedIn</button>
-      <button type="button" role="tab" data-tab="praktika">Praktika</button>
-      <button type="button" role="tab" data-tab="studium">Studium</button>
-    </nav>
-    <div class="app-head__actions" data-when="chat" hidden>
-      <details class="menu">
-        <summary class="menu__btn" aria-label="Weitere Optionen"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></summary>
-        <div class="menu__list">
-          <button type="button" data-action="vorlagen">Vorlagen</button>
-          <button type="button" data-action="delete">Meine Daten löschen</button>
-          <button type="button" data-action="logout">Abmelden</button>
-        </div>
-      </details>
+    <div class="app-head__in">
+      <a class="app-brand" href="/" aria-label="Pathfinder DE, zur Startseite"><!--brand-mark--><span>Pathfinder DE</span></a>
+      <nav class="app-nav" data-when="chat dashboard" aria-label="Hauptnavigation" hidden>
+        <button type="button" data-nav="start">Start</button>
+        <button type="button" data-nav="fristen">Meine Fristen</button>
+        <button type="button" data-nav="ki">KI-Assistent</button>
+        <button type="button" data-nav="mentor">Mentor</button>
+      </nav>
+      <div class="app-head__actions" data-when="chat dashboard" hidden>
+        <details class="menu">
+          <summary class="menu__btn" aria-label="Konto und Einstellungen"><span class="menu__avatar" data-user-initial aria-hidden="true">P</span><svg class="menu__chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></summary>
+          <div class="menu__list">
+            <p class="menu__name" data-user-name hidden></p>
+            <button type="button" data-action="vorlagen">Vorlagen</button>
+            <button type="button" data-action="delete">Meine Daten löschen</button>
+            <button type="button" data-action="logout">Abmelden</button>
+          </div>
+        </details>
+        <button class="app-head__menu" type="button" data-sheet-open aria-haspopup="dialog">Menü</button>
+      </div>
     </div>
+    <div class="ticker-band" data-dash-ticker data-when="dashboard" hidden></div>
   </header>
+
+  <!-- phones: navigation and account in a sheet from below -->
+  <dialog class="sheet" data-sheet aria-label="Menü">
+    <nav class="sheet__nav" aria-label="Hauptnavigation">
+      <button type="button" data-nav="start">Start</button>
+      <button type="button" data-nav="fristen">Meine Fristen</button>
+      <button type="button" data-nav="ki">KI-Assistent</button>
+      <button type="button" data-nav="mentor">Mentor</button>
+    </nav>
+    <div class="sheet__more">
+      <button type="button" data-sheet-action="vorlagen">Vorlagen</button>
+      <button type="button" data-sheet-action="delete">Meine Daten löschen</button>
+      <button type="button" data-sheet-action="logout">Abmelden</button>
+    </div>
+    <button class="sheet__close" type="button" data-sheet-close>Schließen</button>
+  </dialog>
 
   <main id="app-main" class="app-main">
     <!-- 1. Login with access code and consent -->
@@ -141,8 +190,17 @@
       <p class="form-error" data-vorlage-error role="alert"></p>
     </section>
 
-    <!-- 2. Chat -->
+    <!-- 2. Dashboard after login (src/app/dashboard.ts, texts in app-data/dashboard.json) -->
+    <section class="dash" data-screen="dashboard" data-dash aria-label="Übersicht" hidden></section>
+
+    <!-- 3. Chat -->
     <section class="chat" data-screen="chat" aria-label="Gespräch mit Pathfinder" hidden>
+      <nav class="modes" aria-label="Bereiche des Assistenten" role="tablist">
+        <button type="button" role="tab" data-tab="orientierung">Orientierung</button>
+        <button type="button" role="tab" data-tab="cv_linkedin">CV und LinkedIn</button>
+        <button type="button" role="tab" data-tab="praktika">Praktika</button>
+        <button type="button" role="tab" data-tab="studium">Studium</button>
+      </nav>
       <!-- empty state: greeting and start suggestions -->
       <div class="welcome" data-welcome hidden>
         <h1 class="welcome__title">Hi, schön, dass du da bist.</h1>

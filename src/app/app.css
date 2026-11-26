@@ -203,10 +203,8 @@ select.input { appearance: auto; }
 .offer__label { font-size: 11.5px; font-weight: 500; padding: 3px 8px; border-radius: 999px; background: #fff; color: var(--ink-muted); border: 1px solid var(--line); }
 .offer__label--staatlich, .offer__label--gering { color: #1D6B3A; border-color: #BFE0CB; background: #F2FAF5; }
 .offer__label--kostenintensiv, .offer__label--sehr-kostenintensiv { color: #8A4B08; border-color: #EBD3B5; background: #FDF7EF; }
-.offer__save { margin-left: auto; width: 40px; height: 40px; margin-right: -10px; display: grid; place-items: center; border: 0; background: none; cursor: pointer; border-radius: 50%; }
-.offer__save:hover { background: #fff; }
-.offer__save svg { width: 20px; height: 20px; fill: none; stroke: var(--ink-muted); stroke-width: 1.6; }
-.offer__save[aria-pressed="true"] svg { fill: var(--accent); stroke: var(--accent); }
+.offer__btns { display: inline-flex; flex-wrap: wrap; gap: 8px; }
+.offer__save[aria-pressed="true"] { background: var(--accent-light); border-color: var(--accent-light); color: var(--accent); }
 .offer__name { font: 700 17px / 1.25 var(--font-display); letter-spacing: -0.01em; }
 .offer__by { font-size: 13px; color: var(--ink-muted); margin-top: -4px; }
 .offer__meta { display: grid; gap: 3px; margin: 2px 0 0; font-size: 13.5px; }

@@ -8,6 +8,8 @@ export interface Mentor {
   field: string;
   name: string;
   role: string;
+  /** optional heading above the bullets */
+  headline?: string;
   tips: string[];
 }
 
@@ -43,6 +45,19 @@ export const MENTORS: Mentor[] = [
       'Hab keine Angst, die Richtung zu ändern.',
       'Ein unerwarteter Job kann dir Selbstvertrauen und den Umgang mit Menschen beibringen.',
       'Du musst noch nicht alles wissen.',
+    ],
+  },
+  {
+    field: 'Bewerbung',
+    name: 'Harshita Anindya Werneke',
+    role: 'Student Recruitment Manager an der EBS Universität',
+    headline: 'Wir wollen den Menschen hinter der Bewerbung kennenlernen.',
+    tips: [
+      'Zeig mehr als Noten: Ehrenamt, Sport und Interessen zählen.',
+      'Halte deinen Lebenslauf klar und aktuell.',
+      'Bewirb dich früh, das nimmt Druck.',
+      'Sprich vorher mit der Uni, du brauchst nicht alle Antworten.',
+      'Sei ehrlich, wenn eine Uni nicht passt.',
     ],
   },
 ];

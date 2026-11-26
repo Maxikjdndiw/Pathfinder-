@@ -30,6 +30,12 @@ export interface Parsed {
   summary: string | null;
   /** [[KARTE: id1,id2]]: offer ids to highlight on the map (Studium mode) */
   map: string[] | null;
+  /** [[QUELLEN: id1,id2]]: offer or content ids, shown as source chips */
+  sources: string[];
+  /** [[FRISTEN: id: reason | ...]]: recommended deadlines as small cards */
+  deadlines: { id: string; grund: string }[];
+  /** [[FRAGEN: a | b | c]]: follow-up questions to tap */
+  followups: string[];
 }
 
 const MODES = new Set(['orientierung', 'cv_linkedin', 'praktika', 'studium']);
@@ -37,10 +43,11 @@ const STUFEN = new Set(['jung', 'mittel', 'abschluss']);
 const TYPEN = new Set(['kurs', 'sommerkurs', 'praktikum', 'wettbewerb', 'hochschule', 'studiengang', 'freiwilligendienst', 'simulation', 'onlinekurs']);
 const LAENDER = new Set(['de', 'ausland', 'online']);
 const SPRACHEN = new Set(['de', 'en', 'es', 'it', 'fr', 'nl', 'da']);
-const MARKER = /\[\[\s*(OPTIONEN|BUTTONS|PROFIL|EMPFEHLUNGEN|ZUSAMMENFASSUNG|KARTE|SYSTEM)\s*:([\s\S]*?)\]\]/g;
+const ID = /^[a-z0-9-]{2,80}$/;
+const MARKER = /\[\[\s*(OPTIONEN|BUTTONS|PROFIL|EMPFEHLUNGEN|ZUSAMMENFASSUNG|KARTE|QUELLEN|FRISTEN|FRAGEN|SYSTEM)\s*:([\s\S]*?)\]\]/g;
 
 export function parseMarkers(raw: string): Parsed {
-  const out: Parsed = { text: '', options: [], buttons: [], profile: null, recommendation: null, summary: null, map: null };
+  const out: Parsed = { text: '', options: [], buttons: [], profile: null, recommendation: null, summary: null, map: null, sources: [], deadlines: [], followups: [] };
   for (const m of raw.matchAll(MARKER)) {
     const kind = m[1];
     const body = m[2].trim();
@@ -101,6 +108,19 @@ export function parseMarkers(raw: string): Parsed {
         .map((id) => id.trim())
         .filter((id) => /^[a-z0-9-]{2,80}$/.test(id))
         .slice(0, 60);
+    } else if (kind === 'QUELLEN') {
+      out.sources = [...new Set(body.split(',').map((id) => id.trim()).filter((id) => ID.test(id)))].slice(0, 8);
+    } else if (kind === 'FRISTEN') {
+      out.deadlines = body
+        .split('|')
+        .map((s) => {
+          const i = s.indexOf(':');
+          return { id: (i < 0 ? s : s.slice(0, i)).trim(), grund: i < 0 ? '' : s.slice(i + 1).trim().slice(0, 200) };
+        })
+        .filter((d) => ID.test(d.id))
+        .slice(0, 4);
+    } else if (kind === 'FRAGEN') {
+      out.followups = body.split('|').map((s) => s.trim().slice(0, 120)).filter(Boolean).slice(0, 3);
     } else if (kind === 'ZUSAMMENFASSUNG') {
       out.summary = body;
     }
