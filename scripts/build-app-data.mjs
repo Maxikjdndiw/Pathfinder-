@@ -2,6 +2,7 @@
 // Run: npm run app-data (also runs before every build). Output: netlify/functions/_shared/data.generated.ts
 // Edit the Markdown files, never the generated file.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import mammoth from 'mammoth';
 
 const read = (f) => readFileSync(new URL(`../app-data/${f}`, import.meta.url), 'utf8').replace(/\r\n/g, '\n');
 
@@ -32,12 +33,19 @@ const sections = wissen.split(/\n(?=## )/).filter((s) => s.startsWith('## '));
 const byField = Object.fromEntries(FIELD_IDS.map((id) => [id, []]));
 const general = [];
 const studium = [];
+// sections only for one tab: (Modus "orientierung"), (Modus "praktika") or (Modus "cv_linkedin")
+const byMode = { orientierung: [], praktika: [], cv_linkedin: [] };
 for (const s of sections) {
   const head = s.split('\n')[0];
   if (/^## (Noch offen|Quellen)/.test(head)) continue; // notes for the team, not for the coach
   // only for mode 4 (Studium), so the other modes do not carry it
   if (/Modus "studium"/.test(head)) {
     studium.push(s.replace(/\n---\s*$/, '').trim());
+    continue;
+  }
+  const mode = head.match(/Modus "(orientierung|praktika|cv_linkedin)"/)?.[1];
+  if (mode) {
+    byMode[mode].push(s.replace(/\n---\s*$/, '').trim());
     continue;
   }
   const m = [...head.matchAll(/Feld "([a-z-]+)"/g)].map((x) => x[1]);
@@ -56,7 +64,10 @@ const hochschulListe = angebote
 
 // 3c. All offers, one short line each: the ids the coach may use in ids= (every mode)
 const angebotsIndex = angebote
-  .map((o) => `${o.id} | ${o.name} | ${o.typ} | ${o.land} | Frist: ${o.frist ?? 'keine feste Frist'} | Quelle: ${o.anbieter} | geprüft: ${o.zuletzt_geprueft}`)
+  .map((o) => {
+    const kosten = [o.kosten_label, o.kosten_pro_jahr_eur ? `${o.kosten_pro_jahr_eur} Euro pro Jahr` : o.kosten_pro_jahr_eur === 0 ? 'kostenlos' : ''].filter(Boolean).join(', ') || 'keine Angabe';
+    return `${o.id} | ${o.name} | ${o.typ} | ${o.land} | Frist: ${o.frist ?? 'keine feste Frist'} | Kosten: ${kosten} | Quelle: ${o.anbieter} | Link: ${o.link} | geprüft: ${o.zuletzt_geprueft}`;
+  })
   .join('\n');
 
 // 3b. Dashboard content (app-data/dashboard.json): the whole file goes into the coach's knowledge
@@ -67,9 +78,26 @@ const dashWissen = [
   ...(dash.ticker ?? []).map((t) => `${t.id} | ${t.text} | ${t.source} | ${t.url} | ${verified(t.lastVerified)}`),
   dash.bigNews?.title ? `\nGroße Neuigkeit (id ${dash.bigNews.id}, Quelle ${dash.bigNews.source}, ${dash.bigNews.url}, ${verified(dash.bigNews.verified)}):\n${dash.bigNews.title}\n${dash.bigNews.body}` : '',
   dash.dayInLife?.markdown ? `\nArtikel (id ${dash.dayInLife.id}, Quellen im Artikel):\n${dash.dayInLife.markdown.trim()}` : '',
+  ...(dash.artikel ?? []).filter((a) => a.markdown).map((a) => `\nArtikel (id ${a.id}, Quellen im Artikel):\n${a.markdown.trim()}`),
 ]
   .filter(Boolean)
   .join('\n');
+
+// 3c. The Word CV templates (vorlagen/*.docx): their text, so the coach knows sections and order
+const CV_FILES = [
+  ['Schüler (Word, Platz für Foto)', 'Lebenslauf-Vorlage-1-Schueler.docx'],
+  ['Wirtschaft, Finanzen, Beratung (Word, klassisch)', 'Lebenslauf-Vorlage-2-Wirtschaft-Finanzen-Beratung.docx'],
+  ['Technik, Informatik, Naturwissenschaften (Word, klassisch)', 'Lebenslauf-Vorlage-3-Technik-Informatik-Naturwissenschaften.docx'],
+];
+const cvVorlagen = (
+  await Promise.all(
+    CV_FILES.map(async ([name, datei]) => {
+      const { value } = await mammoth.extractRawText({ path: new URL(`../vorlagen/${datei}`, import.meta.url).pathname });
+      const text = value.split('\n').map((l) => l.trim()).filter(Boolean).join('\n');
+      return `### Vorlage "${name}" (Datei ${datei})\nAbschnitte in Großbuchstaben, Platzhalter in eckigen Klammern:\n${text}`;
+    }),
+  )
+).join('\n\n');
 
 // 4. Templates (Teil A) and approved tips (Teil B)
 const vr = read('vorlagen-recht.md');
@@ -87,9 +115,12 @@ export const WISSEN_BY_FIELD: Record<string, string> = ${JSON.stringify(Object.f
 export const VORLAGEN = ${JSON.stringify(teilA)};
 export const TIPPS_ALLGEMEIN = ${JSON.stringify(teilB)};
 export const WISSEN_STUDIUM = ${JSON.stringify(studium.join('\n\n'))};
+export const WISSEN_BY_MODUS: Record<'orientierung' | 'praktika' | 'cv_linkedin', string> = ${JSON.stringify(Object.fromEntries(Object.entries(byMode).map(([k, v]) => [k, v.join('\n\n')])))};
 export const HOCHSCHUL_LISTE = ${JSON.stringify(hochschulListe)};
 export const ANGEBOTS_INDEX = ${JSON.stringify(angebotsIndex)};
 export const DASHBOARD_WISSEN = ${JSON.stringify(dashWissen)};
+export const LINKEDIN_WISSEN = ${JSON.stringify(read('linkedin.md').trim())};
+export const CV_VORLAGEN = ${JSON.stringify(cvVorlagen)};
 `;
 mkdirSync(new URL('../netlify/functions/_shared/', import.meta.url), { recursive: true });
 writeFileSync(new URL('../netlify/functions/_shared/data.generated.ts', import.meta.url), out);

@@ -62,6 +62,7 @@ const FUNCTIONS: Record<string, string> = {
   '/api/upload': '/netlify/functions/upload.mts',
   '/api/datei': '/netlify/functions/datei.mts',
   '/api/vorlage': '/netlify/functions/vorlage.mts',
+  '/api/profilbild': '/netlify/functions/profilbild.mts',
 };
 const localFunctions = {
   name: 'local-functions',

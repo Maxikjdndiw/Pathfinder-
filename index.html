@@ -30,8 +30,46 @@
     })();
   </script>
   <script type="module" src="/src/main.ts"></script>
+  <!-- intro: the logo for a moment, then the screen slides up (once per session) -->
+  <style>
+    .intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-content: center; justify-items: center; gap: 20px; background: #FAF9F5; transition: transform 0.7s cubic-bezier(0.7, 0, 0.2, 1); }
+    .intro__logo { display: flex; align-items: center; gap: 12px; color: #1D1D1F; font: 700 26px/1 'Bricolage Grotesque Variable', Inter, system-ui, sans-serif; letter-spacing: -0.02em; opacity: 0; transform: translateY(8px); animation: intro-in 0.45s ease-out 0.05s forwards; }
+    .intro__logo svg { width: 34px; height: 34px; }
+    .intro__line { width: 120px; height: 2px; border-radius: 2px; background: #E8E4DA; overflow: hidden; }
+    .intro__line i { display: block; height: 100%; width: 0; background: #0066CC; animation: intro-line 0.8s cubic-bezier(0.3, 0.7, 0.4, 1) 0.1s forwards; }
+    .intro.is-up { transform: translateY(-100%); }
+    @keyframes intro-in { to { opacity: 1; transform: none; } }
+    @keyframes intro-line { to { width: 100%; } }
+    @media (prefers-reduced-motion: reduce) {
+      .intro { transition: opacity 0.2s ease-out; }
+      .intro.is-up { transform: none; opacity: 0; }
+      .intro__logo, .intro__line i { animation: none; opacity: 1; transform: none; width: 100%; }
+    }
+  </style>
 </head>
 <body>
+  <div class="intro" id="intro" aria-hidden="true"><div class="intro__logo"><!--brand-mark--><span>Pathfinder DE</span></div><div class="intro__line"><i></i></div></div>
+  <script>
+    /* shows the logo briefly, then slides up; once per session, never longer than about 1.3 s */
+    (function () {
+      var el = document.getElementById('intro');
+      var seen = false;
+      try { seen = sessionStorage.getItem('pf-intro') === '1'; sessionStorage.setItem('pf-intro', '1'); } catch (e) {}
+      if (seen) { el.remove(); return; }
+      document.documentElement.style.overflow = 'hidden';
+      var done = false;
+      function up() {
+        if (done) return; done = true;
+        el.classList.add('is-up');
+        document.documentElement.style.overflow = '';
+        setTimeout(function () { el.remove(); }, 750);
+      }
+      var min = new Promise(function (r) { setTimeout(r, 900); });
+      var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+      Promise.all([min, fonts]).then(up);
+      setTimeout(up, 1300);
+    })();
+  </script>
   <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
   <header class="nav-wrap">
@@ -338,10 +376,6 @@
             <p>Pathfinder DE ist das, was ich mir selbst gewünscht hätte: ein Ort, der dir zeigt, was möglich ist, und Menschen, die dir helfen, dorthin zu kommen.</p>
           </div>
           <a class="btn btn--outline founder__linkedin" href="https://www.linkedin.com/in/benedict-maximilian-vel%C3%A1zquez-hirsch-374705399/" target="_blank" rel="noopener noreferrer">Mit Maxi auf LinkedIn vernetzen<span class="btn__arrow" aria-hidden="true">→</span></a>
-          <div class="founder__mentor" data-reveal>
-            <p class="founder__mentor-label">Unterstützt von</p>
-            <p>Meiner Mutter, Ökonomin mit Promotion. Sie hilft bei Inhalten zu Wirtschaft und Finanzen und schaut kritisch auf alles, was wir anbieten.</p>
-          </div>
         </div>
         <!-- Founder badge on a lanyard (3D, lazy loaded). Decorative: everything on it is also in the text. -->
         <figure class="founder__badge" aria-hidden="true">

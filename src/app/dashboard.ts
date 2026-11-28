@@ -31,9 +31,17 @@ interface DayInLife {
   label?: string;
   markdown?: string;
   image?: string;
+  /** drawing for the [image: ...] placeholder inside the article */
+  illustration?: string;
+}
+/** further articles in the same format as dayInLife */
+interface Article extends DayInLife {
+  /** labels for the paragraphs that start with **Urteil: (Mythos, Wahr, Teils, Übertrieben) */
+  urteile?: string[];
 }
 type Slot = 'morgen' | 'mittag' | 'nachmittag' | 'abend' | 'nacht';
 interface Content {
+  artikel?: Article[];
   ticker?: TickerItem[];
   bigNews?: BigNews;
   dayInLife?: DayInLife;
@@ -115,10 +123,13 @@ const MONTHS = ['Jan', 'Feb', 'März', 'Apr', 'Mai', 'Juni', 'Juli', 'Aug', 'Sep
 // ---------- a very small markdown reader for the story (headings, paragraphs, lists, italics) ----------
 const inline = (t: string) =>
   esc(t.replace(/\\\[/g, '[').replace(/\\\]/g, ']').replace(/&#91;/g, '['))
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
     .replace(/\s*\[(\d+)\]/g, '<sup class="dash-story__ref">$1</sup>');
+const VERDICT_CLASS: Record<string, string> = { mythos: 'mythos', wahr: 'wahr', teils: 'teils', 'übertrieben': 'uebertrieben' };
 
-function storyParts(md: string): { title: string; teaser: string; html: string; sources: { label: string; url: string }[] } {
+function storyParts(md: string, illustration = '', urteile: string[] = []): { title: string; teaser: string; html: string; sources: { label: string; url: string }[] } {
   const lines = md.replace(/\r/g, '').split('\n');
   let title = '';
   const blocks: string[] = [];
@@ -130,6 +141,7 @@ function storyParts(md: string): { title: string; teaser: string; html: string; 
     list = [];
   };
   let teaser = '';
+  let verdict = 0;
   for (const raw of lines) {
     const line = raw.trim();
     if (!line) {
@@ -140,16 +152,30 @@ function storyParts(md: string): { title: string; teaser: string; html: string; 
       title = line.slice(2).trim();
       continue;
     }
-    if (line.startsWith('## ')) {
+    const h = line.match(/^(#{2,3})\s+(.*)$/);
+    if (h) {
       flush();
-      inSources = /^quellen$/i.test(line.slice(3).trim());
-      if (!inSources) blocks.push(`<h3>${inline(line.slice(3))}</h3>`);
+      inSources = /^quellen$/i.test(h[2].trim());
+      if (!inSources) blocks.push(h[1] === '##' ? `<h3>${inline(h[2])}</h3>` : `<h4>${inline(h[2])}</h4>`);
       continue;
     }
     if (inSources) {
-      const m = line.match(/^\d+\.\s+(.*?)\s*(https?:\/\/\S+)?$/);
-      if (m) sources.push({ label: m[1].replace(/\.\s*$/, ''), url: m[2] ?? '' });
+      // "1. Label. https://..." or "- [Label](https://...)"
+      const md = line.match(/^-\s+\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/);
+      const m = md ? null : line.match(/^\d+\.\s+(.*?)\s*(https?:\/\/\S+)?$/);
+      if (md) sources.push({ label: md[1], url: md[2] });
+      else if (m) sources.push({ label: m[1].replace(/\.\s*$/, ''), url: m[2] ?? '' });
       continue;
+    }
+    // byline such as "Nov 26, 2026 · @Maxi"
+    if (/\s·\s@\S+$/.test(line)) {
+      blocks.push(`<p class="dash-story__byline">${inline(line)}</p>`);
+      continue;
+    }
+    // verdict pill before "**Urteil: ...**"
+    if (/^\*\*Urteil:/.test(line) && urteile[verdict]) {
+      const label = urteile[verdict++];
+      blocks.push(`<p class="dash-story__verdict"><span class="verdict verdict--${VERDICT_CLASS[label.toLowerCase()] ?? 'mythos'}">${esc(label)}</span></p>`);
     }
     if (line.startsWith('- ')) {
       list.push(line.slice(2));
@@ -158,7 +184,13 @@ function storyParts(md: string): { title: string; teaser: string; html: string; 
     flush();
     const img = line.replace(/\\/g, '').match(/^(?:&#91;|\[)image:\s*(.*)\]$/i);
     if (img) {
-      blocks.push(`<figure class="dash-story__figure"><figcaption>${esc(img[1])}</figcaption></figure>`);
+      // the article's picture placeholder: the drawing from dashboard.json (illustration), else the description
+      const src = safeUrl(illustration);
+      blocks.push(
+        src
+          ? `<figure class="dash-story__figure dash-story__figure--img"><img src="${esc(src)}" alt="${esc(img[1])}" loading="lazy" decoding="async" /></figure>`
+          : `<figure class="dash-story__figure"><figcaption>${esc(img[1])}</figcaption></figure>`,
+      );
       continue;
     }
     const isNote = /^\*[^*].*\*$/.test(line);
@@ -242,9 +274,9 @@ export function drawDither(canvas: HTMLCanvasElement): void {
 }
 
 // ---------- rendering ----------
-function storyCard(side: 'left' | 'right', label: string, title: string, teaser: string, key: string, image: string): string {
+function storyCard(side: 'left' | 'right', label: string, title: string, teaser: string, key: string, image: string, index = 0): string {
   const img = safeUrl(image);
-  return `<button type="button" class="dash-story dash-story--${side}" data-story="${key}" aria-haspopup="dialog" style="--i:${side === 'left' ? 0 : 1}">
+  return `<button type="button" class="dash-story dash-story--${side}" data-story="${key}" aria-haspopup="dialog" style="--i:${index}">
     ${img ? `<span class="dash-story__media" aria-hidden="true"><img src="${esc(img)}" alt="" loading="lazy" decoding="async" /></span>` : ''}
     <span class="dash-story__body">
       <span class="dash-story__label">${esc(label)}</span>
@@ -256,6 +288,35 @@ function storyCard(side: 'left' | 'right', label: string, title: string, teaser:
 }
 
 let resizeHandler: (() => void) | null = null;
+
+/** details that open and close with a short height animation (instant with reduced motion) */
+function smoothDetails(d: HTMLDetailsElement) {
+  const summary = d.querySelector('summary')!;
+  const body = d.querySelector<HTMLElement>('.dash-sources__body');
+  if (!body) return;
+  let anim: Animation | null = null;
+  summary.addEventListener('click', (e) => {
+    // the arrow follows the state at once, also while closing
+    if (reduceMotion()) return void d.classList.toggle('is-open', !d.open);
+    e.preventDefault();
+    anim?.cancel();
+    const opening = !d.open;
+    if (opening) d.open = true;
+    d.classList.toggle('is-open', opening);
+    const h = body.scrollHeight;
+    anim = body.animate(
+      [
+        { height: opening ? '0px' : `${h}px`, opacity: opening ? 0 : 1 },
+        { height: opening ? `${h}px` : '0px', opacity: opening ? 1 : 0 },
+      ],
+      { duration: 260, easing: 'ease-out' },
+    );
+    anim.onfinish = () => {
+      if (!opening) d.open = false;
+      anim = null;
+    };
+  });
+}
 
 // ---------- parallax: the dot cloud follows the mouse a little (max 12 px, eased) ----------
 const PARALLAX = 12;
@@ -291,14 +352,21 @@ export function renderDashboard(root: HTMLElement, ctx: DashboardContext): void 
   const felder = ctx.felder.map((f) => FIELD_LABEL[f] ?? '').filter(Boolean);
 
   // stories: only parts with content are shown
-  const day = text(data.dayInLife?.markdown) ? storyParts(data.dayInLife!.markdown!) : null;
+  const day = text(data.dayInLife?.markdown) ? storyParts(data.dayInLife!.markdown!, text(data.dayInLife?.illustration)) : null;
   const news = data.bigNews && text(data.bigNews.title) ? data.bigNews : null;
   const dayLabel = text(data.dayInLife?.label) || 'Ein Tag im Leben';
   const newsLabel = text(news?.label) || 'Große Neuigkeit';
-  const cards = [
-    day && day.title ? storyCard('left', dayLabel, day.title.replace(/^Ein Tag im Leben:\s*/i, ''), day.teaser, 'day', text(data.dayInLife?.image)) : '',
-    news ? storyCard('right', newsLabel, text(news.title), text(news.teaser), 'news', text(news.image)) : '',
-  ].filter(Boolean);
+  const articles = (Array.isArray(data.artikel) ? data.artikel : [])
+    .filter((a) => text(a?.markdown))
+    .map((a) => ({ a, parts: storyParts(a.markdown!, text(a.illustration), Array.isArray(a.urteile) ? a.urteile : []), label: text(a.label) }))
+    .filter((x) => x.parts.title);
+  const stripLabel = (title: string, label: string) => (label && title.toLowerCase().startsWith(`${label.toLowerCase()}:`) ? title.slice(label.length + 1).trim() : title);
+  const items = [
+    day && day.title ? { key: 'day', label: dayLabel, title: day.title.replace(/^Ein Tag im Leben:\s*/i, ''), teaser: day.teaser, image: text(data.dayInLife?.image) } : null,
+    news ? { key: 'news', label: newsLabel, title: text(news.title), teaser: text(news.teaser), image: text(news.image) } : null,
+    ...articles.map((x, i) => ({ key: `art-${i}`, label: x.label || 'Artikel', title: stripLabel(x.parts.title, x.label), teaser: x.parts.teaser, image: text(x.a.image) })),
+  ].filter((x): x is NonNullable<typeof x> => Boolean(x));
+  const cards = items.map((c, i) => storyCard(i % 2 ? 'right' : 'left', c.label, c.title, c.teaser, c.key, c.image, i));
 
   const deadlines = myDeadlines(ctx.saved);
   const rows = deadlines
@@ -337,7 +405,7 @@ export function renderDashboard(root: HTMLElement, ctx: DashboardContext): void 
         </div>
       </div>
     </section>
-    ${cards.length ? `<section class="dash-sec" aria-labelledby="stories-title"><h2 class="dash-sec__title" id="stories-title">Zum Lesen</h2><div class="dash-stories">${cards.join('')}</div></section>` : ''}
+    ${cards.length ? `<section class="dash-sec" aria-labelledby="stories-title"><h2 class="dash-sec__title" id="stories-title">Zum Lesen</h2><div class="dash-stories${cards.length > 2 ? ' dash-stories--3' : ''}">${cards.join('')}</div></section>` : ''}
     <section class="dash-sec" id="fristen" aria-labelledby="fristen-title" tabindex="-1">
       <div class="dash-sec__head"><h2 class="dash-sec__title" id="fristen-title">Meine Fristen</h2>${deadlines.length ? `<span class="count" aria-label="${deadlines.length} gespeichert">${deadlines.length}</span>` : ''}</div>
       ${
@@ -385,9 +453,9 @@ export function renderDashboard(root: HTMLElement, ctx: DashboardContext): void 
   const modal = root.querySelector<HTMLDialogElement>('[data-dash-modal]')!;
   const sourcesBlock = (items: { label: string; url: string; note?: string }[]) =>
     items.length
-      ? `<details class="dash-sources"><summary>Quellen anzeigen</summary><ol>${items
+      ? `<details class="dash-sources"><summary><span>Quellen anzeigen</span><svg class="dash-sources__chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></summary><div class="dash-sources__body"><ol>${items
           .map((s) => `<li>${safeUrl(s.url) ? `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener noreferrer">${esc(s.label)}</a>` : esc(s.label)}${s.note ? `, ${esc(s.note)}` : ''}</li>`)
-          .join('')}</ol></details>`
+          .join('')}</ol></div></details>`
       : '';
   const openStory = (key: string, from: HTMLElement) => {
     let body = '';
@@ -406,6 +474,13 @@ export function renderDashboard(root: HTMLElement, ctx: DashboardContext): void 
           .join('')}</div>
         ${sourcesBlock(text(news.source) || safeUrl(news.url) ? [{ label: text(news.source) || safeUrl(news.url), url: safeUrl(news.url), note: isIso(news.verified) ? `geprüft am ${formatDate(news.verified)}` : '' }] : [])}`;
     }
+    const art = key.startsWith('art-') ? articles[Number(key.slice(4))] : undefined;
+    if (art) {
+      body = `<p class="dash-modal__label">${esc(art.label || 'Artikel')}</p>
+        <h2 id="dash-modal-title">${esc(stripLabel(art.parts.title, art.label))}</h2>
+        <div class="dash-modal__text">${art.parts.html}</div>
+        ${sourcesBlock(art.parts.sources)}`;
+    }
     if (!body) return;
     modal.innerHTML = `<div class="dash-modal__inner">${body}</div><button type="button" class="dash-modal__close" data-dash-close>Schließen</button>`;
     const r = from.getBoundingClientRect();
@@ -413,6 +488,7 @@ export function renderDashboard(root: HTMLElement, ctx: DashboardContext): void 
     modal.style.setProperty('--from-y', `${r.top + r.height / 2 - window.innerHeight / 2}px`);
     modal.showModal();
     modal.scrollTop = 0;
+    modal.querySelectorAll<HTMLDetailsElement>('.dash-sources').forEach(smoothDetails);
     modal.querySelector<HTMLButtonElement>('[data-dash-close]')!.addEventListener('click', () => close());
   };
   const close = () => {

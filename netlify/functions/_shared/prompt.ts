@@ -16,9 +16,12 @@ import {
   WISSEN_BY_FIELD,
   WISSEN_GENERAL,
   WISSEN_STUDIUM,
+  WISSEN_BY_MODUS,
   HOCHSCHUL_LISTE,
   ANGEBOTS_INDEX,
   DASHBOARD_WISSEN,
+  LINKEDIN_WISSEN,
+  CV_VORLAGEN,
 } from './data.generated';
 import { MENTORS } from '../../../src/content/mentors';
 
@@ -57,8 +60,11 @@ const STAND = '20.11.2026';
 
 /** Tips from professionals: personal opinion of the named person, never of their employer. */
 function mentorTips(): string {
-  return MENTORS.map(
-    (m) => `- ${m.name} (${m.role}), Freigabe liegt vor: ja. Stichpunkte: ${m.tips.map((t) => `"${t}"`).join(', ')} (persönliche Meinung)`,
+  return MENTORS.map((m) =>
+    [
+      `- ${m.name}, ${m.role}. Feld: ${m.field}. Freigabe liegt vor: ja. Freigegebener Wortlaut, jeder Satz einzeln zitierbar:`,
+      ...[...(m.headline ? [m.headline] : []), ...m.tips].map((t) => `  "${t}"`),
+    ].join('\n'),
   ).join('\n');
 }
 
@@ -116,7 +122,7 @@ const TAB_FOCUS: Record<Mode, string> = {
   orientierung: `<tab_fokus modus="orientierung">
 ${TAB_NOTE}
 Fokus: Interessen und Felder entdecken. Halte Interessen, Felder und Berufe, die der Schüler gewählt hat, mit [[PROFIL]] fest, damit die anderen Tabs sie kennen.
-</tab_fokus>`,
+${WISSEN_BY_MODUS.orientierung ? `\n<wissen_tab>\n${WISSEN_BY_MODUS.orientierung}\n</wissen_tab>\n` : ''}</tab_fokus>`,
   cv_linkedin: `<tab_fokus modus="cv_linkedin">
 ${TAB_NOTE}
 Fokus: Lebenslauf, Portfolio und LinkedIn. Arbeite mit den Vorlagen und der LinkedIn-Anleitung unten und mit den Feldern aus dem Profil. Halte den Stand mit [[PROFIL]] in "cv_status" fest (zum Beispiel "Entwurf Schule und Engagement fertig").
@@ -124,11 +130,20 @@ Fokus: Lebenslauf, Portfolio und LinkedIn. Arbeite mit den Vorlagen und der Link
 <vorlagen>
 ${VORLAGEN}
 </vorlagen>
-</tab_fokus>`,
+
+<cv_vorlagen>
+Die drei Word-Vorlagen zum Herunterladen, mit ihren Abschnitten in dieser Reihenfolge. Nutze die Vorlage, die du nach dem Feld empfiehlst (Zuordnung im Abschnitt Modus 2). Für Kreativ, Medien und Design gibt es die PowerPoint-Mappe, dort nur Struktur und Checkliste.
+${CV_VORLAGEN}
+</cv_vorlagen>
+
+<linkedin_anleitung>
+${LINKEDIN_WISSEN}
+</linkedin_anleitung>
+${WISSEN_BY_MODUS.cv_linkedin ? `\n<wissen_tab>\n${WISSEN_BY_MODUS.cv_linkedin}\n</wissen_tab>\n` : ''}</tab_fokus>`,
   praktika: `<tab_fokus modus="praktika">
 ${TAB_NOTE}
 Fokus: Praktika, Sommerkurse, Wettbewerbe und Bewerbungen dafür, passend zu Feldern und Stufe aus dem Profil. Nutze die Angebotsliste.
-</tab_fokus>`,
+${WISSEN_BY_MODUS.praktika ? `\n<wissen_tab>\n${WISSEN_BY_MODUS.praktika}\n</wissen_tab>\n` : ''}</tab_fokus>`,
   studium: `<tab_fokus modus="studium">
 ${TAB_NOTE}
 Fokus: Hochschulen und Studienwege. Nutze den Studium-Block und die Hochschulliste. Hält der Schüler eine Note fest, setze sie mit [[PROFIL]] in "note".
@@ -150,7 +165,7 @@ export function buildSystem(mode: Mode, profile: Profile | null): Anthropic.Text
     { type: 'text', text: TAB_FOCUS[mode], cache_control: { type: 'ephemeral' } },
     {
       type: 'text',
-      text: `<wissen>\nStand: ${STAND}\n${wissen}\n</wissen>\n\n<schueler_profil>\n${profil}\n</schueler_profil>\n\n<modus>${mode}</modus>\n<heute>${new Date().toISOString().slice(0, 10)}</heute>`,
+      text: `<wissen>\nStand: ${STAND}\n${wissen}\n</wissen>\n\n<schueler_profil>\n${profil}\n</schueler_profil>\n\n<modus>${mode}</modus>\n<heute>${new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Berlin' }).format(new Date())}</heute>`,
     },
   ];
 }

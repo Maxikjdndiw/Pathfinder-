@@ -12,6 +12,10 @@ export function mockReply(mode: Mode, messages: { role: string; content: string;
     text = 'Testmodus: Diese Fristen enden bald und passen zu deinem Profil. Jugend forscht endet am 30. November 2026 (Quelle: Stiftung Jugend forscht, geprüft am 20.11.2026).\n[[FRISTEN: jugend-forscht-2027: Passt, weil du gern tüftelst. | bundeswettbewerb-mathematik: Gut für alle, die Mathe mögen.]]\n[[QUELLEN: jugend-forscht-2027, bundeswettbewerb-mathematik]]\n[[FRAGEN: Wie bewerbe ich mich bei Jugend forscht? | Gibt es Sommerkurse? | Was kostet das?]]';
   } else if (/bocconi/i.test(last)) {
     text = 'Testmodus: Bocconi nimmt Bewerbungen in der Winter Session bis 26. Januar 2027 an (Quelle: Bocconi, geprüft am 26.11.2026).\n[[QUELLEN: bignews-bocconi]]\n[[FRAGEN: Welche Tests brauche ich? | Welche Fristen enden bald?]]';
+  } else if (mode === 'cv_linkedin' && /linkedin/i.test(last)) {
+    text = 'Testmodus: Bereich: Info. Hier stellst du dich in wenigen Sätzen vor, und hier suchen Firmen nach Begriffen.\n```\nIch bin Schüler in Klasse 11 und interessiere mich für Informatik. Ich programmiere gern kleine Apps mit Python.\n```\n[[FRAGEN: Wie schreibe ich die Headline? | Was gehört unter Projekte?]]';
+  } else if (mode === 'cv_linkedin' && /abschnitt|lebenslauf/i.test(last)) {
+    text = 'Testmodus: Abschnitt: PROFIL, Vorlage Technik, Informatik, Naturwissenschaften. Hier steht in zwei Sätzen, was du baust und was du suchst.\n```\nSchüler mit Schwerpunkt Informatik. Entwickelt eigene Webanwendungen und sucht ein Praktikum in der Softwareentwicklung.\n```';
   } else if (mode === 'cv_linkedin') {
     text = 'Testmodus: Lass uns mit deinem Lebenslauf anfangen. In welche Richtung soll er gehen, eher Wirtschaft oder eher Mode?\n[[BUTTONS: praktika:Weiter mit Praktika und Sommerkursen]]';
   } else if (/nochmal/i.test(last) && /shanghai/i.test(last)) {

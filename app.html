@@ -56,6 +56,7 @@
           <summary class="menu__btn" aria-label="Konto und Einstellungen"><span class="menu__avatar" data-user-initial aria-hidden="true">P</span><svg class="menu__chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></summary>
           <div class="menu__list">
             <p class="menu__name" data-user-name hidden></p>
+            <button type="button" data-action="profilbild">Profilbild</button>
             <button type="button" data-action="vorlagen">Vorlagen</button>
             <button type="button" data-action="delete">Meine Daten löschen</button>
             <button type="button" data-action="logout">Abmelden</button>
@@ -76,6 +77,7 @@
       <button type="button" data-nav="mentor">Mentor</button>
     </nav>
     <div class="sheet__more">
+      <button type="button" data-sheet-action="profilbild">Profilbild</button>
       <button type="button" data-sheet-action="vorlagen">Vorlagen</button>
       <button type="button" data-sheet-action="delete">Meine Daten löschen</button>
       <button type="button" data-sheet-action="logout">Abmelden</button>
@@ -116,6 +118,7 @@
           <p>Mit einem Menschen sprechen: Wenn du eine Mentorin oder einen Mentor anfragst, speichern wir eine kurze Zusammenfassung deines Gesprächs und eure Nachrichten auf dem Server, damit ihr direkt schreiben könnt. Eine E-Mail-Benachrichtigung bekommst du nur, wenn du das ausdrücklich möchtest.</p>
           <p>Dateien: Wenn du eine Datei anhängst (PDF, DOCX, PNG, JPG), speichern wir sie auf dem Server. Im Gespräch mit der KI geht sie zur Auswertung an den KI-Dienst, im Gespräch mit dem Mentor sieht nur er sie. Du kannst jede Datei selbst löschen, sonst löschen wir sie automatisch nach 30 Tagen.</p>
           <p>Wer die Daten verarbeitet: Deine Chatnachrichten an die KI werden zur Beantwortung an einen KI-Dienst (Anthropic) übermittelt. Die Seite und die gespeicherten Daten liegen bei Netlify. E-Mails (Zugangscode, Benachrichtigungen) verschicken wir über einen E-Mail-Dienst.</p>
+          <p>Ein Profilbild ist freiwillig. Es wird im Browser verkleinert, ohne Metadaten wie den Standort gespeichert und nur dir angezeigt. Es geht nicht an die KI, und du kannst es jederzeit löschen.</p>
           <p>Rechtsgrundlage: deine Einwilligung. Du kannst sie jederzeit widerrufen und die Löschung deiner Daten verlangen: <a href="mailto:hello@mypathfinder.site">hello@mypathfinder.site</a>.</p>
           <p>Die KI kann Fehler machen. Prüfe wichtige Angaben (Fristen, Kosten) immer auf der offiziellen Seite des Anbieters.</p>
         </details>

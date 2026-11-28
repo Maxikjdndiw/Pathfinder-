@@ -400,3 +400,72 @@ Stand: 22. November 2026. Alle Gebühren sind gerundet und können sich ändern.
 1. Frage zuerst nach Interessen, Land, Budget, Sprache und Notenstand, jeweils eine Frage.
 2. Zeige danach Karten mit [[EMPFEHLUNGEN: felder=... | stufe=abschluss | typen=hochschule | land=...]].
 3. Erkläre pro Hochschule in zwei Sätzen, warum sie passt oder nicht, und nenne Frist und Zulassung.
+
+## Bewerbung ums Studium, Ergänzung (Modus "studium")
+
+Stand: 28.11.2026. Ergänzt nur, was oben noch fehlte. Bestehende Angaben oben gelten weiter.
+- Die Fristen 15. Juli (Wintersemester) und 15. Januar (Sommersemester) gelten in der Regel bei bundesweit und bei hochschulintern zulassungsbeschränkten Studiengängen. Es gibt Ausnahmen, deshalb immer bei der Hochschule prüfen. Das gilt nicht pauschal für private oder ausländische Hochschulen oder Eignungsprüfungen. Für einige der bundesweiten Fächer gibt es fürs Wintersemester eine frühere Frist (siehe unten).
+  Quelle: https://www.arbeitsagentur.de/vor-ort/datei/wegeandiehochschule_ba139032.pdf
+- Humanmedizin, Zahnmedizin, Tiermedizin und Pharmazie laufen über hochschulstart. Bei anderen teilnehmenden Studiengängen registriert man sich auch im Portal, die Hochschulen prüfen die Unterlagen.
+  Quelle: https://www.hochschulstart.de/
+- Sommersemester 2027: Bewerbung bis 15.01.2027. Für Humanmedizin, Zahnmedizin und Pharmazie müssen Nachweise bis 20.01.2027 per Post eingehen.
+  Quelle: https://www.hochschulstart.de/bewerben-beobachten/termine
+- Medizin und die anderen oben genannten Fächer: Wer die Studienberechtigung vor dem 16. Januar des Bewerbungsjahres erhalten hat, hat fürs Wintersemester eine frühere Frist (üblich: 31. Mai statt 15. Juli). Aktuellen Termin immer bei hochschulstart prüfen. Für Nachreichfristen gilt hochschulstart, da die Angaben im BayernPortal davon abweichen können.
+  Quelle: https://www.bayernportal.de/dokumente/leistung/0020583222180
+- Das IB Diploma wird als Hochschulzugang anerkannt, wenn es nach mindestens zwölf aufsteigenden Jahrgangsstufen an Vollzeitschulen erworben wurde und die Bedingungen der KMK-Vereinbarung erfüllt sind. Nie allgemein zusagen, dass es reicht.
+  Quelle: https://www.kmk.org/bildungsministerkonferenz/vertiefende-bildungsinhalte/bildungswege-und-schulabschluesse/auslaendische-und-internationale-schulabschluesse.html
+
+---
+
+## Geld fürs Studium: BAföG, Begabtenförderungswerke, Deutschlandstipendium (Modus "studium")
+
+Stand: 28.11.2026. Ergänzt die Abschnitte zu Stipendien oben, die weiter gelten.
+- BAföG gibt es für Studierende und für bestimmte Schülerinnen und Schüler. Es hängt unter anderem von Ausbildung, Alter, Status, eigenem Einkommen und Vermögen sowie dem Einkommen der Eltern bzw. Partner ab. Studierende bekommen grundsätzlich die Hälfte als Zuschuss und die Hälfte als zinsloses Darlehen. Schüler müssen nichts zurückzahlen. Antrag und unverbindlicher Rechner: bafoeg-digital.de. Eine Reform ist als Entwurf geplant, deshalb hier keine Beträge nennen.
+  Quelle: https://www.bmftr.bund.de/bafoeg
+- Es gibt 13 Begabtenförderungswerke. Man bewirbt sich direkt beim Werk. Der einkommensabhängige Teil richtet sich nach den BAföG-Regeln, dazu kommt eine Studienkostenpauschale von 300 € (laut Seite monatlich). Voraussetzungen und Fristen beim jeweiligen Werk prüfen.
+  Quelle: https://www.bmftr.bund.de/begabtenfoerderungswerke
+- Deutschlandstipendium: 300 € im Monat, Auswahl nach Begabung und Leistung, auch Engagement und persönliche Umstände zählen. Auch für Studienanfänger. Jede Hochschule legt ihre Fristen selbst fest. Mit bestimmten anderen Leistungsförderungen ist es nicht kombinierbar.
+  Quelle: https://www.bayernportal.de/dokumente/leistung/0445811451167
+- Keine verbindliche Förderzusage geben, nur auf die offiziellen Seiten verweisen.
+
+---
+
+## Orientierungstest Check-U (Modus "orientierung")
+
+Stand: 28.11.2026.
+- Check-U ist der kostenlose Test der Bundesagentur für Arbeit, ab 13 Jahren, ohne Registrierung bei der Agentur. Der Kompetenz-Check dauert ca. 80 Minuten und kann unterbrochen werden. Studienfächer erscheinen erst ab Klasse 10 mit Ziel Abitur. Den Zugangscode speichern, er kann nicht erneut zugesendet werden. Link: www.check-u.de
+  Quelle: https://www.arbeitsagentur.de/bildung/welche-ausbildung-welches-studium-passt/check-u-faq
+
+---
+
+## Praktika und Jobs unter 18: Jugendarbeitsschutz (Modus "praktika")
+
+Stand: 28.11.2026. Keine verbindliche Rechtsberatung geben.
+- Das Betriebspraktikum während der Vollzeitschulpflicht ist vom Verbot der Kinderarbeit ausgenommen. Es gelten trotzdem Schutzregeln.
+  Quelle: https://www.gesetze-im-internet.de/jarbschg/__5.html
+- Kinder über 13 dürfen mit Einwilligung der Sorgeberechtigten nur leichte, geeignete Tätigkeiten ausüben, in der Regel höchstens 2 Stunden täglich, nicht zwischen 18 und 8 Uhr und nicht vor oder während des Unterrichts. Für Jugendliche gibt es eine Ferienregel von höchstens 4 Wochen im Kalenderjahr. Welche Regel gilt, hängt auch von der Vollzeitschulpflicht ab. Freiwillige Praktika deshalb nicht pauschal erlauben, sondern Alter und Schulpflicht klären und an Schule oder Betrieb verweisen.
+  Quelle: https://www.gesetze-im-internet.de/jarbschg/__5.html
+
+---
+
+## Jugend forscht 2027, Ergänzung (Feld "informatik", Feld "naturwiss", Feld "ingenieur", Feld "ki")
+
+Stand: 28.11.2026. Ergänzt den Eintrag in der Angebotsliste (Kennung jugend-forscht-2027), der weiter gilt.
+- Anmeldung nur bis 30.11.2026. Zunächst reichen Thema und kurze Beschreibung, die schriftliche Ausarbeitung folgt im Januar 2027. Studierende höchstens im ersten Studienjahr. Allein oder zu zweit bzw. dritt. Fachgebiete: Arbeitswelt, Biologie, Chemie, Geo- und Raumwissenschaften, Mathematik/Informatik, Physik, Technik. Nach dem 30.11.2026 diese Runde nicht mehr empfehlen.
+  Quelle (Details): https://chemanager-online.com/de/news/jugend-forscht-wettbewerbsrunde-2027-startet
+  Anmeldefrist auf der Titelseite der offiziellen Broschüre bestätigt: https://www.jugend-forscht.de/fileadmin/user_upload/Downloadcenter/Infomaterial/Jugend_forscht_Wettbewerbsbroschuere_2027.pdf
+
+---
+
+## Lebenslauf und LinkedIn, Ergänzung (Modus "cv_linkedin")
+
+Stand: 28.11.2026.
+Lebenslauf für Schüler: Diese Punkte ergänzen nur den Inhalt. Aufbau und Reihenfolge der Pathfinder-CV-Vorlage haben Vorrang.
+- Mögliche Inhalte: Name und Kontakt, persönliche Daten, persönliche Kompetenzen, Schulbildung mit voraussichtlichem Abschluss, Praktika und Ehrenamt, Interessen, Sprach- und Computerkenntnisse, Ort, Datum und Unterschrift. Körpergröße und Wunschberuf gehören laut Arbeitsblatt nicht hinein. Ein Foto ist freiwillig.
+  Quelle: https://www.arbeitsagentur.de/bildung/datei/unterrichtsidee_einen_lebenslauf_erstellen_ba027313.pdf
+
+LinkedIn-Bereiche mit ihren englischen Namen (ergänzt die Anleitung im Block linkedin_anleitung):
+- Grundbereiche: About, Education, Position, Services, Career break, Skills. Empfohlen: Featured, Licenses & certifications, Projects, Courses, Recommendations. Weitere: Volunteer experience, Publications, Patents, Honors & awards, Test scores, Languages, Organizations, Causes. Hinzufügen über "Add profile section" bzw. "Add section". Die deutschen Bezeichnungen sind nicht geprüft.
+  Quelle (Auszug, nur über einen Suchtreffer gesehen, Seite nicht geöffnet): https://www.linkedin.com/help/billing/answer/1284
+
+---

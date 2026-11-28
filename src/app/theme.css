@@ -243,3 +243,33 @@ a.src:hover { border-color: #9FC2EA; color: var(--accent); }
   .msg--coach .msg__body { padding: 12px 14px; }
   .msg--coach .msg__body { font-size: 15.5px; }
 }
+
+/* profile photo: in the same avatar circle, and the crop dialog (src/app/profile-photo.ts) */
+.menu__avatar { overflow: hidden; }
+.menu__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pp[open] { gap: 14px; }
+.pp[open] { display: grid; }
+.pp h2 { font-size: 22px; }
+.pp__stage {
+  position: relative; width: min(300px, 100%); aspect-ratio: 1; justify-self: center; overflow: hidden;
+  border-radius: 16px; background: var(--card); touch-action: none; cursor: grab; outline: none;
+}
+.pp__stage:active { cursor: grabbing; }
+.pp__stage:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--accent); }
+.pp__stage img { position: absolute; left: 50%; top: 50%; max-width: none; user-select: none; -webkit-user-drag: none; pointer-events: none; }
+/* round preview: everything outside the circle is dimmed */
+.pp__stage::after { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 999px rgba(31, 30, 29, 0.45); pointer-events: none; }
+.pp__empty { display: grid; place-items: center; width: min(300px, 100%); aspect-ratio: 1; justify-self: center; border: 1px dashed var(--line-strong); border-radius: 16px; font-size: 14px; color: var(--ink-muted); }
+.pp__zoom { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 12px; font-size: 14px; color: var(--ink-muted); }
+.pp__zoom input { accent-color: var(--accent); min-height: 44px; }
+.pp__actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pp__spacer { flex: 1; }
+.pp__del { color: #8C1D18; }
+.pp .form-error:empty { display: none; }
+/* phones: the dialog buttons in two even rows instead of a loose wrap */
+@media (max-width: 480px) {
+  .pp__actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .pp__actions .btn { width: 100%; }
+  .pp__spacer { display: none; }
+  .pp__actions:not(:has(.pp__del)) [data-pick] { grid-column: 1 / -1; }
+}

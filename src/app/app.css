@@ -102,6 +102,9 @@ select.input { appearance: auto; }
 .msg__body ul, .msg__body ol { padding-left: 22px; list-style: revert; }
 .msg__body li + li { margin-top: 4px; }
 .msg__body strong { font-weight: 600; }
+.msg__code { display: grid; gap: 8px; justify-items: start; }
+.msg__code .msg__pre { width: 100%; margin-top: 0; }
+.msg__code + .msg__code, .msg__body p + .msg__code, .msg__code + p { margin-top: 12px; }
 .msg__pre { white-space: pre-wrap; font: 400 13.5px / 1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--card); border-radius: 14px; padding: 16px; }
 .msg--error .msg__body { color: #8C1D18; }
 

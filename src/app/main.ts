@@ -16,6 +16,7 @@ import { createCodeSlots } from './code-slots';
 import type { MapHandle } from './map';
 import { createLatticeLoader } from '../components/lattice-loader';
 import { daysLabel, daysLeft, renderDashboard, renderTicker, sourceFor } from './dashboard';
+import { openPhotoDialog } from './profile-photo';
 import {
   COST_LABELS as PILL_LABELS,
   COST_STEPS,
@@ -156,6 +157,19 @@ function show(screen: Screen) {
 }
 
 const log = $<HTMLElement>('[data-log]');
+// "Kopieren" under text blocks: copies the text, shows "Kopiert" for a moment
+log.addEventListener('click', async (e) => {
+  const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-copy]');
+  if (!btn) return;
+  const text = btn.parentElement?.querySelector('pre')?.textContent ?? '';
+  try {
+    await navigator.clipboard.writeText(text);
+    btn.textContent = 'Kopiert';
+  } catch {
+    btn.textContent = 'Bitte markieren und kopieren';
+  }
+  window.setTimeout(() => (btn.textContent = 'Kopieren'), 1800);
+});
 const input = $<HTMLTextAreaElement>('#chat-input');
 const chatForm = $<HTMLFormElement>('[data-form="chat"]');
 let busy = false;
@@ -202,7 +216,8 @@ function format(text: string): string {
   const parts = text.split(/```[a-z]*\n?/);
   return parts
     .map((part, i) => {
-      if (i % 2 === 1) return `<pre class="msg__pre">${esc(part.trim())}</pre>`;
+      // text to take over (CV section, LinkedIn area): with a copy button underneath
+      if (i % 2 === 1) return `<div class="msg__code"><pre class="msg__pre">${esc(part.trim())}</pre><button type="button" class="btn btn--quiet btn--small msg__copy" data-copy>Kopieren</button></div>`;
       return part
         .trim()
         .split(/\n{2,}/)
@@ -1518,6 +1533,7 @@ function enterChat() {
   showDashboard();
   // logged in before names were returned: ask once, quietly
   if (state.name === undefined) void fetchName();
+  void loadPhoto();
 }
 async function fetchName() {
   const forCode = code;
@@ -1617,10 +1633,45 @@ sheet.querySelectorAll<HTMLButtonElement>('[data-sheet-action]').forEach((b) =>
     document.querySelector<HTMLButtonElement>(`.menu [data-action="${b.dataset.sheetAction}"]`)?.click();
   }),
 );
+// ---------- profile photo (src/app/profile-photo.ts, stored per code by /api/profilbild) ----------
+let photo: string | null = null;
+async function photoApi<T>(body: object): Promise<T> {
+  const res = await fetch('/api/profilbild', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ code, ...body }) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error ?? 'Das hat nicht geklappt. Bitte versuche es noch einmal.');
+  return data as T;
+}
+async function loadPhoto() {
+  const forCode = code;
+  try {
+    const { bild } = await photoApi<{ bild: string | null }>({ aktion: 'holen' });
+    if (forCode !== code) return;
+    photo = typeof bild === 'string' && /^data:image\/(jpeg|webp);base64,/.test(bild) ? bild : null;
+    showUser();
+  } catch {
+    /* offline: the initials stay */
+  }
+}
+$<HTMLButtonElement>('[data-action="profilbild"]').addEventListener('click', () => {
+  (document.querySelector('.menu') as HTMLDetailsElement | null)?.removeAttribute('open');
+  openPhotoDialog({
+    current: photo,
+    save: async (bild) => void (await photoApi({ aktion: 'speichern', bild })),
+    remove: async () => void (await photoApi({ aktion: 'loeschen' })),
+    onChange: (bild) => {
+      photo = bild;
+      showUser();
+    },
+  });
+});
+
 /** initial and name in the user menu */
 function showUser() {
   const name = (state.name ?? '').trim();
-  $<HTMLElement>('[data-user-initial]').textContent = (name[0] ?? 'P').toUpperCase();
+  const avatar = $<HTMLElement>('[data-user-initial]');
+  // the photo in the same circle, otherwise the initial as before
+  if (photo) avatar.innerHTML = `<img src="${photo}" alt="" />`;
+  else avatar.textContent = (name[0] ?? 'P').toUpperCase();
   const label = $<HTMLElement>('[data-user-name]');
   label.textContent = name ? `Angemeldet als ${name}` : '';
   label.hidden = !name;
@@ -1642,6 +1693,7 @@ document.querySelectorAll<HTMLButtonElement>('[data-start]').forEach((b) =>
 );
 
 function logout() {
+  photo = null;
   try {
     localStorage.removeItem(CODE_KEY);
   } catch {
@@ -1657,8 +1709,14 @@ function logout() {
   show('login');
 }
 $<HTMLButtonElement>('[data-action="logout"]').addEventListener('click', logout);
-$<HTMLButtonElement>('[data-action="delete"]').addEventListener('click', () => {
-  if (!confirm('Profil, Verlauf, Noten und gemerkte Angebote in diesem Browser löschen?')) return;
+$<HTMLButtonElement>('[data-action="delete"]').addEventListener('click', async () => {
+  if (!confirm('Profil, Verlauf, Noten, gemerkte Angebote und dein Profilbild löschen?')) return;
+  // the photo is on the server: delete it there too (before logout, while the code is known)
+  try {
+    await photoApi({ aktion: 'loeschen' });
+  } catch {
+    if (!confirm('Dein Profilbild konnte gerade nicht gelöscht werden. Trotzdem fortfahren? Du kannst es später unter Profilbild löschen.')) return;
+  }
   try {
     localStorage.removeItem(storeKey());
     localStorage.removeItem(fitKey());
